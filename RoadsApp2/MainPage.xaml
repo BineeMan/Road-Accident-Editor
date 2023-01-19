@@ -4,6 +4,7 @@
              x:Class="RoadsApp2.MainPage">
               
     <AbsoluteLayout BackgroundColor="White" x:Name="absoluteLayout">
+        <Button Text="Очистить" AbsoluteLayout.LayoutBounds="10, 10" Clicked="ButtonClean_Clicked"/>
         <AbsoluteLayout.GestureRecognizers>
             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
         </AbsoluteLayout.GestureRecognizers>

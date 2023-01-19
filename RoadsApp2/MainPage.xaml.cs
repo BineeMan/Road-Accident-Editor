@@ -2,10 +2,12 @@
 using System.Diagnostics;
 using System.Windows.Input;
 using Microsoft.Maui.Controls.Shapes;
+using RoadsApp2.DataClasses;
 using static RoadsApp2.Utils.Enums;
 using static RoadsApp2.Utils.Structs;
 using static RoadsApp2.Utils.UserInterfaceUtils;
 using static RoadsApp2.Utils.Utils;
+using Node = RoadsApp2.Utils.Structs.Node;
 
 namespace RoadsApp2;
 
@@ -14,6 +16,44 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+
+        //LineCoords lineCoords = new LineCoords()
+        //{
+        //    coord1 = new Point(100, 150),
+        //    coord2 = new Point(150, 150),
+        //};
+
+        //double c = Math.Sqrt( Math.Pow( (lineCoords.coord2.X - lineCoords.coord1.X) , 2 ) + Math.Pow( (lineCoords.coord2.Y - lineCoords.coord1.Y) , 2) );
+
+
+        //Line line = new Line()
+        //{
+        //    Fill = Brush.Black,
+        //    Stroke = Brush.Black,
+        //    StrokeThickness = 3,
+        //    IsEnabled = false,
+        //    ZIndex = 2,
+        //    X1 = lineCoords.coord1.X,
+        //    Y1 = lineCoords.coord1.Y,
+        //    X2 = lineCoords.coord2.X,
+        //    Y2 = lineCoords.coord2.Y
+        //};
+        //absoluteLayout.Add(line);
+        //line = new Line()
+        //{
+        //    Fill = Brush.Black,
+        //    Stroke = Brush.Black,
+        //    StrokeThickness = 3,
+        //    IsEnabled = false,
+        //    ZIndex = 2,
+        //    R = 0,
+        //    X1 = lineCoords.coord1.X,
+        //    Y1 = lineCoords.coord1.Y,
+        //    X2 = lineCoords.coord2.X,
+        //    Y2 = lineCoords.coord2.Y
+        //};
+        //absoluteLayout.Add(line);
+
     }
 
     private Node prevNode = new Node() { imageButtons = new List<ImageButton>() };
@@ -32,23 +72,94 @@ public partial class MainPage : ContentPage
 
     private bool AddNewNodeFlag = false;
 
-    private readonly int RectWidth = 100;
+    private readonly int RectWidth = 75;
 
-    private readonly int RectHeight = 100;
+    private readonly int RectHeight = 75;
 
     private ImageButton currentImageButton = new ImageButton();
 
     private Orientation currentOrientation = Orientation.Undefined;
 
-    private void TapGestureRecognizerRectangle_Tapped(object sender, TappedEventArgs e)
+    private void SetImageButtonsType(string source, List<Node> nodes, Rectangle rectangleExcept = null)
     {
-        ToggleImageButtons(prevNode.imageButtons);
-        Rectangle rectangle = (Rectangle)sender;
-        Node node = GetNodeFromRectangle(rectangle, nodes);
-        ToggleImageButtons(node.imageButtons);
-        prevNode = node;
+        if (rectangleExcept == null)
+        {
+            rectangleExcept = new Rectangle();
+        }
+        foreach (Node node in nodes)
+        {
+            if (!node.rectangle.Equals(rectangleExcept))
+            {
+                foreach (ImageButton imageButton in node.imageButtons)
+                {
+                    imageButton.Source = source;
+                }
+            }
+        }
     }
 
+    private bool IsFlagBelongsToSameNode(ImageButton imageButton1, ImageButton imageButton2, List<Node> nodes)
+    {
+        Node node = GetNodeFromImageButton(imageButton1, nodes);
+        return node.imageButtons.Contains(imageButton2);
+    }
+
+    private void SetImageButtonsVisibility(List<ImageButton> imageButtons, bool isVisible) 
+    {
+        foreach (ImageButton imageButton in imageButtons)
+        {
+            imageButton.IsVisible = isVisible;
+        }
+    }
+
+    private Rectangle GetRectangleFromImageButton(ImageButton imageButton, List<Node> nodes)
+    {
+        foreach (Node node in nodes)
+        {
+            if (node.imageButtons.Contains(imageButton))
+            {
+                return node.rectangle;
+            }
+        }
+        return null;
+    }
+
+    private Node GetNodeFromImageButton (ImageButton imageButton, List<Node> nodes)
+    {
+        foreach (Node node in nodes)
+        {
+            if (node.imageButtons.IndexOf(imageButton) != -1)
+            {
+                return node;
+            }
+        }
+        return new Node();
+    }
+
+    ///<summary>
+    ///This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
+    ///</summary>
+    private void TapGestureRecognizerRectangle_Tapped(object sender, TappedEventArgs e)
+    {
+        Rectangle rectangle = (Rectangle)sender;
+        Node node = GetNodeFromRectangle(rectangle, nodes);
+        if (prevNode.Equals(rectangle))
+        {
+            SetImageButtonsVisibility(node.imageButtons, false);
+        }
+        else
+        {
+            SetImageButtonsVisibility(prevNode.imageButtons, false);
+            SetImageButtonsVisibility(node.imageButtons, true);
+            prevNode = node;
+        }  
+        //SetImageButtonsType(rectangle, ButtonType.DestinationBtn, nodes);
+
+    }
+
+    ///<summary>
+    ///This events adds new flags around a crossroads with except orientation which will be avoided
+    ///</summary>
     private void AddFlagsAroundRectangle(Rectangle rectangle, Orientation orientationExcept = Orientation.Undefined, bool isVisible = true)
     {
         Node node = new Node()
@@ -67,7 +178,7 @@ public partial class MainPage : ContentPage
             }
             ImageButton imageButton = new ImageButton
             {
-                Source = "plus.png",
+                Source = ButtonType.PlusBtn,
                 WidthRequest = 55,
                 HeightRequest = 55,
                 Rotation = (double)rotation,
@@ -97,43 +208,91 @@ public partial class MainPage : ContentPage
     
     private void imgButton_Clicked(object sender, EventArgs e)
     {
-        currentImageButton.Source = "plus.png";
-        if (currentImageButton.Equals((ImageButton)sender))
+        currentImageButton.Source = ButtonType.PlusBtn;
+
+        ImageButton imageButton = (ImageButton)sender;
+
+        if (currentImageButton.Equals(imageButton))
         {
             AddNewNodeFlag = false;
             currentImageButton = new ImageButton();
-            return;
-        }
-        ImageButton imageButton = (ImageButton)sender;
-        imageButton.Source = "plusgreen.png";
-        Rect rectButton = absoluteLayout.GetLayoutBounds(imageButton);
-        Orientation orientation = Orientation.Up;
-        Node nodeTarget = new Node();
-        foreach (Node node in nodes)
-        {
-            if (node.imageButtons.IndexOf(imageButton) != -1)
+            SetImageButtonsType(ButtonType.PlusBtn, nodes);
+            Node targetNode = GetNodeFromImageButton(imageButton, nodes);
+            foreach (Node node in nodes)
             {
-                orientation = (Orientation)imageButton.Rotation;
-                currentOrientation = orientation;
-                nodeTarget = node;
-                break;
+                if (!node.Equals(targetNode))
+                {
+                    SetImageButtonsVisibility(node.imageButtons, false);
+                }
             }
         }
-        Rect rectangleRect = absoluteLayout.GetLayoutBounds(nodeTarget.rectangle);
-        lineCoords = GetLineCoordsForOrientation(orientation, rectangleRect);
-        
-        currentImageButton = imageButton;
-        AddNewNodeFlag = true;
+        else if (AddNewNodeFlag == true && !IsFlagBelongsToSameNode(imageButton, currentImageButton, nodes))
+        {
+            Node targetNode = GetNodeFromImageButton(imageButton, nodes);
+
+            Rect rect = absoluteLayout.GetLayoutBounds(targetNode.rectangle);
+
+            LineCoords destCoords = GetLineCoordsForOrientation((Orientation)imageButton.Rotation, rect);
+
+            DrawRoad(lineCoords, destCoords, (Orientation)imageButton.Rotation, (Orientation)currentImageButton.Rotation);
+
+            foreach (Node node in nodes)
+            {
+                SetImageButtonsVisibility(node.imageButtons, false);
+            }
+            SetImageButtonsType(ButtonType.PlusBtn, nodes);
+
+            absoluteLayout.Remove(currentImageButton);
+            absoluteLayout.Remove(imageButton);
+            AddNewNodeFlag = false;
+        }
+        else
+        {
+            imageButton.Source = ButtonType.PlusGreenBtn;
+            Node nodeTarget = GetNodeFromImageButton(imageButton, nodes);
+
+            Orientation orientation = (Orientation)imageButton.Rotation;
+            currentOrientation = orientation;
+
+            Rect rectangleRect = absoluteLayout.GetLayoutBounds(nodeTarget.rectangle);
+            lineCoords = GetLineCoordsForOrientation(orientation, rectangleRect);
+
+            foreach (Node node in nodes)
+            {
+                if (!node.Equals(nodeTarget))
+                {
+                    SetImageButtonsVisibility(node.imageButtons, true);
+                }
+            }
+            
+            SetImageButtonsType(ButtonType.DestinationBtn, nodes, nodeTarget.rectangle);
+
+            currentImageButton = imageButton;
+            AddNewNodeFlag = true;
+        }
     }
 
-    private void DrawRoad(LineCoords lineCoordsStart, LineCoords lineCoordsDest, Orientation orientation) 
+    private bool IsOrientationsParallel(Orientation orientation1, Orientation orientation2)
     {
-        PointCollection points = new[]
+        return (double)orientation1 + (double)GetReversedOrientation(orientation1) == (double)orientation2 + (double)GetReversedOrientation(orientation2);
+    }
+
+    private void DrawRoad(LineCoords lineCoordsStart, LineCoords lineCoordsDest, Orientation orientationStart, Orientation orientationDest) 
+    {
+        if ( (double)orientationDest + (double)orientationStart == (double)Orientation.Right + (double)Orientation.Up || (double)orientationDest + (double)orientationStart == (double)Orientation.Left + (double)Orientation.Down)
         {
+            LineCoords temp = lineCoordsStart;
+            lineCoordsStart.coord1 = temp.coord2;
+            lineCoordsStart.coord2 = temp.coord1;
+        }
+
+        PointCollection points = new[]
+{
             new Point(lineCoordsStart.coord1.X, lineCoordsStart.coord1.Y),
             new Point(lineCoordsDest.coord1.X, lineCoordsDest.coord1.Y),
             new Point(lineCoordsDest.coord2.X, lineCoordsDest.coord2.Y),
-            new Point(lineCoordsStart.coord2.X, lineCoordsStart.coord2.Y)
+            new Point(lineCoordsStart.coord2.X, lineCoordsStart.coord2.Y),
+            new Point(lineCoordsStart.coord1.X, lineCoordsStart.coord1.Y)
         };
 
         Polygon polygon = new Polygon()
@@ -146,66 +305,51 @@ public partial class MainPage : ContentPage
         };
         absoluteLayout.Add(polygon);
 
-        double offsetStartX = 0;
-        double offsetStartY = 0;
-
-        double offsetEndX = 0;
-        double offsetEndY = 0;
-
-        if (orientation == Orientation.Up || orientation == Orientation.Down)
-        {
-            offsetStartX = (lineCoordsStart.coord2.X - lineCoordsStart.coord1.X) / 2;
-            offsetEndX = (lineCoordsDest.coord2.X - lineCoordsDest.coord1.X) / 2;
-        }
-        else if (orientation == Orientation.Left || orientation == Orientation.Right)
-        {
-            offsetStartY = (lineCoordsStart.coord2.Y - lineCoordsStart.coord1.Y) / 2;
-            offsetEndY = (lineCoordsDest.coord2.Y - lineCoordsDest.coord1.Y) / 2;
-        }
+        Brush lineColor = Brush.White;
 
         Line line = new Line()
         {
-            Fill = Brush.White,
-            Stroke = Brush.White,
+            Fill = lineColor,
+            Stroke = lineColor,
             StrokeThickness = 3,
             IsEnabled = false,
             ZIndex = 2,
-            X1 = lineCoordsStart.coord1.X + offsetStartX,
-            Y1 = lineCoordsStart.coord1.Y + offsetStartY,
-            X2 = lineCoordsDest.coord1.X + offsetEndX,
-            Y2 = lineCoordsDest.coord1.Y + offsetEndY
+            X1 = (lineCoordsStart.coord1.X + lineCoordsStart.coord2.X) / 2,
+            Y1 = (lineCoordsStart.coord1.Y + lineCoordsStart.coord2.Y) / 2,
+            X2 = (lineCoordsDest.coord1.X + lineCoordsDest.coord2.X) / 2,
+            Y2 = (lineCoordsDest.coord1.Y + lineCoordsDest.coord2.Y) / 2,
         };
         absoluteLayout.Add(line);
 
         line = new Line()
         {
-            Fill = Brush.White,
-            Stroke = Brush.White,
+            Fill = lineColor,
+            Stroke = lineColor,
             StrokeThickness = 3,
             IsEnabled = false,
             ZIndex = 2,
             StrokeDashArray = { 2, 2 },
             StrokeDashOffset = 10,
-            X1 = lineCoordsStart.coord1.X + offsetStartX / 2,
-            Y1 = lineCoordsStart.coord1.Y + offsetStartY / 2,
-            X2 = lineCoordsDest.coord1.X + offsetEndX / 2,
-            Y2 = lineCoordsDest.coord1.Y + offsetEndY / 2
+            X1 = (lineCoordsStart.coord1.X + ((lineCoordsStart.coord1.X + lineCoordsStart.coord2.X) / 2)) / 2,
+            Y1 = (lineCoordsStart.coord1.Y + (lineCoordsStart.coord1.Y + lineCoordsStart.coord2.Y) / 2) / 2,
+            X2 = (lineCoordsDest.coord1.X + (lineCoordsDest.coord1.X + lineCoordsDest.coord2.X) / 2) / 2,
+            Y2 = (lineCoordsDest.coord1.Y + (lineCoordsDest.coord1.Y + lineCoordsDest.coord2.Y) / 2) / 2,
         };
         absoluteLayout.Add(line);
 
         line = new Line()
         {
-            Fill = Brush.White,
-            Stroke = Brush.White,
+            Fill = lineColor,
+            Stroke = lineColor,
             StrokeThickness = 3,
             IsEnabled = false,
             ZIndex = 2,
             StrokeDashArray = { 2, 2 },
             StrokeDashOffset = 10,
-            X1 = lineCoordsStart.coord1.X + offsetStartX + offsetStartX / 2,
-            Y1 = lineCoordsStart.coord1.Y + offsetStartY + offsetStartY / 2,
-            X2 = lineCoordsDest.coord1.X + offsetEndX + offsetEndX / 2,
-            Y2 = lineCoordsDest.coord1.Y + offsetEndY + offsetEndY / 2
+            X1 = (lineCoordsStart.coord2.X + ((lineCoordsStart.coord1.X + lineCoordsStart.coord2.X) / 2)) / 2,
+            Y1 = (lineCoordsStart.coord2.Y + (lineCoordsStart.coord1.Y + lineCoordsStart.coord2.Y) / 2) / 2,
+            X2 = (lineCoordsDest.coord2.X + (lineCoordsDest.coord1.X + lineCoordsDest.coord2.X) / 2) / 2,
+            Y2 = (lineCoordsDest.coord2.Y + (lineCoordsDest.coord1.Y + lineCoordsDest.coord2.Y) / 2) / 2,
         };
         absoluteLayout.Add(line);
     }
@@ -236,14 +380,44 @@ public partial class MainPage : ContentPage
 
             LineCoords destCoords = GetLineCoordsForOrientation(currentOrientation, rect, true);
 
+            SetImageButtonsType(ButtonType.PlusBtn, nodes);
             AddFlagsAroundRectangle(rectangle, GetReversedOrientation(currentOrientation), false);
+            DrawRoad(lineCoords, destCoords, currentOrientation, currentOrientation);
+            Node targetNode = GetNodeFromImageButton(currentImageButton, nodes);
 
-            DrawRoad(lineCoords, destCoords, currentOrientation);
-            absoluteLayout.Remove(currentImageButton);
-            
+            foreach (Node node in nodes)
+            {
+                if (!node.Equals(targetNode))
+                {
+                    SetImageButtonsVisibility(node.imageButtons, false);
+                }
+            }
+           
+            absoluteLayout.Remove(currentImageButton);         
             AddNewNodeFlag = false;
-
         }
     }
+
+    private void ButtonClean_Clicked(object sender, EventArgs e)
+    {
+        AddNewNodeFlag = false;
+        currentImageButton = new ImageButton();
+        currentOrientation = Orientation.Undefined;
+        prevNode = new Node() { imageButtons = new List<ImageButton>() };
+        lineCoords = new LineCoords();
+        nodes = new List<Node>();
+
+
+        Debug.Write(nodes.Capacity);
+        absoluteLayout.Clear();
+        Button button = new Button()
+        {
+            Text = "Очистить",
+        };
+        button.Clicked += ButtonClean_Clicked;
+        absoluteLayout.Add(button);
+        absoluteLayout.SetLayoutBounds(button, new Rect(10, 10, button.Width, button.Height));
+    }
+
 }
 

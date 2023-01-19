@@ -13,5 +13,10 @@ namespace RoadsApp2.Utils
             Up = 0, Down = 180, Left = 270, Right = 90, Undefined = -1
         }
 
+        public enum ConnectingMode
+        {
+            ToNewNode = 0, ToExistingNode = 1, None = -1
+        }
+
     }
 }
