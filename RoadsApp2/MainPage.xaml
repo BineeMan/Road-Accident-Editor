@@ -2,12 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RoadsApp2.MainPage">
-              
-    <AbsoluteLayout BackgroundColor="White" x:Name="absoluteLayout">
-        <Button Text="Очистить" AbsoluteLayout.LayoutBounds="10, 10" Clicked="ButtonClean_Clicked"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  />
+            <ColumnDefinition  />
+        </Grid.ColumnDefinitions>
+
+        <Button Text="Очистить" Clicked="ButtonClean_Clicked" ZIndex="99" Grid.Column="0" Grid.Row="0" WidthRequest="100" />
+        <Button Text="Полосы" Clicked="ButtonLines_Clicked" ZIndex="99" Grid.Column="1" Grid.Row="0" WidthRequest="100" />
+    
+    <AbsoluteLayout BackgroundColor="White" x:Name="absoluteLayout" ZIndex="99" Grid.Column="0" Grid.ColumnSpan="2"
+                    Grid.Row="1" >
+
         <AbsoluteLayout.GestureRecognizers>
-            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            <TapGestureRecognizer Tapped="AbsoluteLayout_Tapped"/>
         </AbsoluteLayout.GestureRecognizers>
     </AbsoluteLayout>
 
+    </Grid>
 </ContentPage>

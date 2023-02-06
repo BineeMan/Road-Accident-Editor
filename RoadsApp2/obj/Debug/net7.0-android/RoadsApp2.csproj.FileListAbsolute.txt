@@ -950,14 +950,6 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\stamp\_ConvertResourcesCases.
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\stamp\_GenerateJavaStubs.stamp
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\stamp\_GeneratePackageManagerJava.stamp
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\stamp\_ResolveLibraryProjectImports.stamp
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\typemaps.x86_64.ll
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\environment.x86_64.ll
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\compressed_assemblies.x86_64.ll
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\typemaps.x86_64.o
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\environment.x86_64.o
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\compressed_assemblies.x86_64.o
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\jni_remap.x86_64.o
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\app_shared_libraries\x86_64\libxamarin-app.so
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\mscorlib.dll
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\System.Collections.Concurrent.dll
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\System.Data.Common.dll
@@ -971,3 +963,12 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\System.Runtime
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\System.Runtime.Extensions.dll
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\System.Runtime.Serialization.Formatters.dll
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\assets\System.Xml.dll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\resizetizer\r\drawable\desticon.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\typemaps.arm64-v8a.ll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\environment.arm64-v8a.ll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\compressed_assemblies.arm64-v8a.ll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\typemaps.arm64-v8a.o
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\environment.arm64-v8a.o
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\compressed_assemblies.arm64-v8a.o
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\jni_remap.arm64-v8a.o
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\app_shared_libraries\arm64-v8a\libxamarin-app.so

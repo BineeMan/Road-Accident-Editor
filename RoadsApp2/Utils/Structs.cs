@@ -13,6 +13,7 @@ namespace RoadsApp2.Utils
         {
             public Rectangle rectangle;
             public List<ImageButton> imageButtons;
+            public List<Polygon> roads;
             public bool isActive;
         }
 
@@ -20,6 +21,13 @@ namespace RoadsApp2.Utils
         {
             public Point coord1;
             public Point coord2;
+        }
+
+        public struct Link
+        {
+            public Polygon road;
+            public List<Line> lines;
+            public List<ImageButton> imageButtons;
         }
     }
 }
