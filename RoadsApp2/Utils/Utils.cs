@@ -10,7 +10,7 @@ namespace RoadsApp2.Utils
 {
     internal class Utils
     {
-        public static LineCoords GetLineCoordsForOrientation(Orientation orientation, Rect rect, bool isInverted = false)
+        public static Vector GetLineCoordsForOrientation(Orientation orientation, Rect rect, bool isInverted = false)
         {
             if (isInverted) 
             {
@@ -51,9 +51,9 @@ namespace RoadsApp2.Utils
 
                 default: break;
             }
-            LineCoords lineCoords = new LineCoords();
-            lineCoords.coord1 = startPoint1;
-            lineCoords.coord2 = startPoint2;
+            Vector lineCoords = new Vector();
+            lineCoords.point1 = startPoint1;
+            lineCoords.point2 = startPoint2;
             return lineCoords;
         }
 

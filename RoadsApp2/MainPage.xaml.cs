@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
+using System.Numerics;
 using System.Windows.Input;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using RoadsApp2.DataClasses;
 using static RoadsApp2.Utils.Enums;
@@ -8,6 +12,7 @@ using static RoadsApp2.Utils.Structs;
 using static RoadsApp2.Utils.UserInterfaceUtils;
 using static RoadsApp2.Utils.Utils;
 using Node = RoadsApp2.Utils.Structs.Node;
+using Vector = RoadsApp2.Utils.Structs.Vector;
 
 namespace RoadsApp2;
 
@@ -21,7 +26,7 @@ public partial class MainPage : ContentPage
 
     private Node prevNode;
 
-    private LineCoords lineCoords;
+    private Vector lineCoords;
 
     private List<Node> nodes;
 
@@ -35,9 +40,9 @@ public partial class MainPage : ContentPage
 
     private bool AddNewNodeFlag;
 
-    private readonly int RectWidth = 100;
+    private readonly int RectWidth = 150;
 
-    private readonly int RectHeight = 100;
+    private readonly int RectHeight = 150;
 
     private List<Link> links;
 
@@ -47,18 +52,16 @@ public partial class MainPage : ContentPage
 
     private Rectangle currentRectangle;
 
-    private int tapAmounts;
     private void ResetRoadElements()
     {
         prevNode = new Node() { imageButtons = new List<ImageButton>() };
-        lineCoords = new LineCoords();
+        lineCoords = new Vector();
         nodes = new List<Node>();
         AddNewNodeFlag = false;
         links = new List<Link>();
         currentImageButton = new ImageButton();
         currentOrientation = Orientation.Undefined;
         currentRectangle = new Rectangle();
-        tapAmounts = 0;
     }
 
     ///<summary>
@@ -71,7 +74,7 @@ public partial class MainPage : ContentPage
             rectangle = rectangle,
             imageButtons = new List<ImageButton>(),
             isActive = true,
-            roads = new List<Polygon>()
+            roads = new List<Link>()
         };
         Orientation rotation = Orientation.Up;
         foreach (Point point in pointOrientations)
@@ -83,13 +86,14 @@ public partial class MainPage : ContentPage
             }
             ImageButton imageButton = new ImageButton
             {
-                Source = ButtonType.PlusBtn,
+                Source = ButtonType.RoadPlusBlackButton,
                 WidthRequest = 45,
                 HeightRequest = 45,
                 Rotation = (double)rotation,
                 ZIndex = 99,
                 AnchorY = 1,
-                IsVisible = isVisible
+                IsVisible = isVisible,
+                Background = Brush.Transparent
             };
             absoluteLayout.Add(imageButton);
 
@@ -111,41 +115,140 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void DrawLines(Link link, int leftAmount, int rightAmount)
+    private void AddFlagAroundRoad(ref Link link)
     {
-        if (link.lines != null)
-        {
-            foreach (Line line in link.lines)
-            {
-                absoluteLayout.Remove(line);
-            }
-        }
         PointCollection points = link.road.Points;
-        LineCoords lineCoordsStart = new LineCoords();
-        LineCoords lineCoordsDest = new LineCoords();
-        lineCoordsStart.coord1 = points[0];
-        lineCoordsDest.coord1 = points[1];
-        lineCoordsDest.coord2 = points[2];
-        lineCoordsStart.coord2 = points[3];
-        lineCoordsStart.coord1 = points[4];
+        Vector vectorStart = new Vector();
+        Vector vectorDestination = new Vector();
+        vectorStart.point1 = points[0];
+        vectorDestination.point1 = points[1];
+        vectorDestination.point2 = points[2];
+        vectorStart.point2 = points[3];
+        vectorStart.point1 = points[4];
 
-        lineCoordsStart.coord2 = new Point((lineCoordsStart.coord1.X + lineCoordsStart.coord2.X) / 2,
-            (lineCoordsStart.coord1.Y + lineCoordsStart.coord2.Y) / 2);
+        link.LineSteppers = new List<LineStepper>();
 
-        lineCoordsDest.coord2 = new Point((lineCoordsDest.coord1.X + lineCoordsDest.coord2.X) / 2,
-           (lineCoordsDest.coord1.Y + lineCoordsDest.coord2.Y) / 2);
+        double step = -35;
+        double xUpHalf = ((vectorStart.point1.X + step) + (vectorDestination.point1.X + step)) / 2;
+        double yUpHalf = ((vectorStart.point1.Y + step) + (vectorDestination.point1.Y + step)) / 2;
+
+        Vector xO = new Vector
+        {
+            point1 = new Point(0, absoluteLayout.Height),
+            point2 = new Point(absoluteLayout.Width, absoluteLayout.Height),
+        };
+
+        Vector2 a = new Vector2((float)(vectorDestination.point1.X - vectorStart.point1.X),
+            (float)(vectorDestination.point1.Y - vectorStart.point1.Y));
+
+        Vector2 b = new Vector2((float)(absoluteLayout.Width), 0);
+
+        Color color = Color.FromRgb(165, 163, 165);
+        Stepper stepper = new Stepper()
+        {
+            Maximum = 4,
+            Minimum = 1,
+            HorizontalOptions = LayoutOptions.Center,
+            Scale = 1.2,
+            ZIndex = 5,
+            AnchorY = 0.5,
+            AnchorX = 0.5,
+            IsVisible = false,
+            Value = 1,
+            Background = Color.FromRgb(81, 43, 212),
+            BackgroundColor = Color.FromRgb(81, 43, 212)
+        };
+        stepper.ValueChanged += OnStepperValueChanged;
+        absoluteLayout.Add(stepper);
+        absoluteLayout.SetLayoutBounds(stepper,
+                new Rect(xUpHalf, yUpHalf, stepper.Width, stepper.Height));
+
+        link.LineSteppers.Add(new LineStepper()
+        {
+            Stepper = stepper,
+            Vector = new Vector() { point1 = vectorStart.point1, point2 = vectorDestination.point1 }
+        });
+
+        stepper = new Stepper()
+        {
+            Maximum = 4,
+            Minimum = 1,
+            HorizontalOptions = LayoutOptions.Center,
+            Scale = 1.2,
+            ZIndex = 5,
+            IsVisible = false,
+            Value = 1,
+            Background = Color.FromRgb(81, 43, 212),
+            BackgroundColor = Color.FromRgb(81, 43, 212)
+        };
+        stepper.ValueChanged += OnStepperValueChanged;
+        step = 0;
+        xUpHalf = ((vectorStart.point2.X + step) + (vectorDestination.point2.X + step)) / 2;
+        yUpHalf = ((vectorStart.point2.Y + step) + (vectorDestination.point2.Y + step)) / 2;
+        absoluteLayout.Add(stepper);
+        absoluteLayout.SetLayoutBounds(stepper,
+                new Rect(xUpHalf, yUpHalf, stepper.Width, stepper.Height));
+        link.LineSteppers.Add(new LineStepper()
+        {
+            Stepper = stepper,
+            Vector = new Vector() { point1 = vectorStart.point2, point2 = vectorDestination.point2 }
+        });
+    }
+
+    private void DrawLines(ref Link link, int leftAmount, int rightAmount)
+    {
+        if (link.LinesSide1 != null)
+        {
+            foreach (Line line1 in link.LinesSide1)
+            {
+                absoluteLayout.Remove(line1);
+            }
+            
+        }
+        link.LinesSide1 = new List<Line>();
+
+        PointCollection points = link.road.Points;
+        Vector vectorStart = new Vector();
+        Vector vectorDestination = new Vector();
+        vectorStart.point1 = points[0];
+        vectorDestination.point1 = points[1];
+        vectorDestination.point2 = points[2];
+        vectorStart.point2 = points[3];
+        vectorStart.point1 = points[4];
 
         Brush lineColor = Brush.White;
 
-        int a = 1;
-        int b = leftAmount;
-        for (int i = a; i <= b; i++)
+        Line line = new Line()
         {
-            double l = (double)i / (double)b;
-            double X = (lineCoordsStart.coord1.X + l * lineCoordsStart.coord2.X) / (1 + l);
-            double Y = (lineCoordsStart.coord1.Y + l * lineCoordsStart.coord2.Y) / (1 + l);
-            Debug.WriteLine($"l={l} x={X} y={Y}");
-            Line line = new Line()
+            Fill = lineColor,
+            Stroke = lineColor,
+            StrokeThickness = 3,
+            IsEnabled = false,
+            ZIndex = 2,
+            X1 = (vectorStart.point1.X + vectorStart.point2.X) / 2,
+            Y1 = (vectorStart.point1.Y + vectorStart.point2.Y) / 2,
+            X2 = (vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+            Y2 = (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2,
+        };
+        link.LinesSide1.Add(line);
+        absoluteLayout.Add(line);
+
+        vectorStart.point2 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
+            (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
+
+        vectorDestination.point2 = new Point((vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+           (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2);
+
+        double stepX = (vectorStart.point2.X - vectorStart.point1.X) / leftAmount;
+        double stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / leftAmount;
+        double offsetX = 0;
+        double offsetY = 0;
+
+        for (int i = 1; i < leftAmount; i++)
+        {
+            offsetY += stepY;
+            offsetX += stepX;
+            line = new Line()
             {
                 Fill = lineColor,
                 Stroke = lineColor,
@@ -154,48 +257,187 @@ public partial class MainPage : ContentPage
                 ZIndex = 2,
                 StrokeDashArray = { 2, 2 },
                 StrokeDashOffset = 10,
-                X1 = (lineCoordsStart.coord1.X + l * lineCoordsStart.coord2.X) / (1 + l),
-                Y1 = (lineCoordsStart.coord1.Y + l * lineCoordsStart.coord2.Y) / (1 + l),
-                X2 = (lineCoordsDest.coord1.X + l * lineCoordsDest.coord2.X) / (1 + l),
-                Y2 = (lineCoordsDest.coord1.Y + l * lineCoordsDest.coord2.Y) / (1 + l),
+                X1 = vectorStart.point1.X + offsetX,
+                Y1 = vectorStart.point1.Y + offsetY,
+                X2 = vectorDestination.point1.X + offsetX,
+                Y2 = vectorDestination.point1.Y + offsetY,
             };
+            link.LinesSide1.Add(line);
+            absoluteLayout.Add(line);
+        }
+        vectorStart.point1 = points[0];
+        vectorDestination.point1 = points[1];
+        vectorDestination.point2 = points[2];
+        vectorStart.point2 = points[3];
+        vectorStart.point1 = points[4];
+
+        vectorStart.point1 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
+            (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
+
+        vectorDestination.point1 = new Point((vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+            (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2);
+
+        stepX = (vectorStart.point2.X - vectorStart.point1.X) / rightAmount;
+        stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / rightAmount;
+        offsetY = 0;
+        offsetX = 0;
+        for (int i = 1; i < rightAmount; i++)
+        {
+            offsetY += stepY;
+            offsetX += stepX;
+            line = new Line()
+            {
+                Fill = lineColor,
+                Stroke = lineColor,
+                StrokeThickness = 3,
+                IsEnabled = false,
+                ZIndex = 2,
+                StrokeDashArray = { 2, 2 },
+                StrokeDashOffset = 10,
+                X1 = vectorStart.point1.X + offsetX,
+                Y1 = vectorStart.point1.Y + offsetY,
+                X2 = vectorDestination.point1.X + offsetX,
+                Y2 = vectorDestination.point1.Y + offsetY,
+            };
+            link.LinesSide1.Add(line);
+            absoluteLayout.Add(line);
+        }
+        
+    }
+
+    private void DrawLines2(ref Link link, Vector vectorStepper, int newAmount)
+    {
+        PointCollection points = link.road.Points;
+        Vector vectorStart = new Vector();
+        Vector vectorDestination = new Vector();
+        vectorStart.point1 = points[0];
+        vectorDestination.point1 = points[1];
+        vectorDestination.point2 = points[2];
+        vectorStart.point2 = points[3];
+        vectorStart.point1 = points[4];
+
+        Brush lineColor = Brush.White;
+
+        if (!link.IsTwoLaned)
+        {
+            if (link.MiddleLines != null) 
+            {
+                foreach (Line line1 in link.MiddleLines)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+                link.MiddleLines.Clear();
+            }
+            else
+            {
+                link.MiddleLines = new List<Line>();
+            }
+            
+            Line line = new Line()
+            {
+                Fill = lineColor,
+                Stroke = lineColor,
+                StrokeThickness = 3,
+                IsEnabled = false,
+                ZIndex = 2,
+                X1 = (vectorStart.point1.X + vectorStart.point2.X) / 2,
+                Y1 = (vectorStart.point1.Y + vectorStart.point2.Y) / 2,
+                X2 = (vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+                Y2 = (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2,
+            };
+            link.MiddleLines.Add(line);
             absoluteLayout.Add(line);
         }
 
-        lineCoordsStart.coord1 = points[0];
-        lineCoordsDest.coord1 = points[1];
-        lineCoordsDest.coord2 = points[2];
-        lineCoordsStart.coord2 = points[3];
-        lineCoordsStart.coord1 = points[4];
-
-        lineCoordsStart.coord1 = new Point((lineCoordsStart.coord1.X + lineCoordsStart.coord2.X) / 2,
-           (lineCoordsStart.coord1.Y + lineCoordsStart.coord2.Y) / 2);
-
-        lineCoordsDest.coord1 = new Point((lineCoordsDest.coord1.X + lineCoordsDest.coord2.X) / 2,
-           (lineCoordsDest.coord1.Y + lineCoordsDest.coord2.Y) / 2);
-
-        b = rightAmount;
-        for (int i = a; i <= b; i++)
+        double offsetX = 0;
+        double offsetY = 0;
+        double stepX = 0;
+        double stepY = 0;
+        if (vectorStepper.Equals(vectorStart))
         {
-            double l = (double)i / (double)b;
-            double X = (lineCoordsStart.coord1.X + l * lineCoordsStart.coord2.X) / (1 + l);
-            double Y = (lineCoordsStart.coord1.Y + l * lineCoordsStart.coord2.Y) / (1 + l);
-            Debug.WriteLine($"l={l} x={X} y={Y}");
-            Line line = new Line()
+            vectorStart.point2 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
+                (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
+
+            vectorDestination.point2 = new Point((vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+               (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2);
+
+            stepX = (vectorStart.point2.X - vectorStart.point1.X) / newAmount;
+            stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / newAmount;
+
+            Debug.WriteLine(link.LinesSide1.Count());
+            foreach (Line line1 in link.LinesSide1)
             {
-                Fill = lineColor,
-                Stroke = lineColor,
-                StrokeThickness = 3,
-                IsEnabled = false,
-                ZIndex = 2,
-                StrokeDashArray = { 2, 2 },
-                StrokeDashOffset = 10,
-                X1 = (lineCoordsStart.coord1.X + l * lineCoordsStart.coord2.X) / (1 + l),
-                Y1 = (lineCoordsStart.coord1.Y + l * lineCoordsStart.coord2.Y) / (1 + l),
-                X2 = (lineCoordsDest.coord1.X + l * lineCoordsDest.coord2.X) / (1 + l),
-                Y2 = (lineCoordsDest.coord1.Y + l * lineCoordsDest.coord2.Y) / (1 + l),
-            };
-            absoluteLayout.Add(line);
+                Debug.WriteLine(absoluteLayout.Remove(line1));
+            }
+
+            link.LinesSide1.Clear();
+
+            for (int i = 1; i < newAmount; i++)
+            {
+                offsetY += stepY;
+                offsetX += stepX;
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vectorStart.point1.X + offsetX,
+                    Y1 = vectorStart.point1.Y + offsetY,
+                    X2 = vectorDestination.point1.X + offsetX,
+                    Y2 = vectorDestination.point1.Y + offsetY,
+                };
+                link.LinesSide1.Add(line);
+                absoluteLayout.Add(line);
+            }
+        }
+        else if (vectorStepper.Equals(vectorDestination))
+        {
+            vectorStart.point1 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
+            (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
+
+            vectorDestination.point1 = new Point((vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+                (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2);
+
+            stepX = (vectorStart.point2.X - vectorStart.point1.X) / newAmount;
+            stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / newAmount;
+            if (link.LinesSide2 != null)
+            {
+                foreach (Line line1 in link.LinesSide2)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+            }
+            else
+            {
+                link.LinesSide2 = new List<Line>();
+            }
+            link.LinesSide2.Clear();
+
+            for (int i = 1; i < newAmount; i++)
+            {
+                offsetY += stepY;
+                offsetX += stepX;
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vectorStart.point1.X + offsetX,
+                    Y1 = vectorStart.point1.Y + offsetY,
+                    X2 = vectorDestination.point1.X + offsetX,
+                    Y2 = vectorDestination.point1.Y + offsetY,
+                };
+                link.LinesSide2.Add(line);
+                absoluteLayout.Add(line);
+            }
         }
     }
 
@@ -208,7 +450,7 @@ public partial class MainPage : ContentPage
         Node node = GetNodeFromRectangle(rectangle, nodes);
         if (rectangle.Equals(currentRectangle))
         {
-            Debug.WriteLine("same node");
+            ToggleSteppersVisibility(node.roads , true);
         }
         else if (prevNode.Equals(rectangle))
         {
@@ -221,6 +463,7 @@ public partial class MainPage : ContentPage
             prevNode = node;
         }
         currentRectangle = rectangle;
+
         //SetImageButtonsType(rectangle, ButtonType.DestinationBtn, nodes);
 
     }
@@ -230,14 +473,14 @@ public partial class MainPage : ContentPage
     ///</summary>
     private void ImgButton_Clicked(object sender, EventArgs e)
     {
-        currentImageButton.Source = ButtonType.PlusBtn;
+        currentImageButton.Source = ButtonType.RoadPlusBlackButton;
         ImageButton imageButton = (ImageButton)sender;
         if (currentImageButton.Equals(imageButton)) 
             //if in AddNewNode mode clicked object is the same as image button that toggled this mode, then it cancel AddNewNodeMode
         {
             AddNewNodeFlag = false;
             currentImageButton = new ImageButton();
-            SetImageButtonsType(ButtonType.PlusBtn, nodes);
+            SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
             Node targetNode = GetNodeFromImageButton(imageButton, nodes);
             foreach (Node node in nodes)
             {
@@ -252,15 +495,17 @@ public partial class MainPage : ContentPage
         {
             Node targetNode = GetNodeFromImageButton(imageButton, nodes);
             Rect rect = absoluteLayout.GetLayoutBounds(targetNode.rectangle);
-            LineCoords destCoords = GetLineCoordsForOrientation((Orientation)imageButton.Rotation, rect);
+            Vector destCoords = GetLineCoordsForOrientation((Orientation)imageButton.Rotation, rect);
             Polygon road = DrawRoad(lineCoords, destCoords, (Orientation)imageButton.Rotation, (Orientation)currentImageButton.Rotation);     
-            targetNode.roads.Add(road);
+            Link link = new Link() { road = road }; 
+            targetNode.roads.Add(link);
             absoluteLayout.Add(road);
+
             foreach (Node node in nodes)
             {
                 SetImageButtonsVisibility(node.imageButtons, false);
             }
-            SetImageButtonsType(ButtonType.PlusBtn, nodes);
+            SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
 
             absoluteLayout.Remove(currentImageButton);
             absoluteLayout.Remove(imageButton);
@@ -269,7 +514,7 @@ public partial class MainPage : ContentPage
         else
             //if sending image button belongs to the same crossroad, new image button become starting point
         {
-            imageButton.Source = ButtonType.PlusGreenBtn;
+            imageButton.Source = ButtonType.RoadPlusGreenButton;
             Node nodeTarget = GetNodeFromImageButton(imageButton, nodes);
             Orientation orientation = (Orientation)imageButton.Rotation;
             currentOrientation = orientation;
@@ -284,7 +529,7 @@ public partial class MainPage : ContentPage
                 }
             }
             
-            SetImageButtonsType(ButtonType.DestinationBtn, nodes, nodeTarget.rectangle);
+            SetImageButtonsType(ButtonType.DestinationButton, nodes, nodeTarget.rectangle);
             currentImageButton = imageButton;
             AddNewNodeFlag = true;
         }
@@ -316,6 +561,8 @@ public partial class MainPage : ContentPage
             {
                 SetImageButtonsVisibility(node.imageButtons, false);
             }
+
+            ToggleSteppersVisibility(links, false);
             currentRectangle = new Rectangle();
         }
         if (AddNewNodeFlag) //if the program in AddNewNode mode, then it creates new crossroad and links a road to it.
@@ -324,21 +571,37 @@ public partial class MainPage : ContentPage
             absoluteLayout.Add(rectangle);
             absoluteLayout.SetLayoutBounds(rectangle, rect);
             Rect rect2 = absoluteLayout.GetLayoutBounds(rectangle);
-            LineCoords destCoords = GetLineCoordsForOrientation(currentOrientation, rect, true);
-            SetImageButtonsType(ButtonType.PlusBtn, nodes);
+            Vector destCoords = GetLineCoordsForOrientation(currentOrientation, rect, true);
+            SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
             AddFlagsAroundRectangle(rectangle, GetReversedOrientation(currentOrientation), false);
             Polygon road = DrawRoad(lineCoords, destCoords, currentOrientation, currentOrientation);
             absoluteLayout.Add(road);
             Node targetNode = GetNodeFromImageButton(currentImageButton, nodes);
 
-            targetNode.roads.Add(road);
+            Node callerNode = GetNodeFromRectangle(rectangle, nodes);
+
+            Link link = new Link()
+            { 
+                road = road,
+                LinesSide1 = new List<Line>(),
+                LinesSide2 = new List<Line>(),
+                MiddleLines = new List<Line>(),
+            };
+
+            AddFlagAroundRoad(ref link);
+       
+            links.Add(link);
+            targetNode.roads.Add(link);
+            callerNode.roads.Add(link);
+            //DrawLines(ref link, 4, 2);
+
             foreach (Node node in nodes)
             {
                 if (!node.Equals(targetNode))
                 {
                     SetImageButtonsVisibility(node.imageButtons, false);
                 }
-            }  
+            }
             absoluteLayout.Remove(currentImageButton);         
             AddNewNodeFlag = false;
         }
@@ -350,10 +613,17 @@ public partial class MainPage : ContentPage
         absoluteLayout.Clear();
     }
 
-    private void ButtonLines_Clicked(object sender, EventArgs e)
+    void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
     {
+        double value = e.NewValue;
+        Stepper stepper = (Stepper)sender;
+        LineStepper lineStepper = GetLineStepperFromLinks(stepper, links);
+        
+        Link link = GetLinkFromLineStepper(lineStepper, links);
+
+        DrawLines2(ref link, lineStepper.Vector, (int)value);
 
     }
-    
+
 }
 

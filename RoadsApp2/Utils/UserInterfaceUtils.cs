@@ -8,6 +8,7 @@ using static RoadsApp2.Utils.Enums;
 using static RoadsApp2.Utils.Structs;
 using Node = RoadsApp2.Utils.Structs.Node;
 using static RoadsApp2.Utils.Utils;
+using System.Diagnostics;
 
 namespace RoadsApp2.Utils
 {
@@ -30,7 +31,7 @@ namespace RoadsApp2.Utils
                 WidthRequest = rect.Height,
                 Stroke = Brush.Red,
                 StrokeThickness = 0,
-                ZIndex = 3
+                ZIndex = 3,
             };
             if (targetEvent != null)
             {
@@ -118,6 +119,14 @@ namespace RoadsApp2.Utils
             }
         }
 
+        public static void SetSteppersVisibility(List<Stepper> steppers, bool isVisible)
+        {
+            foreach (Stepper stepper in steppers)
+            {
+                stepper.IsVisible = isVisible;
+            }
+        }
+
         public static Node GetNodeFromImageButton(ImageButton imageButton, List<Node> nodes)
         {
             foreach (Node node in nodes)
@@ -135,23 +144,23 @@ namespace RoadsApp2.Utils
             return (double)orientation1 + (double)GetReversedOrientation(orientation1) == (double)orientation2 + (double)GetReversedOrientation(orientation2);
         }
 
-        public static Polygon DrawRoad(LineCoords lineCoordsStart, LineCoords lineCoordsDest,
+        public static Polygon DrawRoad(Vector lineCoordsStart, Vector lineCoordsDest,
             Orientation orientationStart, Orientation orientationDest)
         {
             if ((double)orientationDest + (double)orientationStart == (double)Orientation.Right + (double)Orientation.Up || (double)orientationDest + (double)orientationStart == (double)Orientation.Left + (double)Orientation.Down)
             {
-                LineCoords temp = lineCoordsStart;
-                lineCoordsStart.coord1 = temp.coord2;
-                lineCoordsStart.coord2 = temp.coord1;
+                Vector temp = lineCoordsStart;
+                lineCoordsStart.point1 = temp.point2;
+                lineCoordsStart.point2 = temp.point1;
             }
 
             PointCollection points = new[]
             {
-            new Point(lineCoordsStart.coord1.X, lineCoordsStart.coord1.Y),
-            new Point(lineCoordsDest.coord1.X, lineCoordsDest.coord1.Y),
-            new Point(lineCoordsDest.coord2.X, lineCoordsDest.coord2.Y),
-            new Point(lineCoordsStart.coord2.X, lineCoordsStart.coord2.Y),
-            new Point(lineCoordsStart.coord1.X, lineCoordsStart.coord1.Y)
+                new Point(lineCoordsStart.point1.X, lineCoordsStart.point1.Y),
+                new Point(lineCoordsDest.point1.X, lineCoordsDest.point1.Y),
+                new Point(lineCoordsDest.point2.X, lineCoordsDest.point2.Y),
+                new Point(lineCoordsStart.point2.X, lineCoordsStart.point2.Y),
+                new Point(lineCoordsStart.point1.X, lineCoordsStart.point1.Y)
             };
 
             Polygon polygon = new Polygon()
@@ -160,29 +169,53 @@ namespace RoadsApp2.Utils
                 Fill = Color.FromRgb(137, 137, 137),
                 Stroke = Brush.Gray,
                 StrokeThickness = 0,
-                IsEnabled = true
+                IsEnabled = true,
             };
-            //links.Add(new Link() { road = polygon });
-
-            //DrawLines(GetLinkByRoad(polygon, links), 3, 2);
-
-            //Brush lineColor = Brush.White;
-            //Line line = new Line()
-            //{
-            //    Fill = lineColor,
-            //    Stroke = lineColor,
-            //    StrokeThickness = 3,
-            //    IsEnabled = false,
-            //    ZIndex = 2,
-            //    X1 = (lineCoordsStart.coord1.X + lineCoordsStart.coord2.X) / 2,
-            //    Y1 = (lineCoordsStart.coord1.Y + lineCoordsStart.coord2.Y) / 2,
-            //    X2 = (lineCoordsDest.coord1.X + lineCoordsDest.coord2.X) / 2,
-            //    Y2 = (lineCoordsDest.coord1.Y + lineCoordsDest.coord2.Y) / 2,
-            //};
-
-            //absoluteLayout.Add(line);
 
             return polygon;
+        }
+        public static void ToggleSteppersVisibility(List<Link> links, bool visibility)
+        {
+            if (links != null)
+            {
+                foreach (Link link in links)
+                {
+                    foreach (LineStepper lineStepper in link.LineSteppers)
+                    {
+                        lineStepper.Stepper.IsVisible = visibility;
+                    }
+                }
+            }
+        }
+
+        public static LineStepper GetLineStepperFromLinks(Stepper stepper, List<Link> links)
+        {
+            foreach (Link link in links)
+            {
+                foreach (LineStepper lineStepper in link.LineSteppers)
+                {
+                    if (lineStepper.Stepper.Equals(stepper))
+                    {
+                        return lineStepper;
+                    }
+                }
+            }
+            return new LineStepper();
+        }
+
+        public static Link GetLinkFromLineStepper(LineStepper targetLineStepper, List<Link> links)
+        {
+            foreach (Link link in links)
+            {
+                foreach (LineStepper lineStapper1 in link.LineSteppers)
+                {
+                    if (lineStapper1.Stepper.Equals(targetLineStepper.Stepper))
+                    {
+                        return link;
+                    }
+                }
+            }
+            return new Link();
         }
     }
 }

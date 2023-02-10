@@ -18,5 +18,7 @@ namespace RoadsApp2.Utils
             ToNewNode = 0, ToExistingNode = 1, None = -1
         }
 
+        
+
     }
 }

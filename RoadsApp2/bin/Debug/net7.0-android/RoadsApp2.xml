@@ -4,14 +4,24 @@
         <name>RoadsApp2</name>
     </assembly>
     <members>
-        <member name="M:RoadsApp2.MainPage.TapGestureRecognizerRectangle_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+        <member name="M:RoadsApp2.MainPage.AddFlagsAroundRectangle(Microsoft.Maui.Controls.Shapes.Rectangle,RoadsApp2.Utils.Enums.Orientation,System.Boolean)">
+            <summary>
+            This function adds new flags around a crossroads with except orientation which will be avoided
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.Crossroads_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
             <summary>
             This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
             </summary>
         </member>
-        <member name="M:RoadsApp2.MainPage.AddFlagsAroundRectangle(Microsoft.Maui.Controls.Shapes.Rectangle,RoadsApp2.Utils.Enums.Orientation,System.Boolean)">
+        <member name="M:RoadsApp2.MainPage.ImgButton_Clicked(System.Object,System.EventArgs)">
             <summary>
-            This events adds new flags around a crossroads with except orientation which will be avoided
+            Event for plus and destination image buttons.
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.AbsoluteLayout_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            Main absolute layout event
             </summary>
         </member>
     </members>

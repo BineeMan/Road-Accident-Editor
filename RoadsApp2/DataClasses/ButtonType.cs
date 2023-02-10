@@ -8,10 +8,14 @@ namespace RoadsApp2.DataClasses
 {
     internal class ButtonType
     {
-        public static string DestinationBtn = "desticon.png";
+        public static string DestinationButton { get { return "desticon.png"; } }
 
-        public static string PlusGreenBtn = "plusgreen.png";
+        public static string RoadPlusGreenButton { get { return "plusgreen.png"; } }
 
-        public static string PlusBtn = "plus.png";
+        public static string RoadPlusBlackButton { get { return "plus.png"; } }
+
+        public static string LinePlusButton { get { return "btnlineplus.png"; } }
+
+        public static string LineMinusButton { get { return "btnlineminus.png"; } }
     }
 }
