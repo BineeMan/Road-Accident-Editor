@@ -24,11 +24,13 @@ namespace RoadsApp2.Utils
 
         public static Rectangle GetRectangle(Rect rect, EventHandler<TappedEventArgs> targetEvent = null)
         {
+
             Rectangle rectangle = new Rectangle()
             {
                 Fill = Color.FromRgb(137, 137, 137),
-                HeightRequest = rect.Width,
-                WidthRequest = rect.Height,
+                //Fill = Brush.Red,
+                HeightRequest = rect.Height,
+                WidthRequest = rect.Width,
                 Stroke = Brush.Red,
                 StrokeThickness = 0,
                 ZIndex = 3,
@@ -218,4 +220,6 @@ namespace RoadsApp2.Utils
             return new Link();
         }
     }
+
+
 }

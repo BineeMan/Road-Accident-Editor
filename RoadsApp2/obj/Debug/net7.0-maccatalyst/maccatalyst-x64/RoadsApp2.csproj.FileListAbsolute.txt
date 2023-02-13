@@ -262,3 +262,4 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\refint\Ro
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\RoadsApp2.pdb
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\RoadsApp2.genruntimeconfig.cache
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\ref\RoadsApp2.dll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\car1.png

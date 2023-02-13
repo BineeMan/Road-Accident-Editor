@@ -68,5 +68,6 @@ namespace RoadsApp2.Utils
                 _ => Orientation.Undefined,
             };
         }
+
     }
 }

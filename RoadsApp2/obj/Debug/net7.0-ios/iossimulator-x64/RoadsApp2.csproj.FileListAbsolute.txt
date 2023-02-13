@@ -269,3 +269,4 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\refint\RoadsApp2
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\RoadsApp2.pdb
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\RoadsApp2.genruntimeconfig.cache
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\ref\RoadsApp2.dll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\car1.png
