@@ -219,6 +219,26 @@ namespace RoadsApp2.Utils
             }
             return new Link();
         }
+
+        public static Line DrawTrajectory(Point point1, Point point2)
+        {
+            Brush lineColor = Brush.Red;
+            Line line = new Line()
+            {
+                Fill = lineColor,
+                Stroke = lineColor,
+                StrokeThickness = 3,
+                IsEnabled = false,
+                ZIndex = 5,
+                StrokeDashArray = { 2, 2 },
+                StrokeDashOffset = 10,
+                X1 = point1.X,
+                Y1 = point1.Y,
+                X2 = point2.X,
+                Y2 = point2.Y,
+            };
+            return line;
+        }
     }
 
 

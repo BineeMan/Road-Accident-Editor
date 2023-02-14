@@ -37,6 +37,8 @@ public partial class MainPage : ContentPage
 
     private bool AddNewObjectFlag { get; set; }
 
+    private bool AddNewTrajectoryFlag { get; set; }
+
     private readonly int RectWidth = 200;
 
     private readonly int RectHeight = 200;
@@ -55,6 +57,10 @@ public partial class MainPage : ContentPage
 
     private Frame currentFrame { get; set; }
 
+    private Point? currentPoint { get; set; }
+
+
+
     private void ResetRoadElements()
     {
         prevNode = new Node() { imageButtons = new List<ImageButton>() };
@@ -68,6 +74,7 @@ public partial class MainPage : ContentPage
         AddNewObjectFlag = false;
         currentImage = new Image() { Source = "plus.png" };
         currentFrame = new Frame();
+        imageSource = "plus.png";
     }
 
     ///<summary>
@@ -483,39 +490,60 @@ public partial class MainPage : ContentPage
     private void AbsoluteLayout_Tapped(object sender, TappedEventArgs e)
     {
         Debug.WriteLine("AbsoluteLayout_Tapped");
-        Point? point = e.GetPosition((View)sender);
-        if (point == null) { return; }
+        Point? tappedPoint = e.GetPosition((View)sender);
+        if (tappedPoint == null) { return; }
 
         Rectangle rectangle;
 
         Rect rect = new Rect();
-        rect = new Rect(point.Value.X - RectWidth / 2,
-                point.Value.Y - RectHeight / 2, RectWidth, RectHeight);
+        rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
+                tappedPoint.Value.Y - RectHeight / 2, RectWidth, RectHeight);
 
         if (switchIsCrossroad.IsToggled)
         {
             if (currentOrientation == Orientation.Left || currentOrientation == Orientation.Right)
             {
-                rect = new Rect(point.Value.X - RectWidth / 10,
-                    point.Value.Y - RectHeight / 2, RectWidth / 10 , RectHeight);
+                rect = new Rect(tappedPoint.Value.X - RectWidth / 10,
+                    tappedPoint.Value.Y - RectHeight / 2, RectWidth / 10 , RectHeight);
             }
             else if (currentOrientation == Orientation.Up || currentOrientation == Orientation.Down)
             {
-                rect = new Rect(point.Value.X - RectWidth / 2,
-                    point.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
+                rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
+                    tappedPoint.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
             }
         }
+        if (AddNewTrajectoryFlag)
+        {
+            if (AddNewObjectFlag)
+            {
+                currentFrame.Background = Brush.Transparent;
+                AddNewObjectFlag = false;
+            }
+            AddNewNodeFlag = false;
 
-        if (AddNewObjectFlag)
+            if (currentPoint == null)
+            {
+                currentPoint = tappedPoint;
+                Debug.WriteLine("urrentPoint == null");
+            }
+            else
+            {
+                Line line = DrawTrajectory((Point)currentPoint, (Point)tappedPoint);
+                absoluteLayout.Add(line);
+                currentPoint = tappedPoint;
+                Debug.WriteLine("urrentPoint != null");
+            }
+        }
+        else if(AddNewObjectFlag)
         {
             double width = 100, height = 100;
-            Rect rectRoadObject = new Rect(point.Value.X - width / 2,
-               point.Value.Y - height / 2, width, height);
+            Rect rectRoadObject = new Rect(tappedPoint.Value.X - width / 2,
+               tappedPoint.Value.Y - height / 2, width, height);
            //currentImage = new Image();
             Image image = new Image() { Source = imageSource, ZIndex = 10 }; 
             absoluteLayout.Add(image);
             absoluteLayout.SetLayoutBounds(image, rectRoadObject);
-
+            imageSource = "plus.png";
             Debug.WriteLine("AddNewObjectFlag");
             currentFrame.Background = Brush.Transparent;
             AddNewObjectFlag = false;
@@ -601,17 +629,35 @@ public partial class MainPage : ContentPage
 
     private void CarImage_Tapped(object sender, EventArgs e)
     {
-        AddNewNodeFlag = false;
-        AddNewObjectFlag = true;
         Image tappedImage = (Image)sender;
         Frame frame = (Frame)tappedImage.Parent;
-        frame.Background = Color.FromHex("#606060");
-        currentFrame = frame;
-        //currentImage.Source = tappedImage.Source;
+        switchIsTrajectoryMode.IsToggled = false;
 
-        imageSource = tappedImage.Source;
+        if (imageSource.Equals(tappedImage.Source))
+        {
+            frame.Background = Brush.Transparent;
+            AddNewObjectFlag = false;
+            imageSource = "plus.png";
+        }
+        else
+        {
+            frame.Background = Color.FromHex("#606060");
+            AddNewNodeFlag = false;
+            AddNewObjectFlag = true;
+            currentFrame = frame;
+            imageSource = tappedImage.Source;
+        }
+
 
     }
 
+    private void switchIsTrajectoryMode_Toggled(object sender, ToggledEventArgs e)
+    {
+        if (AddNewTrajectoryFlag == true || e.Value == false)
+        {
+            currentPoint = null;
+        }
+        AddNewTrajectoryFlag = e.Value;
+    }
 }
 
