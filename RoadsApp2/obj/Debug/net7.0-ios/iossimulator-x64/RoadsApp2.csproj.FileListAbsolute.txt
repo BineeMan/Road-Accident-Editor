@@ -20,9 +20,6 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\do
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\dotnet_bot@3x.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\plus.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\plusgreen.png
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash.png
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash@2x.png
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash@3x.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\mauiimage.stamp
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\f\MauiInfo.plist
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\mauifont.stamp
@@ -269,4 +266,14 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\refint\RoadsApp2
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\RoadsApp2.pdb
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\RoadsApp2.genruntimeconfig.cache
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\ref\RoadsApp2.dll
-G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\car1.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\car2.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\car3.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\crossroadsicon.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\splash.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\trajectoryicon.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash2.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash2@2x.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash2@3x.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\crossicon.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\crossiconinactive.png

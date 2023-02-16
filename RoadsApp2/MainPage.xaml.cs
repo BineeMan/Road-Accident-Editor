@@ -3,6 +3,7 @@ using System.Numerics;
 using Microsoft.Maui.Controls.Shapes;
 using RoadsApp2.DataClasses;
 using static RoadsApp2.Utils.Enums;
+
 using static RoadsApp2.Utils.Structs;
 using static RoadsApp2.Utils.UserInterfaceUtils;
 using static RoadsApp2.Utils.Utils;
@@ -17,11 +18,12 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         ResetRoadElements();
+        //GridMain.RowDefinitions[2].Height = new GridLength(1, GridUnitType.Star);
     }
 
-    private Node prevNode { get; set; }
+    private Node PrevNode { get; set; }
 
-    private Vector lineCoords { get; set; }
+    private Vector LineCoords { get; set; }
 
     private List<Node> nodes;
 
@@ -39,42 +41,66 @@ public partial class MainPage : ContentPage
 
     private bool AddNewTrajectoryFlag { get; set; }
 
-    private readonly int RectWidth = 200;
+    private int RectWidth { get; set; }
 
-    private readonly int RectHeight = 200;
+    private int RectHeight  { get; set; }
 
     private List<Link> links;
 
-    private ImageButton currentImageButton { get; set; }
+    private ImageButton CurrentImageButton { get; set; }
 
-    private Orientation currentOrientation { get; set; }
+    private Orientation CurrentOrientation { get; set; }
 
-    private Rectangle currentRectangle { get; set; }
+    private Rectangle CurrentRectangle { get; set; }
 
-    private Image currentImage { get; set; }
+    private Image CurrentImage { get; set; }
 
-    private ImageSource imageSource { get; set; }
+    private ImageSource ImageSource { get; set; }
 
-    private Frame currentFrame { get; set; }
+    private Frame CurrentFrame { get; set; }
 
-    private Point? currentPoint { get; set; }
+    private Point? CurrentPoint { get; set; }
 
+    private Slider CurrentSizeSlider { get; set; }
 
+    private Slider CurrentRotationSlider { get; set; }
+
+    private Image CurrentRoadObject { get; set; }
+
+    private View CurrentView { get; set; }
+
+    private void AdaptUIElementsWindows()
+    {
+        switchIsCrossroad.Margin = new Thickness(0, 0, -50, 0);
+        switchIsTrajectoryMode.Margin = new Thickness(10, 0, -50, 0);
+
+    }
 
     private void ResetRoadElements()
     {
-        prevNode = new Node() { imageButtons = new List<ImageButton>() };
-        lineCoords = new Vector();
+        PrevNode = new Node() { imageButtons = new List<ImageButton>() };
+        LineCoords = new Vector();
         nodes = new List<Node>();
         AddNewNodeFlag = false;
         links = new List<Link>();
-        currentImageButton = new ImageButton();
-        currentOrientation = Orientation.Undefined;
-        currentRectangle = new Rectangle();
+        CurrentImageButton = new ImageButton();
+        CurrentOrientation = Orientation.Undefined;
+        CurrentRectangle = new Rectangle();
         AddNewObjectFlag = false;
-        currentImage = new Image() { Source = "plus.png" };
-        currentFrame = new Frame();
-        imageSource = "plus.png";
+        CurrentImage = new Image() { Source = "plus.png" };
+        CurrentFrame = new Frame();
+        ImageSource = "plus.png";
+        RectWidth = 200;
+        RectHeight = 200;
+#if WINDOWS
+        RectWidth = 200;
+        RectHeight = 200;
+#endif
+#if ANDROID
+        RectWidth = 100;
+        RectHeight = 100;
+#endif
+        crossButton.IsEnabled = false;
     }
 
     ///<summary>
@@ -163,7 +189,7 @@ public partial class MainPage : ContentPage
         nodes.Add(node);
         if (isVisible)
         {
-            prevNode = node;
+            PrevNode = node;
         }
     }
 
@@ -195,13 +221,17 @@ public partial class MainPage : ContentPage
 
         Vector2 b = new Vector2((float)(absoluteLayout.Width), 0);
         double scale = 1;
+        Thickness thickness = new Thickness(-70, -10);
 #if WINDOWS
         scale = 1;
+        thickness = new Thickness(0,0);
 #endif
 
 #if ANDROID
         scale = 0.5;
+        thickness = new Thickness(-70, -10);
 #endif
+
         Color color = Color.FromRgb(165, 163, 165);
         Stepper stepper = new Stepper()
         {
@@ -215,7 +245,8 @@ public partial class MainPage : ContentPage
             IsVisible = false,
             Value = 1,
             Background = Color.FromRgb(81, 43, 212),
-            BackgroundColor = Color.FromRgb(81, 43, 212)
+            BackgroundColor = Color.FromRgb(81, 43, 212),
+            Margin = thickness
         };
         stepper.ValueChanged += OnStepperValueChanged;
         absoluteLayout.Add(stepper);
@@ -238,7 +269,8 @@ public partial class MainPage : ContentPage
             IsVisible = false,
             Value = 1,
             Background = Color.FromRgb(81, 43, 212),
-            BackgroundColor = Color.FromRgb(81, 43, 212)
+            BackgroundColor = Color.FromRgb(81, 43, 212),
+            Margin = thickness
         };
         stepper.ValueChanged += OnStepperValueChanged;
         step = 0;
@@ -390,28 +422,69 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private void RedrawRoad()
+    {
+        foreach (Node node in nodes)
+        {
+            absoluteLayout.Remove(node.rectangle);
+            foreach (ImageButton imageButton in node.imageButtons)
+            {
+                absoluteLayout.Remove(imageButton);
+            }
+        }
+
+        foreach (Link link in links)
+        {
+            foreach (Line line1 in link.LinesSide1)
+            {
+                absoluteLayout.Remove(line1);
+            }
+            foreach (Line line1 in link.LinesSide2)
+            {
+                absoluteLayout.Remove(line1);
+            }
+            foreach (Line line1 in link.MiddleLines)
+            {
+                absoluteLayout.Remove(line1);
+            }
+            foreach (LineStepper lineStepper in link.LineSteppers)
+            {
+                absoluteLayout.Remove(lineStepper.Stepper);
+            }
+            absoluteLayout.Remove(link.road);
+        }
+
+
+    }
+
     ///<summary>
     ///This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
     ///</summary>
     private void Crossroads_Tapped(object sender, TappedEventArgs e)
     {
+        if (AddNewTrajectoryFlag || AddNewObjectFlag)
+        {
+            return;
+        }
         Rectangle rectangle = (Rectangle)sender;
+        CurrentView = rectangle;
+        crossButton.IsEnabled = true;
         Node node = GetNodeFromRectangle(rectangle, nodes);
-        if (rectangle.Equals(currentRectangle))
+        if (rectangle.Equals(CurrentRectangle))
         {
             ToggleSteppersVisibility(node.roads , true);
         }
-        else if (prevNode.Equals(rectangle))
+        else if (PrevNode.Equals(rectangle))
         {
             SetImageButtonsVisibility(node.imageButtons, false);
         }
         else
         {
-            SetImageButtonsVisibility(prevNode.imageButtons, false);
+            SetImageButtonsVisibility(PrevNode.imageButtons, false);
             SetImageButtonsVisibility(node.imageButtons, true);
-            prevNode = node;
+            PrevNode = node;
         }
-        currentRectangle = rectangle;
+        CurrentRectangle = rectangle;
 
         //SetImageButtonsType(rectangle, ButtonType.DestinationBtn, nodes);
 
@@ -422,13 +495,13 @@ public partial class MainPage : ContentPage
     ///</summary>
     private void ImgButton_Clicked(object sender, EventArgs e)
     {
-        currentImageButton.Source = ButtonType.RoadPlusBlackButton;
+        CurrentImageButton.Source = ButtonType.RoadPlusBlackButton;
         ImageButton imageButton = (ImageButton)sender;
-        if (currentImageButton.Equals(imageButton)) 
+        if (CurrentImageButton.Equals(imageButton)) 
             //if in AddNewNode mode clicked object is the same as image button that toggled this mode, then it cancel AddNewNodeMode
         {
             AddNewNodeFlag = false;
-            currentImageButton = new ImageButton();
+            CurrentImageButton = new ImageButton();
             SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
             Node targetNode = GetNodeFromImageButton(imageButton, nodes);
             foreach (Node node in nodes)
@@ -439,13 +512,13 @@ public partial class MainPage : ContentPage
                 }
             }
         }
-        else if (AddNewNodeFlag == true && !IsFlagBelongsToSameNode(imageButton, currentImageButton, nodes))
+        else if (AddNewNodeFlag == true && !IsFlagBelongsToSameNode(imageButton, CurrentImageButton, nodes))
             //if it receives another image button, it links a new road between two crossroads
         {
             Node targetNode = GetNodeFromImageButton(imageButton, nodes);
             Rect rect = absoluteLayout.GetLayoutBounds(targetNode.rectangle);
             Vector destCoords = GetLineCoordsForOrientation((Orientation)imageButton.Rotation, rect);
-            Polygon road = DrawRoad(lineCoords, destCoords, (Orientation)imageButton.Rotation, (Orientation)currentImageButton.Rotation);     
+            Polygon road = DrawRoad(LineCoords, destCoords, (Orientation)imageButton.Rotation, (Orientation)CurrentImageButton.Rotation);     
             Link link = new Link() { road = road }; 
             targetNode.roads.Add(link);
             absoluteLayout.Add(road);
@@ -456,7 +529,7 @@ public partial class MainPage : ContentPage
             }
             SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
 
-            absoluteLayout.Remove(currentImageButton);
+            absoluteLayout.Remove(CurrentImageButton);
             absoluteLayout.Remove(imageButton);
             AddNewNodeFlag = false;
         }
@@ -466,9 +539,9 @@ public partial class MainPage : ContentPage
             imageButton.Source = ButtonType.RoadPlusGreenButton;
             Node nodeTarget = GetNodeFromImageButton(imageButton, nodes);
             Orientation orientation = (Orientation)imageButton.Rotation;
-            currentOrientation = orientation;
+            CurrentOrientation = orientation;
             Rect rectangleRect = absoluteLayout.GetLayoutBounds(nodeTarget.rectangle);
-            lineCoords = GetLineCoordsForOrientation(orientation, rectangleRect);
+            LineCoords = GetLineCoordsForOrientation(orientation, rectangleRect);
 
             foreach (Node node in nodes)
             {
@@ -479,7 +552,7 @@ public partial class MainPage : ContentPage
             }
             
             SetImageButtonsType(ButtonType.DestinationButton, nodes, nodeTarget.rectangle);
-            currentImageButton = imageButton;
+            CurrentImageButton = imageButton;
             AddNewNodeFlag = true;
         }
     }
@@ -492,7 +565,7 @@ public partial class MainPage : ContentPage
         Debug.WriteLine("AbsoluteLayout_Tapped");
         Point? tappedPoint = e.GetPosition((View)sender);
         if (tappedPoint == null) { return; }
-
+        crossButton.IsEnabled = false;
         Rectangle rectangle;
 
         Rect rect = new Rect();
@@ -501,12 +574,12 @@ public partial class MainPage : ContentPage
 
         if (switchIsCrossroad.IsToggled)
         {
-            if (currentOrientation == Orientation.Left || currentOrientation == Orientation.Right)
+            if (CurrentOrientation == Orientation.Left || CurrentOrientation == Orientation.Right)
             {
                 rect = new Rect(tappedPoint.Value.X - RectWidth / 10,
                     tappedPoint.Value.Y - RectHeight / 2, RectWidth / 10 , RectHeight);
             }
-            else if (currentOrientation == Orientation.Up || currentOrientation == Orientation.Down)
+            else if (CurrentOrientation == Orientation.Up || CurrentOrientation == Orientation.Down)
             {
                 rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
                     tappedPoint.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
@@ -516,22 +589,20 @@ public partial class MainPage : ContentPage
         {
             if (AddNewObjectFlag)
             {
-                currentFrame.Background = Brush.Transparent;
+                CurrentFrame.Background = Brush.Transparent;
                 AddNewObjectFlag = false;
             }
             AddNewNodeFlag = false;
 
-            if (currentPoint == null)
+            if (CurrentPoint == null)
             {
-                currentPoint = tappedPoint;
-                Debug.WriteLine("urrentPoint == null");
+                CurrentPoint = tappedPoint;
             }
             else
             {
-                Line line = DrawTrajectory((Point)currentPoint, (Point)tappedPoint);
+                Line line = DrawTrajectory((Point)CurrentPoint, (Point)tappedPoint);
                 absoluteLayout.Add(line);
-                currentPoint = tappedPoint;
-                Debug.WriteLine("urrentPoint != null");
+                CurrentPoint = tappedPoint;
             }
         }
         else if(AddNewObjectFlag)
@@ -539,32 +610,44 @@ public partial class MainPage : ContentPage
             double width = 100, height = 100;
             Rect rectRoadObject = new Rect(tappedPoint.Value.X - width / 2,
                tappedPoint.Value.Y - height / 2, width, height);
-           //currentImage = new Image();
-            Image image = new Image() { Source = imageSource, ZIndex = 10 }; 
+
+            Image image = new Image() { Source = ImageSource, ZIndex = 10 };
+
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += RoadObjectImage_Tapped;
+            image.GestureRecognizers.Add(tapGestureRecognizer);
+
+            PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+            panGestureRecognizer.PanUpdated += RoadObjectPanGesture_PanUpdated;
+            image.GestureRecognizers.Add(panGestureRecognizer);
+
             absoluteLayout.Add(image);
             absoluteLayout.SetLayoutBounds(image, rectRoadObject);
-            imageSource = "plus.png";
-            Debug.WriteLine("AddNewObjectFlag");
-            currentFrame.Background = Brush.Transparent;
+            ImageSource = "plus.png";
+            CurrentFrame.Background = Brush.Transparent;
             AddNewObjectFlag = false;
+            foreach (Node node in nodes)
+            {
+                node.rectangle.IsEnabled = true;
+            }
         }
-        else if (nodes.Capacity == 0) //if there are no crossroads, then it just creates new crossroads without roads.
+        else if (nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
         {
             rectangle = GetRectangle(rect, Crossroads_Tapped);
             absoluteLayout.Add(rectangle);
             absoluteLayout.SetLayoutBounds(rectangle, rect);
-            AddFlagsAroundRectangle(rectangle, GetReversedOrientation(currentOrientation), false);
+            AddFlagsAroundRectangle(rectangle, GetReversedOrientation(CurrentOrientation), false);
         }
-        else if (nodes.Capacity > 0 || !AddNewNodeFlag) // resetting  image buttons if user clicks on empty area
+        else if (nodes.Count > 0 || !AddNewNodeFlag) // resetting  image buttons if user clicks on empty area
         {
-            Node targetNode = GetNodeFromImageButton(currentImageButton, nodes);
+            Node targetNode = GetNodeFromImageButton(CurrentImageButton, nodes);
             foreach (Node node in nodes)
             {
                 SetImageButtonsVisibility(node.imageButtons, false);
             }
-
+            absoluteLayout.Remove(CurrentRotationSlider);
             ToggleSteppersVisibility(links, false);
-            currentRectangle = new Rectangle();
+            CurrentRectangle = new Rectangle();        
         }
 
         if (AddNewNodeFlag) //if the program in AddNewNode mode, then it creates new crossroad and links a road to it.
@@ -573,12 +656,12 @@ public partial class MainPage : ContentPage
             absoluteLayout.Add(rectangle);
             absoluteLayout.SetLayoutBounds(rectangle, rect);
             Rect rect2 = absoluteLayout.GetLayoutBounds(rectangle);
-            Vector destCoords = GetLineCoordsForOrientation(currentOrientation, rect, true);
+            Vector destCoords = GetLineCoordsForOrientation(CurrentOrientation, rect, true);
             SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
-            AddFlagsAroundRectangle(rectangle, GetReversedOrientation(currentOrientation), false);
-            Polygon road = DrawRoad(lineCoords, destCoords, currentOrientation, currentOrientation);
+            AddFlagsAroundRectangle(rectangle, GetReversedOrientation(CurrentOrientation), false);
+            Polygon road = DrawRoad(LineCoords, destCoords, CurrentOrientation, CurrentOrientation);
             absoluteLayout.Add(road);
-            Node targetNode = GetNodeFromImageButton(currentImageButton, nodes);
+            Node targetNode = GetNodeFromImageButton(CurrentImageButton, nodes);
 
             Node callerNode = GetNodeFromRectangle(rectangle, nodes);
 
@@ -604,7 +687,7 @@ public partial class MainPage : ContentPage
                     SetImageButtonsVisibility(node.imageButtons, false);
                 }
             }
-            absoluteLayout.Remove(currentImageButton);         
+            absoluteLayout.Remove(CurrentImageButton);         
             AddNewNodeFlag = false;
         }
     }
@@ -613,9 +696,10 @@ public partial class MainPage : ContentPage
     {
         ResetRoadElements();
         absoluteLayout.Clear();
+        //RedrawRoad();
     }
 
-    void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+    private void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
     {
         double value = e.NewValue;
         Stepper stepper = (Stepper)sender;
@@ -627,37 +711,146 @@ public partial class MainPage : ContentPage
 
     }
 
-    private void CarImage_Tapped(object sender, EventArgs e)
+    private void RoadObjectFromMenu_Tapped(object sender, EventArgs e)
     {
         Image tappedImage = (Image)sender;
         Frame frame = (Frame)tappedImage.Parent;
         switchIsTrajectoryMode.IsToggled = false;
-
-        if (imageSource.Equals(tappedImage.Source))
+        crossButton.IsEnabled = false;
+        if (ImageSource.Equals(tappedImage.Source))
         {
             frame.Background = Brush.Transparent;
             AddNewObjectFlag = false;
-            imageSource = "plus.png";
+            ImageSource = "plus.png";
         }
         else
         {
             frame.Background = Color.FromHex("#606060");
             AddNewNodeFlag = false;
             AddNewObjectFlag = true;
-            currentFrame = frame;
-            imageSource = tappedImage.Source;
+            CurrentFrame = frame;
+            ImageSource = tappedImage.Source;
         }
 
+        foreach (Node node in nodes)
+        {
+            node.rectangle.IsEnabled = false;
+        }
 
     }
 
-    private void switchIsTrajectoryMode_Toggled(object sender, ToggledEventArgs e)
+    private void SwitchIsTrajectoryMode_Toggled(object sender, ToggledEventArgs e)
     {
+        foreach (Node node in nodes)
+        {
+            node.rectangle.IsEnabled = !e.Value;
+        }
+
         if (AddNewTrajectoryFlag == true || e.Value == false)
         {
-            currentPoint = null;
+            CurrentPoint = null;
         }
         AddNewTrajectoryFlag = e.Value;
     }
-}
 
+    private void RoadObjectImage_Tapped(object sender, TappedEventArgs e)
+    {
+        Image roadObject = (Image)sender;
+        CurrentView = roadObject;
+        absoluteLayout.Remove(CurrentRotationSlider);
+        Slider slider = new Slider()
+        {
+            Minimum = -180,
+            Maximum = 180,
+            Value = 0,
+            ZIndex = 13,
+            WidthRequest = 150
+        };
+        slider.ValueChanged += OnRotationSliderValueChanged;
+        absoluteLayout.Add(slider);
+        Rect rect = absoluteLayout.GetLayoutBounds(roadObject);
+        rect.Y -= 20;
+        absoluteLayout.SetLayoutBounds(slider, rect);
+        CurrentRotationSlider = slider;
+        CurrentRoadObject = roadObject;
+    }
+
+    void OnRotationSliderValueChanged(object sender, ValueChangedEventArgs args)
+    {
+        CurrentRoadObject.Rotation = args.NewValue;
+    }
+
+    private void CrossButton_Clicked(object sender, EventArgs e)
+    {
+        if (CurrentView == null)
+        {
+            //crossButton.IsEnabled = false;
+            return;
+        }
+        if (CurrentView is Rectangle rectangle)
+        {
+            Node node = GetNodeFromRectangle(rectangle, nodes);
+            if (node.imageButtons != null)
+            {
+                foreach (ImageButton imageButton in node.imageButtons)
+                {
+                    absoluteLayout.Remove(imageButton);
+                }
+            }
+            foreach (Link link in node.roads)
+            {
+                foreach (Line line1 in link.LinesSide1)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+                foreach (Line line1 in link.LinesSide2)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+                foreach (Line line1 in link.MiddleLines)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+                foreach (LineStepper lineStepper in link.LineSteppers)
+                {
+                    absoluteLayout.Remove(lineStepper.Stepper);
+                }
+                link.LineSteppers.Clear();
+                absoluteLayout.Remove(link.road);
+                links.Remove(link);
+            }
+            absoluteLayout.Remove(node.rectangle);
+            nodes.Remove(node);
+            CurrentView = null;
+        }
+        else
+        {
+            absoluteLayout.Remove(CurrentView);
+        }
+        crossButton.IsEnabled = false;
+    }
+
+    double x, y;
+    private void RoadObjectPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
+    {
+        Image roadObject = (Image)sender;
+        switch (e.StatusType)
+        {
+            case GestureStatus.Running:
+                x = e.TotalX;
+                y = e.TotalY;
+                roadObject.TranslationX = x;
+                roadObject.TranslationY = y;
+                break;
+
+            case GestureStatus.Completed:
+                Rect rect2 = absoluteLayout.GetLayoutBounds(roadObject);
+                absoluteLayout.SetLayoutBounds(roadObject, new Rect(x + rect2.X,
+                    y + rect2.Y, roadObject.Width, roadObject.Height));
+                roadObject.TranslationX = 0;
+                roadObject.TranslationY = 0;
+                break;
+        }
+    }
+
+}
