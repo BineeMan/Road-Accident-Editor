@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Controls.Shapes;
+﻿using Microsoft.Maui.Animations;
+using Microsoft.Maui.Controls.Shapes;
+using System.Net;
 
 namespace RoadsApp2.Utils
 {
@@ -6,16 +8,16 @@ namespace RoadsApp2.Utils
     {
         public struct Node
         {
-            public Rectangle rectangle;
-            public List<ImageButton> imageButtons;
-            public List<Link> roads;
-            public bool isActive;
+            public Rectangle rectangle { get; set; }
+            public List<ImageButton> imageButtons { get; set; }
+            public List<Link> roads { get; set; }
+            public bool isActive { get; set; }
         }
 
         public struct Vector
         {
-            public Point point1;
-            public Point point2;
+            public Point point1 { get; set; }
+            public Point point2 { get; set; }
             public bool Equals(Vector vector)
             {
                 return vector.point1 == this.point1 || vector.point2 == this.point2;
@@ -24,18 +26,19 @@ namespace RoadsApp2.Utils
 
         public struct Link
         {
-            public Polygon road;
-            public List<Line> LinesSide1;
-            public List<Line> LinesSide2;
-            public List<Line> MiddleLines;
-            public List<LineStepper> LineSteppers;
-            public bool IsTwoLaned;
+            public Polygon road { get; set; }
+            public PointCollection OriginalRoadPoints { get; set; }
+            public List<Line> LinesSide1 { get; set; }
+            public List<Line> LinesSide2 { get; set; }
+            public List<Line> MiddleLines { get; set; }
+            public List<LineStepper> LineSteppers { get; set; }
+            public Switch SwitchIsTwoLaned { get; set; } 
         }
 
         public struct LineStepper
         {
-            public Stepper Stepper;
-            public Vector Vector;
+            public Stepper Stepper { get; set; }
+            public Vector Vector { get; set; }
 
         }
     }

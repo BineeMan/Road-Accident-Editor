@@ -9,6 +9,7 @@ using static RoadsApp2.Utils.Structs;
 using Node = RoadsApp2.Utils.Structs.Node;
 using static RoadsApp2.Utils.Utils;
 using System.Diagnostics;
+using Microsoft.Maui.Controls;
 
 namespace RoadsApp2.Utils
 {
@@ -192,20 +193,20 @@ namespace RoadsApp2.Utils
 
         public static LineStepper GetLineStepperFromLinks(Stepper stepper, List<Link> links)
         {
-            foreach (Link link in links)
+            for (int i = 0; i < links.Count; i++)
             {
-                foreach (LineStepper lineStepper in link.LineSteppers)
+                for (int j = 0; j < links[i].LineSteppers.Count; j++)
                 {
-                    if (lineStepper.Stepper.Equals(stepper))
+                    if (links[i].LineSteppers[j].Stepper.Equals(stepper))
                     {
-                        return lineStepper;
+                        return links[i].LineSteppers[j];
                     }
                 }
             }
             return new LineStepper();
         }
 
-        public static Link GetLinkFromLineStepper(LineStepper targetLineStepper, List<Link> links)
+        public static Link GetLinkFromLineStepper2(LineStepper targetLineStepper, List<Link> links)
         {
             foreach (Link link in links)
             {
@@ -217,6 +218,22 @@ namespace RoadsApp2.Utils
                     }
                 }
             }
+            return new Link();
+        }
+
+        public static Link GetLinkFromLineStepper(LineStepper lineStepper, List<Link> links)
+        {
+            for (int i = 0; i < links.Count; i++)
+            {
+                for (int j = 0; j < links[i].LineSteppers.Count; j++)
+                {
+                    if (links[i].LineSteppers[j].Stepper.Equals(lineStepper.Stepper))
+                    {
+                        return links[i];
+                    }
+                }
+            }
+            Debug.WriteLine("new link");
             return new Link();
         }
 

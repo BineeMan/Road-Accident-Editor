@@ -21,7 +21,7 @@
                 <HorizontalStackLayout>
                     <Frame BackgroundColor="Transparent"
                            BorderColor="Transparent" 
-                           WidthRequest="170" >
+                           WidthRequest="180" >
                         <Image Source="car3.png"
                                WidthRequest="150"
                                HeightRequest="80" >

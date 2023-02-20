@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using Microsoft.Maui.Controls.Shapes;
 using RoadsApp2.DataClasses;
 using static RoadsApp2.Utils.Enums;
-
 using static RoadsApp2.Utils.Structs;
 using static RoadsApp2.Utils.UserInterfaceUtils;
 using static RoadsApp2.Utils.Utils;
@@ -21,11 +22,11 @@ public partial class MainPage : ContentPage
         //GridMain.RowDefinitions[2].Height = new GridLength(1, GridUnitType.Star);
     }
 
-    private Node PrevNode { get; set; }
+    private Node PreviousNode { get; set; }
 
     private Vector LineCoords { get; set; }
 
-    private List<Node> nodes;
+    private List<Node> Nodes { get; set; }
 
     private readonly Point[] pointOrientations = new Point[]
     {
@@ -45,7 +46,7 @@ public partial class MainPage : ContentPage
 
     private int RectHeight  { get; set; }
 
-    private List<Link> links;
+    private List<Link> Links { get; set; }
 
     private ImageButton CurrentImageButton { get; set; }
 
@@ -78,11 +79,11 @@ public partial class MainPage : ContentPage
 
     private void ResetRoadElements()
     {
-        PrevNode = new Node() { imageButtons = new List<ImageButton>() };
+        PreviousNode = new Node() { imageButtons = new List<ImageButton>() };
         LineCoords = new Vector();
-        nodes = new List<Node>();
+        Nodes = new List<Node>();
         AddNewNodeFlag = false;
-        links = new List<Link>();
+        Links = new List<Link>();
         CurrentImageButton = new ImageButton();
         CurrentOrientation = Orientation.Undefined;
         CurrentRectangle = new Rectangle();
@@ -93,12 +94,12 @@ public partial class MainPage : ContentPage
         RectWidth = 200;
         RectHeight = 200;
 #if WINDOWS
-        RectWidth = 200;
-        RectHeight = 200;
+        RectWidth = 70;
+        RectHeight = 70;
 #endif
 #if ANDROID
-        RectWidth = 100;
-        RectHeight = 100;
+        RectWidth = 70;
+        RectHeight = 70;
 #endif
         crossButton.IsEnabled = false;
     }
@@ -186,10 +187,10 @@ public partial class MainPage : ContentPage
             imageButton.Clicked += ImgButton_Clicked;
             node.imageButtons.Add(imageButton);
         }
-        nodes.Add(node);
+        Nodes.Add(node);
         if (isVisible)
         {
-            PrevNode = node;
+            PreviousNode = node;
         }
     }
 
@@ -203,7 +204,6 @@ public partial class MainPage : ContentPage
         vectorDestination.point2 = points[2];
         vectorStart.point2 = points[3];
         vectorStart.point1 = points[4];
-
         link.LineSteppers = new List<LineStepper>();
 
         double step = -35;
@@ -284,6 +284,9 @@ public partial class MainPage : ContentPage
             Stepper = stepper,
             Vector = new Vector() { point1 = vectorStart.point2, point2 = vectorDestination.point2 }
         });
+
+        //Debug.WriteLine(Links.IndexOf(link));
+        //Debug.WriteLine(Links[Links.IndexOf(link)].LineSteppers.Count);
     }
 
     private void DrawLines2(ref Link link, Vector vectorStepper, int newAmount)
@@ -299,7 +302,7 @@ public partial class MainPage : ContentPage
 
         Brush lineColor = Brush.White;
 
-        if (!link.IsTwoLaned)
+        if (!link.SwitchIsTwoLaned.IsToggled)
         {
             if (link.MiddleLines != null) 
             {
@@ -336,6 +339,7 @@ public partial class MainPage : ContentPage
         double stepY = 0;
         if (vectorStepper.Equals(vectorStart))
         {
+            Debug.WriteLine("11");
             vectorStart.point2 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
                 (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
 
@@ -345,10 +349,9 @@ public partial class MainPage : ContentPage
             stepX = (vectorStart.point2.X - vectorStart.point1.X) / newAmount;
             stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / newAmount;
 
-            Debug.WriteLine(link.LinesSide1.Count());
             foreach (Line line1 in link.LinesSide1)
             {
-                Debug.WriteLine(absoluteLayout.Remove(line1));
+                absoluteLayout.Remove(line1);
             }
 
             link.LinesSide1.Clear();
@@ -377,6 +380,7 @@ public partial class MainPage : ContentPage
         }
         else if (vectorStepper.Equals(vectorDestination))
         {
+            Debug.WriteLine("22");
             vectorStart.point1 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
             (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
 
@@ -424,7 +428,7 @@ public partial class MainPage : ContentPage
 
     private void RedrawRoad()
     {
-        foreach (Node node in nodes)
+        foreach (Node node in Nodes)
         {
             absoluteLayout.Remove(node.rectangle);
             foreach (ImageButton imageButton in node.imageButtons)
@@ -433,7 +437,7 @@ public partial class MainPage : ContentPage
             }
         }
 
-        foreach (Link link in links)
+        foreach (Link link in Links)
         {
             foreach (Line line1 in link.LinesSide1)
             {
@@ -469,20 +473,20 @@ public partial class MainPage : ContentPage
         Rectangle rectangle = (Rectangle)sender;
         CurrentView = rectangle;
         crossButton.IsEnabled = true;
-        Node node = GetNodeFromRectangle(rectangle, nodes);
+        Node node = GetNodeFromRectangle(rectangle, Nodes);
         if (rectangle.Equals(CurrentRectangle))
         {
             ToggleSteppersVisibility(node.roads , true);
         }
-        else if (PrevNode.Equals(rectangle))
+        else if (PreviousNode.Equals(rectangle))
         {
             SetImageButtonsVisibility(node.imageButtons, false);
         }
         else
         {
-            SetImageButtonsVisibility(PrevNode.imageButtons, false);
+            SetImageButtonsVisibility(PreviousNode.imageButtons, false);
             SetImageButtonsVisibility(node.imageButtons, true);
-            PrevNode = node;
+            PreviousNode = node;
         }
         CurrentRectangle = rectangle;
 
@@ -502,9 +506,9 @@ public partial class MainPage : ContentPage
         {
             AddNewNodeFlag = false;
             CurrentImageButton = new ImageButton();
-            SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
-            Node targetNode = GetNodeFromImageButton(imageButton, nodes);
-            foreach (Node node in nodes)
+            SetImageButtonsType(ButtonType.RoadPlusBlackButton, Nodes);
+            Node targetNode = GetNodeFromImageButton(imageButton, Nodes);
+            foreach (Node node in Nodes)
             {
                 if (!node.Equals(targetNode))
                 {
@@ -512,23 +516,31 @@ public partial class MainPage : ContentPage
                 }
             }
         }
-        else if (AddNewNodeFlag == true && !IsFlagBelongsToSameNode(imageButton, CurrentImageButton, nodes))
+        else if (AddNewNodeFlag == true && !IsFlagBelongsToSameNode(imageButton, CurrentImageButton, Nodes))
             //if it receives another image button, it links a new road between two crossroads
         {
-            Node targetNode = GetNodeFromImageButton(imageButton, nodes);
+            Node targetNode = GetNodeFromImageButton(imageButton, Nodes);
             Rect rect = absoluteLayout.GetLayoutBounds(targetNode.rectangle);
             Vector destCoords = GetLineCoordsForOrientation((Orientation)imageButton.Rotation, rect);
-            Polygon road = DrawRoad(LineCoords, destCoords, (Orientation)imageButton.Rotation, (Orientation)CurrentImageButton.Rotation);     
-            Link link = new Link() { road = road }; 
+            Polygon road = DrawRoad(LineCoords, destCoords, (Orientation)imageButton.Rotation, (Orientation)CurrentImageButton.Rotation);
+
+            Link link = new Link() { road = road };
+
+            PointCollection points = new PointCollection();
+            foreach (Point point in link.road.Points)
+            {
+                points.Add(point);
+            }
+            link.OriginalRoadPoints = points;
+
             targetNode.roads.Add(link);
             absoluteLayout.Add(road);
 
-            foreach (Node node in nodes)
+            foreach (Node node in Nodes)
             {
                 SetImageButtonsVisibility(node.imageButtons, false);
             }
-            SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
-
+            SetImageButtonsType(ButtonType.RoadPlusBlackButton, Nodes);
             absoluteLayout.Remove(CurrentImageButton);
             absoluteLayout.Remove(imageButton);
             AddNewNodeFlag = false;
@@ -537,13 +549,13 @@ public partial class MainPage : ContentPage
             //if sending image button belongs to the same crossroad, new image button become starting point
         {
             imageButton.Source = ButtonType.RoadPlusGreenButton;
-            Node nodeTarget = GetNodeFromImageButton(imageButton, nodes);
+            Node nodeTarget = GetNodeFromImageButton(imageButton, Nodes);
             Orientation orientation = (Orientation)imageButton.Rotation;
             CurrentOrientation = orientation;
             Rect rectangleRect = absoluteLayout.GetLayoutBounds(nodeTarget.rectangle);
             LineCoords = GetLineCoordsForOrientation(orientation, rectangleRect);
 
-            foreach (Node node in nodes)
+            foreach (Node node in Nodes)
             {
                 if (!node.Equals(nodeTarget))
                 {
@@ -551,7 +563,7 @@ public partial class MainPage : ContentPage
                 }
             }
             
-            SetImageButtonsType(ButtonType.DestinationButton, nodes, nodeTarget.rectangle);
+            SetImageButtonsType(ButtonType.DestinationButton, Nodes, nodeTarget.rectangle);
             CurrentImageButton = imageButton;
             AddNewNodeFlag = true;
         }
@@ -626,27 +638,27 @@ public partial class MainPage : ContentPage
             ImageSource = "plus.png";
             CurrentFrame.Background = Brush.Transparent;
             AddNewObjectFlag = false;
-            foreach (Node node in nodes)
+            foreach (Node node in Nodes)
             {
                 node.rectangle.IsEnabled = true;
             }
         }
-        else if (nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
+        else if (Nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
         {
             rectangle = GetRectangle(rect, Crossroads_Tapped);
             absoluteLayout.Add(rectangle);
             absoluteLayout.SetLayoutBounds(rectangle, rect);
             AddFlagsAroundRectangle(rectangle, GetReversedOrientation(CurrentOrientation), false);
         }
-        else if (nodes.Count > 0 || !AddNewNodeFlag) // resetting  image buttons if user clicks on empty area
+        else if (Nodes.Count > 0 || !AddNewNodeFlag) // resetting  image buttons if user clicks on empty area
         {
-            Node targetNode = GetNodeFromImageButton(CurrentImageButton, nodes);
-            foreach (Node node in nodes)
+            Node targetNode = GetNodeFromImageButton(CurrentImageButton, Nodes);
+            foreach (Node node in Nodes)
             {
                 SetImageButtonsVisibility(node.imageButtons, false);
             }
             absoluteLayout.Remove(CurrentRotationSlider);
-            ToggleSteppersVisibility(links, false);
+            ToggleSteppersVisibility(Links, false);
             CurrentRectangle = new Rectangle();        
         }
 
@@ -657,30 +669,37 @@ public partial class MainPage : ContentPage
             absoluteLayout.SetLayoutBounds(rectangle, rect);
             Rect rect2 = absoluteLayout.GetLayoutBounds(rectangle);
             Vector destCoords = GetLineCoordsForOrientation(CurrentOrientation, rect, true);
-            SetImageButtonsType(ButtonType.RoadPlusBlackButton, nodes);
+            SetImageButtonsType(ButtonType.RoadPlusBlackButton, Nodes);
             AddFlagsAroundRectangle(rectangle, GetReversedOrientation(CurrentOrientation), false);
             Polygon road = DrawRoad(LineCoords, destCoords, CurrentOrientation, CurrentOrientation);
             absoluteLayout.Add(road);
-            Node targetNode = GetNodeFromImageButton(CurrentImageButton, nodes);
+            Node targetNode = GetNodeFromImageButton(CurrentImageButton, Nodes);
 
-            Node callerNode = GetNodeFromRectangle(rectangle, nodes);
+            Node callerNode = GetNodeFromRectangle(rectangle, Nodes);
 
             Link link = new Link()
             { 
                 road = road,
                 LinesSide1 = new List<Line>(),
                 LinesSide2 = new List<Line>(),
-                MiddleLines = new List<Line>(),
+                MiddleLines = new List<Line>()
             };
+            
+            PointCollection points = new PointCollection();
+            foreach (Point point in link.road.Points)
+            {
+                points.Add(point);
+            }
+            link.OriginalRoadPoints = points;
 
             AddFlagAroundRoad(ref link);
-       
-            links.Add(link);
+
+            Links.Add(link);
+
             targetNode.roads.Add(link);
             callerNode.roads.Add(link);
-            //DrawLines(ref link, 4, 2);
 
-            foreach (Node node in nodes)
+            foreach (Node node in Nodes)
             {
                 if (!node.Equals(targetNode))
                 {
@@ -699,16 +718,115 @@ public partial class MainPage : ContentPage
         //RedrawRoad();
     }
 
+    private Line DrawLine(Vector vector)
+    {
+        Brush lineColor = Brush.White;
+        Line line = new Line()
+        {
+            Fill = lineColor,
+            Stroke = lineColor,
+            StrokeThickness = 3,
+            IsEnabled = false,
+            ZIndex = 2,
+            StrokeDashArray = { 2, 2 },
+            StrokeDashOffset = 10,
+            X1 = vector.point1.X,
+            Y1 = vector.point1.Y,
+            X2 = vector.point2.X,
+            Y2 = vector.point2.Y,
+        };
+        return line;
+    }
+
+    private void ExtendRoad(ref Link link, ref LineStepper lineStepper)
+    {
+        PointCollection points = link.road.Points;
+        Vector vectorStart = new Vector();
+        Vector vectorDestination = new Vector();
+        vectorStart.point1 = points[0];
+        vectorDestination.point1 = points[1];
+        vectorDestination.point2 = points[2];
+        vectorStart.point2 = points[3];
+        vectorStart.point1 = points[4];
+
+        Vector vectorStartOriginal = new Vector();
+        vectorStartOriginal.point1 = link.OriginalRoadPoints[0];
+        vectorStartOriginal.point2 = link.OriginalRoadPoints[3];
+        Debug.WriteLine(link.OriginalRoadPoints[0].Y);
+        //vectorStartOriginal.point1 = points2[4];
+
+        Vector vector = new Vector()
+        {
+            point1 = points[0],
+            point2 = points[1]
+        };
+
+        int scale = 2;
+
+        if (lineStepper.Vector.Equals(vector))
+        {
+            double stepX = (vectorStartOriginal.point2.X - vectorStartOriginal.point1.X) / scale;
+            double stepY = (vectorStartOriginal.point2.Y - vectorStartOriginal.point1.Y) / scale;
+
+            //Debug.WriteLine(vectorStartOriginal.point1.Y);
+
+            Point newPointStart = new Point(vectorStart.point1.X - stepX,
+                vectorStart.point1.Y - stepY);
+            Point newPointDestination = new Point(vectorDestination.point1.X - stepX,
+                vectorDestination.point1.Y - stepY);
+            link.road.Points[0] = newPointStart;
+            link.road.Points[4] = newPointStart;
+            link.road.Points[1] = newPointDestination;
+            Line line = DrawLine(lineStepper.Vector);
+            link.LinesSide1.Add(line);
+            absoluteLayout.Add(line);
+            Vector vector1 = new Vector()
+            {
+                point1 = newPointStart,
+                point2 = newPointDestination
+            };
+            lineStepper.Vector = vector1;
+            link.LineSteppers[0] = lineStepper;
+        }
+        else
+        {
+            double stepX = (vectorStartOriginal.point2.X - vectorStartOriginal.point1.X) / scale;
+            double stepY = (vectorStartOriginal.point2.Y - vectorStartOriginal.point1.Y) / scale;
+
+            Point newPointStart = new Point(vectorStart.point2.X + stepX,
+                vectorStart.point2.Y + stepY);
+
+            Point newPointDestination = new Point(vectorDestination.point2.X + stepX,
+                vectorDestination.point2.Y + stepY);
+
+            link.road.Points[3] = newPointStart;
+            link.road.Points[2] = newPointDestination;
+            absoluteLayout.Remove(link.road);
+            absoluteLayout.Add(link.road);
+
+            Line line = DrawLine(lineStepper.Vector);
+            link.LinesSide2.Add(line);
+            absoluteLayout.Add(line);
+            Vector vector1 = new Vector()
+            {
+                point1 = newPointStart,
+                point2 = newPointDestination
+            };
+            lineStepper.Vector = vector1;
+            link.LineSteppers[1] = lineStepper; 
+        }
+
+    }
+
     private void OnStepperValueChanged(object sender, ValueChangedEventArgs e)
     {
         double value = e.NewValue;
         Stepper stepper = (Stepper)sender;
-        LineStepper lineStepper = GetLineStepperFromLinks(stepper, links);
+        LineStepper lineStepper = GetLineStepperFromLinks(stepper, Links);
         
-        Link link = GetLinkFromLineStepper(lineStepper, links);
-
-        DrawLines2(ref link, lineStepper.Vector, (int)value);
-
+        Link link = GetLinkFromLineStepper(lineStepper, Links);
+        ExtendRoad(ref link, ref lineStepper);
+        //DrawLines2(ref link, lineStepper.Vector, (int)value);
     }
 
     private void RoadObjectFromMenu_Tapped(object sender, EventArgs e)
@@ -732,7 +850,7 @@ public partial class MainPage : ContentPage
             ImageSource = tappedImage.Source;
         }
 
-        foreach (Node node in nodes)
+        foreach (Node node in Nodes)
         {
             node.rectangle.IsEnabled = false;
         }
@@ -741,7 +859,7 @@ public partial class MainPage : ContentPage
 
     private void SwitchIsTrajectoryMode_Toggled(object sender, ToggledEventArgs e)
     {
-        foreach (Node node in nodes)
+        foreach (Node node in Nodes)
         {
             node.rectangle.IsEnabled = !e.Value;
         }
@@ -789,7 +907,7 @@ public partial class MainPage : ContentPage
         }
         if (CurrentView is Rectangle rectangle)
         {
-            Node node = GetNodeFromRectangle(rectangle, nodes);
+            Node node = GetNodeFromRectangle(rectangle, Nodes);
             if (node.imageButtons != null)
             {
                 foreach (ImageButton imageButton in node.imageButtons)
@@ -817,10 +935,10 @@ public partial class MainPage : ContentPage
                 }
                 link.LineSteppers.Clear();
                 absoluteLayout.Remove(link.road);
-                links.Remove(link);
+                Links.Remove(link);
             }
             absoluteLayout.Remove(node.rectangle);
-            nodes.Remove(node);
+            Nodes.Remove(node);
             CurrentView = null;
         }
         else
@@ -851,6 +969,11 @@ public partial class MainPage : ContentPage
                 roadObject.TranslationY = 0;
                 break;
         }
+    }
+
+    private void SwitchIsTwoLaned_Toggled(object sender, ToggledEventArgs e)
+    {
+        //label.Text = $"Значение {e.Value}";
     }
 
 }
