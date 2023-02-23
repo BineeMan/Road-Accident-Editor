@@ -59,6 +59,7 @@
 	  <None Remove="Resources\Images\crossroadsicon.png" />
 	  <None Remove="Resources\Images\desticon.png" />
 	  <None Remove="Resources\Images\plus.png" />
+	  <None Remove="Resources\Images\plusbuttonnew.png" />
 	  <None Remove="Resources\Images\plusGreen.png" />
 	  <None Remove="Resources\Images\trajectoryicon.png" />
 	</ItemGroup>
@@ -69,6 +70,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet.csproj" />
 	</ItemGroup>
 
 </Project>

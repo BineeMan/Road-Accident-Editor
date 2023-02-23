@@ -269,3 +269,6 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetiz
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\trajectoryicon.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\crossicon.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\crossiconinactive.png
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\Maui.Controls.BottomSheet.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\Maui.Controls.BottomSheet.pdb
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\plusbuttonnew.png

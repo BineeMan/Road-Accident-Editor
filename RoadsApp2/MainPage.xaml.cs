@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using Microsoft.Maui.Controls.Shapes;
 using RoadsApp2.DataClasses;
 using static RoadsApp2.Utils.Enums;
@@ -617,32 +615,6 @@ public partial class MainPage : ContentPage
                 CurrentPoint = tappedPoint;
             }
         }
-        else if(AddNewObjectFlag)
-        {
-            double width = 100, height = 100;
-            Rect rectRoadObject = new Rect(tappedPoint.Value.X - width / 2,
-               tappedPoint.Value.Y - height / 2, width, height);
-
-            Image image = new Image() { Source = ImageSource, ZIndex = 10 };
-
-            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-            tapGestureRecognizer.Tapped += RoadObjectImage_Tapped;
-            image.GestureRecognizers.Add(tapGestureRecognizer);
-
-            PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
-            panGestureRecognizer.PanUpdated += RoadObjectPanGesture_PanUpdated;
-            image.GestureRecognizers.Add(panGestureRecognizer);
-
-            absoluteLayout.Add(image);
-            absoluteLayout.SetLayoutBounds(image, rectRoadObject);
-            ImageSource = "plus.png";
-            CurrentFrame.Background = Brush.Transparent;
-            AddNewObjectFlag = false;
-            foreach (Node node in Nodes)
-            {
-                node.rectangle.IsEnabled = true;
-            }
-        }
         else if (Nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
         {
             rectangle = GetRectangle(rect, Crossroads_Tapped);
@@ -829,27 +801,30 @@ public partial class MainPage : ContentPage
         //DrawLines2(ref link, lineStepper.Vector, (int)value);
     }
 
-    private void RoadObjectFromMenu_Tapped(object sender, EventArgs e)
+    private async void RoadObjectFromMenu_Tapped(object sender, EventArgs e)
     {
-        Image tappedImage = (Image)sender;
-        Frame frame = (Frame)tappedImage.Parent;
-        switchIsTrajectoryMode.IsToggled = false;
-        crossButton.IsEnabled = false;
-        if (ImageSource.Equals(tappedImage.Source))
+        Image tappedImage = new Image();
+        Image sender2 = (Image)sender;
+        tappedImage.Source = sender2.Source;
+        tappedImage.WidthRequest = sender2.WidthRequest;
+        tappedImage.HeightRequest = sender2.HeightRequest;
+        if (tappedImage != null) 
         {
-            frame.Background = Brush.Transparent;
-            AddNewObjectFlag = false;
-            ImageSource = "plus.png";
-        }
-        else
-        {
-            frame.Background = Color.FromHex("#606060");
-            AddNewNodeFlag = false;
-            AddNewObjectFlag = true;
-            CurrentFrame = frame;
-            ImageSource = tappedImage.Source;
-        }
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += RoadObjectImage_Tapped;
+            tappedImage.GestureRecognizers.Add(tapGestureRecognizer);
+            tappedImage.ZIndex = 12;
+            tappedImage.Scale = 0.7;
+            PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+            panGestureRecognizer.PanUpdated += RoadObjectPanGesture_PanUpdated;
 
+            tappedImage.GestureRecognizers.Add(panGestureRecognizer);
+            absoluteLayout.Add(tappedImage);
+            absoluteLayout.SetLayoutBounds(tappedImage, new Rect(absoluteLayout.Width / 2,
+                    absoluteLayout.Height / 2, tappedImage.Width, tappedImage.Height));
+
+            await ObjectMenuBottomSheet.CloseBottomSheet();
+        }
         foreach (Node node in Nodes)
         {
             node.rectangle.IsEnabled = false;
@@ -887,7 +862,7 @@ public partial class MainPage : ContentPage
         slider.ValueChanged += OnRotationSliderValueChanged;
         absoluteLayout.Add(slider);
         Rect rect = absoluteLayout.GetLayoutBounds(roadObject);
-        rect.Y -= 20;
+        rect.Y -= 50;
         absoluteLayout.SetLayoutBounds(slider, rect);
         CurrentRotationSlider = slider;
         CurrentRoadObject = roadObject;
@@ -948,27 +923,49 @@ public partial class MainPage : ContentPage
         crossButton.IsEnabled = false;
     }
 
-    double x, y;
+    private double x, y;
     private void RoadObjectPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
     {
         Image roadObject = (Image)sender;
         switch (e.StatusType)
         {
             case GestureStatus.Running:
+#if ANDROID
+                x = roadObject.TranslationX + e.TotalX;
+                y = roadObject.TranslationY + e.TotalY;
+#endif
+#if WINDOWS
                 x = e.TotalX;
                 y = e.TotalY;
+#endif
                 roadObject.TranslationX = x;
                 roadObject.TranslationY = y;
                 break;
 
             case GestureStatus.Completed:
-                Rect rect2 = absoluteLayout.GetLayoutBounds(roadObject);
-                absoluteLayout.SetLayoutBounds(roadObject, new Rect(x + rect2.X,
-                    y + rect2.Y, roadObject.Width, roadObject.Height));
+                Rect rect = absoluteLayout.GetLayoutBounds(roadObject);
+                rect.X += x;
+                rect.Y += y;
                 roadObject.TranslationX = 0;
                 roadObject.TranslationY = 0;
+                absoluteLayout.SetLayoutBounds(roadObject, rect);
                 break;
         }
+    }
+
+    private void PlusButtonNew_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void PlusButtonSheet_Clicked(System.Object sender, System.EventArgs e)
+    {
+        await ObjectMenuBottomSheet.OpenBottomSheet();
+    }
+
+    private void ContentPage_Loaded(object sender, EventArgs e)
+    {
+        //
     }
 
     private void SwitchIsTwoLaned_Toggled(object sender, ToggledEventArgs e)

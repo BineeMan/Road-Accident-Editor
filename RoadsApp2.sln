@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoadsApp2", "RoadsApp2\RoadsApp2.csproj", "{82058F10-5AD9-4358-8A23-92419C5C5759}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D65AC8CA-F4D1-4DB4-B522-47C64E2B27E3} = {D65AC8CA-F4D1-4DB4-B522-47C64E2B27E3}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Controls.BottomSheet", "Maui.Controls.BottomSheet\Maui.Controls.BottomSheet.csproj", "{D65AC8CA-F4D1-4DB4-B522-47C64E2B27E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +22,9 @@ Global
 		{82058F10-5AD9-4358-8A23-92419C5C5759}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82058F10-5AD9-4358-8A23-92419C5C5759}.Release|Any CPU.Build.0 = Release|Any CPU
 		{82058F10-5AD9-4358-8A23-92419C5C5759}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D65AC8CA-F4D1-4DB4-B522-47C64E2B27E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D65AC8CA-F4D1-4DB4-B522-47C64E2B27E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D65AC8CA-F4D1-4DB4-B522-47C64E2B27E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

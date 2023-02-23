@@ -1,41 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RoadsApp2.MainPage">
+             xmlns:controls="clr-namespace:XGENO.Maui.Controls;assembly=Maui.Controls.BottomSheet"
+             x:Class="RoadsApp2.MainPage"
+             Loaded="ContentPage_Loaded">
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="6*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Frame BackgroundColor="Grey"
-               Grid.Column="0"
-               Grid.Row="2"
-               Grid.ColumnSpan="2">
-            <ScrollView Orientation="Horizontal" HeightRequest="120">
-                <HorizontalStackLayout>
-                    <Frame BackgroundColor="Transparent"
-                           BorderColor="Transparent" 
-                           WidthRequest="180" >
-                        <Image Source="car3.png"
-                               WidthRequest="150"
-                               HeightRequest="80" >
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
-                            </Image.GestureRecognizers>
+        <AbsoluteLayout BackgroundColor="#F0F0F0"
+                        x:Name="absoluteLayout"
+                        ZIndex="99"
+                        Grid.Column="0"
+                        Grid.RowSpan="3"
+                        Grid.ColumnSpan="3"
+                        Grid.Row="0" >
 
-                        </Image>
-                    </Frame>
-                </HorizontalStackLayout>
-            </ScrollView>
-        </Frame>
+            <AbsoluteLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AbsoluteLayout_Tapped"/>
+            </AbsoluteLayout.GestureRecognizers>
+        </AbsoluteLayout>
 
-        <ScrollView Orientation="Horizontal"  Grid.Row="0" Grid.ColumnSpan="3">
+        <ScrollView Orientation="Horizontal"
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    ZIndex="99">
             <HorizontalStackLayout Grid.Column="0"
                 Grid.Row="0" Grid.ColumnSpan="3" >
 
@@ -75,17 +71,54 @@
             </HorizontalStackLayout>
         </ScrollView>
 
-        <AbsoluteLayout BackgroundColor="White"
-                        x:Name="absoluteLayout"
-                        ZIndex="99"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1" >
+        <ImageButton Source="plusbuttonnew.png"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    x:Name="PlusButtonNew"
+                    Clicked="PlusButtonSheet_Clicked"
+                    HorizontalOptions="End"
+                    CornerRadius="30"
+                    ZIndex="99"
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Margin="20, 0">
+            <ImageButton.Shadow>
+                <Shadow Brush="Black"
+                                Offset="0,2"
+                                Opacity="0.5" />
+            </ImageButton.Shadow>
+        </ImageButton>
 
-            <AbsoluteLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="AbsoluteLayout_Tapped"/>
-            </AbsoluteLayout.GestureRecognizers>
-        </AbsoluteLayout>
+        
+
+        <controls:BottomSheet x:Name="ObjectMenuBottomSheet"
+                              HeaderText="Автомобили"
+                              Grid.Column="0"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="2"
+                              Grid.RowSpan="3"
+                              ZIndex="99"
+                              SheetHeight="250">
+            <controls:BottomSheet.BottomSheetContent>
+                <ScrollView Orientation="Horizontal"
+                            HeightRequest="120"
+                            Margin="0, -20, 0, 0">
+                    <HorizontalStackLayout>
+                        <Frame BackgroundColor="Transparent"
+                               BorderColor="Transparent" 
+                               WidthRequest="190" >
+                            <Image Source="car3.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </controls:BottomSheet.BottomSheetContent>
+        </controls:BottomSheet>
 
     </Grid>
 </ContentPage>
