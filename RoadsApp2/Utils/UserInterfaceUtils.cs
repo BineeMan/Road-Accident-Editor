@@ -34,7 +34,7 @@ namespace RoadsApp2.Utils
                 WidthRequest = rect.Width,
                 Stroke = Brush.Red,
                 StrokeThickness = 0,
-                ZIndex = 3,
+                ZIndex = 3
             };
             if (targetEvent != null)
             {
@@ -102,18 +102,6 @@ namespace RoadsApp2.Utils
             return node.imageButtons.Contains(imageButton2);
         }
 
-        public static Rectangle GetRectangleFromImageButton(ImageButton imageButton, List<Node> nodes)
-        {
-            foreach (Node node in nodes)
-            {
-                if (node.imageButtons.Contains(imageButton))
-                {
-                    return node.rectangle;
-                }
-            }
-            return null;
-        }
-
         public static void SetImageButtonsVisibility(List<ImageButton> imageButtons, bool isVisible)
         {
             foreach (ImageButton imageButton in imageButtons)
@@ -172,11 +160,40 @@ namespace RoadsApp2.Utils
                 Fill = Color.FromRgb(137, 137, 137),
                 Stroke = Brush.Gray,
                 StrokeThickness = 0,
-                IsEnabled = true,
+                IsEnabled = false,
+                ZIndex = 1
             };
 
             return polygon;
         }
+
+        public static Rect GetCollision(Polygon polygon)
+        {
+            PointCollection points = polygon.Points;
+            Point closestPoint = new Point(Int32.MaxValue, Int32.MaxValue);
+            Point farestPoint = new Point(0, 0);
+            foreach (Point point in points)
+            {
+                if (point.X > farestPoint.X)
+                    farestPoint.X = point.X;
+                if (point.X < closestPoint.X)
+                    closestPoint.X = point.X;
+
+                if (point.Y > farestPoint.Y)
+                    farestPoint.Y = point.Y;
+                if (point.Y < closestPoint.Y)
+                    closestPoint.Y = point.Y;
+            }
+            Rect collision = new Rect()
+            {
+                X = closestPoint.X,
+                Y = closestPoint.Y,
+                Width = Math.Abs(closestPoint.X - farestPoint.X),
+                Height = Math.Abs(closestPoint.Y - farestPoint.Y),
+            };
+            return collision;
+        }
+
         public static void ToggleSteppersVisibility(List<Link> links, bool visibility)
         {
             if (links != null)
@@ -186,6 +203,25 @@ namespace RoadsApp2.Utils
                     foreach (LineStepper lineStepper in link.LineSteppers)
                     {
                         lineStepper.Stepper.IsVisible = visibility;
+                        if (lineStepper.CheckBoxTwoLaned != null)
+                        {
+                            lineStepper.CheckBoxTwoLaned.IsVisible = visibility;
+                        }
+                    }
+                }
+            }
+        }
+
+        public static void ToggleSteppersVisibility2(List<LineStepper> lineSteppers, bool visibility)
+        {
+            if (lineSteppers != null)
+            {
+                foreach (LineStepper lineStepper in lineSteppers)
+                {
+                    lineStepper.Stepper.IsVisible = visibility;
+                    if (lineStepper.CheckBoxTwoLaned != null)
+                    {
+                        lineStepper.CheckBoxTwoLaned.IsVisible = visibility;
                     }
                 }
             }
@@ -256,7 +292,35 @@ namespace RoadsApp2.Utils
             };
             return line;
         }
-    }
 
+        public static Link GetLinkByCollision(Rectangle collision, List<Link> links)
+        {
+            foreach (Link link in links)
+            {
+                if (link.RectangleCollision.Equals(collision))
+                {
+                    return link;
+                }
+            }
+            return new Link();
+        }
 
+        public static Link GetLinkByCheckBox(CheckBox checkBox, List<Link> links)
+        {
+            for (int i = 0; i < links.Count; i++)
+            {
+                for (int j = 0; j < links[i].LineSteppers.Count; j++)
+                {
+                    if (links[i].LineSteppers[j].CheckBoxTwoLaned != null)
+                    {
+                        if (links[i].LineSteppers[j].CheckBoxTwoLaned.Equals(checkBox))
+                        {
+                            return links[i];
+                        }
+                    }
+                }
+            }
+            return new Link();
+        }
+    } 
 }

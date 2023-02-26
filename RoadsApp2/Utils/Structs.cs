@@ -32,13 +32,16 @@ namespace RoadsApp2.Utils
             public List<Line> LinesSide2 { get; set; }
             public List<Line> MiddleLines { get; set; }
             public List<LineStepper> LineSteppers { get; set; }
-            public Switch SwitchIsTwoLaned { get; set; } 
+            public Switch SwitchIsTwoLaned { get; set; }
+            public Rectangle RectangleCollision { get; set; }
         }
 
         public struct LineStepper
         {
             public Stepper Stepper { get; set; }
             public Vector Vector { get; set; }
+
+            public CheckBox CheckBoxTwoLaned { get; set; }
 
         }
     }
