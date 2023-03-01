@@ -14,7 +14,7 @@
             This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
             </summary>
         </member>
-        <member name="M:RoadsApp2.MainPage.ImgButton_Clicked(System.Object,System.EventArgs)">
+        <member name="M:RoadsApp2.MainPage.ImgButtonPlus_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
             <summary>
             Event for plus and destination image buttons.
             </summary>

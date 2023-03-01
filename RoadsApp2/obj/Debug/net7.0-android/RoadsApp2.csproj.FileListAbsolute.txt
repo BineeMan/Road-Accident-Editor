@@ -988,3 +988,4 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\environment.x86_64.o
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\compressed_assemblies.x86_64.o
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\android\jni_remap.x86_64.o
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\app_shared_libraries\x86_64\libxamarin-app.so
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-android\resizetizer\r\drawable\plustransparent.png

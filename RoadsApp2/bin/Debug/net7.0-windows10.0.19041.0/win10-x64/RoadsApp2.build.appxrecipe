@@ -913,6 +913,9 @@
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plusgreen.scale-100.png">
       <PackagePath>plusgreen.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plustransparent.scale-100.png">
+      <PackagePath>plustransparent.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\splash.scale-100.png">
       <PackagePath>splash.scale-100.png</PackagePath>
     </AppxPackagedFile>

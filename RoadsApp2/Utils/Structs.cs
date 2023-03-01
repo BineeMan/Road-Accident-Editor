@@ -9,7 +9,7 @@ namespace RoadsApp2.Utils
         public struct Node
         {
             public Rectangle rectangle { get; set; }
-            public List<ImageButton> imageButtons { get; set; }
+            public List<Image> imageButtons { get; set; }
             public List<Link> roads { get; set; }
             public bool isActive { get; set; }
         }

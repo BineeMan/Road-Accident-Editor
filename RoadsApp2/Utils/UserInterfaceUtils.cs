@@ -15,9 +15,9 @@ namespace RoadsApp2.Utils
 {
     internal class UserInterfaceUtils
     {
-        public static void ToggleImageButtons(List<ImageButton> imgButtons)
+        public static void ToggleImageButtons(List<Image> imgButtons)
         {
-            foreach (ImageButton imageButton in imgButtons)
+            foreach (Image imageButton in imgButtons)
             {
                 imageButton.IsVisible = !imageButton.IsVisible;
             }
@@ -88,7 +88,7 @@ namespace RoadsApp2.Utils
             {
                 if (!node.rectangle.Equals(rectangleExcept))
                 {
-                    foreach (ImageButton imageButton in node.imageButtons)
+                    foreach (Image imageButton in node.imageButtons)
                     {
                         imageButton.Source = source;
                     }
@@ -96,15 +96,15 @@ namespace RoadsApp2.Utils
             }
         }
 
-        public static bool IsFlagBelongsToSameNode(ImageButton imageButton1, ImageButton imageButton2, List<Node> nodes)
+        public static bool IsFlagBelongsToSameNode(Image imageButton1, Image imageButton2, List<Node> nodes)
         {
             Node node = GetNodeFromImageButton(imageButton1, nodes);
             return node.imageButtons.Contains(imageButton2);
         }
 
-        public static void SetImageButtonsVisibility(List<ImageButton> imageButtons, bool isVisible)
+        public static void SetImageButtonsVisibility(List<Image> imageButtons, bool isVisible)
         {
-            foreach (ImageButton imageButton in imageButtons)
+            foreach (Image imageButton in imageButtons)
             {
                 imageButton.IsVisible = isVisible;
             }
@@ -118,7 +118,7 @@ namespace RoadsApp2.Utils
             }
         }
 
-        public static Node GetNodeFromImageButton(ImageButton imageButton, List<Node> nodes)
+        public static Node GetNodeFromImageButton(Image imageButton, List<Node> nodes)
         {
             foreach (Node node in nodes)
             {
@@ -135,23 +135,23 @@ namespace RoadsApp2.Utils
             return (double)orientation1 + (double)GetReversedOrientation(orientation1) == (double)orientation2 + (double)GetReversedOrientation(orientation2);
         }
 
-        public static Polygon DrawRoad(Vector lineCoordsStart, Vector lineCoordsDest,
+        public static Polygon DrawRoad(Vector vectorStart, Vector vectorDestination,
             Orientation orientationStart, Orientation orientationDest)
         {
             if ((double)orientationDest + (double)orientationStart == (double)Orientation.Right + (double)Orientation.Up || (double)orientationDest + (double)orientationStart == (double)Orientation.Left + (double)Orientation.Down)
             {
-                Vector temp = lineCoordsStart;
-                lineCoordsStart.point1 = temp.point2;
-                lineCoordsStart.point2 = temp.point1;
+                Vector temp = vectorStart;
+                vectorStart.point1 = temp.point2;
+                vectorStart.point2 = temp.point1;
             }
 
             PointCollection points = new[]
             {
-                new Point(lineCoordsStart.point1.X, lineCoordsStart.point1.Y),
-                new Point(lineCoordsDest.point1.X, lineCoordsDest.point1.Y),
-                new Point(lineCoordsDest.point2.X, lineCoordsDest.point2.Y),
-                new Point(lineCoordsStart.point2.X, lineCoordsStart.point2.Y),
-                new Point(lineCoordsStart.point1.X, lineCoordsStart.point1.Y)
+                new Point(vectorStart.point1.X, vectorStart.point1.Y),
+                new Point(vectorDestination.point1.X, vectorDestination.point1.Y),
+                new Point(vectorDestination.point2.X, vectorDestination.point2.Y),
+                new Point(vectorStart.point2.X, vectorStart.point2.Y),
+                new Point(vectorStart.point1.X, vectorStart.point1.Y)
             };
 
             Polygon polygon = new Polygon()
@@ -166,6 +166,8 @@ namespace RoadsApp2.Utils
 
             return polygon;
         }
+
+
 
         public static Rect GetCollision(Polygon polygon)
         {

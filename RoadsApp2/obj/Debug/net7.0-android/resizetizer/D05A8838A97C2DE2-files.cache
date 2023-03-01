@@ -9,6 +9,7 @@ obj\Debug\net7.0-android\resizetizer\r\drawable\desticon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\plus.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\plusbuttonnew.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\plusgreen.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\plustransparent.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\splash.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\trajectoryicon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
