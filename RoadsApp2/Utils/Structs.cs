@@ -8,9 +8,9 @@ namespace RoadsApp2.Utils
     {
         public struct Node
         {
-            public Rectangle rectangle { get; set; }
-            public List<Image> imageButtons { get; set; }
-            public List<Link> roads { get; set; }
+            public Rectangle Rectangle { get; set; }
+            public List<Image> PlusButtons { get; set; }
+            public List<Link> Roads { get; set; }
             public bool isActive { get; set; }
         }
 
@@ -26,13 +26,12 @@ namespace RoadsApp2.Utils
 
         public struct Link
         {
-            public Polygon road { get; set; }
+            public Polygon Road { get; set; }
             public PointCollection OriginalRoadPoints { get; set; }
             public List<Line> LinesSide1 { get; set; }
             public List<Line> LinesSide2 { get; set; }
             public List<Line> MiddleLines { get; set; }
             public List<LineStepper> LineSteppers { get; set; }
-            public Switch SwitchIsTwoLaned { get; set; }
             public Rectangle RectangleCollision { get; set; }
         }
 
@@ -41,7 +40,7 @@ namespace RoadsApp2.Utils
             public Stepper Stepper { get; set; }
             public Vector Vector { get; set; }
 
-            public CheckBox CheckBoxTwoLaned { get; set; }
+            //public CheckBox CheckBoxTwoLaned { get; set; }
 
         }
     }

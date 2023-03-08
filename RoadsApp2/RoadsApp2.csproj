@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>RoadsApp2</ApplicationTitle>
+		<ApplicationTitle>Конструктор ДТП</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.roadsapp2</ApplicationId>
@@ -32,7 +32,6 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 
@@ -50,6 +49,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\splash.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\AppIcon\icon2.png" />
+	  <None Remove="Resources\AppIcon\icon3.png" />
 	  <None Remove="Resources\Images\btnlineminus.png" />
 	  <None Remove="Resources\Images\btnlineplus.png" />
 	  <None Remove="Resources\Images\car1.png" />
@@ -65,7 +70,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash2.svg" BaseSize="300, 300" />
+	  <MauiSplashScreen Include="Resources\Splash\splash2.svg" BaseSize="300, 300" Color="#DCDCDC" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -74,6 +79,16 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Saved\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiIcon Include="Resources\AppIcon\icon.png" />
+	  <MauiIcon Include="Resources\AppIcon\icon2.png" />
+	  <MauiIcon Include="Resources\AppIcon\icon3.png" />
 	</ItemGroup>
 
 </Project>

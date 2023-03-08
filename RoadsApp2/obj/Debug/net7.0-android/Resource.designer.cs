@@ -14,7 +14,7 @@ namespace RoadsApp2
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.0.99.3")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.1.99.25")]
 	public partial class Resource
 	{
 		
@@ -16977,6 +16977,42 @@ namespace RoadsApp2
 			
 			// aapt resource value: 0x7F0D0003
 			public const int appicon_round = 2131558403;
+			
+			// aapt resource value: 0x7F0D0004
+			public const int icon = 2131558404;
+			
+			// aapt resource value: 0x7F0D0005
+			public const int icon2 = 2131558405;
+			
+			// aapt resource value: 0x7F0D0006
+			public const int icon2_background = 2131558406;
+			
+			// aapt resource value: 0x7F0D0007
+			public const int icon2_foreground = 2131558407;
+			
+			// aapt resource value: 0x7F0D0008
+			public const int icon2_round = 2131558408;
+			
+			// aapt resource value: 0x7F0D0009
+			public const int icon3 = 2131558409;
+			
+			// aapt resource value: 0x7F0D000A
+			public const int icon3_background = 2131558410;
+			
+			// aapt resource value: 0x7F0D000B
+			public const int icon3_foreground = 2131558411;
+			
+			// aapt resource value: 0x7F0D000C
+			public const int icon3_round = 2131558412;
+			
+			// aapt resource value: 0x7F0D000D
+			public const int icon_background = 2131558413;
+			
+			// aapt resource value: 0x7F0D000E
+			public const int icon_foreground = 2131558414;
+			
+			// aapt resource value: 0x7F0D000F
+			public const int icon_round = 2131558415;
 			
 			static Mipmap()
 			{

@@ -18,7 +18,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>D:\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppX</LayoutDir>
-    <RegisteredManifestChecksum>890AE8F52A81D86C92D1715AD851A1EF64EC99E4FDA2F6C75E0EB7762D2B8833</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>5FDFA6CC679CC2392B91966B16735F8C913B2820A5A71192A3FC611F8C4EDEB3</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>9246b96d-4b3b-486e-a7f8-1a994f24e3b9_1.0.0.1_x64__9zz4h110yvjzm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>9246b96d-4b3b-486e-a7f8-1a994f24e3b9_9zz4h110yvjzm!App</RegisteredUserModeAppID>
     <RegisteredPackageID>9246b96d-4b3b-486e-a7f8-1a994f24e3b9</RegisteredPackageID>
@@ -29,25 +29,25 @@
     <AppXManifest Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-02-28T15:13:42.467</Modified>
+      <Modified>2023-03-08T03:38:12.501</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-02-28T15:11:38.472</Modified>
+      <Modified>2023-03-07T13:59:17.770</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\RoadsApp2.runtimeconfig.json">
       <PackagePath>RoadsApp2.runtimeconfig.json</PackagePath>
-      <Modified>2023-02-21T12:11:30.801</Modified>
+      <Modified>2023-03-01T13:04:30.618</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\RoadsApp2.dll">
       <PackagePath>RoadsApp2.dll</PackagePath>
-      <Modified>2023-02-28T15:13:41.594</Modified>
+      <Modified>2023-03-07T13:59:17.043</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>RoadsApp2.exe</PackagePath>
-      <Modified>2023-02-28T15:13:41.663</Modified>
+      <Modified>2023-03-07T13:59:17.127</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\herob\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.3\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -923,7 +923,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\RoadsApp2.deps.json">
       <PackagePath>RoadsApp2.deps.json</PackagePath>
-      <Modified>2023-02-28T15:13:42.383</Modified>
+      <Modified>2023-03-08T03:38:12.278</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.59\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>
@@ -943,23 +943,43 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splash2SplashScreen.scale-100.png">
       <PackagePath>splash2SplashScreen.scale-100.png</PackagePath>
-      <Modified>2023-02-21T11:58:28.331</Modified>
+      <Modified>2023-03-01T13:27:39.475</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splash2SplashScreen.scale-125.png">
       <PackagePath>splash2SplashScreen.scale-125.png</PackagePath>
-      <Modified>2023-02-21T11:58:28.347</Modified>
+      <Modified>2023-03-01T13:27:39.490</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splash2SplashScreen.scale-150.png">
       <PackagePath>splash2SplashScreen.scale-150.png</PackagePath>
-      <Modified>2023-02-21T11:58:28.367</Modified>
+      <Modified>2023-03-01T13:27:39.513</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splash2SplashScreen.scale-200.png">
       <PackagePath>splash2SplashScreen.scale-200.png</PackagePath>
-      <Modified>2023-02-21T11:58:28.400</Modified>
+      <Modified>2023-03-01T13:27:39.559</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splash2SplashScreen.scale-400.png">
       <PackagePath>splash2SplashScreen.scale-400.png</PackagePath>
-      <Modified>2023-02-21T11:58:28.517</Modified>
+      <Modified>2023-03-01T13:27:39.737</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
+      <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
+      <Modified>2023-03-01T13:26:56.610</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-125.png">
+      <PackagePath>splashSplashScreen.scale-125.png</PackagePath>
+      <Modified>2023-03-01T13:26:56.623</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-150.png">
+      <PackagePath>splashSplashScreen.scale-150.png</PackagePath>
+      <Modified>2023-03-01T13:26:56.641</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-200.png">
+      <PackagePath>splashSplashScreen.scale-200.png</PackagePath>
+      <Modified>2023-03-01T13:26:56.669</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
+      <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
+      <Modified>2023-03-01T13:26:56.778</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
@@ -971,187 +991,187 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appicon.ico">
       <PackagePath>appicon.ico</PackagePath>
-      <Modified>2023-02-28T04:12:42.865</Modified>
+      <Modified>2023-03-01T13:33:17.142</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-100.png">
       <PackagePath>appiconLargeTile.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:43.025</Modified>
+      <Modified>2023-03-01T13:33:17.301</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-125.png">
       <PackagePath>appiconLargeTile.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:43.033</Modified>
+      <Modified>2023-03-01T13:33:17.308</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-150.png">
       <PackagePath>appiconLargeTile.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:43.041</Modified>
+      <Modified>2023-03-01T13:33:17.316</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-200.png">
       <PackagePath>appiconLargeTile.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:43.053</Modified>
+      <Modified>2023-03-01T13:33:17.328</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLargeTile.scale-400.png">
       <PackagePath>appiconLargeTile.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:43.100</Modified>
+      <Modified>2023-03-01T13:33:17.375</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.908</Modified>
+      <Modified>2023-03-01T13:33:17.184</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.910</Modified>
+      <Modified>2023-03-01T13:33:17.187</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.918</Modified>
+      <Modified>2023-03-01T13:33:17.196</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.911</Modified>
+      <Modified>2023-03-01T13:33:17.189</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-lightunplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.914</Modified>
+      <Modified>2023-03-01T13:33:17.191</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-16.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-16.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.896</Modified>
+      <Modified>2023-03-01T13:33:17.173</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-24.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-24.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.898</Modified>
+      <Modified>2023-03-01T13:33:17.174</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-256.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-256.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.906</Modified>
+      <Modified>2023-03-01T13:33:17.183</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-32.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-32.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.899</Modified>
+      <Modified>2023-03-01T13:33:17.176</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.altform-unplated_targetsize-48.png">
       <PackagePath>appiconLogo.altform-unplated_targetsize-48.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.901</Modified>
+      <Modified>2023-03-01T13:33:17.179</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-100.png">
       <PackagePath>appiconLogo.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.873</Modified>
+      <Modified>2023-03-01T13:33:17.147</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-125.png">
       <PackagePath>appiconLogo.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.875</Modified>
+      <Modified>2023-03-01T13:33:17.149</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-150.png">
       <PackagePath>appiconLogo.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.877</Modified>
+      <Modified>2023-03-01T13:33:17.153</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-200.png">
       <PackagePath>appiconLogo.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.879</Modified>
+      <Modified>2023-03-01T13:33:17.155</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.scale-400.png">
       <PackagePath>appiconLogo.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.882</Modified>
+      <Modified>2023-03-01T13:33:17.158</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-16.png">
       <PackagePath>appiconLogo.targetsize-16.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.884</Modified>
+      <Modified>2023-03-01T13:33:17.160</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-24.png">
       <PackagePath>appiconLogo.targetsize-24.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.886</Modified>
+      <Modified>2023-03-01T13:33:17.161</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-256.png">
       <PackagePath>appiconLogo.targetsize-256.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.894</Modified>
+      <Modified>2023-03-01T13:33:17.171</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-32.png">
       <PackagePath>appiconLogo.targetsize-32.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.888</Modified>
+      <Modified>2023-03-01T13:33:17.163</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconLogo.targetsize-48.png">
       <PackagePath>appiconLogo.targetsize-48.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.890</Modified>
+      <Modified>2023-03-01T13:33:17.166</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-100.png">
       <PackagePath>appiconMediumTile.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.947</Modified>
+      <Modified>2023-03-01T13:33:17.224</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-125.png">
       <PackagePath>appiconMediumTile.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.951</Modified>
+      <Modified>2023-03-01T13:33:17.228</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-150.png">
       <PackagePath>appiconMediumTile.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.955</Modified>
+      <Modified>2023-03-01T13:33:17.233</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-200.png">
       <PackagePath>appiconMediumTile.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.961</Modified>
+      <Modified>2023-03-01T13:33:17.237</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconMediumTile.scale-400.png">
       <PackagePath>appiconMediumTile.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.972</Modified>
+      <Modified>2023-03-01T13:33:17.250</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-100.png">
       <PackagePath>appiconSmallTile.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.932</Modified>
+      <Modified>2023-03-01T13:33:17.209</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-125.png">
       <PackagePath>appiconSmallTile.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.934</Modified>
+      <Modified>2023-03-01T13:33:17.212</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-150.png">
       <PackagePath>appiconSmallTile.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.936</Modified>
+      <Modified>2023-03-01T13:33:17.214</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-200.png">
       <PackagePath>appiconSmallTile.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.939</Modified>
+      <Modified>2023-03-01T13:33:17.217</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconSmallTile.scale-400.png">
       <PackagePath>appiconSmallTile.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.945</Modified>
+      <Modified>2023-03-01T13:33:17.221</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-100.png">
       <PackagePath>appiconStoreLogo.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.920</Modified>
+      <Modified>2023-03-01T13:33:17.198</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-125.png">
       <PackagePath>appiconStoreLogo.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.922</Modified>
+      <Modified>2023-03-01T13:33:17.200</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-150.png">
       <PackagePath>appiconStoreLogo.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.924</Modified>
+      <Modified>2023-03-01T13:33:17.201</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-200.png">
       <PackagePath>appiconStoreLogo.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.926</Modified>
+      <Modified>2023-03-01T13:33:17.203</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconStoreLogo.scale-400.png">
       <PackagePath>appiconStoreLogo.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.930</Modified>
+      <Modified>2023-03-01T13:33:17.207</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-100.png">
       <PackagePath>appiconWideTile.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.976</Modified>
+      <Modified>2023-03-01T13:33:17.253</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-125.png">
       <PackagePath>appiconWideTile.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.981</Modified>
+      <Modified>2023-03-01T13:33:17.257</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-150.png">
       <PackagePath>appiconWideTile.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.986</Modified>
+      <Modified>2023-03-01T13:33:17.262</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-200.png">
       <PackagePath>appiconWideTile.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.995</Modified>
+      <Modified>2023-03-01T13:33:17.271</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\appiconWideTile.scale-400.png">
       <PackagePath>appiconWideTile.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:43.019</Modified>
+      <Modified>2023-03-01T13:33:17.294</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\btnlineminus.scale-100.png">
       <PackagePath>btnlineminus.scale-100.png</PackagePath>
@@ -1187,23 +1207,579 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-100.png">
       <PackagePath>dotnet_bot.scale-100.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.851</Modified>
+      <Modified>2023-03-01T14:49:41.111</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-125.png">
       <PackagePath>dotnet_bot.scale-125.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.858</Modified>
+      <Modified>2023-03-01T14:49:41.121</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-150.png">
       <PackagePath>dotnet_bot.scale-150.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.866</Modified>
+      <Modified>2023-03-01T14:49:41.129</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-200.png">
       <PackagePath>dotnet_bot.scale-200.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.882</Modified>
+      <Modified>2023-03-01T14:49:41.142</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\dotnet_bot.scale-400.png">
       <PackagePath>dotnet_bot.scale-400.png</PackagePath>
-      <Modified>2023-02-28T04:12:42.914</Modified>
+      <Modified>2023-03-01T14:49:41.177</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon.ico">
+      <PackagePath>icon.ico</PackagePath>
+      <Modified>2023-03-01T14:53:55.577</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon.scale-100.png">
+      <PackagePath>icon.scale-100.png</PackagePath>
+      <Modified>2023-03-01T13:32:24.383</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2.ico">
+      <PackagePath>icon2.ico</PackagePath>
+      <Modified>2023-03-01T14:53:55.576</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2LargeTile.scale-100.png">
+      <PackagePath>icon2LargeTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.712</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2LargeTile.scale-125.png">
+      <PackagePath>icon2LargeTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.719</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2LargeTile.scale-150.png">
+      <PackagePath>icon2LargeTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.731</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2LargeTile.scale-200.png">
+      <PackagePath>icon2LargeTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.748</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2LargeTile.scale-400.png">
+      <PackagePath>icon2LargeTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.810</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>icon2Logo.altform-lightunplated_targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.598</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>icon2Logo.altform-lightunplated_targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.598</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>icon2Logo.altform-lightunplated_targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.604</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>icon2Logo.altform-lightunplated_targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.599</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>icon2Logo.altform-lightunplated_targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.600</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-unplated_targetsize-16.png">
+      <PackagePath>icon2Logo.altform-unplated_targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.590</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-unplated_targetsize-24.png">
+      <PackagePath>icon2Logo.altform-unplated_targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.591</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-unplated_targetsize-256.png">
+      <PackagePath>icon2Logo.altform-unplated_targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.597</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-unplated_targetsize-32.png">
+      <PackagePath>icon2Logo.altform-unplated_targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.591</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.altform-unplated_targetsize-48.png">
+      <PackagePath>icon2Logo.altform-unplated_targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.593</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.scale-100.png">
+      <PackagePath>icon2Logo.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.577</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.scale-125.png">
+      <PackagePath>icon2Logo.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.578</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.scale-150.png">
+      <PackagePath>icon2Logo.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.579</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.scale-200.png">
+      <PackagePath>icon2Logo.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.580</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.scale-400.png">
+      <PackagePath>icon2Logo.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.targetsize-16.png">
+      <PackagePath>icon2Logo.targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.583</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.targetsize-24.png">
+      <PackagePath>icon2Logo.targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.targetsize-256.png">
+      <PackagePath>icon2Logo.targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.589</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.targetsize-32.png">
+      <PackagePath>icon2Logo.targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2Logo.targetsize-48.png">
+      <PackagePath>icon2Logo.targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2MediumTile.scale-100.png">
+      <PackagePath>icon2MediumTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.626</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2MediumTile.scale-125.png">
+      <PackagePath>icon2MediumTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.628</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2MediumTile.scale-150.png">
+      <PackagePath>icon2MediumTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.631</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2MediumTile.scale-200.png">
+      <PackagePath>icon2MediumTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.636</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2MediumTile.scale-400.png">
+      <PackagePath>icon2MediumTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.653</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2SmallTile.scale-100.png">
+      <PackagePath>icon2SmallTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.614</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2SmallTile.scale-125.png">
+      <PackagePath>icon2SmallTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.616</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2SmallTile.scale-150.png">
+      <PackagePath>icon2SmallTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.617</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2SmallTile.scale-200.png">
+      <PackagePath>icon2SmallTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.619</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2SmallTile.scale-400.png">
+      <PackagePath>icon2SmallTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.625</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2StoreLogo.scale-100.png">
+      <PackagePath>icon2StoreLogo.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.605</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2StoreLogo.scale-125.png">
+      <PackagePath>icon2StoreLogo.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.607</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2StoreLogo.scale-150.png">
+      <PackagePath>icon2StoreLogo.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.608</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2StoreLogo.scale-200.png">
+      <PackagePath>icon2StoreLogo.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.610</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2StoreLogo.scale-400.png">
+      <PackagePath>icon2StoreLogo.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.613</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2WideTile.scale-100.png">
+      <PackagePath>icon2WideTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.656</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2WideTile.scale-125.png">
+      <PackagePath>icon2WideTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.660</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2WideTile.scale-150.png">
+      <PackagePath>icon2WideTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.666</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2WideTile.scale-200.png">
+      <PackagePath>icon2WideTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.674</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon2WideTile.scale-400.png">
+      <PackagePath>icon2WideTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.706</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3.ico">
+      <PackagePath>icon3.ico</PackagePath>
+      <Modified>2023-03-01T14:53:55.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3LargeTile.scale-100.png">
+      <PackagePath>icon3LargeTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.713</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3LargeTile.scale-125.png">
+      <PackagePath>icon3LargeTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.720</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3LargeTile.scale-150.png">
+      <PackagePath>icon3LargeTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.730</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3LargeTile.scale-200.png">
+      <PackagePath>icon3LargeTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.751</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3LargeTile.scale-400.png">
+      <PackagePath>icon3LargeTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.808</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>icon3Logo.altform-lightunplated_targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.605</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>icon3Logo.altform-lightunplated_targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.607</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>icon3Logo.altform-lightunplated_targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.613</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>icon3Logo.altform-lightunplated_targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.608</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>icon3Logo.altform-lightunplated_targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.609</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-unplated_targetsize-16.png">
+      <PackagePath>icon3Logo.altform-unplated_targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.599</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-unplated_targetsize-24.png">
+      <PackagePath>icon3Logo.altform-unplated_targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.599</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-unplated_targetsize-256.png">
+      <PackagePath>icon3Logo.altform-unplated_targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.605</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-unplated_targetsize-32.png">
+      <PackagePath>icon3Logo.altform-unplated_targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.600</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.altform-unplated_targetsize-48.png">
+      <PackagePath>icon3Logo.altform-unplated_targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.601</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.scale-100.png">
+      <PackagePath>icon3Logo.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.584</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.scale-125.png">
+      <PackagePath>icon3Logo.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.scale-150.png">
+      <PackagePath>icon3Logo.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.scale-200.png">
+      <PackagePath>icon3Logo.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.scale-400.png">
+      <PackagePath>icon3Logo.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.590</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.targetsize-16.png">
+      <PackagePath>icon3Logo.targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.591</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.targetsize-24.png">
+      <PackagePath>icon3Logo.targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.592</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.targetsize-256.png">
+      <PackagePath>icon3Logo.targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.598</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.targetsize-32.png">
+      <PackagePath>icon3Logo.targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.593</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3Logo.targetsize-48.png">
+      <PackagePath>icon3Logo.targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.594</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3MediumTile.scale-100.png">
+      <PackagePath>icon3MediumTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.633</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3MediumTile.scale-125.png">
+      <PackagePath>icon3MediumTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.636</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3MediumTile.scale-150.png">
+      <PackagePath>icon3MediumTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.639</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3MediumTile.scale-200.png">
+      <PackagePath>icon3MediumTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.643</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3MediumTile.scale-400.png">
+      <PackagePath>icon3MediumTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.657</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3SmallTile.scale-100.png">
+      <PackagePath>icon3SmallTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.622</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3SmallTile.scale-125.png">
+      <PackagePath>icon3SmallTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.624</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3SmallTile.scale-150.png">
+      <PackagePath>icon3SmallTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.625</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3SmallTile.scale-200.png">
+      <PackagePath>icon3SmallTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.627</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3SmallTile.scale-400.png">
+      <PackagePath>icon3SmallTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.632</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3StoreLogo.scale-100.png">
+      <PackagePath>icon3StoreLogo.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.614</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3StoreLogo.scale-125.png">
+      <PackagePath>icon3StoreLogo.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.616</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3StoreLogo.scale-150.png">
+      <PackagePath>icon3StoreLogo.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.617</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3StoreLogo.scale-200.png">
+      <PackagePath>icon3StoreLogo.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.619</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3StoreLogo.scale-400.png">
+      <PackagePath>icon3StoreLogo.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.621</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3WideTile.scale-100.png">
+      <PackagePath>icon3WideTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.660</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3WideTile.scale-125.png">
+      <PackagePath>icon3WideTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.664</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3WideTile.scale-150.png">
+      <PackagePath>icon3WideTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.673</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3WideTile.scale-200.png">
+      <PackagePath>icon3WideTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.680</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\icon3WideTile.scale-400.png">
+      <PackagePath>icon3WideTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.708</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLargeTile.scale-100.png">
+      <PackagePath>iconLargeTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.718</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLargeTile.scale-125.png">
+      <PackagePath>iconLargeTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.730</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLargeTile.scale-150.png">
+      <PackagePath>iconLargeTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.746</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLargeTile.scale-200.png">
+      <PackagePath>iconLargeTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.764</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLargeTile.scale-400.png">
+      <PackagePath>iconLargeTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.819</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>iconLogo.altform-lightunplated_targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.602</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>iconLogo.altform-lightunplated_targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.602</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>iconLogo.altform-lightunplated_targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.610</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>iconLogo.altform-lightunplated_targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.603</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>iconLogo.altform-lightunplated_targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.604</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-unplated_targetsize-16.png">
+      <PackagePath>iconLogo.altform-unplated_targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.594</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-unplated_targetsize-24.png">
+      <PackagePath>iconLogo.altform-unplated_targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.595</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-unplated_targetsize-256.png">
+      <PackagePath>iconLogo.altform-unplated_targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.602</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-unplated_targetsize-32.png">
+      <PackagePath>iconLogo.altform-unplated_targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.595</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.altform-unplated_targetsize-48.png">
+      <PackagePath>iconLogo.altform-unplated_targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.597</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.scale-100.png">
+      <PackagePath>iconLogo.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.579</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.scale-125.png">
+      <PackagePath>iconLogo.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.580</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.scale-150.png">
+      <PackagePath>iconLogo.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.581</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.scale-200.png">
+      <PackagePath>iconLogo.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.582</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.scale-400.png">
+      <PackagePath>iconLogo.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.585</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.targetsize-16.png">
+      <PackagePath>iconLogo.targetsize-16.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.targetsize-24.png">
+      <PackagePath>iconLogo.targetsize-24.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.586</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.targetsize-256.png">
+      <PackagePath>iconLogo.targetsize-256.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.593</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.targetsize-32.png">
+      <PackagePath>iconLogo.targetsize-32.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.587</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconLogo.targetsize-48.png">
+      <PackagePath>iconLogo.targetsize-48.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.588</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconMediumTile.scale-100.png">
+      <PackagePath>iconMediumTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.631</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconMediumTile.scale-125.png">
+      <PackagePath>iconMediumTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.634</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconMediumTile.scale-150.png">
+      <PackagePath>iconMediumTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.637</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconMediumTile.scale-200.png">
+      <PackagePath>iconMediumTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.642</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconMediumTile.scale-400.png">
+      <PackagePath>iconMediumTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.660</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconSmallTile.scale-100.png">
+      <PackagePath>iconSmallTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.620</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconSmallTile.scale-125.png">
+      <PackagePath>iconSmallTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.622</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconSmallTile.scale-150.png">
+      <PackagePath>iconSmallTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.623</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconSmallTile.scale-200.png">
+      <PackagePath>iconSmallTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.625</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconSmallTile.scale-400.png">
+      <PackagePath>iconSmallTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.630</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconStoreLogo.scale-100.png">
+      <PackagePath>iconStoreLogo.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.611</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconStoreLogo.scale-125.png">
+      <PackagePath>iconStoreLogo.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.612</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconStoreLogo.scale-150.png">
+      <PackagePath>iconStoreLogo.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.613</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconStoreLogo.scale-200.png">
+      <PackagePath>iconStoreLogo.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.614</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconStoreLogo.scale-400.png">
+      <PackagePath>iconStoreLogo.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.619</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconWideTile.scale-100.png">
+      <PackagePath>iconWideTile.scale-100.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.663</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconWideTile.scale-125.png">
+      <PackagePath>iconWideTile.scale-125.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.667</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconWideTile.scale-150.png">
+      <PackagePath>iconWideTile.scale-150.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.672</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconWideTile.scale-200.png">
+      <PackagePath>iconWideTile.scale-200.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.682</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconWideTile.scale-400.png">
+      <PackagePath>iconWideTile.scale-400.png</PackagePath>
+      <Modified>2023-03-01T14:53:55.713</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plus.scale-100.png">
       <PackagePath>plus.scale-100.png</PackagePath>
@@ -1223,7 +1799,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\splash.scale-100.png">
       <PackagePath>splash.scale-100.png</PackagePath>
-      <Modified>2023-02-14T12:30:43.628</Modified>
+      <Modified>2023-03-01T12:51:30.133</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\trajectoryicon.scale-100.png">
       <PackagePath>trajectoryicon.scale-100.png</PackagePath>

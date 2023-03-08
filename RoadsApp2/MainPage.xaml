@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:XGENO.Maui.Controls;assembly=Maui.Controls.BottomSheet"
              x:Class="RoadsApp2.MainPage"
              Loaded="ContentPage_Loaded">
+    
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
@@ -22,7 +23,7 @@
                         Grid.RowSpan="3"
                         Grid.ColumnSpan="3"
                         Grid.Row="0" >
-
+           
             <AbsoluteLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="AbsoluteLayout_Tapped"/>
             </AbsoluteLayout.GestureRecognizers>
@@ -43,7 +44,11 @@
                 WidthRequest="100"
                 HeightRequest="60"
                 Margin="10" />
-
+                <HorizontalStackLayout Spacing="1">
+                    <Button x:Name="saveButton" Text="Сохранить" AbsoluteLayout.LayoutBounds="0, 100" Clicked="saveButton_Clicked" ></Button>
+                    <Button x:Name="loadButton" Text="Загрузить" AbsoluteLayout.LayoutBounds="120, 100" Clicked="loadButton_Clicked"  ></Button>
+                </HorizontalStackLayout>
+                
                 <HorizontalStackLayout Spacing="1">
                     <Image Source="crossroadsicon.png"
                        WidthRequest="50"
@@ -77,7 +82,7 @@
                     x:Name="PlusButtonNew"
                     Clicked="PlusButtonSheet_Clicked"
                     HorizontalOptions="End"
-                    CornerRadius="30"
+                    CornerRadius="25"
                     ZIndex="99"
                     Grid.Column="1"
                     Grid.Row="2"

@@ -49,7 +49,7 @@ namespace RoadsApp2.Utils
         {
             foreach (Node node in nodes)
             {
-                if (node.rectangle.Equals(rectangle))
+                if (node.Rectangle.Equals(rectangle))
                 {
                     return node;
                 }
@@ -61,7 +61,7 @@ namespace RoadsApp2.Utils
         {
             foreach (Node node in nodes)
             {
-                if (node.rectangle.Equals(rectangle))
+                if (node.Rectangle.Equals(rectangle))
                 {
                     return true;
                 }
@@ -73,7 +73,7 @@ namespace RoadsApp2.Utils
         {
             foreach (Link link in links)
             {
-                if (link.road.Equals(targetRoad))
+                if (link.Road.Equals(targetRoad))
                 {
                     return link;
                 }
@@ -86,9 +86,9 @@ namespace RoadsApp2.Utils
             rectangleExcept ??= new Rectangle();
             foreach (Node node in nodes)
             {
-                if (!node.rectangle.Equals(rectangleExcept))
+                if (!node.Rectangle.Equals(rectangleExcept))
                 {
-                    foreach (Image imageButton in node.imageButtons)
+                    foreach (Image imageButton in node.PlusButtons)
                     {
                         imageButton.Source = source;
                     }
@@ -99,7 +99,7 @@ namespace RoadsApp2.Utils
         public static bool IsFlagBelongsToSameNode(Image imageButton1, Image imageButton2, List<Node> nodes)
         {
             Node node = GetNodeFromImageButton(imageButton1, nodes);
-            return node.imageButtons.Contains(imageButton2);
+            return node.PlusButtons.Contains(imageButton2);
         }
 
         public static void SetImageButtonsVisibility(List<Image> imageButtons, bool isVisible)
@@ -122,7 +122,7 @@ namespace RoadsApp2.Utils
         {
             foreach (Node node in nodes)
             {
-                if (node.imageButtons.IndexOf(imageButton) != -1)
+                if (node.PlusButtons.IndexOf(imageButton) != -1)
                 {
                     return node;
                 }
@@ -205,10 +205,10 @@ namespace RoadsApp2.Utils
                     foreach (LineStepper lineStepper in link.LineSteppers)
                     {
                         lineStepper.Stepper.IsVisible = visibility;
-                        if (lineStepper.CheckBoxTwoLaned != null)
-                        {
-                            lineStepper.CheckBoxTwoLaned.IsVisible = visibility;
-                        }
+                        //if (lineStepper.CheckBoxTwoLaned != null)
+                        //{
+                        //    lineStepper.CheckBoxTwoLaned.IsVisible = visibility;
+                        //}
                     }
                 }
             }
@@ -221,10 +221,10 @@ namespace RoadsApp2.Utils
                 foreach (LineStepper lineStepper in lineSteppers)
                 {
                     lineStepper.Stepper.IsVisible = visibility;
-                    if (lineStepper.CheckBoxTwoLaned != null)
-                    {
-                        lineStepper.CheckBoxTwoLaned.IsVisible = visibility;
-                    }
+                    //if (lineStepper.CheckBoxTwoLaned != null)
+                    //{
+                    //    lineStepper.CheckBoxTwoLaned.IsVisible = visibility;
+                    //}
                 }
             }
         }
@@ -313,13 +313,13 @@ namespace RoadsApp2.Utils
             {
                 for (int j = 0; j < links[i].LineSteppers.Count; j++)
                 {
-                    if (links[i].LineSteppers[j].CheckBoxTwoLaned != null)
-                    {
-                        if (links[i].LineSteppers[j].CheckBoxTwoLaned.Equals(checkBox))
-                        {
-                            return links[i];
-                        }
-                    }
+                    //if (links[i].LineSteppers[j].CheckBoxTwoLaned != null)
+                    //{
+                    //    if (links[i].LineSteppers[j].CheckBoxTwoLaned.Equals(checkBox))
+                    //    {
+                    //        return links[i];
+                    //    }
+                    //}
                 }
             }
             return new Link();
