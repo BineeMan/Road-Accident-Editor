@@ -29,7 +29,8 @@ namespace RoadsApp2.Utils
             Rectangle rectangle = new Rectangle()
             {
                 Fill = Color.FromRgb(137, 137, 137),
-                //Fill = Brush.Red,
+                //InputTransparent = true,
+                //Background = Brush.Red,
                 HeightRequest = rect.Height,
                 WidthRequest = rect.Width,
                 Stroke = Brush.Red,
@@ -324,5 +325,33 @@ namespace RoadsApp2.Utils
             }
             return new Link();
         }
-    } 
+
+        public static Line DrawLine(Vector vector)
+        {
+            Brush lineColor = Brush.White;
+            Line line = new Line()
+            {
+                Fill = lineColor,
+                Stroke = lineColor,
+                StrokeThickness = 3,
+                IsEnabled = false,
+                ZIndex = 2,
+                StrokeDashArray = { 2, 2 },
+                StrokeDashOffset = 10,
+                X1 = vector.point1.X,
+                Y1 = vector.point1.Y,
+                X2 = vector.point2.X,
+                Y2 = vector.point2.Y,
+            };
+            return line;
+        }
+
+
+        public static void RedrawRoad(ref Polygon road, Vector newDestination)
+        {
+            road.Points[1] = newDestination.point1;
+            road.Points[2] = newDestination.point2;
+        }
+
+    }
 }

@@ -60,9 +60,13 @@
 	  <None Remove="Resources\Images\car1.png" />
 	  <None Remove="Resources\Images\car3.png" />
 	  <None Remove="Resources\Images\crossicon.png" />
+	  <None Remove="Resources\Images\crossicon2.png" />
 	  <None Remove="Resources\Images\crossiconinactive.png" />
 	  <None Remove="Resources\Images\crossroadsicon.png" />
+	  <None Remove="Resources\Images\crossroadsicon2.png" />
+	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\desticon.png" />
+	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\plus.png" />
 	  <None Remove="Resources\Images\plusbuttonnew.png" />
 	  <None Remove="Resources\Images\plusGreen.png" />
@@ -74,7 +78,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -89,6 +97,15 @@
 	  <MauiIcon Include="Resources\AppIcon\icon.png" />
 	  <MauiIcon Include="Resources\AppIcon\icon2.png" />
 	  <MauiIcon Include="Resources\AppIcon\icon3.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AccidentRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

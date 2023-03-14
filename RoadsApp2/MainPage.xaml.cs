@@ -3,6 +3,7 @@ using System.Numerics;
 using System.Runtime.Serialization;
 using System.Xml;
 using Microsoft.Maui.Controls.Shapes;
+using RoadsApp2.Database;
 using RoadsApp2.DataClasses;
 using RoadsApp2.XMLClasses;
 using static RoadsApp2.Utils.Enums;
@@ -16,62 +17,20 @@ namespace RoadsApp2;
 
 public partial class MainPage : ContentPage
 {
+    RoadAccidentDatabase RoadAccidentDatabase { get; set; }
     public MainPage()
     {
         InitializeComponent();
         ResetRoadElements();
-        //absoluteLayout.ChildAdded += AbsoluteLayout_ChildAdded;
+
+        RoadAccidentDatabase = new RoadAccidentDatabase();
+        
     }
 
-    private void AbsoluteLayout_ChildAdded(object sender, ElementEventArgs e)
+    private async void ContentPage_Loaded(object sender, EventArgs e)
     {
-        foreach (IView view in absoluteLayout.Children)
-        {
-            if (view is Image)
-            {
-                Image image = (Image)view;
-
-                FileStream writer = 
-                    new FileStream("G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test.xml", FileMode.Create);
-                DataContractSerializer dataContractSerializer = new DataContractSerializer(typeof(Image));
-                DataContractAttribute dataContractAttribute = new();
-                dataContractAttribute.IsReference = true;
-
-                dataContractSerializer.WriteObject(writer, image);
-
-                //using (FileStream fileStream = new FileStream("test.xml", FileMode.OpenOrCreate))
-                //{
-                //    xmlSerializer.Serialize(fileStream, image);
-
-                //}
-                return;
-            }
-            //if (view is Rectangle)
-            //{
-            //    Rectangle rectangle = (Rectangle)view;
-            //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(Rectangle));
-
-            //    //FileStream writer = new FileStream("G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test.xml", FileMode.Create);
-            //    //DataContractSerializer dataContractSerializer = new DataContractSerializer(typeof(Image));
-            //    //DataContractAttribute dataContractAttribute = new();
-            //    //dataContractAttribute.IsReference = true;
-
-            //    //dataContractSerializer.WriteObject(writer, image);
-
-            //    using (FileStream fileStream = new FileStream("test.xml", FileMode.OpenOrCreate))
-            //    {
-            //        xmlSerializer.Serialize(fileStream, rectangle);
-
-            //    }
-            //    return;
-            //}
-            else
-            {
-                Debug.WriteLine(view.ToString());
-            }
-            
-        }
-        Debug.WriteLine("");
+        Debug.WriteLine(FileSystem.AppDataDirectory);
+        await RoadAccidentDatabase.Init(); 
     }
 
     private Node PreviousNode { get; set; }
@@ -102,6 +61,8 @@ public partial class MainPage : ContentPage
 
     private List<Image> RoadObjects { get; set; }
 
+    private List<Line> Trajectories { get; set; }
+
     private Image CurrentImageButton { get; set; }
 
     private Orientation CurrentOrientation { get; set; }
@@ -120,13 +81,6 @@ public partial class MainPage : ContentPage
 
     private Rectangle CurrentCollision { get; set; }
 
-    private void AdaptUIElementsWindows()
-    {
-        switchIsCrossroad.Margin = new Thickness(0, 0, -50, 0);
-        switchIsTrajectoryMode.Margin = new Thickness(10, 0, -50, 0);
-
-    }
-
     private void ResetRoadElements()
     {
         PreviousNode = new Node() { PlusButtons = new List<Image>() };
@@ -139,19 +93,12 @@ public partial class MainPage : ContentPage
         CurrentRectangle = new Rectangle();
         AddNewObjectFlag = false;
         CurrentFrame = new Frame();
-        RectWidth = 200;
-        RectHeight = 200;
-#if WINDOWS
         RectWidth = 70;
         RectHeight = 70;
-#endif
-#if ANDROID
-        RectWidth = 70;
-        RectHeight = 70;
-#endif
         crossButton.IsEnabled = false;
         CurrentCollision = new Rectangle();
         RoadObjects = new List<Image>();
+        Trajectories = new List<Line>();
     }
 
     ///<summary>
@@ -189,10 +136,8 @@ public partial class MainPage : ContentPage
                     ZIndex = 99,
                     AnchorY = 1,
                     IsVisible = isVisible,
-                    //Background = Brush.Transparent
                 };
                 absoluteLayout.Add(imageButton);
-                //Debug.WriteLine(imageButton.Rotation);
                 PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
                 panGestureRecognizer.PanUpdated += PlusImagePuttonPanGesture_PanUpdated;
                 imageButton.GestureRecognizers.Add(panGestureRecognizer);
@@ -224,7 +169,7 @@ public partial class MainPage : ContentPage
                 ZIndex = 99,
                 AnchorY = 1,
                 IsVisible = isVisible,
-                Background = Brush.Transparent
+                //Background = Brush.Transparent
             };
             double x = 0, y = 0;
             PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
@@ -247,8 +192,6 @@ public partial class MainPage : ContentPage
             absoluteLayout.Add(imageButton);
             absoluteLayout.SetLayoutBounds(imageButton,
                 new Rect(x, y, imageButton.Width, imageButton.Height));
-            //imageButton.Clicked += ImgButton_Clicked;
-
             node.PlusButtons.Add(imageButton);
         }
         Nodes.Add(node);
@@ -518,21 +461,8 @@ public partial class MainPage : ContentPage
         Rect rect = new Rect();
         rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
                 tappedPoint.Value.Y - RectHeight / 2, RectWidth, RectHeight);
-
-        if (switchIsCrossroad.IsToggled)
-        {
-            if (CurrentOrientation == Orientation.Left || CurrentOrientation == Orientation.Right)
-            {
-                rect = new Rect(tappedPoint.Value.X - RectWidth / 10,
-                    tappedPoint.Value.Y - RectHeight / 2, RectWidth / 10 , RectHeight);
-            }
-            else if (CurrentOrientation == Orientation.Up || CurrentOrientation == Orientation.Down)
-            {
-                rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
-                    tappedPoint.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
-            }
-        }
-        if (AddNewTrajectoryFlag)
+    
+        if (switchIsTrajectoryMode.IsToggled)
         {
             if (AddNewObjectFlag)
             {
@@ -548,11 +478,26 @@ public partial class MainPage : ContentPage
             else
             {
                 Line line = DrawTrajectory((Point)CurrentPoint, (Point)tappedPoint);
+                Trajectories.Add(line);
                 absoluteLayout.Add(line);
                 CurrentPoint = tappedPoint;
             }
         }
-        else if (Nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
+        if (switchIsCrossroad.IsToggled)
+        {
+            if (CurrentOrientation == Orientation.Left || CurrentOrientation == Orientation.Right)
+            {
+                rect = new Rect(tappedPoint.Value.X - RectWidth / 10,
+                    tappedPoint.Value.Y - RectHeight / 2, RectWidth / 10, RectHeight);
+            }
+            else if (CurrentOrientation == Orientation.Up || CurrentOrientation == Orientation.Down)
+            {
+                rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
+                    tappedPoint.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
+            }
+        }
+
+        if (Nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
         {
             rectangle = GetRectangle(rect, Crossroads_Tapped);
             absoluteLayout.Add(rectangle);
@@ -658,27 +603,7 @@ public partial class MainPage : ContentPage
         //RedrawRoad();
     }
 
-    private Line DrawLine(Vector vector)
-    {
-        Brush lineColor = Brush.White;
-        Line line = new Line()
-        {
-            Fill = lineColor,
-            Stroke = lineColor,
-            StrokeThickness = 3,
-            IsEnabled = false,
-            ZIndex = 2,
-            StrokeDashArray = { 2, 2 },
-            StrokeDashOffset = 10,
-            X1 = vector.point1.X,
-            Y1 = vector.point1.Y,
-            X2 = vector.point2.X,
-            Y2 = vector.point2.Y,
-        };
-        return line;
-    }
-
-    private void ModifyRoad(ref Link link, ref LineStepper lineStepper, bool isRemove)
+    private void ModifyRoad(ref Link link, ref LineStepper lineStepper, bool isRemoveMode)
     {
         PointCollection points = link.Road.Points;
         Vector vectorStart = new Vector();
@@ -693,7 +618,6 @@ public partial class MainPage : ContentPage
         vectorStartOriginal.point1 = link.OriginalRoadPoints[0];
         vectorStartOriginal.point2 = link.OriginalRoadPoints[3];
 
-
         Vector vector = new Vector()
         {
             point1 = points[0],
@@ -706,7 +630,7 @@ public partial class MainPage : ContentPage
         {
             double stepX = (vectorStartOriginal.point2.X - vectorStartOriginal.point1.X) / scale;
             double stepY = (vectorStartOriginal.point2.Y - vectorStartOriginal.point1.Y) / scale;
-            if (isRemove)
+            if (isRemoveMode)
             {
                 stepX = -stepX;
                 stepY = -stepY;
@@ -720,7 +644,7 @@ public partial class MainPage : ContentPage
             link.Road.Points[4] = newPointStart;
             link.Road.Points[1] = newPointDestination;
 
-            if (isRemove)
+            if (isRemoveMode)
             {
                 absoluteLayout.Remove(link.LinesSide1[link.LinesSide1.Count - 1]);
                 link.LinesSide1.RemoveAt(link.LinesSide1.Count - 1);
@@ -744,7 +668,7 @@ public partial class MainPage : ContentPage
         {
             double stepX = (vectorStartOriginal.point2.X - vectorStartOriginal.point1.X) / scale;
             double stepY = (vectorStartOriginal.point2.Y - vectorStartOriginal.point1.Y) / scale;
-            if (isRemove)
+            if (isRemoveMode)
             {
                 stepX = -stepX;
                 stepY = -stepY;
@@ -760,7 +684,7 @@ public partial class MainPage : ContentPage
             link.Road.Points[2] = newPointDestination;
             absoluteLayout.Remove(link.Road);
             absoluteLayout.Add(link.Road);
-            if (isRemove)
+            if (isRemoveMode)
             {
                 absoluteLayout.Remove(link.LinesSide2[link.LinesSide2.Count - 1]);
                 link.LinesSide2.RemoveAt(link.LinesSide2.Count - 1);
@@ -796,43 +720,57 @@ public partial class MainPage : ContentPage
         {
             ModifyRoad(ref link, ref lineStepper, true);
         }
-        
-        //DrawLines2(ref link, lineStepper.Vector, (int)value);
     }
 
     private async void RoadObjectFromMenu_Tapped(object sender, EventArgs e)
     {
-        Image tappedImage = new Image();
-        Image sender2 = (Image)sender;
-        tappedImage.Source = sender2.Source;
-        tappedImage.WidthRequest = sender2.WidthRequest;
-        tappedImage.HeightRequest = sender2.HeightRequest;
-        if (tappedImage != null) 
+        Image newImage = new Image();
+        Image tappedImage = (Image)sender;
+        newImage.Source = tappedImage.Source;
+        newImage.WidthRequest = tappedImage.WidthRequest;
+        newImage.HeightRequest = tappedImage.HeightRequest;
+        if (newImage != null) 
         {
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += RoadObjectImage_Tapped;
-            tappedImage.GestureRecognizers.Add(tapGestureRecognizer);
-            tappedImage.ZIndex = 12;
-            tappedImage.Scale = 0.7;
+            newImage.GestureRecognizers.Add(tapGestureRecognizer);
+            newImage.ZIndex = 12;
+            newImage.Scale = 0.7;
             PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
             panGestureRecognizer.PanUpdated += RoadObjectPanGesture_PanUpdated;
 
-            tappedImage.GestureRecognizers.Add(panGestureRecognizer);
-            absoluteLayout.Add(tappedImage);
-            absoluteLayout.SetLayoutBounds(tappedImage, new Rect(absoluteLayout.Width / 2,
-                    absoluteLayout.Height / 2, tappedImage.Width, tappedImage.Height));
+            newImage.GestureRecognizers.Add(panGestureRecognizer);
+            absoluteLayout.Add(newImage);
+            absoluteLayout.SetLayoutBounds(newImage, new Rect(absoluteLayout.Width / 2,
+                    absoluteLayout.Height / 2, newImage.Width, newImage.Height));
 
-            RoadObjects.Add(tappedImage);
+            RoadObjects.Add(newImage);
             await ObjectMenuBottomSheet.CloseBottomSheet();
+        }
+    }
+
+    private void ToggleAllRoadObjects(bool isEnabled)
+    {
+        
+        foreach (Image image in RoadObjects)
+        {
+            image.IsEnabled = isEnabled;
+        }
+        foreach (Node node in Nodes)
+        {
+            node.Rectangle.IsEnabled = !isEnabled;
+            foreach (Link link in node.Roads)
+            {
+                link.Road.IsEnabled = isEnabled;
+                link.RectangleCollision.InputTransparent = isEnabled;
+                link.RectangleCollision.IsEnabled = !isEnabled;
+            }
         }
     }
 
     private void SwitchIsTrajectoryMode_Toggled(object sender, ToggledEventArgs e)
     {
-        foreach (Node node in Nodes)
-        {
-            node.Rectangle.IsEnabled = !e.Value;
-        }
+        ToggleAllRoadObjects(e.Value);
 
         if (AddNewTrajectoryFlag == true || e.Value == false)
         {
@@ -872,7 +810,6 @@ public partial class MainPage : ContentPage
     {
         if (CurrentView == null)
         {
-            //crossButton.IsEnabled = false;
             return;
         }
         if (CurrentView is Rectangle rectangle)
@@ -965,55 +902,13 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void PlusButtonNew_Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     private async void PlusButtonSheet_Clicked(System.Object sender, System.EventArgs e)
     {
         await ObjectMenuBottomSheet.OpenBottomSheet();
     }
 
-    private void ContentPage_Loaded(object sender, EventArgs e)
-    {
-        //
-    }
-
-    private void SwitchIsTwoLaned_Toggled(object sender, ToggledEventArgs e)
-    {
-        //label.Text = $"Значение {e.Value}";
-    }
-
-    private void CheckBoxTwoLaned_CheckedChanged(object sender, CheckedChangedEventArgs e)
-    {
-        CheckBox checkBox = (CheckBox)sender;
-        Link link = GetLinkByCheckBox(checkBox, Links);
-        if (e.Value)
-        {
-            //
-        }
-    }
-
-    private void RedrawRoad(ref Polygon road, Vector newDestination)
-    {
-        road.Points[1] = newDestination.point1;
-        road.Points[2] = newDestination.point2;
-    }
-
-    private void Debug2()
-    {
-        for (int i = 0; i < Nodes.Count; i++) 
-        {
-            for (int j = 0; j < Nodes[i].PlusButtons.Count; j++)
-            {
-                Debug.WriteLine("asd " + Nodes[i].PlusButtons[j].Rotation);
-
-            }
-        }
-    }
-
     private Vector vectorStartPan, vectorEndPan, vectorTemp;
+
     private Polygon polygonPan;
     public void PlusImagePuttonPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
     {
@@ -1039,9 +934,6 @@ public partial class MainPage : ContentPage
                 polygonPan = DrawRoad(vectorStartPan, vectorEndPan, orientation, orientation);
                 absoluteLayout.Add(polygonPan);
                 absoluteLayout.SetLayoutBounds(polygonPan, new Rect(0, 0, absoluteLayout.Width, absoluteLayout.Height));
-
-                //Debug.WriteLine("GestureStatus.Started");
-
                 break;
             case GestureStatus.Running:
 #if ANDROID
@@ -1057,7 +949,6 @@ public partial class MainPage : ContentPage
                 vectorEndPan.point1 = new Point(vectorTemp.point1.X + x, vectorTemp.point1.Y + y);
                 vectorEndPan.point2 = new Point(vectorTemp.point2.X + x, vectorTemp.point2.Y + y);
                 RedrawRoad(ref polygonPan, vectorEndPan);
-                //Debug.WriteLine("GestureStatus.Running");
                 break;
 
             case GestureStatus.Canceled:
@@ -1066,7 +957,6 @@ public partial class MainPage : ContentPage
                 break;
 
             case GestureStatus.Completed:
-                //Debug.WriteLine("GestureStatus.Completed");
                 IsPanWorking = false;
                 Rect rect = new Rect();
                 rect = new Rect(vectorEndPan.point1.X,
@@ -1102,8 +992,6 @@ public partial class MainPage : ContentPage
                         }
                     }
                 }
-
-
                 Rectangle rectangle = GetRectangle(rect, Crossroads_Tapped);
                 absoluteLayout.Add(rectangle);
                 absoluteLayout.SetLayoutBounds(rectangle, rect);
@@ -1166,20 +1054,32 @@ public partial class MainPage : ContentPage
     private void saveButton_Clicked(object sender, EventArgs e)
     {
         XMLConverter xmlConverter = new XMLConverter(absoluteLayout, this);
-        xmlConverter.ConvertNodesToXML(Nodes);
-        
+        xmlConverter.ConvertNodesToXML(Nodes);      
         xmlConverter.ConvertImagesToXML(RoadObjects);
+        xmlConverter.ConvertLinesToXML(Trajectories);
+        string filePath = "";
 
-        string filePath = "G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test2.xml";
+#if WINDOWS
+        filePath = "G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test2.xml";
+#endif
+#if ANDROID
+        var docsDirectory = Android.App.Application.Context.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
+        filePath = docsDirectory.AbsoluteFile.Path + "/test2.xml";
+#endif
         xmlConverter.SaveDocumentOnDisk(filePath);
-
-
     }
 
     private void loadButton_Clicked(object sender, EventArgs e)
     {
         XMLConverter xmlConverter = new XMLConverter(absoluteLayout, this);
-        string filePath = "G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test2.xml";
+        string filePath = "";
+#if WINDOWS
+        filePath = "G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test2.xml";
+#endif
+#if ANDROID
+        var docsDirectory = Android.App.Application.Context.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
+        filePath = docsDirectory.AbsoluteFile.Path+"/test2.xml";
+#endif
         List<Image> images = new List<Image>();
         List<Node> nodes = new List<Node>();
         List<Link> links = new List<Link>();
@@ -1189,6 +1089,10 @@ public partial class MainPage : ContentPage
         Nodes = nodes;
         Links = links;
         RoadObjects = images;
+        Debug.WriteLine(images.Count);
+        foreach (Image image in RoadObjects)
+        {
+            Debug.WriteLine(absoluteLayout.GetLayoutBounds(image).X + " " + absoluteLayout.GetLayoutBounds(image).Y);
+        }
     }
-
 }

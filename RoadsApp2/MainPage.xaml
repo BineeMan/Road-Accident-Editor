@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XGENO.Maui.Controls;assembly=Maui.Controls.BottomSheet"
              x:Class="RoadsApp2.MainPage"
-             Loaded="ContentPage_Loaded">
+             Loaded="ContentPage_Loaded"    >
     
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
@@ -15,7 +15,6 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
         <AbsoluteLayout BackgroundColor="#F0F0F0"
                         x:Name="absoluteLayout"
                         ZIndex="99"
@@ -32,23 +31,16 @@
         <ScrollView Orientation="Horizontal"
                     Grid.Row="0"
                     Grid.ColumnSpan="3"
-                    ZIndex="99">
+                    ZIndex="99"
+                    Margin="0, 10">
+            
             <HorizontalStackLayout Grid.Column="0"
-                Grid.Row="0" Grid.ColumnSpan="3" >
-
-                <Button Text="Очистить"
-                Clicked="ButtonClean_Clicked"
-                ZIndex="99"
-                Grid.Column="0"
-                Grid.Row="0"
-                WidthRequest="100"
-                HeightRequest="60"
-                Margin="10" />
+                                   Grid.Row="0"
+                                   Grid.ColumnSpan="3">
                 <HorizontalStackLayout Spacing="1">
                     <Button x:Name="saveButton" Text="Сохранить" AbsoluteLayout.LayoutBounds="0, 100" Clicked="saveButton_Clicked" ></Button>
                     <Button x:Name="loadButton" Text="Загрузить" AbsoluteLayout.LayoutBounds="120, 100" Clicked="loadButton_Clicked"  ></Button>
                 </HorizontalStackLayout>
-                
                 <HorizontalStackLayout Spacing="1">
                     <Image Source="crossroadsicon.png"
                        WidthRequest="50"
@@ -66,13 +58,27 @@
                         IsToggled="False"
                         Toggled="SwitchIsTrajectoryMode_Toggled"
                         Margin="0, 0, 0 ,0" />
-
                 </HorizontalStackLayout>
-                <ImageButton x:Name="crossButton"
-                             Source="crossicon.png"
+                
+                <HorizontalStackLayout Margin="40, 0">
+                    
+                    <ImageButton x:Name="crossButton"
+                             Source="crossicon2.png"
                              Clicked="CrossButton_Clicked"
                              WidthRequest="40"
-                             HeightRequest="40" />
+                             HeightRequest="40" 
+                             BackgroundColor="Transparent"/>
+                
+                    <ImageButton Source="delete.png"                   
+                                        Clicked="ButtonClean_Clicked"
+                                        ZIndex="99"
+                                        WidthRequest="50"
+                                        HeightRequest="40"
+                                        Margin="10"
+                                        BackgroundColor="Transparent">
+                    </ImageButton>
+                </HorizontalStackLayout>
+
             </HorizontalStackLayout>
         </ScrollView>
 

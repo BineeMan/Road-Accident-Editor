@@ -24,5 +24,23 @@
             Main absolute layout event
             </summary>
         </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Name">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.name"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.DateTime">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.dateTime"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Address">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.address"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Description">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.description"/>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Save"/>.</summary>
+        </member>
     </members>
 </doc>

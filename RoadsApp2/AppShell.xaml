@@ -4,12 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:RoadsApp2"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Disabled"
+    TabBarBackgroundColor="#F0F0F0">
 
-    <ShellContent
-        Title=""
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
-
-
+    <TabBar x:Name="ShellTabBar">
+        <Tab Title="Конструктор"
+             Icon="crossroadsicon2.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Меню"
+             Icon="home.png">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}"  />
+        </Tab>
+       
+    </TabBar>
 </Shell>

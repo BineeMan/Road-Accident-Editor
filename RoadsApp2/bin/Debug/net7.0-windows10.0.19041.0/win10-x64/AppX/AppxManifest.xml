@@ -10,7 +10,7 @@
   <Identity Name="9246b96d-4b3b-486e-a7f8-1a994f24e3b9" Publisher="CN=User Name" Version="1.0.0.1" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="792D0F86-06AF-4F6B-95E1-CAEFD577D06E" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>RoadsApp2</DisplayName>
+    <DisplayName>Конструктор ДТП</DisplayName>
     <PublisherDisplayName>User Name</PublisherDisplayName>
     <Logo>iconStoreLogo.png</Logo>
   </Properties>
@@ -24,8 +24,8 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="RoadsApp2.exe" EntryPoint="Windows.FullTrustApplication">
-      <uap:VisualElements DisplayName="RoadsApp2" Description="RoadsApp2" Square150x150Logo="iconMediumTile.png" Square44x44Logo="iconLogo.png" BackgroundColor="transparent">
-        <uap:DefaultTile Square71x71Logo="iconSmallTile.png" Wide310x150Logo="iconWideTile.png" Square310x310Logo="iconLargeTile.png" ShortName="RoadsApp2">
+      <uap:VisualElements DisplayName="Конструктор ДТП" Description="Конструктор ДТП" Square150x150Logo="iconMediumTile.png" Square44x44Logo="iconLogo.png" BackgroundColor="transparent">
+        <uap:DefaultTile Square71x71Logo="iconSmallTile.png" Wide310x150Logo="iconWideTile.png" Square310x310Logo="iconLargeTile.png" ShortName="Конструктор ДТП">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square150x150Logo" />
             <uap:ShowOn Tile="wide310x150Logo" />

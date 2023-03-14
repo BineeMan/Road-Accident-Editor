@@ -1,10 +1,9 @@
-﻿using Microsoft.Maui;
+﻿
 using Microsoft.Maui.Controls.Shapes;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.Schema;
 using static RoadsApp2.Utils.Structs;
 
 namespace RoadsApp2.XMLClasses
@@ -20,7 +19,6 @@ namespace RoadsApp2.XMLClasses
         private string MauiTapGestureRecogniserName { get; } = "Microsoft.Maui.Controls.TapGestureRecognizer";
 
         private string MauiPanGestureRecogniserName { get; } = "Microsoft.Maui.Controls.PanGestureRecognizer";
-
 
         private MainPage MainPage { get; set; }
 
@@ -57,6 +55,30 @@ namespace RoadsApp2.XMLClasses
             XmlText xmlAttributeText = XmlDoc.CreateTextNode(value);
             xmlAttribute.AppendChild(xmlAttributeText);
             ElementAppendTo.Attributes.Append(xmlAttribute);
+        }
+
+        private XmlElement ConvertLineToXmlNode(Line line, string nodeName)
+        {
+            XmlElement lineElement = XmlDoc.CreateElement(nodeName);
+            SolidColorBrush solidColorBrush = (SolidColorBrush)line.Fill;
+            AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), lineElement);
+            solidColorBrush = (SolidColorBrush)line.Stroke;
+            AddNewAttribute("Stroke", solidColorBrush.Color.ToHex().ToString(), lineElement);
+            AddNewAttribute("StrokeThickness", line.StrokeThickness.ToString(), lineElement);
+            AddNewAttribute("IsEnabled", line.IsEnabled.ToString(), lineElement);
+            AddNewAttribute("ZIndex", line.ZIndex.ToString(), lineElement);
+            string temp = "";
+            foreach (double num in line.StrokeDashArray)
+            {
+                temp += num.ToString() + " ";
+            }
+            AddNewAttribute("StrokeDashArray", temp, lineElement);
+            AddNewAttribute("StrokeDashOffset", line.StrokeDashOffset.ToString(), lineElement);
+            AddNewAttribute("X1", line.X1.ToString(), lineElement);
+            AddNewAttribute("Y1", line.Y1.ToString(), lineElement);
+            AddNewAttribute("X2", line.X2.ToString(), lineElement);
+            AddNewAttribute("Y2", line.Y2.ToString(), lineElement);
+            return lineElement;
         }
 
         public void ConvertNodesToXML(List<Node> Nodes)
@@ -231,24 +253,17 @@ namespace RoadsApp2.XMLClasses
 
                         solidColorBrush = (SolidColorBrush)line.Fill;
                         AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), Line);
-
                         solidColorBrush = (SolidColorBrush)line.Stroke;
                         AddNewAttribute("Stroke", solidColorBrush.Color.ToHex().ToString(), Line);
-
                         AddNewAttribute("StrokeThickness", line.StrokeThickness.ToString(), Line);
-
                         AddNewAttribute("IsEnabled", line.IsEnabled.ToString(), Line);
-
                         AddNewAttribute("ZIndex", line.ZIndex.ToString(), Line);
-
                         string temp = "";
                         foreach (double num in line.StrokeDashArray)
                         {
                             temp += num.ToString() + " ";
                         }
-
                         AddNewAttribute("StrokeDashArray", temp, Line);
-
                         AddNewAttribute("StrokeDashOffset", line.StrokeDashOffset.ToString(), Line);
 
                         AddNewAttribute("X1", line.X1.ToString(), Line);
@@ -482,14 +497,38 @@ namespace RoadsApp2.XMLClasses
             }
         }
 
+        public void ConvertLinesToXML(List<Line> lines)
+        {
+            XmlElement trajectoriesElement = XmlDoc.CreateElement("Trajectories");
+            XmlRoot.AppendChild(trajectoriesElement);
+            foreach (Line line in lines)
+            {
+                XmlElement lineElement = ConvertLineToXmlNode(line, "Line");
+                trajectoriesElement.AppendChild(lineElement);   
+            }
+            
+        }
+
         private Rect StringToRect(string rectString)
         {
-            rectString = rectString.Replace(".", ",");
-            var matches = Regex.Match(rectString, @"{X=(.*?) Y=(.*?) Width=(.*?) Height=(.*?)}");
-            var rectNew = new Rect(Double.Parse(matches.Groups[1].Value),
-                                Double.Parse(matches.Groups[2].Value),
-                                Double.Parse(matches.Groups[3].Value),
-                                Double.Parse(matches.Groups[4].Value));
+            Rect rectNew;
+            try 
+            {
+                var matches = Regex.Match(rectString, @"{X=(.*?) Y=(.*?) Width=(.*?) Height=(.*?)}");
+                rectNew = new Rect(Double.Parse(matches.Groups[1].Value),
+                                    Double.Parse(matches.Groups[2].Value),
+                                    Double.Parse(matches.Groups[3].Value),
+                                    Double.Parse(matches.Groups[4].Value)); 
+            }
+            catch 
+            {
+                rectString = rectString.Replace(".", ",");
+                var matches = Regex.Match(rectString, @"{X=(.*?) Y=(.*?) Width=(.*?) Height=(.*?)}");
+                rectNew = new Rect(Double.Parse(matches.Groups[1].Value),
+                                    Double.Parse(matches.Groups[2].Value),
+                                    Double.Parse(matches.Groups[3].Value),
+                                    Double.Parse(matches.Groups[4].Value));
+            }
             return rectNew;
         }
 
@@ -570,9 +609,6 @@ namespace RoadsApp2.XMLClasses
                     if (linkCompare.Road.Points[j].X == links[i].Road.Points[j].X && linkCompare.Road.Points[j].Y == links[i].Road.Points[j].Y)
                     {
                         samePointsAmount++;
-                        //Debug.WriteLine($"{linkCompare.Road.Points[j].X}  {links[i].Road.Points[j].X}");
-                        //Debug.WriteLine($"{linkCompare.Road.Points[j].Y}  {links[i].Road.Points[j].Y}");
-                        //Debug.WriteLine($"{links[i].Road.Points.Count - 1}  {samePointsAmount}");
                     }
                 }
                 if (samePointsAmount == links[i].Road.Points.Count)
@@ -588,7 +624,6 @@ namespace RoadsApp2.XMLClasses
         public void ConvertXmlToViews(string XmlDocumentPath, out List<Node> nodes, out List<Image> images, out List<Link> links)
         {
             XDocument xDoc = XDocument.Load(XmlDocumentPath);
-
             nodes = new List<Node>();
             links = new List<Link>();
             images = new List<Image>();
@@ -615,8 +650,6 @@ namespace RoadsApp2.XMLClasses
                 FormAbsoluteLayout.Add(rectangle);
                 FormAbsoluteLayout.SetLayoutBounds(rectangle, rect);
 
-                //XElement gestureRecognisersElement = rectangleElement.Element("GestureRecognizers");
-                //XElement tapGestureRecognizerElement = gestureRecognisersElement.Element("Microsoft.Maui.Controls.TapGestureRecognizer");
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += MainPage.Crossroads_Tapped;
                 rectangle.GestureRecognizers.Add(tapGestureRecognizer);
@@ -663,7 +696,8 @@ namespace RoadsApp2.XMLClasses
                     Debug.WriteLine(LinksElement.Name);
                     #region Road
                     XElement LinkElement = LinksElement.Element("Link");
-
+                    if (LinkElement == null)
+                        break;
                     XElement RoadElement = LinkElement.Element("Road");
 
                     XElement PointsElement = RoadElement.Element("PointsCollection");
@@ -699,12 +733,9 @@ namespace RoadsApp2.XMLClasses
                         //link NOT unique, existing link
                         node.Roads ??= new List<Link>();
                         node.Roads.Add(foundLink);
-
-                        Debug.WriteLine("1");
                     }
                     else
                     {
-                        Debug.WriteLine("2");
                         node.Roads ??= new List<Link>();
 
                         FormAbsoluteLayout.Add(link.Road);
@@ -834,10 +865,22 @@ namespace RoadsApp2.XMLClasses
                 imageMain.GestureRecognizers.Add(tapGestureRecognizer);
                 imageMain.GestureRecognizers.Add(panGestureRecognizer);
 
+                images.Add(imageMain);
+
                 FormAbsoluteLayout.Add(imageMain);
-                FormAbsoluteLayout.SetLayoutBounds(imageMain, StringToRect(rect.Value));
+                FormAbsoluteLayout.SetLayoutBounds(imageMain, StringToRect(GetValueFromAttribute("rect", imageElement)));
+                Debug.WriteLine(imageMain.ToString());
             }
             #endregion
+
+            #region Trajectories
+            XElement Trajectories = RoadElements.Element("Trajectories");
+            foreach (XElement trajectoryElement in Trajectories.Elements("Line"))
+            {
+                FormAbsoluteLayout.Add(GetLineFromElement(trajectoryElement));
+            }
+            #endregion
+
         }
     }
 }

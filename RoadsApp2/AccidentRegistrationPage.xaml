@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RoadsApp2.AccidentRegistrationPage"
+             Title="Сохранить файл"
+             xmlns:viewmodel="clr-namespace:RoadsApp2.ViewModels"
+             x:DataType="viewmodel:AccidentRegistrationViewModel"
+             Background="#F0F0F0">
+    <ScrollView>
+
+        <VerticalStackLayout>
+            <Frame BackgroundColor="#606060"
+                   Margin="80, 0, 80, -20"
+                   Padding="20,20"
+                   CornerRadius="30"
+                   BorderColor="Transparent">
+                <Label Text="Данные о ДТП"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   Margin="13, -15, 30, 0"
+                   FontFamily="Rubik"
+                   TextColor="White"/>
+            </Frame>
+            <Frame BackgroundColor="#606060"
+                   BorderColor="Transparent"
+                   CornerRadius="25">
+
+                <VerticalStackLayout>
+                    <VerticalStackLayout>
+                        <Label Text="Название"
+                           FontAttributes="Bold"
+                           FontSize="17"
+                           Margin="15, 5"
+                           HorizontalOptions="Start"
+                           FontFamily="Rubik"
+                           TextColor="White"/>
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="#E1E1E1"
+                               CornerRadius="30"
+                               Padding="10, 0">
+                            <Entry FontFamily="Rubik"
+                                    FontAttributes="Bold"
+                                    CharacterSpacing="1"
+                                    ToolTipProperties.Text="asd"
+                                    Placeholder="Название"
+                                    PlaceholderColor="Grey"
+                                    Text="{Binding Name}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Margin="0, 10">
+                        <Label Text="Дата"
+                            FontAttributes="Bold"
+                            FontSize="17"
+                            Margin="15, 5"
+                            HorizontalOptions="Start"
+                            FontFamily="Rubik"
+                            TextColor="White"/>
+                        <Frame BorderColor="Transparent"
+                                BackgroundColor="#E1E1E1"
+                                CornerRadius="30"
+                                Padding="10, 0">
+                            <DatePicker FontFamily="Rubik"
+                                    FontAttributes="Bold"
+                                    CharacterSpacing="1"  />
+                        </Frame>
+                    </VerticalStackLayout >
+
+                    <VerticalStackLayout Margin="0, 0, 0, 10">
+                        <Label Text="Ближайший адрес"
+                                   FontAttributes="Bold"
+                                   FontSize="17"
+                                   Margin="15, 5"
+                                   HorizontalOptions="Start"
+                                   FontFamily="Rubik"
+                                   TextColor="White"/>
+                        <Frame BorderColor="Transparent"
+                                   BackgroundColor="#E1E1E1"
+                                   CornerRadius="30"
+                                   Padding="10, 0">
+                            <Entry FontFamily="Rubik"
+                                       FontAttributes="Bold"
+                                       CharacterSpacing="1"
+                                       ToolTipProperties.Text="asd"
+                                       Placeholder="Ближайший адрес"
+                                       PlaceholderColor="Grey"
+                                       Text="{Binding Address}"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+
+                    <VerticalStackLayout >
+                        <Frame BackgroundColor="#D5D4D0"
+                               Margin="70, 0, 110, -25"  
+                               Padding="20, 20"
+                               CornerRadius="30"
+                               BorderColor="Transparent">
+                            <Label Text="Участники"
+                                   FontAttributes="Bold"
+                                   FontSize="17"
+                                   Margin="15, -5, 0, 5"
+                                   HorizontalOptions="Start"
+                                   FontFamily="Rubik"
+                                   TextColor="#000000"
+                                    />
+
+                        </Frame>
+                        <Frame BackgroundColor="#D5D4D0"   
+                               Padding="20, 20"
+                               CornerRadius="30"
+                               BorderColor="Transparent">
+                            <VerticalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Frame BackgroundColor="#E1E1E1"
+                                           CornerRadius="30"
+                                           Padding="10, 0"
+                                           Margin="0,0,10,0"
+                                           WidthRequest="260"
+                                           BorderColor="#A3A3A3">
+                                        <Entry FontFamily="Rubik"
+                                               FontAttributes="Bold"
+                                               CharacterSpacing="1"
+                                               ToolTipProperties.Text="asd"
+                                               Placeholder="Участник"
+                                               PlaceholderColor="Grey"
+                                               x:Name="ParticipantEntry"/>
+                                    </Frame>
+                                    <ImageButton Source="plusbuttonnew.png"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Clicked="ImageButtonPlus_Clicked">
+                                        <ImageButton.Shadow>
+                                            <Shadow Brush="Black"
+                                                    Offset="0,2"
+                                                    Opacity="0.5" />
+                                        </ImageButton.Shadow>
+                                    </ImageButton>
+                                </HorizontalStackLayout>
+                                
+                                <ScrollView MaximumHeightRequest="120" >
+                                    <VerticalStackLayout x:Name="ParticipantsStackLayout">
+                                        <SwipeView>
+                                            <SwipeView.RightItems>
+                                                <SwipeItems>
+                                                    <SwipeItem
+                                                       IconImageSource="delete.png"
+                                                       BackgroundColor="LightPink"
+                                                       Invoked="OnDeleteSwipeItem_Invoked"/>
+                                                </SwipeItems>
+                                            </SwipeView.RightItems>
+                                        </SwipeView>
+                                    </VerticalStackLayout>
+                                </ScrollView>
+                                
+                            </VerticalStackLayout>
+                        </Frame>
+                        <VerticalStackLayout Margin="0, 0, 0, 10">
+                            <Label Text="Описание"
+                                   FontAttributes="Bold"
+                                   FontSize="17"
+                                   Margin="15, 5"
+                                   HorizontalOptions="Start"
+                                   FontFamily="Rubik"
+                                   TextColor="White"/>
+                            <Frame BorderColor="Transparent"
+                                   BackgroundColor="#E1E1E1"
+                                   CornerRadius="30"
+                                   Padding="10, 0">
+                                <Editor FontFamily="Rubik"
+                                       FontAttributes="Bold"
+                                       CharacterSpacing="1"
+                                       ToolTipProperties.Text="asd"
+                                       Placeholder="Описание"
+                                       PlaceholderColor="Grey"
+                                        HeightRequest="200"
+                                         Text="{Binding Description}"/>
+                            </Frame>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+
+                    <Button Text="Сохранить"
+                            Margin="10"
+                            BorderColor="White"
+                            CornerRadius="20" 
+                            Clicked="ButtonSave_Clicked"
+                            Command="{Binding SaveCommand}"/>
+                </VerticalStackLayout>
+                
+            </Frame>
+
+            
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
