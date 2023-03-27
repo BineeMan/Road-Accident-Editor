@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RoadsApp2.HomePage">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>HomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.MainPage">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAihhUBCtkAEUAgAgJKABiAAQARBACIDCAzkEAAwACA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.MauiProgram">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MauiProgram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.XMLClasses.XMLConverter">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoAAAIASAAAkAAACAQQgAAgAAQACABUAAAAEAAAAAA=</HashCode>
+      <FileName>XMLClasses\XMLConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Utils.Enums">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="RoadsApp2.Utils.Enums.Orientation" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utils\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="RoadsApp2.Utils.Enums.ConnectingMode" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utils\Enums.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Enums.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Utils.Structs">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Struct Name="RoadsApp2.Utils.Structs.Node" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utils\Structs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="RoadsApp2.Utils.Structs.Vector" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utils\Structs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="RoadsApp2.Utils.Structs.Link" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utils\Structs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Struct Name="RoadsApp2.Utils.Structs.LineStepper" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Utils\Structs.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utils\Structs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Utils.UserInterfaceUtils">
+    <Position X="9.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gwQQAAAEKgIAAAAAAAQARQAkAARAAAAAAEAEABAAAAA=</HashCode>
+      <FileName>Utils\UserInterfaceUtils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Utils.Utils">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Utils\Utils.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.AccidentRegistrationPage">
+    <Position X="11.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAACAAQAAAAAQA=</HashCode>
+      <FileName>DatabasePages\AccidentRegistrationPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.NewParticipantPage">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DatabasePages\NewParticipantPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Database.RoadAccidentParticipantItem">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Database\RoadAccidentParticipantItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Database.RoadAccidentItem">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAABAAAAQCAAAAAAAAAAA=</HashCode>
+      <FileName>Database\RoadAccidentItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.Database.RoadAccidentDatabase">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAACAIAAAAA=</HashCode>
+      <FileName>Database\RoadAccidentDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.AppShell">
+    <Position X="8" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppShell.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.App">
+    <Position X="4.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

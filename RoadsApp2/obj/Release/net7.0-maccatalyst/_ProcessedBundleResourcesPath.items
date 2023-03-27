@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\dotnet_bot.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\dotnet_bot@2x.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\dotnet_bot@3x.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\btnlineminus.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\btnlineplus.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\car2.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\car3.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\crossicon.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\crossicon2.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\crossiconinactive.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\crossroadsicon.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\crossroadsicon2.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\delete.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\desticon.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\home.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\plus.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\plusbuttonnew.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\plusgreen.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\plustransparent.png" />
+    <BundleResource Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Resources\trajectoryicon.png" />
+    <BundleResource Include="obj\Release\net7.0-maccatalyst\resizetizer\f\OpenSans-Regular.ttf" />
+    <BundleResource Include="obj\Release\net7.0-maccatalyst\resizetizer\f\OpenSans-Semibold.ttf" />
+  </ItemGroup>
+</Project>

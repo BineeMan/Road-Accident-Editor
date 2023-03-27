@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\Contents.json" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\Contents.json" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\Contents.json" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon20x20@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon20x20@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon29x29@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon29x29@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon40x40@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon40x40@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon60x60@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon60x60@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon76x76@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\icon83.5x83.5@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon.appiconset\iconItunesArtwork.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon220x20@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon220x20@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon229x29@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon229x29@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon240x40@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon240x40@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon260x60@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon260x60@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon276x76@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon283.5x83.5@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon2.appiconset\icon2ItunesArtwork.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon320x20@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon320x20@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon329x29@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon329x29@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon340x40@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon340x40@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon360x60@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon360x60@3x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon376x76@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon383.5x83.5@2x.png" />
+    <ImageAsset Include="G:\C#\RoadsApp2\RoadsApp2\obj\Release\net7.0-maccatalyst\resizetizer\r\Assets.xcassets\icon3.appiconset\icon3ItunesArtwork.png" />
+  </ItemGroup>
+</Project>

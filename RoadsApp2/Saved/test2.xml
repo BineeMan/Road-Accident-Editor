@@ -1,8 +1,137 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <RoadElements>
-  <Nodes />
-  <Images>
-    <Image Source="car3.png" WidthRequest="150" HeightRequest="80" ZIndex="12" Scale="0,7" Rotation="0" rect="{X=712 Y=333 Width=-1 Height=-1}" />
-  </Images>
+  <Nodes>
+    <Node>
+      <Rectangle Fill="#898989" WidthRequest="70" HeightRequest="70" Stroke="#FF0000" StrokeThickness="0" ZIndex="3" rect="{X=553.9953002929688 Y=275.99053955078125 Width=70 Height=70}">
+        <GestureRecognizers>
+          <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="Crossroads_Tapped" />
+        </GestureRecognizers>
+      </Rectangle>
+      <PlusButtons>
+        <Image Source="plus.png" WidthRequest="45" HeightRequest="45" AnchorY="1" IsVisible="False" ZIndex="99" Rotation="0" rect="{X=566.4953002929688 Y=230.99053955078125 Width=-1 Height=-1}">
+          <GestureRecognizers>
+            <Microsoft.Maui.Controls.PanGestureRecognizer PanUpdated="PlusImagePuttonPanGesture_PanUpdated" />
+            <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="ImgButtonPlus_Tapped" />
+          </GestureRecognizers>
+        </Image>
+        <Image Source="plus.png" WidthRequest="45" HeightRequest="45" AnchorY="1" IsVisible="False" ZIndex="99" Rotation="180" rect="{X=566.4953002929688 Y=300.99053955078125 Width=-1 Height=-1}">
+          <GestureRecognizers>
+            <Microsoft.Maui.Controls.PanGestureRecognizer PanUpdated="PlusImagePuttonPanGesture_PanUpdated" />
+            <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="ImgButtonPlus_Tapped" />
+          </GestureRecognizers>
+        </Image>
+        <Image Source="plus.png" WidthRequest="45" HeightRequest="45" AnchorY="1" IsVisible="False" ZIndex="99" Rotation="270" rect="{X=531.4953002929688 Y=265.99053955078125 Width=-1 Height=-1}">
+          <GestureRecognizers>
+            <Microsoft.Maui.Controls.PanGestureRecognizer PanUpdated="PlusImagePuttonPanGesture_PanUpdated" />
+            <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="ImgButtonPlus_Tapped" />
+          </GestureRecognizers>
+        </Image>
+      </PlusButtons>
+      <Links>
+        <Link>
+          <Road Fill="#898989" Stroke="#808080" StrokeThickness="0" IsEnabled="False" ZIndex="1">
+            <PointsCollection>
+              <Point X="623,9953002929688" Y="275,99053955078125" />
+              <Point X="876,9968719482422" Y="288,9543151855469" />
+              <Point X="876,9968719482422" Y="358,9543151855469" />
+              <Point X="623,9953002929688" Y="345,99053955078125" />
+              <Point X="623,9953002929688" Y="275,99053955078125" />
+            </PointsCollection>
+          </Road>
+          <OriginalRoadPoints>
+            <Point X="623,9953002929688" Y="275,99053955078125" />
+            <Point X="876,9968719482422" Y="288,9543151855469" />
+            <Point X="876,9968719482422" Y="358,9543151855469" />
+            <Point X="623,9953002929688" Y="345,99053955078125" />
+            <Point X="623,9953002929688" Y="275,99053955078125" />
+          </OriginalRoadPoints>
+          <LinesSide1 />
+          <LinesSide2 />
+          <MiddleLines />
+          <LineSteppers>
+            <LineStepper>
+              <Stepper Maximum="4" Minimum="1" HorizontalOptions="Center" Scale="1" ZIndex="5" AnchorY="0,5" AnchorX="0,5" IsVisible="False" Value="1" Margin="0 0" rect="{X=715.4960861206055 Y=247.47242736816406 Width=-1 Height=-1}" />
+              <Vector>
+                <point1 X="623,9953002929688" Y="275,99053955078125" />
+                <point2 X="876,9968719482422" Y="288,9543151855469" />
+              </Vector>
+            </LineStepper>
+            <LineStepper>
+              <Stepper Maximum="4" Minimum="1" HorizontalOptions="Center" Scale="1" ZIndex="5" AnchorY="0,5" AnchorX="0,5" IsVisible="False" Value="1" Margin="0 0" rect="{X=750.4960861206055 Y=352.47242736816406 Width=-1 Height=-1}" />
+              <Vector>
+                <point1 X="623,9953002929688" Y="345,99053955078125" />
+                <point2 X="876,9968719482422" Y="358,9543151855469" />
+              </Vector>
+            </LineStepper>
+          </LineSteppers>
+          <RectangleCollision rect="{X=623.9953002929688 Y=275.99053955078125 Width=253.00157165527344 Height=82.96377563476562}" Background="#000000" ZIndex="0">
+            <GestureRecognizers>
+              <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="RoadCollision_Tapped" />
+            </GestureRecognizers>
+          </RectangleCollision>
+        </Link>
+      </Links>
+    </Node>
+    <Node>
+      <Rectangle Fill="#898989" WidthRequest="7" HeightRequest="70" Stroke="#FF0000" StrokeThickness="0" ZIndex="3" rect="{X=876.9968719482422 Y=288.9543151855469 Width=7 Height=70}">
+        <GestureRecognizers>
+          <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="Crossroads_Tapped" />
+        </GestureRecognizers>
+      </Rectangle>
+      <PlusButtons>
+        <Image Source="plus.png" WidthRequest="45" HeightRequest="45" AnchorY="1" IsVisible="False" ZIndex="99" Rotation="90" rect="{X=861.4968719482422 Y=278.9543151855469 Width=-1 Height=-1}">
+          <GestureRecognizers>
+            <Microsoft.Maui.Controls.PanGestureRecognizer PanUpdated="PlusImagePuttonPanGesture_PanUpdated" />
+            <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="ImgButtonPlus_Tapped" />
+          </GestureRecognizers>
+        </Image>
+      </PlusButtons>
+      <Links>
+        <Link>
+          <Road Fill="#898989" Stroke="#808080" StrokeThickness="0" IsEnabled="False" ZIndex="1">
+            <PointsCollection>
+              <Point X="623,9953002929688" Y="275,99053955078125" />
+              <Point X="876,9968719482422" Y="288,9543151855469" />
+              <Point X="876,9968719482422" Y="358,9543151855469" />
+              <Point X="623,9953002929688" Y="345,99053955078125" />
+              <Point X="623,9953002929688" Y="275,99053955078125" />
+            </PointsCollection>
+          </Road>
+          <OriginalRoadPoints>
+            <Point X="623,9953002929688" Y="275,99053955078125" />
+            <Point X="876,9968719482422" Y="288,9543151855469" />
+            <Point X="876,9968719482422" Y="358,9543151855469" />
+            <Point X="623,9953002929688" Y="345,99053955078125" />
+            <Point X="623,9953002929688" Y="275,99053955078125" />
+          </OriginalRoadPoints>
+          <LinesSide1 />
+          <LinesSide2 />
+          <MiddleLines />
+          <LineSteppers>
+            <LineStepper>
+              <Stepper Maximum="4" Minimum="1" HorizontalOptions="Center" Scale="1" ZIndex="5" AnchorY="0,5" AnchorX="0,5" IsVisible="False" Value="1" Margin="0 0" rect="{X=715.4960861206055 Y=247.47242736816406 Width=-1 Height=-1}" />
+              <Vector>
+                <point1 X="623,9953002929688" Y="275,99053955078125" />
+                <point2 X="876,9968719482422" Y="288,9543151855469" />
+              </Vector>
+            </LineStepper>
+            <LineStepper>
+              <Stepper Maximum="4" Minimum="1" HorizontalOptions="Center" Scale="1" ZIndex="5" AnchorY="0,5" AnchorX="0,5" IsVisible="False" Value="1" Margin="0 0" rect="{X=750.4960861206055 Y=352.47242736816406 Width=-1 Height=-1}" />
+              <Vector>
+                <point1 X="623,9953002929688" Y="345,99053955078125" />
+                <point2 X="876,9968719482422" Y="358,9543151855469" />
+              </Vector>
+            </LineStepper>
+          </LineSteppers>
+          <RectangleCollision rect="{X=623.9953002929688 Y=275.99053955078125 Width=253.00157165527344 Height=82.96377563476562}" Background="#000000" ZIndex="0">
+            <GestureRecognizers>
+              <Microsoft.Maui.Controls.TapGestureRecognizer Tapped="RoadCollision_Tapped" />
+            </GestureRecognizers>
+          </RectangleCollision>
+        </Link>
+      </Links>
+    </Node>
+  </Nodes>
+  <Images />
   <Trajectories />
 </RoadElements>

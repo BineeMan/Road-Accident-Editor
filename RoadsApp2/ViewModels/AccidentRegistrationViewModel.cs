@@ -11,8 +11,26 @@ using System.Threading.Tasks;
 
 namespace RoadsApp2.ViewModels
 {
+    [QueryProperty(nameof(Participant), "Participant")]
     public partial class AccidentRegistrationViewModel : ObservableObject
     {
+        public AccidentRegistrationViewModel()
+        {
+            participants = new ObservableCollection<ParticipantItem>();
+        }
+
+        ParticipantItem participant;
+        public ParticipantItem Participant
+        {
+            get => participant;
+            set
+            {
+                participant = value;
+                participants.Add(participant);
+                OnPropertyChanged();
+            }
+        }
+
         [ObservableProperty]
         string name;
 
@@ -26,13 +44,25 @@ namespace RoadsApp2.ViewModels
         string description;
 
         [ObservableProperty]
-        List<string> participants; 
+        public ObservableCollection<ParticipantItem> participants;
+
+        [RelayCommand]
+        async Task OpenParticipantPage()
+        {
+            await Shell.Current.GoToAsync(nameof(NewParticipantPage));
+        }
 
         [RelayCommand]
         void Save()
         {
-            RoadAccidentItem roadAccidentItem = new RoadAccidentItem();
-            Debug.WriteLine(Name);
+            //RoadAccidentItem roadAccidentItem = new RoadAccidentItem();
+            //Name = "123";
+            Debug.WriteLine(participants.Count);
+            foreach (var item in participants)
+            {
+                Debug.WriteLine(item.FirstName);
+            }
         }
+
     }
 }

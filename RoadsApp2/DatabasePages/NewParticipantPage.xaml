@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RoadsApp2.NewParticipantPage"
+             Title="Добавить нового участника"
+             xmlns:viewmodel="clr-namespace:RoadsApp2.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodel:NewParticipantViewModel"
+             Background="#F0F0F0">
+    <ScrollView>
+
+        <VerticalStackLayout x:Name="VerticalStackLayoutMain">
+            <Frame BackgroundColor="#606060"
+                   Margin="80, 0, 80, -20"
+                   Padding="20,20"
+                   CornerRadius="30"
+                   BorderColor="Transparent">
+                <Label Text="Новый участник"
+                   FontAttributes="Bold"
+                   FontSize="20"
+                   HorizontalOptions="Center"
+                   Margin="13, -15, 30, 0"
+                   FontFamily="Rubik"
+                   TextColor="White"/>
+            </Frame>
+            <Frame BackgroundColor="#606060"
+                   BorderColor="Transparent"
+                   CornerRadius="25">
+                <VerticalStackLayout>
+                    <VerticalStackLayout Margin="0, 0, 0, 10">
+                        <Label Text="ФИО"
+                               FontAttributes="Bold"
+                               FontSize="17"
+                               Margin="15, 5"
+                               HorizontalOptions="Start"
+                               FontFamily="Rubik"
+                               TextColor="White"/>
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="#E1E1E1"
+                               CornerRadius="30"
+                               Padding="10, 0">
+                            <Entry FontFamily="Rubik"
+                                    FontAttributes="Bold"
+                                    CharacterSpacing="1"
+                                    ToolTipProperties.Text="asd"
+                                    Placeholder="ФИО"
+                                    PlaceholderColor="Grey"
+                                    Text="{Binding FullName}"
+                                    x:Name="FullNameEntry" 
+                                    Focused="Entry_Focused"/>
+                        </Frame>
+                    </VerticalStackLayout>
+                    
+                    <VerticalStackLayout Margin="0, 0, 0, 10">
+                        <Label Text="Название автомобиля"
+                           FontAttributes="Bold"
+                           FontSize="17"
+                           Margin="15, 5"
+                           HorizontalOptions="Start"
+                           FontFamily="Rubik"
+                           TextColor="White"/>
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="#E1E1E1"
+                               CornerRadius="30"
+                               Padding="10, 0">
+                            <Entry FontFamily="Rubik"
+                                    FontAttributes="Bold"
+                                    CharacterSpacing="1"
+                                    ToolTipProperties.Text="asd"
+                                    Placeholder="Название автомобиля"
+                                    PlaceholderColor="Grey"
+                                    Text="{Binding CarModel}"
+                                    x:Name="CarNameEntry"
+                                   Focused="Entry_Focused"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Margin="0, 0, 0, 10">
+                        <Label Text="Номер автомобиля"
+                           FontAttributes="Bold"
+                           FontSize="17"
+                           Margin="15, 5"
+                           HorizontalOptions="Start"
+                           FontFamily="Rubik"
+                           TextColor="White"/>
+                        <Frame BorderColor="Transparent"
+                               BackgroundColor="#E1E1E1"
+                               CornerRadius="30"
+                               Padding="10, 0">
+                            <Entry FontFamily="Rubik"
+                                    FontAttributes="Bold"
+                                    CharacterSpacing="1"
+                                    ToolTipProperties.Text="asd"
+                                    Placeholder="Номер автомобиля"
+                                    PlaceholderColor="Grey" 
+                                    Text="{Binding CarNumber}"
+                                    x:Name="CarNumberEntry"
+                                    Focused="Entry_Focused"/>
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <Button Text="Добавить"
+                            Margin="10"
+                            BorderColor="White"
+                            CornerRadius="20" 
+                            Command="{Binding AddCommand}" 
+                            Clicked="ButtonAdd_Clicked"/>
+                    
+                </VerticalStackLayout>
+
+            </Frame>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -78,19 +78,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Saved\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -100,12 +93,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="AccidentRegistrationPage.xaml">
+	  <ProjectReference Include="..\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="DatabasePages\AccidentRegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+  
+  <PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>roadsapp.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyAlias>roads</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass></AndroidSigningKeyPass>
+    <AndroidSigningStorePass></AndroidSigningStorePass>
+  </PropertyGroup>
 
 </Project>

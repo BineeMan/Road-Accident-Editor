@@ -2,6 +2,35 @@
   "version": 3,
   "targets": {
     "net7.0-android33.0": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -2078,7 +2107,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -2088,6 +2117,35 @@
       }
     },
     "net7.0-android33.0/android-arm": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -4164,7 +4222,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -4174,6 +4232,35 @@
       }
     },
     "net7.0-android33.0/android-arm64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -6250,7 +6337,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -6260,6 +6347,35 @@
       }
     },
     "net7.0-android33.0/android-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -8336,7 +8452,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -8346,6 +8462,35 @@
       }
     },
     "net7.0-android33.0/android-x86": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -10422,7 +10567,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -10432,6 +10577,35 @@
       }
     },
     "net7.0-android33.0/iossimulator-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -12508,7 +12682,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -12518,6 +12692,35 @@
       }
     },
     "net7.0-android33.0/maccatalyst-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -14594,7 +14797,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -14604,6 +14807,35 @@
       }
     },
     "net7.0-android33.0/win10-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -16680,7 +16912,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -16690,6 +16922,35 @@
       }
     },
     "net7.0-ios16.1": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -17591,10 +17852,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -17604,6 +17862,35 @@
       }
     },
     "net7.0-ios16.1/android-arm": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -18754,10 +19041,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -18767,6 +19051,35 @@
       }
     },
     "net7.0-ios16.1/android-arm64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -19917,10 +20230,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -19930,6 +20240,35 @@
       }
     },
     "net7.0-ios16.1/android-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -21080,10 +21419,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -21093,6 +21429,35 @@
       }
     },
     "net7.0-ios16.1/android-x86": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -22243,10 +22608,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -22256,6 +22618,35 @@
       }
     },
     "net7.0-ios16.1/iossimulator-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -23406,10 +23797,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -23419,6 +23807,35 @@
       }
     },
     "net7.0-ios16.1/maccatalyst-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -24569,10 +24986,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -24582,6 +24996,35 @@
       }
     },
     "net7.0-ios16.1/win10-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -25714,10 +26157,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -25727,6 +26167,35 @@
       }
     },
     "net7.0-maccatalyst16.1": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -26564,14 +27033,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -26734,10 +27195,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -26747,6 +27205,35 @@
       }
     },
     "net7.0-maccatalyst16.1/android-arm": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -27739,14 +28226,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -27912,10 +28391,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -27925,6 +28401,35 @@
       }
     },
     "net7.0-maccatalyst16.1/android-arm64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -28917,14 +29422,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -29090,10 +29587,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -29103,6 +29597,35 @@
       }
     },
     "net7.0-maccatalyst16.1/android-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -30095,14 +30618,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -30268,10 +30783,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -30281,6 +30793,35 @@
       }
     },
     "net7.0-maccatalyst16.1/android-x86": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -31273,14 +31814,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -31446,10 +31979,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -31459,6 +31989,35 @@
       }
     },
     "net7.0-maccatalyst16.1/iossimulator-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -32448,14 +33007,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -32621,10 +33172,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -32634,6 +33182,35 @@
       }
     },
     "net7.0-maccatalyst16.1/maccatalyst-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -33626,14 +34203,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -33799,10 +34368,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -33812,6 +34378,35 @@
       }
     },
     "net7.0-maccatalyst16.1/win10-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -34769,14 +35364,6 @@
           }
         }
       },
-      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
-        "type": "package",
-        "compile": {
-          "ref/net6.0/System.Runtime.InteropServices.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "System.Runtime.Serialization.Primitives/4.1.1": {
         "type": "package",
         "dependencies": {
@@ -34959,10 +35546,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
-        },
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -34972,6 +35556,35 @@
       }
     },
     "net7.0-windows10.0.19041": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -36109,7 +36722,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -36119,6 +36732,35 @@
       }
     },
     "net7.0-windows10.0.19041/android-arm": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -37386,7 +38028,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -37396,6 +38038,35 @@
       }
     },
     "net7.0-windows10.0.19041/android-arm64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -38663,7 +39334,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -38673,6 +39344,35 @@
       }
     },
     "net7.0-windows10.0.19041/android-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -39940,7 +40640,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -39950,6 +40650,35 @@
       }
     },
     "net7.0-windows10.0.19041/android-x86": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -41217,7 +41946,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -41227,6 +41956,35 @@
       }
     },
     "net7.0-windows10.0.19041/iossimulator-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -42491,7 +43249,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -42501,6 +43259,35 @@
       }
     },
     "net7.0-windows10.0.19041/maccatalyst-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -43768,7 +44555,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -43778,6 +44565,35 @@
       }
     },
     "net7.0-windows10.0.19041/win10-x64": {
+      "CommunityToolkit.Maui/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "CommunityToolkit.Maui.Core": "5.0.0"
+        },
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CommunityToolkit.Maui.Core/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "CommunityToolkit.Mvvm/8.0.0": {
         "type": "package",
         "compile": {
@@ -45033,7 +45849,7 @@
       },
       "Maui.Controls.BottomSheet/1.0.0": {
         "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
+        "framework": ".NETCoreApp,Version=v7.0",
         "compile": {
           "bin/placeholder/Maui.Controls.BottomSheet.dll": {}
         },
@@ -45044,6 +45860,61 @@
     }
   },
   "libraries": {
+    "CommunityToolkit.Maui/5.0.0": {
+      "sha512": "iIEnYmQxFPH650rtcUlVrFy1/gLuvDLqvLVcnMCzWTJAFCSkNDspPY8EmGGN37FOqBSzQ7OttReyAZiroAjVdA==",
+      "type": "package",
+      "path": "communitytoolkit.maui/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ReadMe.txt",
+        "analyzers/dotnet/cs/CommunityToolkit.Maui.Analyzers.CodeFixes.dll",
+        "analyzers/dotnet/cs/CommunityToolkit.Maui.Analyzers.dll",
+        "analyzers/dotnet/cs/CommunityToolkit.Maui.SourceGenerators.dll",
+        "communitytoolkit.maui.5.0.0.nupkg.sha512",
+        "communitytoolkit.maui.nuspec",
+        "icon.png",
+        "lib/net7.0-android33.0/CommunityToolkit.Maui.aar",
+        "lib/net7.0-android33.0/CommunityToolkit.Maui.dll",
+        "lib/net7.0-android33.0/CommunityToolkit.Maui.xml",
+        "lib/net7.0-ios16.1/CommunityToolkit.Maui.dll",
+        "lib/net7.0-ios16.1/CommunityToolkit.Maui.xml",
+        "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.dll",
+        "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.xml",
+        "lib/net7.0-tizen7.0/CommunityToolkit.Maui.dll",
+        "lib/net7.0-tizen7.0/CommunityToolkit.Maui.xml",
+        "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.dll",
+        "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.xml",
+        "lib/net7.0/CommunityToolkit.Maui.dll",
+        "lib/net7.0/CommunityToolkit.Maui.xml"
+      ]
+    },
+    "CommunityToolkit.Maui.Core/5.0.0": {
+      "sha512": "gZp9b++c8fR1QRVsizrQRCeKxVh+RmC9+2IsPC+qpm/nQNHSyWq6PoIp555cb05zQ/AUyM7OTYnzA1BU1JNl4Q==",
+      "type": "package",
+      "path": "communitytoolkit.maui.core/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "ReadMe.txt",
+        "communitytoolkit.maui.core.5.0.0.nupkg.sha512",
+        "communitytoolkit.maui.core.nuspec",
+        "icon.png",
+        "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.aar",
+        "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.dll",
+        "lib/net7.0-android33.0/CommunityToolkit.Maui.Core.xml",
+        "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.dll",
+        "lib/net7.0-ios16.1/CommunityToolkit.Maui.Core.xml",
+        "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.dll",
+        "lib/net7.0-maccatalyst16.1/CommunityToolkit.Maui.Core.xml",
+        "lib/net7.0-tizen7.0/CommunityToolkit.Maui.Core.dll",
+        "lib/net7.0-tizen7.0/CommunityToolkit.Maui.Core.xml",
+        "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.dll",
+        "lib/net7.0-windows10.0.19041/CommunityToolkit.Maui.Core.xml",
+        "lib/net7.0/CommunityToolkit.Maui.Core.dll",
+        "lib/net7.0/CommunityToolkit.Maui.Core.xml"
+      ]
+    },
     "CommunityToolkit.Mvvm/8.0.0": {
       "sha512": "Jiu2g5WUdXRwzhJkHB+B4JBKP5A5+fp8xKiW/ZQo5PI+DruI7MbPEcK9K/Aw0YzTiWRuG6CBluzYIWN5Eo7BkQ==",
       "type": "package",
@@ -51224,12 +52095,13 @@
     },
     "Maui.Controls.BottomSheet/1.0.0": {
       "type": "project",
-      "path": "../Maui.Controls.BottomSheet/Maui.Controls.BottomSheet.csproj",
-      "msbuildProject": "../Maui.Controls.BottomSheet/Maui.Controls.BottomSheet.csproj"
+      "path": "../Maui.Controls.BottomSheet/Maui.Controls.BottomSheet/Maui.Controls.BottomSheet.csproj",
+      "msbuildProject": "../Maui.Controls.BottomSheet/Maui.Controls.BottomSheet/Maui.Controls.BottomSheet.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0-android33.0": [
+      "CommunityToolkit.Maui >= 5.0.0",
       "CommunityToolkit.Mvvm >= 8.0.0",
       "Maui.Controls.BottomSheet >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -51254,6 +52126,7 @@
       "sqlite-net-pcl >= 1.8.116"
     ],
     "net7.0-ios16.1": [
+      "CommunityToolkit.Maui >= 5.0.0",
       "CommunityToolkit.Mvvm >= 8.0.0",
       "Maui.Controls.BottomSheet >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -51267,6 +52140,7 @@
       "sqlite-net-pcl >= 1.8.116"
     ],
     "net7.0-maccatalyst16.1": [
+      "CommunityToolkit.Maui >= 5.0.0",
       "CommunityToolkit.Mvvm >= 8.0.0",
       "Maui.Controls.BottomSheet >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -51280,6 +52154,7 @@
       "sqlite-net-pcl >= 1.8.116"
     ],
     "net7.0-windows10.0.19041": [
+      "CommunityToolkit.Maui >= 5.0.0",
       "CommunityToolkit.Mvvm >= 8.0.0",
       "Maui.Controls.BottomSheet >= 1.0.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -51333,32 +52208,32 @@
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android",
           "projectReferences": {
-            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
             }
           }
         },
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
           "projectReferences": {
-            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
             }
           }
         },
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
           "projectReferences": {
-            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
             }
           }
         },
         "net7.0-windows10.0.19041": {
           "targetAlias": "net7.0-windows10.0.19041.0",
           "projectReferences": {
-            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+            "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+              "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
             }
           }
         }
@@ -51373,6 +52248,10 @@
       "net7.0-android33.0": {
         "targetAlias": "net7.0-android",
         "dependencies": {
+          "CommunityToolkit.Maui": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          },
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -51502,11 +52381,15 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       },
       "net7.0-ios16.1": {
         "targetAlias": "net7.0-ios",
         "dependencies": {
+          "CommunityToolkit.Maui": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          },
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -51581,11 +52464,15 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       },
       "net7.0-maccatalyst16.1": {
         "targetAlias": "net7.0-maccatalyst",
         "dependencies": {
+          "CommunityToolkit.Maui": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          },
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -51661,11 +52548,15 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       },
       "net7.0-windows10.0.19041": {
         "targetAlias": "net7.0-windows10.0.19041.0",
         "dependencies": {
+          "CommunityToolkit.Maui": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          },
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.0.0, )"
@@ -51742,11 +52633,11 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[7.0.3, 7.0.3]"
+            "version": "[7.0.4, 7.0.4]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[7.0.3, 7.0.3]"
+            "version": "[7.0.4, 7.0.4]"
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -51754,7 +52645,7 @@
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[7.0.3, 7.0.3]"
+            "version": "[7.0.4, 7.0.4]"
           }
         ],
         "frameworkReferences": {
@@ -51774,7 +52665,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

@@ -286,7 +286,6 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizet
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splash2SplashScreen.scale-400.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\crossicon.scale-100.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\crossiconinactive.scale-100.png
-G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_7.0.323.6910.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Maui.Controls.BottomSheet.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Maui.Controls.BottomSheet.pdb
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plusbuttonnew.scale-100.png
@@ -441,3 +440,6 @@ G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\SQLiteP
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\e_sqlite3.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\SQLitePCLRaw.provider.e_sqlite3.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Mvvm.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_7.0.423.11508.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Maui.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Maui.Core.dll

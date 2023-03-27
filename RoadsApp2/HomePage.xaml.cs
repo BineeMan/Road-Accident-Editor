@@ -12,8 +12,6 @@ public partial class HomePage : ContentPage
 #endif
     }
 
-    private async void Button_SaveDocument_Clicked(object sender, EventArgs e)
-    {
+    private async void Button_SaveDocument_Clicked(object sender, EventArgs e) =>
         await Navigation.PushAsync(new AccidentRegistrationPage());
-    }
 }

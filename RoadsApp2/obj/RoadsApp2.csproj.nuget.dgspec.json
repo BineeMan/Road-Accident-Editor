@@ -4,14 +4,14 @@
     "G:\\C#\\RoadsApp2\\RoadsApp2\\RoadsApp2.csproj": {}
   },
   "projects": {
-    "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+    "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj",
+        "projectUniqueName": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj",
         "projectName": "Maui.Controls.BottomSheet",
-        "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj",
+        "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj",
         "packagesPath": "C:\\Users\\herob\\.nuget\\packages\\",
-        "outputPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\obj\\",
+        "outputPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
@@ -23,11 +23,11 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0",
-          "net6.0-android",
-          "net6.0-ios",
-          "net6.0-maccatalyst",
-          "net6.0-windows10.0.19041.0"
+          "net7.0",
+          "net7.0-android",
+          "net7.0-ios",
+          "net7.0-maccatalyst",
+          "net7.0-windows10.0.19041.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -35,24 +35,24 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0": {
-            "targetAlias": "net6.0",
+          "net7.0": {
+            "targetAlias": "net7.0",
             "projectReferences": {}
           },
-          "net6.0-android31.0": {
-            "targetAlias": "net6.0-android",
+          "net7.0-android33.0": {
+            "targetAlias": "net7.0-android",
             "projectReferences": {}
           },
-          "net6.0-ios16.1": {
-            "targetAlias": "net6.0-ios",
+          "net7.0-ios16.1": {
+            "targetAlias": "net7.0-ios",
             "projectReferences": {}
           },
-          "net6.0-maccatalyst16.1": {
-            "targetAlias": "net6.0-maccatalyst",
+          "net7.0-maccatalyst16.1": {
+            "targetAlias": "net7.0-maccatalyst",
             "projectReferences": {}
           },
-          "net6.0-windows10.0.19041": {
-            "targetAlias": "net6.0-windows10.0.19041.0",
+          "net7.0-windows10.0.19041": {
+            "targetAlias": "net7.0-windows10.0.19041.0",
             "projectReferences": {}
           }
         },
@@ -63,19 +63,37 @@
         }
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.Maui.Dependencies": {
+            "Microsoft.Extensions.Configuration": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "Microsoft.Maui.Extensions": {
+            "Microsoft.Extensions.DependencyInjection": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.59, )",
               "autoReferenced": true
             }
           },
@@ -90,32 +108,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Maui.Controls.Ref.any",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Controls.Runtime.any",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Core.Ref.any",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Core.Runtime.any",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Ref.any",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Runtime.any",
-              "version": "[6.0.552, 6.0.552]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.Maui.Controls": {
               "privateAssets": "all"
@@ -130,21 +122,105 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
-        "net6.0-android31.0": {
-          "targetAlias": "net6.0-android",
+        "net7.0-android33.0": {
+          "targetAlias": "net7.0-android",
           "dependencies": {
-            "Microsoft.Maui.Dependencies": {
+            "Microsoft.Extensions.Configuration": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "Microsoft.Maui.Extensions": {
+            "Microsoft.Extensions.DependencyInjection": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.59, )",
+              "autoReferenced": true
+            },
+            "Xamarin.Android.Glide": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[4.13.2.2, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Browser": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.4.0.3, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Legacy.Support.V4": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.0.0.15, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Lifecycle.LiveData": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.1.1, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Navigation.Common": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.2.1, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Navigation.Fragment": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.2.1, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Navigation.Runtime": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.2.1, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Navigation.UI": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.5.2.1, )",
+              "autoReferenced": true
+            },
+            "Xamarin.AndroidX.Security.SecurityCrypto": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.1.0-alpha03, )",
+              "autoReferenced": true
+            },
+            "Xamarin.Google.Android.Material": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.7.0, )",
+              "autoReferenced": true
+            },
+            "Xamarin.Google.Crypto.Tink.Android": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.7.0.1, )",
               "autoReferenced": true
             }
           },
@@ -159,24 +235,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.Android.Ref.31",
-              "version": "[32.0.485, 32.0.485]"
-            },
-            {
-              "name": "Microsoft.Maui.Controls.Ref.android",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Core.Ref.android",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Ref.android",
-              "version": "[6.0.552, 6.0.552]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.Android": {
               "privateAssets": "all"
@@ -194,26 +252,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
-        "net6.0-ios16.1": {
-          "targetAlias": "net6.0-ios",
+        "net7.0-ios16.1": {
+          "targetAlias": "net7.0-ios",
           "dependencies": {
-            "Microsoft.Maui.Dependencies": {
+            "Microsoft.Extensions.Configuration": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "Microsoft.Maui.Extensions": {
+            "Microsoft.Extensions.DependencyInjection": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "System.Runtime.InteropServices.NFloat.Internal": {
+            "Microsoft.Extensions.Logging": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.1, )",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.59, )",
               "autoReferenced": true
             }
           },
@@ -228,24 +299,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.iOS.Ref",
-              "version": "[16.2.19, 16.2.19]"
-            },
-            {
-              "name": "Microsoft.Maui.Controls.Ref.ios",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Core.Ref.ios",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Ref.ios",
-              "version": "[6.0.552, 6.0.552]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.iOS": {
               "privateAssets": "all"
@@ -263,26 +316,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
-        "net6.0-maccatalyst16.1": {
-          "targetAlias": "net6.0-maccatalyst",
+        "net7.0-maccatalyst16.1": {
+          "targetAlias": "net7.0-maccatalyst",
           "dependencies": {
-            "Microsoft.Maui.Dependencies": {
+            "Microsoft.Extensions.Configuration": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "Microsoft.Maui.Extensions": {
+            "Microsoft.Extensions.DependencyInjection": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "System.Runtime.InteropServices.NFloat.Internal": {
+            "Microsoft.Extensions.Logging": {
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.1, )",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.59, )",
               "autoReferenced": true
             }
           },
@@ -298,24 +364,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.MacCatalyst.Ref",
-              "version": "[16.2.19, 16.2.19]"
-            },
-            {
-              "name": "Microsoft.Maui.Controls.Ref.maccatalyst",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Core.Ref.maccatalyst",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Ref.maccatalyst",
-              "version": "[6.0.552, 6.0.552]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.MacCatalyst": {
               "privateAssets": "all"
@@ -333,27 +381,57 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
-        "net6.0-windows10.0.19041": {
-          "targetAlias": "net6.0-windows10.0.19041.0",
+        "net7.0-windows10.0.19041": {
+          "targetAlias": "net7.0-windows10.0.19041.0",
           "dependencies": {
-            "Microsoft.Maui.Dependencies": {
+            "Microsoft.Extensions.Configuration": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
               "autoReferenced": true
             },
-            "Microsoft.Maui.Extensions": {
+            "Microsoft.Extensions.DependencyInjection": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.552, )",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.59, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Maui.Graphics.Win2D.WinUI.Desktop": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.59, )",
               "autoReferenced": true
             },
             "Microsoft.Windows.SDK.BuildTools": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.22000.194, )",
+              "version": "[10.0.22621.755, )",
+              "autoReferenced": true
+            },
+            "Microsoft.WindowsAppSDK": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[1.2.221209.1, )",
               "autoReferenced": true
             }
           },
@@ -369,18 +447,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "downloadDependencies": [
-            {
-              "name": "Microsoft.Maui.Controls.Ref.win",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Core.Ref.win",
-              "version": "[6.0.552, 6.0.552]"
-            },
-            {
-              "name": "Microsoft.Maui.Essentials.Ref.win",
-              "version": "[6.0.552, 6.0.552]"
-            },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
               "version": "[10.0.19041.28, 10.0.19041.28]"
@@ -403,7 +469,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -440,32 +506,32 @@
           "net7.0-android33.0": {
             "targetAlias": "net7.0-android",
             "projectReferences": {
-              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
               }
             }
           },
           "net7.0-ios16.1": {
             "targetAlias": "net7.0-ios",
             "projectReferences": {
-              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
               }
             }
           },
           "net7.0-maccatalyst16.1": {
             "targetAlias": "net7.0-maccatalyst",
             "projectReferences": {
-              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
               }
             }
           },
           "net7.0-windows10.0.19041": {
             "targetAlias": "net7.0-windows10.0.19041.0",
             "projectReferences": {
-              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
-                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
+              "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj": {
+                "projectPath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj"
               }
             }
           }
@@ -480,6 +546,10 @@
         "net7.0-android33.0": {
           "targetAlias": "net7.0-android",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -609,11 +679,15 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -688,11 +762,15 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
         "net7.0-maccatalyst16.1": {
           "targetAlias": "net7.0-maccatalyst",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -768,11 +846,15 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         },
         "net7.0-windows10.0.19041": {
           "targetAlias": "net7.0-windows10.0.19041.0",
           "dependencies": {
+            "CommunityToolkit.Maui": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -849,11 +931,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.3, 7.0.3]"
+              "version": "[7.0.4, 7.0.4]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.3, 7.0.3]"
+              "version": "[7.0.4, 7.0.4]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -861,7 +943,7 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[7.0.3, 7.0.3]"
+              "version": "[7.0.4, 7.0.4]"
             }
           ],
           "frameworkReferences": {
@@ -881,7 +963,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

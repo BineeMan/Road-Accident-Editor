@@ -1,0 +1,13 @@
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\bin\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.deps.json
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\bin\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.dll
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\bin\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.pdb
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.csproj.AssemblyReference.cache
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.GeneratedMSBuildEditorConfig.editorconfig
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.AssemblyInfoInputs.cache
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.AssemblyInfo.cs
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.csproj.CoreCompileInputs.cache
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\XamlC.stamp
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.dll
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\refint\Maui.Controls.BottomSheet.dll
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.pdb
+G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\obj\Release\net7.0-windows10.0.19041.0\ref\Maui.Controls.BottomSheet.dll

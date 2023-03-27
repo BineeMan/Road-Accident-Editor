@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RoadsApp2</name>
+    </assembly>
+    <members>
+        <member name="M:RoadsApp2.MainPage.AddFlagsAroundRectangle(Microsoft.Maui.Controls.Shapes.Rectangle,RoadsApp2.Utils.Enums.Orientation,System.Boolean)">
+            <summary>
+            This function adds new flags around a crossroads with except orientation which will be avoided
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.Crossroads_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.ImgButtonPlus_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            Event for plus and destination image buttons.
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.AbsoluteLayout_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            Main absolute layout event
+            </summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Name">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.name"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.DateTime">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.dateTime"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Address">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.address"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Description">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.description"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Participants">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.participants"/>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Save"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.FullName">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.NewParticipantViewModel.fullName"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.CarModel">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.NewParticipantViewModel.carModel"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.CarNumber">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.NewParticipantViewModel.carNumber"/>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.NewParticipantViewModel.addCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.NewParticipantViewModel.AddCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.AddCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.NewParticipantViewModel.Add"/>.</summary>
+        </member>
+    </members>
+</doc>

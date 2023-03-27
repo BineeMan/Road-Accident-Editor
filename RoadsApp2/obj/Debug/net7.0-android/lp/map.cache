@@ -1,3 +1,5 @@
+CommunityToolkit.Maui.Core.dll
+CommunityToolkit.Maui.dll
 GoogleGson.dll
 Maui.Controls.BottomSheet.dll
 Microsoft.Maui.Controls.Compatibility.dll
@@ -151,7 +153,10 @@ androidx.exifinterface.exifinterface.aar
 androidx.browser.browser.aar
 gifdecoder.aar
 glide.aar
+CommunityToolkit.Maui.Core.aar
+CommunityToolkit.Maui.aar
 GoogleGson.aar
+Maui.Controls.BottomSheet.aar
 Microsoft.Maui.Controls.aar
 Microsoft.Maui.Controls.Compatibility.aar
 maui.aar

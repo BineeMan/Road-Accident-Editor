@@ -13,7 +13,6 @@ namespace RoadsApp2.Database
 
         public RoadAccidentDatabase()
         {
-
         }
 
         public async Task Init()

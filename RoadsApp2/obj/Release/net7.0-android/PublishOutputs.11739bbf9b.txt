@@ -1,0 +1,3 @@
+G:\C#\RoadsApp2\RoadsApp2\bin\Release\net7.0-android\publish\com.companyname.roadsapp2-Signed.aab
+G:\C#\RoadsApp2\RoadsApp2\bin\Release\net7.0-android\publish\com.companyname.roadsapp2.aab
+G:\C#\RoadsApp2\RoadsApp2\bin\Release\net7.0-android\publish\com.companyname.roadsapp2-Signed.apk
