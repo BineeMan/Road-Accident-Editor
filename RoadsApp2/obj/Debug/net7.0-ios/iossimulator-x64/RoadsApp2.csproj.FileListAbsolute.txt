@@ -318,3 +318,7 @@ G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-ios\iossimulator-x64\libmono-componen
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-ios\iossimulator-x64\libmono-component-hot_reload.dylib
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-ios\iossimulator-x64\CommunityToolkit.Mvvm.dll
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\build-signature\signature
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-ios\iossimulator-x64\CommunityToolkit.Maui.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-ios\iossimulator-x64\CommunityToolkit.Maui.Core.dll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\infoicon.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\informationicon.png

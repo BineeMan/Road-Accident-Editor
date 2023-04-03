@@ -23,5 +23,9 @@ namespace RoadsApp2.DataClasses
         public static string CrossButtonInactive { get => "crossiconinactive.png"; }
 
         public static string PlusButtonTransparent { get => "plustransparent.png"; }
+
+        public static string InfoIcon { get => "infoicon.png"; }
+
+        public static string DeleteIcon { get => "delete.png"; }
     }
 }

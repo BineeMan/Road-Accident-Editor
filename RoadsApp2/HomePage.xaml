@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RoadsApp2.HomePage"
              Title="Меню"
-             Background="#F0F0F0">
+             Background="#F0F0F0"
+             Appearing="ContentPage_Appearing"  >
     <ScrollView >
         <VerticalStackLayout x:Name="VerticalStackLayoutMain">
             
@@ -106,25 +107,22 @@
                 </Frame>
                 <Frame BackgroundColor="#606060"
                    BorderColor="Transparent"
-                   CornerRadius="25">
-                    <VerticalStackLayout>
-                        <TableView Intent="Menu" HeightRequest="200">
+                   CornerRadius="25"
+                   HeightRequest="250">
+
+                    <TableView HeightRequest="250"
+                                   x:Name="TableViewRoadAccidents"
+                                   Intent="Menu" >
                             <TableRoot>
-                                <TableSection  TextColor="White">
+                                <TableSection TextColor="White" 
+                                               x:Name="RoadAccidentsTableSelection">
                                     <TextCell DetailColor="White" TextColor="White" Text="1. Introduction to .NET MAUI"
                       Detail="Learn about .NET MAUI and what it provides." />
-                                    <TextCell DetailColor="White" Text="2. Anatomy of an app" TextColor="White"
-                      Detail="Learn about the visual elements in .NET MAUI" />
-                                    <TextCell TextColor="White" DetailColor="White" Text="3. Text"
-                      Detail="Learn about the .NET MAUI controls that display text." />
-                                    <TextCell TextColor="White" DetailColor="White" Text="4. Dealing with sizes"
-                      Detail="Learn how to size .NET MAUI controls on screen." />
-                                    <TextCell TextColor="White" DetailColor="White" Text="5. XAML vs code"
-                      Detail="Learn more about creating your UI in XAML." />
                                 </TableSection>
                             </TableRoot>
                         </TableView>
-                    </VerticalStackLayout>
+
+
                 </Frame>
             </VerticalStackLayout>
             

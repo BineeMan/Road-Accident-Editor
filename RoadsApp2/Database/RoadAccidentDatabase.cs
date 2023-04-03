@@ -26,7 +26,6 @@ namespace RoadsApp2.Database
             await Database.CreateTableAsync<RoadAccidentParticipantItem>();
         }
 
-
         public async Task<List<RoadAccidentItem>> GetRoadAccidentItemsAsync()
         {
             await Init();
@@ -42,29 +41,42 @@ namespace RoadsApp2.Database
                 return await Database.InsertAsync(item);
         }
 
+        public async Task<int> SaveParticipantItemAsync(ParticipantItem item)
+        {
+            await Init();
+            if (item.ID_Participant != 0)
+                return await Database.UpdateAsync(item);
+            else
+                return await Database.InsertAsync(item);
+        }
 
+        public async Task<int> SaveRoadAccidentParticipantItemAsync(RoadAccidentParticipantItem item)
+        {
+            await Init();
+            if (item.ID_RoadAccidentParticipant != 0)
+                return await Database.UpdateAsync(item);
+            else
+                return await Database.InsertAsync(item);
+        }
 
-        //public async Task<TodoItem> GetItemAsync(int id)
-        //{
-        //    await Init();
-        //    await Task.Delay(1000);
-        //    return await Database.Table<TodoItem>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        //}
+        public async Task<RoadAccidentItem> GetRoadAccidentItemAsync(int id)
+        {
+            await Init();
+            return await Database.Table<RoadAccidentItem>().Where(i => i.ID_RoadAccident == id).FirstOrDefaultAsync();
+        }
 
-        //public async Task<List<TodoItem>> GetItemsAsync()
-        //{
-        //    await Init();
-        //    return await Database.Table<TodoItem>().ToListAsync();
-        //}
+        public async Task<ParticipantItem> GetParticipantItemAsync(int id)
+        {
+            await Init();
+            return await Database.Table<ParticipantItem>().Where(i => i.ID_Participant == id).FirstOrDefaultAsync();
+        }
 
-        //public async Task<int> SaveItemAsync(TodoItem item)
-        //{
-        //    await Init();
-        //    if (item.ID != 0)
-        //        return await Database.UpdateAsync(item);
-        //    else
-        //        return await Database.InsertAsync(item);
-        //}
+        public async Task<int> GetRoadAccidentItemsAmount()
+        {
+            await Init();
+            return await Database.FindWithQueryAsync<int>("SELECT COUNT() FROM [RoadAccidentItem]");
+        }
+
 
         //public async Task<int> DeleteItemAsync(TodoItem item)
         //{

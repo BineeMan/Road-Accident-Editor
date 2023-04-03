@@ -10,6 +10,8 @@ obj\Debug\net7.0-android\resizetizer\r\drawable\crossroadsicon2.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\delete.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\desticon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\home.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\infoicon.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\informationicon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\plus.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\plusbuttonnew.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\plusgreen.png

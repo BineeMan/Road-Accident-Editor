@@ -24,9 +24,9 @@ namespace RoadsApp2.Database
 
         public string CarNumber { get; set; }
 
-        public override string ToString()
-        {
-            return $"{this.FirstName} {this.SecondName} {this.LastName}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{this.FirstName} {this.SecondName} {this.LastName}";
+        //}
     }
 }

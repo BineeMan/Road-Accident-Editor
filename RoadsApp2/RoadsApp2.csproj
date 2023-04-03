@@ -67,6 +67,8 @@
 	  <None Remove="Resources\Images\delete.png" />
 	  <None Remove="Resources\Images\desticon.png" />
 	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\infoicon.png" />
+	  <None Remove="Resources\Images\informationicon.png" />
 	  <None Remove="Resources\Images\plus.png" />
 	  <None Remove="Resources\Images\plusbuttonnew.png" />
 	  <None Remove="Resources\Images\plusGreen.png" />

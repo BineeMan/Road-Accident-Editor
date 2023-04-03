@@ -17,12 +17,15 @@ namespace RoadsApp2;
 
 public partial class MainPage : ContentPage
 {
-    RoadAccidentDatabase RoadAccidentDatabase { get; set; }
+    public static RoadAccidentDatabase RoadAccidentDatabase { get; set; }
+
+    public static XMLConverter XMLConverterMainPage;
+
     public MainPage()
     {
         InitializeComponent();
         ResetRoadElements();
-
+        XMLConverterMainPage = new XMLConverter(absoluteLayout, this);
         RoadAccidentDatabase = new RoadAccidentDatabase();
         
     }
@@ -37,7 +40,7 @@ public partial class MainPage : ContentPage
 
     private Vector VectorStart { get; set; }
 
-    private List<Node> Nodes { get; set; }
+    public List<Node> Nodes { get; set; }
 
     private readonly Point[] pointOrientations = new Point[]
     {
@@ -57,11 +60,11 @@ public partial class MainPage : ContentPage
 
     private int RectHeight  { get; set; }
 
-    private List<Link> Links { get; set; }
+    public List<Link> Links { get; set; }
 
-    private List<Image> RoadObjects { get; set; }
+    public List<Image> RoadObjects { get; set; }
 
-    private List<Line> Trajectories { get; set; }
+    public List<Line> Trajectories { get; set; }
 
     private Image CurrentImageButton { get; set; }
 
@@ -909,6 +912,11 @@ public partial class MainPage : ContentPage
 
     private Vector vectorStartPan, vectorEndPan, vectorTemp;
 
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+
+    }
+
     private Polygon polygonPan;
     public void PlusImagePuttonPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
     {
@@ -1049,24 +1057,6 @@ public partial class MainPage : ContentPage
                 absoluteLayout.Remove(imageButton);
                 break;
         }
-    }
-
-    private void saveButton_Clicked(object sender, EventArgs e)
-    {
-        XMLConverter xmlConverter = new XMLConverter(absoluteLayout, this);
-        xmlConverter.ConvertNodesToXML(Nodes);      
-        xmlConverter.ConvertImagesToXML(RoadObjects);
-        xmlConverter.ConvertLinesToXML(Trajectories);
-        string filePath = "";
-
-#if WINDOWS
-        filePath = "G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test2.xml";
-#endif
-#if ANDROID
-        var docsDirectory = Android.App.Application.Context.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
-        filePath = docsDirectory.AbsoluteFile.Path + "/test2.xml";
-#endif
-        xmlConverter.SaveDocumentOnDisk(filePath);
     }
 
     private void loadButton_Clicked(object sender, EventArgs e)

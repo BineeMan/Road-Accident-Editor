@@ -1222,6 +1222,12 @@
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\iconWideTile.scale-400.png">
       <PackagePath>iconWideTile.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\infoicon.scale-100.png">
+      <PackagePath>infoicon.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\informationicon.scale-100.png">
+      <PackagePath>informationicon.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plus.scale-100.png">
       <PackagePath>plus.scale-100.png</PackagePath>
     </AppxPackagedFile>

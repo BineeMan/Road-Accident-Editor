@@ -4,7 +4,7 @@ using System.Net;
 
 namespace RoadsApp2.Utils
 {
-    internal class Structs
+    public class Structs
     {
         public struct Node
         {

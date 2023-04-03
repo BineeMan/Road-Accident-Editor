@@ -4,8 +4,10 @@
              x:Class="RoadsApp2.AccidentRegistrationPage"
              Title="Сохранить файл"
              xmlns:viewmodel="clr-namespace:RoadsApp2.ViewModels"
+             xmlns:local="clr-namespace:RoadsApp2.Database"
              x:DataType="viewmodel:AccidentRegistrationViewModel"
-             Background="#F0F0F0">
+             Background="#F0F0F0"
+             Appearing="ContentPage_Appearing">
     <ScrollView>
 
         <VerticalStackLayout x:Name="VerticalStackLayoutMain">
@@ -22,6 +24,9 @@
                    FontFamily="Rubik"
                    TextColor="White"/>
             </Frame>
+
+           
+
             <Frame BackgroundColor="#606060"
                    BorderColor="Transparent"
                    CornerRadius="25">
@@ -45,7 +50,9 @@
                                     ToolTipProperties.Text="asd"
                                     Placeholder="Название"
                                     PlaceholderColor="Grey"
-                                    Text="{Binding Name}" />
+                                    x:Name="NameEntry"
+                                    Text="{Binding Name}"
+                                    Focused="EntryOrEditor_Focused"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -61,10 +68,19 @@
                                 BackgroundColor="#E1E1E1"
                                 CornerRadius="30"
                                 Padding="10, 0">
-                            <DatePicker FontFamily="Rubik"
+                            <HorizontalStackLayout>
+                                <DatePicker FontFamily="Rubik"
                                     FontAttributes="Bold"
                                     CharacterSpacing="1"
+                                    x:Name="DatePicker"
                                     Date="{Binding DateTime}" />
+                                <TimePicker FontFamily="Rubik"
+                                    FontAttributes="Bold"
+                                    CharacterSpacing="1"
+                                    x:Name="AccidentTimePicker"
+                                    Margin="5, 0"/>
+
+                            </HorizontalStackLayout>
                         </Frame>
                     </VerticalStackLayout >
 
@@ -86,7 +102,9 @@
                                        ToolTipProperties.Text="asd"
                                        Placeholder="Ближайший адрес"
                                        PlaceholderColor="Grey"
-                                       Text="{Binding Address}"/>
+                                       x:Name="AddressEntry"
+                                       Text="{Binding Address}"
+                                       Focused="EntryOrEditor_Focused"/>
                         </Frame>
                     </VerticalStackLayout>
 
@@ -94,13 +112,13 @@
                     <VerticalStackLayout >
                         <Frame BackgroundColor="#D5D4D0"
                                Margin="70, 0, 110, -25"  
-                               Padding="20, 20"
-                               CornerRadius="30"
+                               HorizontalOptions="Center"
+                               CornerRadius="30"   
                                BorderColor="Transparent">
                             <Label Text="Участники"
                                    FontAttributes="Bold"
                                    FontSize="17"
-                                   Margin="15, -5, 0, 5"
+                                   Margin="10, 0"
                                    HorizontalOptions="Start"
                                    FontFamily="Rubik"
                                    TextColor="#000000"/>
@@ -109,20 +127,31 @@
                         <Frame BackgroundColor="#D5D4D0"   
                                Padding="20, 20"
                                CornerRadius="30"
-                               BorderColor="Transparent"
-                               MinimumHeightRequest="150">
+                               BorderColor="Transparent">
                             <VerticalStackLayout>
-                                <Button Text="Новый участник"
-                                        Margin="10"
-                                        BorderColor="Grey"
-                                        CornerRadius="20" 
-                                        Command="{Binding OpenParticipantPageCommand}" />
+                                <HorizontalStackLayout>
+                                    <Button Text="Новый участник"
+                                            Margin="10"
+                                            BorderColor="Grey"
+                                            CornerRadius="20" 
+                                            Command="{Binding OpenParticipantPageCommand}" />
+                                </HorizontalStackLayout>
 
-                                <ListView ItemsSource="{Binding Participants}"
-                                          x:Name="ListViewParticipants">
-                                </ListView>
+                                <ScrollView>
+                                    <TableView HeightRequest="150" 
+                                               x:Name="TableViewParticipant" >
+                                        <TableRoot>
+                                            <TableSection TextColor="White" 
+                                                          x:Name="ParticipantsTableSection" >
+                                                
+                                            </TableSection>
+                                        </TableRoot>
+                                    </TableView>
+                                </ScrollView>
+
                             </VerticalStackLayout>
                         </Frame>
+
                         <VerticalStackLayout Margin="0, 0, 0, 10">
                             <Label Text="Описание"
                                    FontAttributes="Bold"
@@ -142,7 +171,9 @@
                                         Placeholder="Описание"
                                         PlaceholderColor="Grey"
                                         HeightRequest="200"
-                                        Text="{Binding Description}"/>
+                                        Text="{Binding Description}"
+                                        x:Name="DescriptionEditor"
+                                        Focused="EntryOrEditor_Focused"/>
                             </Frame>
                         </VerticalStackLayout>
                     </VerticalStackLayout>
@@ -152,7 +183,8 @@
                             BorderColor="White"
                             CornerRadius="20" 
                             Clicked="ButtonSave_Clicked"
-                            Command="{Binding SaveCommand}"/>
+                            Command="{Binding SaveCommand}"
+                            />
                 </VerticalStackLayout>
 
             </Frame>

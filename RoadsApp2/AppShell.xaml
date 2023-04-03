@@ -10,7 +10,8 @@
     <TabBar x:Name="ShellTabBar">
         <Tab Title="Конструктор"
              Icon="crossroadsicon2.png">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"
+                          x:Name="MainPageShell"/>
         </Tab>
         <Tab Title="Меню"
              Icon="home.png">

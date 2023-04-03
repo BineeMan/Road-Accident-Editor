@@ -8,11 +8,11 @@ using static RoadsApp2.Utils.Structs;
 
 namespace RoadsApp2.XMLClasses
 {
-    internal class XMLConverter
+    public class XMLConverter
     {
         private AbsoluteLayout FormAbsoluteLayout { get; set; }
 
-        private XmlDocument XmlDoc { get; set; }
+        public XmlDocument XmlDocumentSchema { get; private set; }
 
         private XmlElement XmlRoot { get; set; }
 
@@ -20,27 +20,27 @@ namespace RoadsApp2.XMLClasses
 
         private string MauiPanGestureRecogniserName { get; } = "Microsoft.Maui.Controls.PanGestureRecognizer";
 
-        private MainPage MainPage { get; set; }
+        public MainPage MainPage { get; set; }
 
         public XMLConverter(AbsoluteLayout absoluteLayout, MainPage mainPage)
         {
             this.FormAbsoluteLayout = absoluteLayout;
             this.MainPage = mainPage;
 
-            XmlDoc = new XmlDocument();
+            XmlDocumentSchema = new XmlDocument();
 
-            XmlDoc.AppendChild(XmlDoc.CreateElement("RoadElements"));
-            XmlRoot = XmlDoc.DocumentElement;
+            XmlDocumentSchema.AppendChild(XmlDocumentSchema.CreateElement("RoadElements"));
+            XmlRoot = XmlDocumentSchema.DocumentElement;
 
-            XmlDeclaration xmlDeclaration = XmlDoc.CreateXmlDeclaration("1.0", "utf-8", "yes");
-            XmlDoc.InsertBefore(xmlDeclaration, XmlRoot);
+            XmlDeclaration xmlDeclaration = XmlDocumentSchema.CreateXmlDeclaration("1.0", "utf-8", "yes");
+            XmlDocumentSchema.InsertBefore(xmlDeclaration, XmlRoot);
         }
 
         public bool SaveDocumentOnDisk(string filePath)
         {
             try
             {
-                XmlDoc.Save(filePath);
+                XmlDocumentSchema.Save(filePath);
                 return true;
             }
             catch
@@ -51,15 +51,15 @@ namespace RoadsApp2.XMLClasses
 
         private void AddNewAttribute(string name, string value, XmlElement ElementAppendTo)
         {
-            XmlAttribute xmlAttribute = XmlDoc.CreateAttribute(name);
-            XmlText xmlAttributeText = XmlDoc.CreateTextNode(value);
+            XmlAttribute xmlAttribute = XmlDocumentSchema.CreateAttribute(name);
+            XmlText xmlAttributeText = XmlDocumentSchema.CreateTextNode(value);
             xmlAttribute.AppendChild(xmlAttributeText);
             ElementAppendTo.Attributes.Append(xmlAttribute);
         }
 
         private XmlElement ConvertLineToXmlNode(Line line, string nodeName)
         {
-            XmlElement lineElement = XmlDoc.CreateElement(nodeName);
+            XmlElement lineElement = XmlDocumentSchema.CreateElement(nodeName);
             SolidColorBrush solidColorBrush = (SolidColorBrush)line.Fill;
             AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), lineElement);
             solidColorBrush = (SolidColorBrush)line.Stroke;
@@ -81,19 +81,25 @@ namespace RoadsApp2.XMLClasses
             return lineElement;
         }
 
-        public void ConvertNodesToXML(List<Node> Nodes)
+        public void ClearAbsoluteLayout()
         {
-            XmlElement NodesElement = XmlDoc.CreateElement("Nodes");
+            FormAbsoluteLayout.Clear();
+        }
+
+        public void ConvertNodesToXML()
+        {
+            List<Node> Nodes = MainPage.Nodes;
+            XmlElement NodesElement = XmlDocumentSchema.CreateElement("Nodes");
             XmlRoot.AppendChild(NodesElement);
 
             #region Nodes
             foreach (Node node in Nodes)
             {
-                XmlElement Node = XmlDoc.CreateElement("Node");
+                XmlElement Node = XmlDocumentSchema.CreateElement("Node");
                 NodesElement.AppendChild(Node);
 
                 #region Rectangle
-                XmlElement Rectangle = XmlDoc.CreateElement("Rectangle");
+                XmlElement Rectangle = XmlDocumentSchema.CreateElement("Rectangle");
                 Node.AppendChild(Rectangle);
 
                 SolidColorBrush solidColorBrush = (SolidColorBrush)node.Rectangle.Fill;
@@ -115,11 +121,11 @@ namespace RoadsApp2.XMLClasses
                 Rect rect1 = FormAbsoluteLayout.GetLayoutBounds((IView)node.Rectangle);
                 AddNewAttribute("rect", rect1.ToString(), Rectangle);
 
-                XmlElement GestureRecognizers = XmlDoc.CreateElement("GestureRecognizers");
+                XmlElement GestureRecognizers = XmlDocumentSchema.CreateElement("GestureRecognizers");
 
                 foreach (GestureRecognizer gestureRecognizer in node.Rectangle.GestureRecognizers)
                 {
-                    XmlElement GestureRecognizerName = XmlDoc.CreateElement(gestureRecognizer.ToString());
+                    XmlElement GestureRecognizerName = XmlDocumentSchema.CreateElement(gestureRecognizer.ToString());
                     if (gestureRecognizer.ToString().Equals("Microsoft.Maui.Controls.TapGestureRecognizer"))
                     {
                         AddNewAttribute("Tapped", "Crossroads_Tapped", GestureRecognizerName);
@@ -139,12 +145,12 @@ namespace RoadsApp2.XMLClasses
                 #endregion
 
                 #region PlusButtons
-                XmlElement PlusButtons = XmlDoc.CreateElement("PlusButtons");
+                XmlElement PlusButtons = XmlDocumentSchema.CreateElement("PlusButtons");
                 Node.AppendChild(PlusButtons);
 
                 foreach (Image plusButton in node.PlusButtons)
                 {
-                    XmlElement Image = XmlDoc.CreateElement("Image");
+                    XmlElement Image = XmlDocumentSchema.CreateElement("Image");
                     PlusButtons.AppendChild(Image);
 
                     AddNewAttribute("Source", plusButton.Source.ToString().Replace("File: ", ""), Image);
@@ -166,10 +172,10 @@ namespace RoadsApp2.XMLClasses
                     Rect rect = FormAbsoluteLayout.GetLayoutBounds(plusButton);
                     AddNewAttribute("rect", rect.ToString(), Image);
 
-                    XmlElement GestureRecognizers1 = XmlDoc.CreateElement("GestureRecognizers");
+                    XmlElement GestureRecognizers1 = XmlDocumentSchema.CreateElement("GestureRecognizers");
                     foreach (GestureRecognizer gestureRecognizer in plusButton.GestureRecognizers)
                     {
-                        XmlElement GestureRecognizerName = XmlDoc.CreateElement(gestureRecognizer.ToString());
+                        XmlElement GestureRecognizerName = XmlDocumentSchema.CreateElement(gestureRecognizer.ToString());
                         if (gestureRecognizer.ToString().Equals("Microsoft.Maui.Controls.TapGestureRecognizer"))
                         {
                             AddNewAttribute("Tapped", "ImgButtonPlus_Tapped", GestureRecognizerName);
@@ -189,17 +195,17 @@ namespace RoadsApp2.XMLClasses
                 #endregion
 
                 #region Links
-                XmlElement Links = XmlDoc.CreateElement("Links");
+                XmlElement Links = XmlDocumentSchema.CreateElement("Links");
 
                 Node.AppendChild(Links);
 
                 foreach (Link link in node.Roads)
                 {
-                    XmlElement Link = XmlDoc.CreateElement("Link");
+                    XmlElement Link = XmlDocumentSchema.CreateElement("Link");
                     Links.AppendChild(Link);
 
                     #region ROAD
-                    XmlElement Road = XmlDoc.CreateElement("Road");
+                    XmlElement Road = XmlDocumentSchema.CreateElement("Road");
                     Link.AppendChild(Road);
 
                     solidColorBrush = (SolidColorBrush)link.Road.Fill;
@@ -214,11 +220,11 @@ namespace RoadsApp2.XMLClasses
 
                     AddNewAttribute("ZIndex", link.Road.ZIndex.ToString(), Road);
 
-                    XmlElement PointsCollection = XmlDoc.CreateElement("PointsCollection");
+                    XmlElement PointsCollection = XmlDocumentSchema.CreateElement("PointsCollection");
                     Road.AppendChild(PointsCollection);
                     foreach (Point point in link.Road.Points)
                     {
-                        XmlElement Point = XmlDoc.CreateElement("Point");
+                        XmlElement Point = XmlDocumentSchema.CreateElement("Point");
                         PointsCollection.AppendChild(Point);
                         AddNewAttribute("X", point.X.ToString(), Point);
 
@@ -227,11 +233,11 @@ namespace RoadsApp2.XMLClasses
                     #endregion
 
                     #region OriginalRoadPoints
-                    XmlElement OriginalRoadPoints = XmlDoc.CreateElement("OriginalRoadPoints");
+                    XmlElement OriginalRoadPoints = XmlDocumentSchema.CreateElement("OriginalRoadPoints");
                     Link.AppendChild(OriginalRoadPoints);
                     foreach (Point point in link.OriginalRoadPoints)
                     {
-                        XmlElement Point = XmlDoc.CreateElement("Point");
+                        XmlElement Point = XmlDocumentSchema.CreateElement("Point");
                         PointsCollection.AppendChild(Point);
 
                         AddNewAttribute("X", point.X.ToString(), Point);
@@ -243,12 +249,12 @@ namespace RoadsApp2.XMLClasses
                     #endregion
 
                     #region LinesSide1
-                    XmlElement LinesSide1 = XmlDoc.CreateElement("LinesSide1");
+                    XmlElement LinesSide1 = XmlDocumentSchema.CreateElement("LinesSide1");
                     Link.AppendChild(LinesSide1);
 
                     foreach (Line line in link.LinesSide1)
                     {
-                        XmlElement Line = XmlDoc.CreateElement("Line");
+                        XmlElement Line = XmlDocumentSchema.CreateElement("Line");
                         LinesSide1.AppendChild(Line);
 
                         solidColorBrush = (SolidColorBrush)line.Fill;
@@ -278,12 +284,12 @@ namespace RoadsApp2.XMLClasses
 
                     #region LinesSide2
 
-                    XmlElement LinesSide2 = XmlDoc.CreateElement("LinesSide2");
+                    XmlElement LinesSide2 = XmlDocumentSchema.CreateElement("LinesSide2");
                     Link.AppendChild(LinesSide2);
 
                     foreach (Line line in link.LinesSide2)
                     {
-                        XmlElement Line = XmlDoc.CreateElement("Line");
+                        XmlElement Line = XmlDocumentSchema.CreateElement("Line");
                         LinesSide2.AppendChild(Line);
 
                         solidColorBrush = (SolidColorBrush)line.Fill;
@@ -320,12 +326,12 @@ namespace RoadsApp2.XMLClasses
 
                     #region MiddleLines
 
-                    XmlElement MiddleLines = XmlDoc.CreateElement("MiddleLines");
+                    XmlElement MiddleLines = XmlDocumentSchema.CreateElement("MiddleLines");
                     Link.AppendChild(MiddleLines);
 
                     foreach (Line line in link.MiddleLines)
                     {
-                        XmlElement Line = XmlDoc.CreateElement("Line");
+                        XmlElement Line = XmlDocumentSchema.CreateElement("Line");
                         MiddleLines.AppendChild(Line);
 
                         solidColorBrush = (SolidColorBrush)line.Fill;
@@ -361,14 +367,14 @@ namespace RoadsApp2.XMLClasses
                     #endregion
 
                     #region LineSteppers
-                    XmlElement LineSteppers = XmlDoc.CreateElement("LineSteppers");
+                    XmlElement LineSteppers = XmlDocumentSchema.CreateElement("LineSteppers");
                     Link.AppendChild(LineSteppers);
 
                     foreach (LineStepper lineStepper in link.LineSteppers)
                     {
-                        XmlElement lineStepperElement = XmlDoc.CreateElement("LineStepper");
+                        XmlElement lineStepperElement = XmlDocumentSchema.CreateElement("LineStepper");
 
-                        XmlElement stepperElement = XmlDoc.CreateElement("Stepper");
+                        XmlElement stepperElement = XmlDocumentSchema.CreateElement("Stepper");
                         LineSteppers.AppendChild(lineStepperElement);
 
                         lineStepperElement.AppendChild(stepperElement);
@@ -397,15 +403,15 @@ namespace RoadsApp2.XMLClasses
                         Rect rect2 = FormAbsoluteLayout.GetLayoutBounds(lineStepper.Stepper);
                         AddNewAttribute("rect", rect2.ToString(), stepperElement);
 
-                        XmlElement Vector = XmlDoc.CreateElement("Vector");
+                        XmlElement Vector = XmlDocumentSchema.CreateElement("Vector");
                         lineStepperElement.AppendChild(Vector);
 
-                        XmlElement point1 = XmlDoc.CreateElement("point1");
+                        XmlElement point1 = XmlDocumentSchema.CreateElement("point1");
                         Vector.AppendChild(point1);
                         AddNewAttribute("X", lineStepper.Vector.point1.X.ToString(), point1);
                         AddNewAttribute("Y", lineStepper.Vector.point1.Y.ToString(), point1);
 
-                        XmlElement point2 = XmlDoc.CreateElement("point2");
+                        XmlElement point2 = XmlDocumentSchema.CreateElement("point2");
                         Vector.AppendChild(point2);
                         AddNewAttribute("X", lineStepper.Vector.point2.X.ToString(), point2);
                         AddNewAttribute("Y", lineStepper.Vector.point2.Y.ToString(), point2);
@@ -415,7 +421,7 @@ namespace RoadsApp2.XMLClasses
 
                     #region RectangleCollision
 
-                    XmlElement RectangleCollision = XmlDoc.CreateElement("RectangleCollision");
+                    XmlElement RectangleCollision = XmlDocumentSchema.CreateElement("RectangleCollision");
                     Link.AppendChild(RectangleCollision);
                     Rect rect = FormAbsoluteLayout.GetLayoutBounds(link.RectangleCollision);
                     AddNewAttribute("rect", rect.ToString(), RectangleCollision);
@@ -425,11 +431,11 @@ namespace RoadsApp2.XMLClasses
 
                     AddNewAttribute("ZIndex", link.RectangleCollision.ZIndex.ToString(), RectangleCollision);
 
-                    GestureRecognizers = XmlDoc.CreateElement("GestureRecognizers");
+                    GestureRecognizers = XmlDocumentSchema.CreateElement("GestureRecognizers");
 
                     foreach (GestureRecognizer gestureRecognizer in node.Rectangle.GestureRecognizers)
                     {
-                        XmlElement GestureRecognizerName = XmlDoc.CreateElement(gestureRecognizer.ToString());
+                        XmlElement GestureRecognizerName = XmlDocumentSchema.CreateElement(gestureRecognizer.ToString());
                         if (gestureRecognizer.ToString().Equals("Microsoft.Maui.Controls.TapGestureRecognizer"))
                         {
                             AddNewAttribute("Tapped", "RoadCollision_Tapped", GestureRecognizerName);
@@ -451,13 +457,14 @@ namespace RoadsApp2.XMLClasses
 
         }
 
-        public void ConvertImagesToXML(List<Image> images)
+        public void ConvertImagesToXML()
         {
-            XmlElement ImagesElement = XmlDoc.CreateElement("Images");
+            List<Image> images = MainPage.RoadObjects;
+            XmlElement ImagesElement = XmlDocumentSchema.CreateElement("Images");
             XmlRoot.AppendChild(ImagesElement);
             foreach (Image image in images)
             {
-                XmlElement Image = XmlDoc.CreateElement("Image");
+                XmlElement Image = XmlDocumentSchema.CreateElement("Image");
                 ImagesElement.AppendChild(Image);
 
                 AddNewAttribute("Source", image.Source.ToString().Replace("File: ", ""), Image);
@@ -475,11 +482,11 @@ namespace RoadsApp2.XMLClasses
                 Rect rect = FormAbsoluteLayout.GetLayoutBounds(image);
                 AddNewAttribute("rect", rect.ToString(), Image);
 
-                XmlElement GestureRecognizers = XmlDoc.CreateElement("GestureRecognizers");
+                XmlElement GestureRecognizers = XmlDocumentSchema.CreateElement("GestureRecognizers");
 
                 foreach (GestureRecognizer gestureRecognizer in image.GestureRecognizers)
                 {
-                    XmlElement GestureRecognizerName = XmlDoc.CreateElement(gestureRecognizer.ToString());
+                    XmlElement GestureRecognizerName = XmlDocumentSchema.CreateElement(gestureRecognizer.ToString());
                     if (gestureRecognizer.ToString().Equals("Microsoft.Maui.Controls.TapGestureRecognizer"))
                     {
                         AddNewAttribute("Tapped", "RoadObjectImage_Tapped", GestureRecognizerName);
@@ -497,9 +504,10 @@ namespace RoadsApp2.XMLClasses
             }
         }
 
-        public void ConvertLinesToXML(List<Line> lines)
+        public void ConvertLinesToXML()
         {
-            XmlElement trajectoriesElement = XmlDoc.CreateElement("Trajectories");
+            List<Line> lines = MainPage.Trajectories;
+            XmlElement trajectoriesElement = XmlDocumentSchema.CreateElement("Trajectories");
             XmlRoot.AppendChild(trajectoriesElement);
             foreach (Line line in lines)
             {
@@ -621,9 +629,11 @@ namespace RoadsApp2.XMLClasses
             return true;
         }
 
-        public void ConvertXmlToViews(string XmlDocumentPath, out List<Node> nodes, out List<Image> images, out List<Link> links)
+        public void ConvertXmlToViews(string XmlDocumentString, out List<Node> nodes, out List<Image> images, out List<Link> links)
         {
-            XDocument xDoc = XDocument.Load(XmlDocumentPath);
+
+            //XDocument xDoc = XDocument.Load(XmlDocumentString);
+            XDocument xDoc = XDocument.Parse(XmlDocumentString);
             nodes = new List<Node>();
             links = new List<Link>();
             images = new List<Image>();

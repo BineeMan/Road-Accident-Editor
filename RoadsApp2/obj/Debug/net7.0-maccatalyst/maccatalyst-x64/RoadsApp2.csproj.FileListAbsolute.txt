@@ -308,3 +308,7 @@ G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\SQLitePCL
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\SQLitePCLRaw.provider.e_sqlite3.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\libe_sqlite3.dylib
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\CommunityToolkit.Mvvm.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\CommunityToolkit.Maui.dll
+G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-maccatalyst\maccatalyst-x64\CommunityToolkit.Maui.Core.dll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\infoicon.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-maccatalyst\maccatalyst-x64\resizetizer\r\Resources\informationicon.png

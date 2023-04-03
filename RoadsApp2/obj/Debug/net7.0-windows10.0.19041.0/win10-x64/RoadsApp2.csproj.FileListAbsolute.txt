@@ -443,3 +443,5 @@ G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Communi
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\mscordaccore_amd64_amd64_7.0.423.11508.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Maui.dll
 G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\CommunityToolkit.Maui.Core.dll
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\informationicon.scale-100.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\infoicon.scale-100.png
