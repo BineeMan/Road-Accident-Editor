@@ -64,4 +64,5 @@ public partial class NewParticipantPage : ContentPage
             entry.PlaceholderColor = TextColors.NormalColorPlaceholder;
         }
     }
+
 }

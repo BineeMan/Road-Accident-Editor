@@ -77,11 +77,19 @@ namespace RoadsApp2.Database
             return await Database.FindWithQueryAsync<int>("SELECT COUNT() FROM [RoadAccidentItem]");
         }
 
+        public async Task<List<ParticipantItem>> GetParticipantItemsByRoadAcidentAsync(RoadAccidentItem item)
+        {
+            await Init();
+            return await Database.QueryAsync<ParticipantItem>("SELECT ParticipantItem.ID_Participant, ParticipantItem.FirstName, ParticipantItem.SecondName, ParticipantItem.LastName, ParticipantItem.CarName, ParticipantItem.CarNumber FROM ParticipantItem " +
+                "JOIN RoadAccidentParticipantItem on ParticipantItem.ID_Participant = RoadAccidentParticipantItem.ID_Participant " +
+                "JOIN RoadAccidentItem on RoadAccidentItem.ID_RoadAccident = RoadAccidentParticipantItem.ID_RoadAccident " +
+                "WHERE RoadAccidentItem.ID_RoadAccident = " + item.ID_RoadAccident);
+        }
 
-        //public async Task<int> DeleteItemAsync(TodoItem item)
-        //{
-        //    await Init();
-        //    return await Database.DeleteAsync(item);
-        //}
+        public async Task<int> DeleteRoadAccidentItemAsync(RoadAccidentItem item)
+        {
+            await Init();
+            return await Database.DeleteAsync<RoadAccidentItem>(item.ID_RoadAccident);
+        }
     }
 }

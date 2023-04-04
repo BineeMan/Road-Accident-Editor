@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:RoadsApp2.ViewModels"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="viewmodel:NewParticipantViewModel"
-             Background="#F0F0F0">
+             Background="#F0F0F0" >
     <ScrollView>
 
         <VerticalStackLayout x:Name="VerticalStackLayoutMain">
@@ -19,7 +19,7 @@
                    FontAttributes="Bold"
                    FontSize="20"
                    HorizontalOptions="Center"
-                   Margin="13, -15, 30, 0"
+                   
                    FontFamily="Rubik"
                    TextColor="White"/>
             </Frame>

@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RoadsApp2</name>
+    </assembly>
+    <members>
+        <member name="M:RoadsApp2.MainPage.AddFlagsAroundRectangle(Microsoft.Maui.Controls.Shapes.Rectangle,RoadsApp2.Utils.Enums.Orientation,System.Boolean)">
+            <summary>
+            This function adds new flags around a crossroads with except orientation which will be avoided
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.Crossroads_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.ImgButtonPlus_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            Event for plus and destination image buttons.
+            </summary>
+        </member>
+        <member name="M:RoadsApp2.MainPage.AbsoluteLayout_Tapped(System.Object,Microsoft.Maui.Controls.TappedEventArgs)">
+            <summary>
+            Main absolute layout event
+            </summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Name">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.name"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.DateTime">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.dateTime"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Address">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.address"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Description">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.description"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Participants">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.participants"/>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.openParticipantPageCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.OpenParticipantPageCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.OpenParticipantPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.AccidentRegistrationViewModel.OpenParticipantPage"/>.</summary>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.saveCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.SaveCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.SaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.AccidentRegistrationViewModel.Save"/>.</summary>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.AccidentRegistrationViewModel.removeLastCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.RemoveLastCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.AccidentRegistrationViewModel.RemoveLastCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.AccidentRegistrationViewModel.RemoveLast"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.FullName">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.NewParticipantViewModel.fullName"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.CarModel">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.NewParticipantViewModel.carModel"/>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.CarNumber">
+            <inheritdoc cref="F:RoadsApp2.ViewModels.NewParticipantViewModel.carNumber"/>
+        </member>
+        <member name="F:RoadsApp2.ViewModels.NewParticipantViewModel.addCommand">
+            <summary>The backing field for <see cref="P:RoadsApp2.ViewModels.NewParticipantViewModel.AddCommand"/>.</summary>
+        </member>
+        <member name="P:RoadsApp2.ViewModels.NewParticipantViewModel.AddCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:RoadsApp2.ViewModels.NewParticipantViewModel.Add"/>.</summary>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_DatePicker.TextColorTo(Microsoft.Maui.Controls.DatePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Editor.TextColorTo(Microsoft.Maui.Controls.Editor,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Entry.TextColorTo(Microsoft.Maui.Controls.Entry,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Label.TextColorTo(Microsoft.Maui.Controls.Label,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Picker.TextColorTo(Microsoft.Maui.Controls.Picker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_RadioButton.TextColorTo(Microsoft.Maui.Controls.RadioButton,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_SearchBar.TextColorTo(Microsoft.Maui.Controls.SearchBar,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_TimePicker.TextColorTo(Microsoft.Maui.Controls.TimePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+    </members>
+</doc>

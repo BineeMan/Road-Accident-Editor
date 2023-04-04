@@ -84,6 +84,8 @@ public partial class MainPage : ContentPage
 
     private Rectangle CurrentCollision { get; set; }
 
+    private enum BottomSheetType { CarBottomSheet, SignBottomSheet, None }
+
     private void ResetRoadElements()
     {
         PreviousNode = new Node() { PlusButtons = new List<Image>() };
@@ -254,8 +256,6 @@ public partial class MainPage : ContentPage
             AnchorX = 0.5,
             IsVisible = false,
             Value = 1,
-            //Background = Color.FromRgb(81, 43, 212),
-            //BackgroundColor = Color.FromRgb(81, 43, 212),
             Margin = thickness
         };
         stepper.ValueChanged += OnStepperValueChanged;
@@ -267,17 +267,6 @@ public partial class MainPage : ContentPage
         xUpHalf = ((vectorStart.point1.X + step) + (l * (vectorDestination.point1.X + step))) / (1 + l);
         yUpHalf = ((vectorStart.point1.Y + step) + (l * (vectorDestination.point1.Y + step))) / (1 + l);
 
-
-        //CheckBox checkBox = new CheckBox()
-        //{
-        //    HorizontalOptions = LayoutOptions.Center,
-        //    IsVisible = false,
-        //    ZIndex = 5,
-        //};
-        //checkBox.CheckedChanged += CheckBoxTwoLaned_CheckedChanged;
-        //absoluteLayout.Add(checkBox);
-        //absoluteLayout.SetLayoutBounds(checkBox,
-        //        new Rect(xUpHalf, yUpHalf, checkBox.Width, checkBox.Height));
 
         link.LineSteppers.Add(new LineStepper()
         {
@@ -295,8 +284,6 @@ public partial class MainPage : ContentPage
             ZIndex = 5,
             IsVisible = false,
             Value = 1,
-            //Background = Color.FromRgb(81, 43, 212),
-            //BackgroundColor = Color.FromRgb(81, 43, 212),
             Margin = thickness
         };
         stepper.ValueChanged += OnStepperValueChanged;
@@ -311,11 +298,7 @@ public partial class MainPage : ContentPage
             Stepper = stepper,
             Vector = new Vector() { point1 = vectorStart.point2, point2 = vectorDestination.point2 }
         });
-
-        //Debug.WriteLine(Links.IndexOf(link));
-        //Debug.WriteLine(Links[Links.IndexOf(link)].LineSteppers.Count);
     }
-
     ///<summary>
     ///This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
     ///</summary>
@@ -748,13 +731,18 @@ public partial class MainPage : ContentPage
                     absoluteLayout.Height / 2, newImage.Width, newImage.Height));
 
             RoadObjects.Add(newImage);
-            await ObjectMenuBottomSheet.CloseBottomSheet();
+            switch (CurrentBottomSheetType)
+            {
+                case BottomSheetType.SignBottomSheet:
+                    await SignMenuBottomSheet.CloseBottomSheet(); break;
+                case BottomSheetType.CarBottomSheet:
+                    await CarMenuBottomSheet.CloseBottomSheet(); break;
+            }
         }
     }
 
     private void ToggleAllRoadObjects(bool isEnabled)
-    {
-        
+    {       
         foreach (Image image in RoadObjects)
         {
             image.IsEnabled = isEnabled;
@@ -905,12 +893,52 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private async void PlusButtonSheet_Clicked(System.Object sender, System.EventArgs e)
+    private BottomSheetType CurrentBottomSheetType = BottomSheetType.None;
+
+    private bool IsFloatingActionOpened = false;
+    private async Task AnimateFloatingAction()
     {
-        await ObjectMenuBottomSheet.OpenBottomSheet();
+        if (IsFloatingActionOpened)
+        {
+            Task t1 = PlusButtonNew.RotateTo(90);
+            Task t2 = CarIcon.TranslateTo(70, 0);
+            Task t3 = SignIcon.TranslateTo(70, 0);
+            await Task.WhenAll(t1, t2, t3);
+            IsFloatingActionOpened = false;
+        }
+        else
+        {
+            await PlusButtonNew.RotateTo(-90);
+            await CarIcon.TranslateTo(0, 0, 100);
+            await SignIcon.TranslateTo(0, 0, 100);
+            IsFloatingActionOpened = true;
+        }
     }
+    private async void PlusButtonSheet_Clicked(System.Object sender, System.EventArgs e) =>
+        await AnimateFloatingAction();
 
     private Vector vectorStartPan, vectorEndPan, vectorTemp;
+
+    private void TapGestureRecognizerCategoryObject_Tapped(object sender, TappedEventArgs e)
+    {
+
+    }
+
+    private async void SignIcon_Clicked(object sender, EventArgs e)
+    {
+        CurrentBottomSheetType = BottomSheetType.SignBottomSheet;
+        Task t1 = SignMenuBottomSheet.OpenBottomSheet();
+        Task t2 = AnimateFloatingAction();
+        await Task.WhenAll(t1, t2);
+    } 
+
+    private async void CarIcon_Clicked(object sender, EventArgs e)
+    {
+        CurrentBottomSheetType = BottomSheetType.CarBottomSheet;
+        Task t1 = CarMenuBottomSheet.OpenBottomSheet();
+        Task t2 = AnimateFloatingAction();
+        await Task.WhenAll(t1, t2);
+    }
 
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
@@ -928,7 +956,6 @@ public partial class MainPage : ContentPage
             imageButton.Rotation = 0;
 #endif
         }
-
         switch (e.StatusType)
         {
             case GestureStatus.Started:
@@ -1043,9 +1070,6 @@ public partial class MainPage : ContentPage
 
                 targetNode.Roads.Add(link);
                 callerNode.Roads.Add(link);
-
-                Debug.WriteLine(targetNode.PlusButtons.Remove(imageButton));
-
                 foreach (Node node1 in Nodes)
                 {
                     if (!node1.Equals(targetNode))
@@ -1053,36 +1077,8 @@ public partial class MainPage : ContentPage
                         SetImageButtonsVisibility(node1.PlusButtons, false);
                     }
                 }
-
                 absoluteLayout.Remove(imageButton);
                 break;
-        }
-    }
-
-    private void loadButton_Clicked(object sender, EventArgs e)
-    {
-        XMLConverter xmlConverter = new XMLConverter(absoluteLayout, this);
-        string filePath = "";
-#if WINDOWS
-        filePath = "G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test2.xml";
-#endif
-#if ANDROID
-        var docsDirectory = Android.App.Application.Context.GetExternalFilesDir(Android.OS.Environment.DirectoryDocuments);
-        filePath = docsDirectory.AbsoluteFile.Path+"/test2.xml";
-#endif
-        List<Image> images = new List<Image>();
-        List<Node> nodes = new List<Node>();
-        List<Link> links = new List<Link>();
-
-        xmlConverter.ConvertXmlToViews(filePath, out nodes, out images, out links);
-
-        Nodes = nodes;
-        Links = links;
-        RoadObjects = images;
-        Debug.WriteLine(images.Count);
-        foreach (Image image in RoadObjects)
-        {
-            Debug.WriteLine(absoluteLayout.GetLayoutBounds(image).X + " " + absoluteLayout.GetLayoutBounds(image).Y);
         }
     }
 }

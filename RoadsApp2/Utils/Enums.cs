@@ -16,9 +16,6 @@ namespace RoadsApp2.Utils
         public enum ConnectingMode
         {
             ToNewNode = 0, ToExistingNode = 1, None = -1
-        }
-
-        
-
+        }    
     }
 }

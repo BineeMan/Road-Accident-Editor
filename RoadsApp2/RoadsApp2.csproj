@@ -49,16 +49,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\logowindows.png" />
 	  <MauiImage Remove="Resources\Images\splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\icon2.png" />
 	  <None Remove="Resources\AppIcon\icon3.png" />
+	  <None Remove="Resources\Fonts\Rubik-Italic-VariableFont_wght.ttf" />
+	  <None Remove="Resources\Fonts\Rubik-VariableFont_wght.ttf" />
 	  <None Remove="Resources\Images\btnlineminus.png" />
 	  <None Remove="Resources\Images\btnlineplus.png" />
+	  <None Remove="Resources\Images\bycicle.png" />
+	  <None Remove="Resources\Images\car.png" />
 	  <None Remove="Resources\Images\car1.png" />
 	  <None Remove="Resources\Images\car3.png" />
+	  <None Remove="Resources\Images\car4.png" />
+	  <None Remove="Resources\Images\caricon.png" />
 	  <None Remove="Resources\Images\crossicon.png" />
 	  <None Remove="Resources\Images\crossicon2.png" />
 	  <None Remove="Resources\Images\crossiconinactive.png" />
@@ -69,9 +76,22 @@
 	  <None Remove="Resources\Images\home.png" />
 	  <None Remove="Resources\Images\infoicon.png" />
 	  <None Remove="Resources\Images\informationicon.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\logowindows.png" />
+	  <None Remove="Resources\Images\motorcycle.png" />
 	  <None Remove="Resources\Images\plus.png" />
 	  <None Remove="Resources\Images\plusbuttonnew.png" />
 	  <None Remove="Resources\Images\plusGreen.png" />
+	  <None Remove="Resources\Images\sign1.png" />
+	  <None Remove="Resources\Images\sign2.png" />
+	  <None Remove="Resources\Images\sign3.png" />
+	  <None Remove="Resources\Images\sign4.png" />
+	  <None Remove="Resources\Images\sign5.png" />
+	  <None Remove="Resources\Images\sign6.png" />
+	  <None Remove="Resources\Images\sign7.png" />
+	  <None Remove="Resources\Images\sign8.png" />
+	  <None Remove="Resources\Images\sign9.png" />
+	  <None Remove="Resources\Images\signicon.png" />
 	  <None Remove="Resources\Images\trajectoryicon.png" />
 	</ItemGroup>
 
@@ -92,6 +112,8 @@
 	  <MauiIcon Include="Resources\AppIcon\icon.png" />
 	  <MauiIcon Include="Resources\AppIcon\icon2.png" />
 	  <MauiIcon Include="Resources\AppIcon\icon3.png" />
+	  <MauiIcon Include="Resources\Images\logowindows.png" />
+    
 	</ItemGroup>
 
 	<ItemGroup>
@@ -103,6 +125,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="InfoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -2,6 +2,7 @@
 using Microsoft.Maui.Controls.Shapes;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using static RoadsApp2.Utils.Structs;
@@ -631,8 +632,6 @@ namespace RoadsApp2.XMLClasses
 
         public void ConvertXmlToViews(string XmlDocumentString, out List<Node> nodes, out List<Image> images, out List<Link> links)
         {
-
-            //XDocument xDoc = XDocument.Load(XmlDocumentString);
             XDocument xDoc = XDocument.Parse(XmlDocumentString);
             nodes = new List<Node>();
             links = new List<Link>();
@@ -890,7 +889,6 @@ namespace RoadsApp2.XMLClasses
                 FormAbsoluteLayout.Add(GetLineFromElement(trajectoryElement));
             }
             #endregion
-
         }
     }
 }

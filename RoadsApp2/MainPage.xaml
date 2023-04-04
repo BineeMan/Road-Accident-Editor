@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:XGENO.Maui.Controls;assembly=Maui.Controls.BottomSheet"
              x:Class="RoadsApp2.MainPage"
-             Loaded="ContentPage_Loaded"   >
+             Loaded="ContentPage_Loaded" 
+             >
     
     <Grid x:Name="GridMain">
         <Grid.RowDefinitions>
@@ -57,49 +58,74 @@
                 </HorizontalStackLayout>
                 
                 <HorizontalStackLayout Margin="40, 0">
-                    
+
                     <ImageButton x:Name="crossButton"
                              Source="crossicon2.png"
                              Clicked="CrossButton_Clicked"
                              WidthRequest="40"
                              HeightRequest="40" 
                              BackgroundColor="Transparent"/>
-                
                     <ImageButton Source="delete.png"                   
-                                        Clicked="ButtonClean_Clicked"
-                                        ZIndex="99"
-                                        WidthRequest="50"
-                                        HeightRequest="40"
-                                        Margin="10"
-                                        BackgroundColor="Transparent">
-                    </ImageButton>
+                                    Clicked="ButtonClean_Clicked"
+                                    ZIndex="99"
+                                    WidthRequest="50"
+                                    HeightRequest="40"
+                                    Margin="10"
+                                    BackgroundColor="Transparent" />
                 </HorizontalStackLayout>
 
             </HorizontalStackLayout>
         </ScrollView>
 
-        <ImageButton Source="plusbuttonnew.png"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    x:Name="PlusButtonNew"
-                    Clicked="PlusButtonSheet_Clicked"
-                    HorizontalOptions="End"
-                    CornerRadius="25"
-                    ZIndex="99"
-                    Grid.Column="1"
-                    Grid.Row="2"
-                    Margin="20, 0">
+
+        <VerticalStackLayout ZIndex="99"
+                             Grid.Column="1"
+                             Grid.Row="2"
+                             HorizontalOptions="End"
+                             Margin="0, -110, 0, 0">
+            <ImageButton Source="signicon.png" 
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         CornerRadius="25"
+                         Padding="5"
+                         Margin="0, 0, 0, 10"
+                         Scale="0.9"
+                         x:Name="SignIcon"
+                         TranslationX="70" 
+                         Clicked="SignIcon_Clicked"/>
+            <ImageButton Source="caricon.png" 
+                         WidthRequest="50"
+                         HeightRequest="50"
+                         CornerRadius="25"
+                         Padding="5"
+                         Margin="0, 0, 0, 10"
+                         Scale="0.9"
+                         x:Name="CarIcon"
+                         TranslationX="70"
+                         Clicked="CarIcon_Clicked"/>
+            <ImageButton Source="plusbuttonnew.png"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        x:Name="PlusButtonNew"
+                        Clicked="PlusButtonSheet_Clicked"
+                        HorizontalOptions="End"
+                        CornerRadius="25"
+                        ZIndex="99"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Margin="20, 0">
             <ImageButton.Shadow>
                 <Shadow Brush="Black"
                                 Offset="0,2"
                                 Opacity="0.5" />
             </ImageButton.Shadow>
         </ImageButton>
+        </VerticalStackLayout>
 
-        
 
-        <controls:BottomSheet x:Name="ObjectMenuBottomSheet"
-                              HeaderText="Автомобили"
+
+        <controls:BottomSheet x:Name="SignMenuBottomSheet"
+                              HeaderText="Дорожные знаки"
                               Grid.Column="0"
                               Grid.Row="1"
                               Grid.ColumnSpan="2"
@@ -109,19 +135,124 @@
             <controls:BottomSheet.BottomSheetContent>
                 <ScrollView Orientation="Horizontal"
                             HeightRequest="120"
-                            Margin="0, -20, 0, 0">
-                    <HorizontalStackLayout>
-                        <Frame BackgroundColor="Transparent"
-                               BorderColor="Transparent" 
-                               WidthRequest="190" >
-                            <Image Source="car3.png"
+                            Margin="0, -20, 0, 0" >
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Image Source="sign1.png"
                                    WidthRequest="150"
                                    HeightRequest="80" >
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
-                                </Image.GestureRecognizers>
-                            </Image>
-                        </Frame>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign2.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign3.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign4.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign5.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign6.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign7.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign8.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="sign9.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </HorizontalStackLayout>
+                </ScrollView>
+            </controls:BottomSheet.BottomSheetContent>
+        </controls:BottomSheet>
+
+        <controls:BottomSheet x:Name="CarMenuBottomSheet"
+                              HeaderText="Транспортные средства"
+                              Grid.Column="0"
+                              Grid.Row="1"
+                              Grid.ColumnSpan="2"
+                              Grid.RowSpan="3"
+                              ZIndex="99"
+                              SheetHeight="250">
+            <controls:BottomSheet.BottomSheetContent>
+                <ScrollView Orientation="Horizontal"
+                            HeightRequest="120"
+                            Margin="0, -20, 0, 0" >
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Image Source="car3.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="car.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="car4.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="bycicle.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="motorcycle.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
+                            </Image.GestureRecognizers>
+                        </Image>
                     </HorizontalStackLayout>
                 </ScrollView>
             </controls:BottomSheet.BottomSheetContent>

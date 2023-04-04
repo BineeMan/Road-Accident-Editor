@@ -757,17 +757,35 @@
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Semibold.ttf">
       <PackagePath>OpenSans-Semibold.ttf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\Rubik-Italic-VariableFont_wght.ttf">
+      <PackagePath>Rubik-Italic-VariableFont_wght.ttf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\f\Rubik-VariableFont_wght.ttf">
+      <PackagePath>Rubik-VariableFont_wght.ttf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\btnlineminus.scale-100.png">
       <PackagePath>btnlineminus.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\btnlineplus.scale-100.png">
       <PackagePath>btnlineplus.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\bycicle.scale-100.png">
+      <PackagePath>bycicle.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\car.scale-100.png">
+      <PackagePath>car.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\car2.scale-100.png">
       <PackagePath>car2.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\car3.scale-100.png">
       <PackagePath>car3.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\car4.scale-100.png">
+      <PackagePath>car4.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\caricon.scale-100.png">
+      <PackagePath>caricon.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\crossicon.scale-100.png">
       <PackagePath>crossicon.scale-100.png</PackagePath>
@@ -1228,6 +1246,150 @@
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\informationicon.scale-100.png">
       <PackagePath>informationicon.scale-100.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logo.scale-100.png">
+      <PackagePath>logo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindows.ico">
+      <PackagePath>logowindows.ico</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLargeTile.scale-100.png">
+      <PackagePath>logowindowsLargeTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLargeTile.scale-125.png">
+      <PackagePath>logowindowsLargeTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLargeTile.scale-150.png">
+      <PackagePath>logowindowsLargeTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLargeTile.scale-200.png">
+      <PackagePath>logowindowsLargeTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLargeTile.scale-400.png">
+      <PackagePath>logowindowsLargeTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-lightunplated_targetsize-16.png">
+      <PackagePath>logowindowsLogo.altform-lightunplated_targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-lightunplated_targetsize-24.png">
+      <PackagePath>logowindowsLogo.altform-lightunplated_targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-lightunplated_targetsize-256.png">
+      <PackagePath>logowindowsLogo.altform-lightunplated_targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-lightunplated_targetsize-32.png">
+      <PackagePath>logowindowsLogo.altform-lightunplated_targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-lightunplated_targetsize-48.png">
+      <PackagePath>logowindowsLogo.altform-lightunplated_targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-unplated_targetsize-16.png">
+      <PackagePath>logowindowsLogo.altform-unplated_targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-unplated_targetsize-24.png">
+      <PackagePath>logowindowsLogo.altform-unplated_targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-unplated_targetsize-256.png">
+      <PackagePath>logowindowsLogo.altform-unplated_targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-unplated_targetsize-32.png">
+      <PackagePath>logowindowsLogo.altform-unplated_targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.altform-unplated_targetsize-48.png">
+      <PackagePath>logowindowsLogo.altform-unplated_targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.scale-100.png">
+      <PackagePath>logowindowsLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.scale-125.png">
+      <PackagePath>logowindowsLogo.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.scale-150.png">
+      <PackagePath>logowindowsLogo.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.scale-200.png">
+      <PackagePath>logowindowsLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.scale-400.png">
+      <PackagePath>logowindowsLogo.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.targetsize-16.png">
+      <PackagePath>logowindowsLogo.targetsize-16.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.targetsize-24.png">
+      <PackagePath>logowindowsLogo.targetsize-24.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.targetsize-256.png">
+      <PackagePath>logowindowsLogo.targetsize-256.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.targetsize-32.png">
+      <PackagePath>logowindowsLogo.targetsize-32.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsLogo.targetsize-48.png">
+      <PackagePath>logowindowsLogo.targetsize-48.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsMediumTile.scale-100.png">
+      <PackagePath>logowindowsMediumTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsMediumTile.scale-125.png">
+      <PackagePath>logowindowsMediumTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsMediumTile.scale-150.png">
+      <PackagePath>logowindowsMediumTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsMediumTile.scale-200.png">
+      <PackagePath>logowindowsMediumTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsMediumTile.scale-400.png">
+      <PackagePath>logowindowsMediumTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsSmallTile.scale-100.png">
+      <PackagePath>logowindowsSmallTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsSmallTile.scale-125.png">
+      <PackagePath>logowindowsSmallTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsSmallTile.scale-150.png">
+      <PackagePath>logowindowsSmallTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsSmallTile.scale-200.png">
+      <PackagePath>logowindowsSmallTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsSmallTile.scale-400.png">
+      <PackagePath>logowindowsSmallTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsStoreLogo.scale-100.png">
+      <PackagePath>logowindowsStoreLogo.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsStoreLogo.scale-125.png">
+      <PackagePath>logowindowsStoreLogo.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsStoreLogo.scale-150.png">
+      <PackagePath>logowindowsStoreLogo.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsStoreLogo.scale-200.png">
+      <PackagePath>logowindowsStoreLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsStoreLogo.scale-400.png">
+      <PackagePath>logowindowsStoreLogo.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsWideTile.scale-100.png">
+      <PackagePath>logowindowsWideTile.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsWideTile.scale-125.png">
+      <PackagePath>logowindowsWideTile.scale-125.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsWideTile.scale-150.png">
+      <PackagePath>logowindowsWideTile.scale-150.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsWideTile.scale-200.png">
+      <PackagePath>logowindowsWideTile.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\logowindowsWideTile.scale-400.png">
+      <PackagePath>logowindowsWideTile.scale-400.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\motorcycle.scale-100.png">
+      <PackagePath>motorcycle.scale-100.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plus.scale-100.png">
       <PackagePath>plus.scale-100.png</PackagePath>
     </AppxPackagedFile>
@@ -1239,6 +1401,36 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\plustransparent.scale-100.png">
       <PackagePath>plustransparent.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign1.scale-100.png">
+      <PackagePath>sign1.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign2.scale-100.png">
+      <PackagePath>sign2.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign3.scale-100.png">
+      <PackagePath>sign3.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign4.scale-100.png">
+      <PackagePath>sign4.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign5.scale-100.png">
+      <PackagePath>sign5.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign6.scale-100.png">
+      <PackagePath>sign6.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign7.scale-100.png">
+      <PackagePath>sign7.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign8.scale-100.png">
+      <PackagePath>sign8.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign9.scale-100.png">
+      <PackagePath>sign9.scale-100.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\signicon.scale-100.png">
+      <PackagePath>signicon.scale-100.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\trajectoryicon.scale-100.png">
       <PackagePath>trajectoryicon.scale-100.png</PackagePath>

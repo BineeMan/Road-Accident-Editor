@@ -26,19 +26,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="icnmenuclose.png" />
-	  <None Remove="icnmenuclosedark.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="icnmenuclose.png" />
-	  <EmbeddedResource Include="icnmenuclosedark.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="BottomSheet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="icnmenuclose.png">
+      <LogicalName>XGENO.Maui.Controls.BottomSheet.icnmenuclose.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="icnmenuclosedark.png">
+      <LogicalName>XGENO.Maui.Controls.BottomSheet.icnmenuclosedark.png</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
 
 </Project>

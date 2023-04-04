@@ -19,7 +19,7 @@
                    FontSize="20"
                    Margin="13, -15, 30, 0"
                    FontFamily="Rubik"
-                   TextColor="White"/>
+                   TextColor="White" />
             </Frame>
             <Frame BackgroundColor="#606060"
                    BorderColor="Transparent"
@@ -30,74 +30,88 @@
                             TextColor="Black"
                             CornerRadius="20"
                             FontSize="15"
-                            FontFamily="Rubik"
+                            FontFamily="OpenSansRegular"
                             FontAttributes="Bold"
-                            CharacterSpacing="1"
+                            CharacterSpacing="0.5"
                             x:Name="Button_SaveDocument"
                             Margin="0, 5"
-                            Clicked="Button_SaveDocument_Clicked"/>
+                            Clicked="Button_SaveDocument_Clicked" />
                     
+                    <Button Text="Сохранить файл на устройство"
+                            Background="#E1E1E1"
+                            TextColor="Black"
+                            CornerRadius="20"
+                            FontSize="15"
+                            FontFamily="OpenSansRegular"
+                            FontAttributes="Bold"
+                            CharacterSpacing="0.5"
+                            x:Name="Button_SaveFileOnDevice"
+                            Clicked="Button_SaveFileOnDevice_Clicked"
+                            Margin="0, 5" />
+
                     <Button Text="Открыть файл с устройства"
                             Background="#E1E1E1"
                             TextColor="Black"
                             CornerRadius="20"
                             FontSize="15"
-                            FontFamily="Rubik"
+                            FontFamily="OpenSansRegular"
                             FontAttributes="Bold"
-                            CharacterSpacing="1"
+                            CharacterSpacing="0.5"
                             x:Name="Button_OpenFileFromDevice"
-                             Margin="0, 5"/>
-                    
-                    <Button Text="Преобразовать файл в изображение"
+                            Clicked="Button_OpenFileFromDevice_Clicked"
+                            Margin="0, 5" />
+
+                        <Button Text="Преобразовать файл в изображение"
                             Background="#E1E1E1"
                             TextColor="Black"
                             CornerRadius="20"
                             FontSize="15"
-                            FontFamily="Rubik"
+                            FontFamily="OpenSansRegular"
                             FontAttributes="Bold"
-                            CharacterSpacing="1"
+                            CharacterSpacing="0.5"
                             x:Name="Button_ConvertFileToImage"
-                            Margin="0, 5"/>
-                </VerticalStackLayout>
+                            Margin="0, 5" />
+
+                    </VerticalStackLayout>
             </Frame>
 
         </VerticalStackLayout>
             <VerticalStackLayout>
                 <Frame BackgroundColor="#606060"
-                   Margin="15, 10, 230, -25"
-                   Padding="20,20"
-                   CornerRadius="30"
-                   BorderColor="Transparent">
+                       Margin="15, 10, 230, -25"
+                       Padding="20,20"
+                       CornerRadius="30"
+                       BorderColor="Transparent">
                     <Label Text="Помощь"
-                   FontAttributes="Bold"
-                   FontSize="20"
-                   Margin="5, -15, 0, 5"
-                   FontFamily="Rubik"
-                   TextColor="White"/>
+                           FontAttributes="Bold"
+                           FontSize="20"
+                           Margin="5, -15, 0, 5"
+                           FontFamily="Rubik"
+                           TextColor="White" />
                 </Frame>
                 <Frame BackgroundColor="#606060"
-                   BorderColor="Transparent"
-                   CornerRadius="25">
+                       BorderColor="Transparent"
+                       CornerRadius="25">
                     <VerticalStackLayout>
                         <Button Text="Инструкция"
-                            Background="#E1E1E1"
-                            TextColor="Black"
-                            CornerRadius="20"
-                            FontSize="15"
-                            FontFamily="Rubik"
-                            FontAttributes="Bold"
-                            CharacterSpacing="1"
-                            x:Name="Button_OpenHelpPage"/>
+                                Background="#E1E1E1"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                FontFamily="OpenSansRegular"
+                                FontAttributes="Bold"
+                                CharacterSpacing="0.5"
+                                FontSize="17"
+                                x:Name="Button_OpenHelpPage"
+                                Clicked="Button_OpenHelpPage_Clicked"/>
                     </VerticalStackLayout>
                 </Frame>
             </VerticalStackLayout>
             <VerticalStackLayout>
                 <Frame BackgroundColor="#606060"
-                   Margin="15, 10, 230, -25"
-                   Padding="20,20"
-                   CornerRadius="30"
-                   BorderColor="Transparent">
-                    
+                       Margin="15, 10, 230, -25"
+                       Padding="20,20"
+                       CornerRadius="30"
+                       BorderColor="Transparent">
                     <Label Text="Проекты"
                            FontAttributes="Bold"
                            FontSize="20"
@@ -106,22 +120,17 @@
                            TextColor="White"/>
                 </Frame>
                 <Frame BackgroundColor="#606060"
-                   BorderColor="Transparent"
-                   CornerRadius="25"
-                   HeightRequest="250">
-
-                    <TableView HeightRequest="250"
-                                   x:Name="TableViewRoadAccidents"
-                                   Intent="Menu" >
-                            <TableRoot>
-                                <TableSection TextColor="White" 
-                                               x:Name="RoadAccidentsTableSelection">
-                                    <TextCell DetailColor="White" TextColor="White" Text="1. Introduction to .NET MAUI"
-                      Detail="Learn about .NET MAUI and what it provides." />
-                                </TableSection>
-                            </TableRoot>
-                        </TableView>
-
+                       BorderColor="Transparent"
+                       CornerRadius="25" >
+                    <TableView
+                               x:Name="TableViewRoadAccidents"
+                               Intent="Menu" >
+                        <TableRoot>
+                            <TableSection TextColor="White" 
+                                              x:Name="RoadAccidentsTableSelection">
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
 
                 </Frame>
             </VerticalStackLayout>
