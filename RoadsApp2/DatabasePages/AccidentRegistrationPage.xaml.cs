@@ -102,34 +102,60 @@ public partial class AccidentRegistrationPage : ContentPage
         }
         if (isValid)
         {
-            MainPage.XMLConverterMainPage.ConvertLinesToXML();
-            MainPage.XMLConverterMainPage.ConvertNodesToXML();
-            MainPage.XMLConverterMainPage.ConvertImagesToXML();
-            XmlDocument xmlSchema = MainPage.XMLConverterMainPage.XmlDocumentSchema;
-
-            RoadAccidentItem roadAccidentItem = new()
+            try
             {
-                Name = NameEntry.Text,
-                DateTime = $"{DatePicker.Date:dd.MM.yyyy} {AccidentTimePicker.Time}",
-                Address = AddressEntry.Text,
-                Description = DescriptionEditor.Text,
-                SchemaXml = xmlSchema.OuterXml
-            };
-            Debug.WriteLine($"{DatePicker.Date:dd.MM.yyyy} {AccidentTimePicker}");
-            await MainPage.RoadAccidentDatabase.SaveRoadAccidentItemAsync(roadAccidentItem);
+                MainPage.XMLConverterMainPage.ConvertLinesToXML();
+                MainPage.XMLConverterMainPage.ConvertNodesToXML();
+                MainPage.XMLConverterMainPage.ConvertImagesToXML();
+                XmlDocument xmlSchema = MainPage.XMLConverterMainPage.XmlDocumentSchema;
 
-            foreach (var participant in Participants)
-            {
-                await MainPage.RoadAccidentDatabase.SaveParticipantItemAsync(participant);
-                RoadAccidentParticipantItem roadAccidentParticipantItem = new()
+                await Shell.Current.GoToAsync(nameof(MainPage));
+                await Task.Delay(500);
+                RoadAccidentItem roadAccidentItem = new()
                 {
-                    ID_Participant = participant.ID_Participant,
-                    ID_RoadAccident = roadAccidentItem.ID_RoadAccident
+                    Name = NameEntry.Text,
+                    DateTime = $"{DatePicker.Date:dd.MM.yyyy} {AccidentTimePicker.Time}",
+                    Address = AddressEntry.Text,
+                    Description = DescriptionEditor.Text,
+                    SchemaXml = xmlSchema.OuterXml,
+
                 };
-                await MainPage.RoadAccidentDatabase.SaveRoadAccidentParticipantItemAsync(roadAccidentParticipantItem);
-            };
-            await DisplayAlert("Уведомление", "Данные успешно сохранены в БД", "Ок");
-            await Navigation.PopAsync();
+                IScreenshotResult screen = await MainPage.XMLConverterMainPage.FormAbsoluteLayout.CaptureAsync();
+                Stream stream = await screen.OpenReadAsync();
+                MemoryStream memoryStream = new MemoryStream();
+                stream.CopyTo(memoryStream);
+
+#if WINDOWS
+#if DEBUG
+            await File.WriteAllBytesAsync("G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\DebugImage.png", memoryStream.ToArray());
+#endif
+#endif
+                var result = memoryStream.ToArray();
+                string imageBase64 = Convert.ToBase64String(result);
+                roadAccidentItem.SchemaImage = imageBase64;
+
+                await MainPage.RoadAccidentDatabase.SaveRoadAccidentItemAsync(roadAccidentItem);
+
+                foreach (var participant in Participants)
+                {
+                    await MainPage.RoadAccidentDatabase.SaveParticipantItemAsync(participant);
+                    RoadAccidentParticipantItem roadAccidentParticipantItem = new()
+                    {
+                        ID_Participant = participant.ID_Participant,
+                        ID_RoadAccident = roadAccidentItem.ID_RoadAccident
+                    };
+                    await MainPage.RoadAccidentDatabase.SaveRoadAccidentParticipantItemAsync(roadAccidentParticipantItem);
+                };
+                HomePage.CurrentRoadAccidentItem = roadAccidentItem;
+                await Task.Delay(500);
+                await Navigation.PopAsync();
+                await Navigation.PopAsync();
+                await DisplayAlert("Уведомление", "Данные успешно сохранены в БД", "Ок");
+            }
+            catch
+            {
+                await DisplayAlert("Ошибка", "Возникла непридвиденная ошибка\nпри загрузке файла", "Ок");
+            }
         }
         else
         {
@@ -158,7 +184,6 @@ public partial class AccidentRegistrationPage : ContentPage
                 return participantItem2;
             }
         }
-        Debug.WriteLine("new ParticipantItem()");
         return new ParticipantItem();
     }
 

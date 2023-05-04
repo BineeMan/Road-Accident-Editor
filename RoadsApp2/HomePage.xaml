@@ -4,12 +4,14 @@
              x:Class="RoadsApp2.HomePage"
              Title="Меню"
              Background="#F0F0F0"
-             Appearing="ContentPage_Appearing"  >
+             Appearing="ContentPage_Appearing">
     <ScrollView >
         <VerticalStackLayout x:Name="VerticalStackLayoutMain">
             
         <VerticalStackLayout>
-            <Frame BackgroundColor="#606060"
+
+
+                <Frame BackgroundColor="#606060"
                    Margin="15, 10, 230, -25"
                    Padding="20,20"
                    CornerRadius="30"
@@ -61,17 +63,6 @@
                             Clicked="Button_OpenFileFromDevice_Clicked"
                             Margin="0, 5" />
 
-                        <Button Text="Преобразовать файл в изображение"
-                            Background="#E1E1E1"
-                            TextColor="Black"
-                            CornerRadius="20"
-                            FontSize="15"
-                            FontFamily="OpenSansRegular"
-                            FontAttributes="Bold"
-                            CharacterSpacing="0.5"
-                            x:Name="Button_ConvertFileToImage"
-                            Margin="0, 5" />
-
                     </VerticalStackLayout>
             </Frame>
 
@@ -119,20 +110,24 @@
                            FontFamily="Rubik"
                            TextColor="White"/>
                 </Frame>
+                
                 <Frame BackgroundColor="#606060"
                        BorderColor="Transparent"
+                       HeightRequest="200"
+                       
                        CornerRadius="25" >
-                    <TableView
-                               x:Name="TableViewRoadAccidents"
-                               Intent="Menu" >
-                        <TableRoot>
-                            <TableSection TextColor="White" 
-                                              x:Name="RoadAccidentsTableSelection">
-                            </TableSection>
-                        </TableRoot>
-                    </TableView>
+                    <TableView x:Name="TableViewRoadAccidents"
+                               HeightRequest="200"
+                               ZIndex="99">
+                            <TableRoot>
+                                <TableSection TextColor="White" 
+                                              x:Name="RoadAccidentsTableSelection" >
+                                </TableSection>
+                            </TableRoot>
+                        </TableView>
 
                 </Frame>
+                
             </VerticalStackLayout>
             
         </VerticalStackLayout>

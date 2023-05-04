@@ -22,6 +22,8 @@ namespace RoadsApp2.Database
 
         public string SchemaXml { get; set; }
 
+        public string SchemaImage { get; set; }
+
     }
 
 }

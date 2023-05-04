@@ -1,8 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
+using System.Reflection;
 using System.Runtime.Serialization;
 using System.Xml;
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Platform;
 using RoadsApp2.Database;
 using RoadsApp2.DataClasses;
 using RoadsApp2.XMLClasses;
@@ -27,14 +31,12 @@ public partial class MainPage : ContentPage
         ResetRoadElements();
         XMLConverterMainPage = new XMLConverter(absoluteLayout, this);
         RoadAccidentDatabase = new RoadAccidentDatabase();
-        
+        Debug.WriteLine(FileSystem.AppDataDirectory);
+
     }
 
-    private async void ContentPage_Loaded(object sender, EventArgs e)
-    {
-        Debug.WriteLine(FileSystem.AppDataDirectory);
-        await RoadAccidentDatabase.Init(); 
-    }
+    private async void ContentPage_Loaded(object sender, EventArgs e) =>
+        await RoadAccidentDatabase.Init();
 
     private Node PreviousNode { get; set; }
 
@@ -50,15 +52,15 @@ public partial class MainPage : ContentPage
         new Point { X = 0, Y = 0.5}
     };
 
+    public static double GlobalScale = 1;
     private bool AddNewNodeFlag { get; set; }
-
     private bool AddNewObjectFlag { get; set; }
 
     private bool AddNewTrajectoryFlag { get; set; }
 
-    private int RectWidth { get; set; }
+    private double RectWidth { get; set; }
 
-    private int RectHeight  { get; set; }
+    private double RectHeight { get; set; }
 
     public List<Link> Links { get; set; }
 
@@ -98,8 +100,14 @@ public partial class MainPage : ContentPage
         CurrentRectangle = new Rectangle();
         AddNewObjectFlag = false;
         CurrentFrame = new Frame();
-        RectWidth = 70;
-        RectHeight = 70;
+#if ANDROID
+        GlobalScale = 1;
+#endif
+#if WINDOWS
+        GlobalScale = 1.5d;
+#endif
+        RectWidth = 75 * GlobalScale;
+        RectHeight = 75 * GlobalScale;
         crossButton.IsEnabled = false;
         CurrentCollision = new Rectangle();
         RoadObjects = new List<Image>();
@@ -109,7 +117,7 @@ public partial class MainPage : ContentPage
     ///<summary>
     ///This function adds new flags around a crossroads with except orientation which will be avoided
     ///</summary>
-    private void AddFlagsAroundRectangle(Rectangle rectangle, 
+    private void AddFlagsAroundRectangle(Rectangle rectangle,
         Orientation orientationExcept = Orientation.Undefined, bool isVisible = true)
     {
         Node node = new Node()
@@ -121,7 +129,6 @@ public partial class MainPage : ContentPage
         };
         Orientation rotation = Orientation.Up;
         Rect rect = absoluteLayout.GetLayoutBounds(rectangle);
-
         if (rect.Width == rect.Height)
         {
             foreach (Point point in pointOrientations)
@@ -157,53 +164,70 @@ public partial class MainPage : ContentPage
                 double y = rect.Y - imageButton.HeightRequest + rect.Height * point.Y;
 
                 absoluteLayout.SetLayoutBounds(imageButton,
-                    new Rect(x, y, imageButton.Width, imageButton.Height));;
+                    new Rect(x, y, imageButton.Width, imageButton.Height)); ;
                 node.PlusButtons.Add(imageButton);
                 rotation += 90;
             }
         }
         else
         {
-            rect = absoluteLayout.GetLayoutBounds(rectangle);
-            Image imageButton = new Image
+            foreach (Point point in pointOrientations)
             {
-                Source = ButtonType.RoadPlusBlackButton,
-                WidthRequest = 45,
-                HeightRequest = 45,
-                Rotation = (double)GetReversedOrientation(orientationExcept),
-                ZIndex = 99,
-                AnchorY = 1,
-                IsVisible = isVisible,
-                //Background = Brush.Transparent
-            };
-            double x = 0, y = 0;
-            PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
-            panGestureRecognizer.PanUpdated += PlusImagePuttonPanGesture_PanUpdated;
-            imageButton.GestureRecognizers.Add(panGestureRecognizer);
+                if (rotation == orientationExcept)
+                {
+                    rotation += 90;
+                    continue;
+                }
 
-            TapGestureRecognizer tapGestureRecogniser = new TapGestureRecognizer();
-            tapGestureRecogniser.Tapped += ImgButtonPlus_Tapped;
-            imageButton.GestureRecognizers.Add(tapGestureRecogniser);
-            if (rect.Width < rect.Height)
+                rect = absoluteLayout.GetLayoutBounds(rectangle);
+                if ((point == pointOrientations[0] || point == pointOrientations[2]) && rect.Width < rect.Height )
+                {
+                    rotation += 90;
+                    continue;
+                }
+                else if ((point == pointOrientations[1] || point == pointOrientations[3]) && rect.Width > rect.Height)
+                {
+                    rotation += 90;
+                    continue;
+                }
+
+                Image imageButton = new Image
+                {
+                    Source = ButtonType.RoadPlusBlackButton,
+                    WidthRequest = 45,
+                    HeightRequest = 45,
+                    Rotation = (double)rotation,
+                    ZIndex = 99,
+                    AnchorY = 1,
+                    IsVisible = isVisible,
+                };
+                absoluteLayout.Add(imageButton);
+                PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+                panGestureRecognizer.PanUpdated += PlusImagePuttonPanGesture_PanUpdated;
+                imageButton.GestureRecognizers.Add(panGestureRecognizer);
+
+                TapGestureRecognizer tapGestureRecogniser = new TapGestureRecognizer();
+                tapGestureRecogniser.Tapped += ImgButtonPlus_Tapped;
+                imageButton.GestureRecognizers.Add(tapGestureRecogniser);
+
+
+                double x = rect.X - imageButton.WidthRequest / 2 + rect.Width * point.X;
+                double y = rect.Y - imageButton.HeightRequest + rect.Height * point.Y;
+
+                absoluteLayout.SetLayoutBounds(imageButton,
+                    new Rect(x, y, imageButton.Width, imageButton.Height)); ;
+                node.PlusButtons.Add(imageButton);
+                rotation += 90;
+
+                node.PlusButtons.Add(imageButton);
+                
+            }   
+            if (isVisible)
             {
-                x = rect.X - imageButton.WidthRequest / 2 + rect.Width * 1;
-                y = rect.Y - imageButton.HeightRequest + rect.Height * 0.5;
+                PreviousNode = node;
             }
-            else
-            {
-                x = rect.X - imageButton.WidthRequest / 2 + rect.Width * 0.5;
-                y = rect.Y - imageButton.HeightRequest + rect.Height * 0;
-            }
-            absoluteLayout.Add(imageButton);
-            absoluteLayout.SetLayoutBounds(imageButton,
-                new Rect(x, y, imageButton.Width, imageButton.Height));
-            node.PlusButtons.Add(imageButton);
         }
         Nodes.Add(node);
-        if (isVisible)
-        {
-            PreviousNode = node;
-        }
     }
 
     private void AddFlagAroundRoad(ref Link link)
@@ -251,7 +275,7 @@ public partial class MainPage : ContentPage
             Minimum = 1,
             HorizontalOptions = LayoutOptions.Center,
             Scale = scale,
-            ZIndex = 5,
+            ZIndex = 99,
             AnchorY = 0.5,
             AnchorX = 0.5,
             IsVisible = false,
@@ -281,7 +305,7 @@ public partial class MainPage : ContentPage
             Minimum = 1,
             HorizontalOptions = LayoutOptions.Center,
             Scale = scale,
-            ZIndex = 5,
+            ZIndex = 99,
             IsVisible = false,
             Value = 1,
             Margin = thickness
@@ -335,8 +359,8 @@ public partial class MainPage : ContentPage
     {
         CurrentImageButton.Source = ButtonType.RoadPlusBlackButton;
         Image imageButton = (Image)sender;
-        if (CurrentImageButton.Equals(imageButton)) 
-            //if in AddNewNode mode clicked object is the same as image button that toggled this mode, then it cancel AddNewNodeMode
+        if (CurrentImageButton.Equals(imageButton))
+        //if in AddNewNode mode clicked object is the same as image button that toggled this mode, then it cancel AddNewNodeMode
         {
             AddNewNodeFlag = false;
             CurrentImageButton = new Image();
@@ -355,7 +379,7 @@ public partial class MainPage : ContentPage
             }
         }
         else if (AddNewNodeFlag == true && !IsFlagBelongsToSameNode(imageButton, CurrentImageButton, Nodes))
-            //if it receives another image button, it links a new road between two crossroads
+        //if it receives another image button, it links a new road between two crossroads
         {
             Node targetNode = GetNodeFromImageButton(imageButton, Nodes);
             Rect rect = absoluteLayout.GetLayoutBounds(targetNode.Rectangle);
@@ -379,8 +403,8 @@ public partial class MainPage : ContentPage
                 MiddleLines = new List<Line>(),
                 RectangleCollision = collisionBox
             };
-            AddFlagAroundRoad(ref link);        
-            
+            AddFlagAroundRoad(ref link);
+
             PointCollection points = new PointCollection();
             foreach (Point point in link.Road.Points)
             {
@@ -406,7 +430,7 @@ public partial class MainPage : ContentPage
             }
         }
         else
-            //if sending image button belongs to the same crossroad, new image button become starting point
+        //if sending image button belongs to the same crossroad, new image button become starting point
         {
             imageButton.Source = ButtonType.RoadPlusGreenButton;
             Node nodeTarget = GetNodeFromImageButton(imageButton, Nodes);
@@ -422,7 +446,7 @@ public partial class MainPage : ContentPage
                     SetImageButtonsVisibility(node.PlusButtons, true);
                 }
             }
-            
+
             SetImageButtonsType(ButtonType.DestinationButton, Nodes, nodeTarget.Rectangle);
             CurrentImageButton = imageButton;
             foreach (Link link in Links)
@@ -436,7 +460,7 @@ public partial class MainPage : ContentPage
     ///<summary>
     ///Main absolute layout event
     ///</summary>
-    private void AbsoluteLayout_Tapped(object sender, TappedEventArgs e)
+    private async void AbsoluteLayout_Tapped(object sender, TappedEventArgs e)
     {
         Point? tappedPoint = e.GetPosition((View)sender);
         if (tappedPoint == null) { return; }
@@ -447,7 +471,7 @@ public partial class MainPage : ContentPage
         Rect rect = new Rect();
         rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
                 tappedPoint.Value.Y - RectHeight / 2, RectWidth, RectHeight);
-    
+
         if (switchIsTrajectoryMode.IsToggled)
         {
             if (AddNewObjectFlag)
@@ -469,26 +493,88 @@ public partial class MainPage : ContentPage
                 CurrentPoint = tappedPoint;
             }
         }
-        if (switchIsCrossroad.IsToggled)
+        else if (!switchIsTrajectoryMode.IsToggled && Nodes.Count > 0 && AddNewNodeFlag)
         {
-            if (CurrentOrientation == Orientation.Left || CurrentOrientation == Orientation.Right)
+            string action = await DisplayActionSheet("Выберите новый \nобъект пристыковки",
+                             "Отмена", null, "Новый перекресток", "Новый поворот", "Ничего");
+            if (action != null)
             {
-                rect = new Rect(tappedPoint.Value.X - RectWidth / 10,
-                    tappedPoint.Value.Y - RectHeight / 2, RectWidth / 10, RectHeight);
+                if (action == "Ничего")
+                {
+                    if (CurrentOrientation == Orientation.Left || CurrentOrientation == Orientation.Right)
+                    {
+                        rect = new Rect(tappedPoint.Value.X - RectWidth / 10,
+                            tappedPoint.Value.Y - RectHeight / 2, RectWidth / 10, RectHeight);
+                    }
+                    else if (CurrentOrientation == Orientation.Up || CurrentOrientation == Orientation.Down)
+                    {
+                        rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
+                            tappedPoint.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
+                    }
+
+                }
+                else if (action == "Отмена")
+                {
+                    return;
+                }
             }
-            else if (CurrentOrientation == Orientation.Up || CurrentOrientation == Orientation.Down)
+            else
             {
-                rect = new Rect(tappedPoint.Value.X - RectWidth / 2,
-                    tappedPoint.Value.Y - RectHeight / 10, RectWidth, RectHeight / 10);
+                return;
             }
         }
-
         if (Nodes.Count == 0) //if there are no crossroads, then it just creates new crossroads without roads.
         {
-            rectangle = GetRectangle(rect, Crossroads_Tapped);
-            absoluteLayout.Add(rectangle);
-            absoluteLayout.SetLayoutBounds(rectangle, rect);
-            AddFlagsAroundRectangle(rectangle, GetReversedOrientation(CurrentOrientation), false);
+            string answer = await DisplayActionSheet("Выберите новый\n дорожный объект", "Отмена", null, "Перекресток", "Начало дороги");
+            if (answer != null)
+            {
+                if (answer == "Отмена")
+                {
+                    return;
+                }
+                else if (answer == "Перекресток")
+                {
+                    rectangle = GetRectangle(rect, Crossroads_Tapped);
+                    absoluteLayout.Add(rectangle);
+                    absoluteLayout.SetLayoutBounds(rectangle, rect);
+                    AddFlagsAroundRectangle(rectangle, GetReversedOrientation(CurrentOrientation), false);
+                }
+                else if (answer == "Начало дороги")
+                {
+                    string answer2 = await DisplayActionSheet("Выберите начальное положение дороги", "Отмена", null, "Горизотальное", "Вертикальное");
+                    if (answer != null)
+                    {
+                        if (answer2 == "Горизотальное")
+                        {
+                            rect.Height = rect.Height / 20;
+                            rectangle = GetRectangle(rect, Crossroads_Tapped);
+                            absoluteLayout.Add(rectangle);
+                            absoluteLayout.SetLayoutBounds(rectangle, rect);
+                            AddFlagsAroundRectangle(rectangle, Orientation.Undefined, true);
+                        }
+                        else if (answer2 == "Вертикальное")
+                        {
+                            rect.Width = rect.Width / 20;
+                            rectangle = GetRectangle(rect, Crossroads_Tapped);
+                            absoluteLayout.Add(rectangle);
+                            absoluteLayout.SetLayoutBounds(rectangle, rect);
+                            AddFlagsAroundRectangle(rectangle, Orientation.Undefined, true);
+                        }
+                        else if (answer2 == "Отмена")
+                        {
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
         }
         else if (Nodes.Count > 0 || !AddNewNodeFlag) // resetting  image buttons if user clicks on empty area
         {
@@ -499,9 +585,8 @@ public partial class MainPage : ContentPage
             }
             absoluteLayout.Remove(CurrentRotationSlider);
             ToggleSteppersVisibility(Links, false);
-            CurrentRectangle = new Rectangle();        
+            CurrentRectangle = new Rectangle();
         }
-
         if (AddNewNodeFlag) //if the program in AddNewNode mode, then it creates new crossroad and links a road to it.
         {
             rectangle = GetRectangle(rect, Crossroads_Tapped);
@@ -530,14 +615,14 @@ public partial class MainPage : ContentPage
                 link2.RectangleCollision.IsEnabled = true;
             }
             Link link = new Link()
-            { 
+            {
                 Road = road,
                 LinesSide1 = new List<Line>(),
                 LinesSide2 = new List<Line>(),
                 MiddleLines = new List<Line>(),
                 RectangleCollision = collisionBox
             };
-            
+
             PointCollection points = new PointCollection();
             foreach (Point point in link.Road.Points)
             {
@@ -546,7 +631,7 @@ public partial class MainPage : ContentPage
             link.OriginalRoadPoints = points;
 
             AddFlagAroundRoad(ref link);
-
+            
             Links.Add(link);
 
             targetNode.Roads.Add(link);
@@ -559,14 +644,14 @@ public partial class MainPage : ContentPage
                     SetImageButtonsVisibility(node.PlusButtons, false);
                 }
             }
-            absoluteLayout.Remove(CurrentImageButton);         
+            absoluteLayout.Remove(CurrentImageButton);
             AddNewNodeFlag = false;
         }
+
     }
 
     public void RoadCollision_Tapped(object sender, TappedEventArgs e)
     {
-        Debug.WriteLine("RoadCollision_Tapped");
         Rectangle collision = (Rectangle)sender;
         Link link = GetLinkByCollision(collision, Links);
         if (!CurrentCollision.Equals(collision))
@@ -582,14 +667,343 @@ public partial class MainPage : ContentPage
         CurrentCollision = collision;
     }
 
-    private void ButtonClean_Clicked(object sender, EventArgs e)
+    private async void ButtonClean_Clicked(object sender, EventArgs e)
     {
-        ResetRoadElements();
-        absoluteLayout.Clear();
-        //RedrawRoad();
+        bool answer = await DisplayAlert("Очистка рабочей области",
+            "Вы действительно хотите очистить рабочую область?", "Да", "Отмена");
+        if (answer)
+        {
+            ResetRoadElements();
+            absoluteLayout.Clear();
+        }
     }
 
-    private void ModifyRoad(ref Link link, ref LineStepper lineStepper, bool isRemoveMode)
+    private async Task<List<Line>> DrawLineByAnswer(Vector vector, double stepX = 0, double stepY = 0)
+    {
+        string action = await DisplayActionSheet("Выберите новую полосу \nразметки",
+            "Отмена", null, "Сплошная", "Прерывистая", "Двойная сплошная", "Сплошная слева и прерывистая", "Сплошная справа и прерывистая", "Ничего");
+        List<Line> lines = new List<Line>();
+        if (action != null)
+        {
+            if (action == "Отмена")
+            {
+                Line line2 = new Line()
+                {
+                    Fill = Brush.Transparent,
+                    Stroke = Brush.Transparent,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                lines.Add(line2);
+            }
+            double scale = 10;
+            
+            Brush lineColor = Brush.White;
+            if (action == "Прерывистая")
+            {
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                lines.Add(line);
+            }
+            else if (action == "Сплошная")
+            {
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                lines.Add(line);
+            }
+            else if (action == "Двойная сплошная")
+            {
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                Line line2 = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X + stepX / scale,
+                    Y1 = vector.point1.Y + stepY / scale,
+                    X2 = vector.point2.X + stepX / scale,
+                    Y2 = vector.point2.Y + stepY / scale,
+                };
+                lines.Add(line);
+                lines.Add(line2);
+            }
+            else if (action == "Сплошная слева и прерывистая")
+            {
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                Line line2 = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X + stepX / scale,
+                    Y1 = vector.point1.Y + stepY / scale,
+                    X2 = vector.point2.X + stepX / scale,
+                    Y2 = vector.point2.Y + stepY / scale,
+                };
+                lines.Add(line);
+                lines.Add(line2);
+            }
+            else if (action == "Сплошная справа и прерывистая")
+            {
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vector.point1.X + stepX / scale,
+                    Y1 = vector.point1.Y + stepY / scale,
+                    X2 = vector.point2.X + stepX / scale,
+                    Y2 = vector.point2.Y + stepY / scale,
+                };
+                Line line2 = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                lines.Add(line);
+                lines.Add(line2);
+            }
+            else if (action == "Ничего")
+            {
+                Line line2 = new Line()
+                {
+                    Fill = Brush.Transparent,
+                    Stroke = Brush.Transparent,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    X1 = vector.point1.X,
+                    Y1 = vector.point1.Y,
+                    X2 = vector.point2.X,
+                    Y2 = vector.point2.Y,
+                };
+                lines.Add(line2);
+            }
+            
+        }
+        else
+        {
+            Line line2 = new Line()
+            {
+                Fill = Brush.Transparent,
+                Stroke = Brush.Transparent,
+                StrokeThickness = 3,
+                IsEnabled = false,
+                ZIndex = 2,
+                X1 = vector.point1.X,
+                Y1 = vector.point1.Y,
+                X2 = vector.point2.X,
+                Y2 = vector.point2.Y,
+            };
+            lines.Add(line2);
+        }
+        return lines;
+    }
+
+    private void DrawLines2(ref Link link, Vector vectorStepper, int newAmount)
+    {
+        PointCollection points = link.Road.Points;
+        Vector vectorStart = new Vector();
+        Vector vectorDestination = new Vector();
+        vectorStart.point1 = points[0];
+        vectorDestination.point1 = points[1];
+        vectorDestination.point2 = points[2];
+        vectorStart.point2 = points[3];
+        vectorStart.point1 = points[4];
+
+        Brush lineColor = Brush.White;
+
+        if (!link.IsTwoLaned)
+        {
+            if (link.MiddleLines != null)
+            {
+                foreach (Line line1 in link.MiddleLines)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+                link.MiddleLines.Clear();
+            }
+            else
+            {
+                link.MiddleLines = new List<Line>();
+            }
+
+            Line line = new Line()
+            {
+                Fill = lineColor,
+                Stroke = lineColor,
+                StrokeThickness = 3,
+                IsEnabled = false,
+                ZIndex = 2,
+                X1 = (vectorStart.point1.X + vectorStart.point2.X) / 2,
+                Y1 = (vectorStart.point1.Y + vectorStart.point2.Y) / 2,
+                X2 = (vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+                Y2 = (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2,
+            };
+            link.MiddleLines.Add(line);
+            absoluteLayout.Add(line);
+        }
+
+        double offsetX = 0;
+        double offsetY = 0;
+        double stepX = 0;
+        double stepY = 0;
+        if (vectorStepper.Equals(vectorStart))
+        {
+            vectorStart.point2 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
+                (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
+
+            vectorDestination.point2 = new Point((vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+               (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2);
+
+            stepX = (vectorStart.point2.X - vectorStart.point1.X) / newAmount;
+            stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / newAmount;
+
+            Debug.WriteLine(link.LinesSide1.Count());
+            foreach (Line line1 in link.LinesSide1)
+            {
+                Debug.WriteLine(absoluteLayout.Remove(line1));
+            }
+
+            link.LinesSide1.Clear();
+
+            for (int i = 1; i < newAmount; i++)
+            {
+                offsetY += stepY;
+                offsetX += stepX;
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vectorStart.point1.X + offsetX,
+                    Y1 = vectorStart.point1.Y + offsetY,
+                    X2 = vectorDestination.point1.X + offsetX,
+                    Y2 = vectorDestination.point1.Y + offsetY,
+                };
+                link.LinesSide1.Add(line);
+                absoluteLayout.Add(line);
+            }
+        }
+        else if (vectorStepper.Equals(vectorDestination))
+        {
+            vectorStart.point1 = new Point((vectorStart.point1.X + vectorStart.point2.X) / 2,
+            (vectorStart.point1.Y + vectorStart.point2.Y) / 2);
+
+            vectorDestination.point1 = new Point((vectorDestination.point1.X + vectorDestination.point2.X) / 2,
+                (vectorDestination.point1.Y + vectorDestination.point2.Y) / 2);
+
+            stepX = (vectorStart.point2.X - vectorStart.point1.X) / newAmount;
+            stepY = (vectorStart.point2.Y - vectorStart.point1.Y) / newAmount;
+            if (link.LinesSide2 != null)
+            {
+                foreach (Line line1 in link.LinesSide2)
+                {
+                    absoluteLayout.Remove(line1);
+                }
+            }
+            else
+            {
+                link.LinesSide2 = new List<Line>();
+            }
+            link.LinesSide2.Clear();
+
+            for (int i = 1; i < newAmount; i++)
+            {
+                offsetY += stepY;
+                offsetX += stepX;
+                Line line = new Line()
+                {
+                    Fill = lineColor,
+                    Stroke = lineColor,
+                    StrokeThickness = 3,
+                    IsEnabled = false,
+                    ZIndex = 2,
+                    StrokeDashArray = { 2, 2 },
+                    StrokeDashOffset = 10,
+                    X1 = vectorStart.point1.X + offsetX,
+                    Y1 = vectorStart.point1.Y + offsetY,
+                    X2 = vectorDestination.point1.X + offsetX,
+                    Y2 = vectorDestination.point1.Y + offsetY,
+                };
+                link.LinesSide2.Add(line);
+                absoluteLayout.Add(line);
+            }
+        }
+    }
+
+
+    private async void ModifyRoad(Link link, LineStepper lineStepper, bool isRemoveMode)
     {
         PointCollection points = link.Road.Points;
         Vector vectorStart = new Vector();
@@ -610,7 +1024,7 @@ public partial class MainPage : ContentPage
             point2 = points[1]
         };
 
-        int scale = 1;
+        double scale = 1;
 
         if (lineStepper.Vector.Equals(vector))
         {
@@ -632,14 +1046,30 @@ public partial class MainPage : ContentPage
 
             if (isRemoveMode)
             {
-                absoluteLayout.Remove(link.LinesSide1[link.LinesSide1.Count - 1]);
+                if (link.LinesSide1.Count > 1)
+                {
+                    double vectorA = (link.LinesSide1[^1].X1 - link.LinesSide1[^2].X1);
+                    double vectorB = (link.LinesSide1[^1].Y1 - link.LinesSide1[^2].Y1);
+                    double vectorLength = Math.Sqrt(Math.Pow(vectorA, 2) + Math.Pow(vectorB, 2));
+                    if (vectorLength < 20)
+                    {
+                        absoluteLayout.Remove(link.LinesSide1[^1]);
+                        link.LinesSide1.RemoveAt(link.LinesSide1.Count - 1);
+                    }
+                }
+                absoluteLayout.Remove(link.LinesSide1[^1]);
                 link.LinesSide1.RemoveAt(link.LinesSide1.Count - 1);
             }
             else
             {
-                Line line = DrawLine(lineStepper.Vector);
-                link.LinesSide1.Add(line);
-                absoluteLayout.Add(line);
+                List<Line> lines = await DrawLineByAnswer(lineStepper.Vector, stepX, stepY);
+                if (lines == null)
+                    return;
+                foreach (Line line in lines)
+                {
+                    link.LinesSide1.Add(line);
+                    absoluteLayout.Add(line);
+                }
             }
 
             Vector vector1 = new Vector()
@@ -672,14 +1102,30 @@ public partial class MainPage : ContentPage
             absoluteLayout.Add(link.Road);
             if (isRemoveMode)
             {
-                absoluteLayout.Remove(link.LinesSide2[link.LinesSide2.Count - 1]);
+                if (link.LinesSide2.Count > 1)
+                {
+                    double vectorA = (link.LinesSide2[^1].X1 - link.LinesSide2[^2].X1);
+                    double vectorB = (link.LinesSide2[^1].Y1 - link.LinesSide2[^2].Y1);
+                    double vectorLength = Math.Sqrt(Math.Pow(vectorA, 2) + Math.Pow(vectorB, 2));
+                    if (vectorLength < 20)
+                    {
+                        absoluteLayout.Remove(link.LinesSide2[^1]);
+                        link.LinesSide2.RemoveAt(link.LinesSide2.Count - 1);
+                    }
+                }
+                absoluteLayout.Remove(link.LinesSide2[^1]);
                 link.LinesSide2.RemoveAt(link.LinesSide2.Count - 1);
             }
             else
             {
-                Line line = DrawLine(lineStepper.Vector);
-                link.LinesSide2.Add(line);
-                absoluteLayout.Add(line);
+                List<Line> lines = await DrawLineByAnswer(lineStepper.Vector, stepX, stepY);
+                if (lines == null)
+                    return;
+                foreach (Line line in lines)
+                {
+                    link.LinesSide2.Add(line);
+                    absoluteLayout.Add(line);
+                }
             }
 
             Vector vector1 = new Vector()
@@ -688,7 +1134,7 @@ public partial class MainPage : ContentPage
                 point2 = newPointDestination
             };
             lineStepper.Vector = vector1;
-            link.LineSteppers[1] = lineStepper; 
+            link.LineSteppers[1] = lineStepper;
         }
 
     }
@@ -700,12 +1146,20 @@ public partial class MainPage : ContentPage
         Link link = GetLinkFromLineStepper(lineStepper, Links);
         if (e.NewValue > e.OldValue)
         {
-            ModifyRoad(ref link, ref lineStepper, false);
+            ModifyRoad(link, lineStepper, false);
         }
         else
         {
-            ModifyRoad(ref link, ref lineStepper, true);
+            ModifyRoad(link, lineStepper, true);
         }
+
+        //double value = e.NewValue;
+        //Stepper stepper = (Stepper)sender;
+        //LineStepper lineStepper = GetLineStepperFromLinks(stepper, Links);
+
+        //Link link = GetLinkFromLineStepper(lineStepper, Links);
+
+        //DrawLines2(ref link, lineStepper.Vector, (int)value);
     }
 
     private async void RoadObjectFromMenu_Tapped(object sender, EventArgs e)
@@ -715,13 +1169,13 @@ public partial class MainPage : ContentPage
         newImage.Source = tappedImage.Source;
         newImage.WidthRequest = tappedImage.WidthRequest;
         newImage.HeightRequest = tappedImage.HeightRequest;
-        if (newImage != null) 
+        if (newImage != null)
         {
             TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += RoadObjectImage_Tapped;
             newImage.GestureRecognizers.Add(tapGestureRecognizer);
             newImage.ZIndex = 12;
-            newImage.Scale = 0.7;
+            newImage.Scale = 0.7 * GlobalScale;
             PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
             panGestureRecognizer.PanUpdated += RoadObjectPanGesture_PanUpdated;
 
@@ -742,7 +1196,7 @@ public partial class MainPage : ContentPage
     }
 
     private void ToggleAllRoadObjects(bool isEnabled)
-    {       
+    {
         foreach (Image image in RoadObjects)
         {
             image.IsEnabled = isEnabled;
@@ -774,6 +1228,7 @@ public partial class MainPage : ContentPage
     {
         Image roadObject = (Image)sender;
         CurrentView = roadObject;
+        crossButton.IsEnabled = true;
         absoluteLayout.Remove(CurrentRotationSlider);
         Slider slider = new Slider()
         {
@@ -842,16 +1297,21 @@ public partial class MainPage : ContentPage
         else
         {
             absoluteLayout.Remove(CurrentView);
+            if (CurrentRotationSlider != null)
+            {
+                absoluteLayout.Remove(CurrentRotationSlider);
+            }
+
         }
         crossButton.IsEnabled = false;
     }
+    
 
     private double x, y, rotation;
     private bool IsPanWorking = false;
     public void RoadObjectPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
     {
         Image roadObject = (Image)sender;
-        Debug.WriteLine("Rotation = ", roadObject.Rotation);
 #if ANDROID
         if (!IsPanWorking)
             rotation = roadObject.Rotation;
@@ -887,7 +1347,6 @@ public partial class MainPage : ContentPage
 #endif
                 roadObject.TranslationX = 0;
                 roadObject.TranslationY = 0;
-                Debug.WriteLine(roadObject.Rotation);
                 absoluteLayout.SetLayoutBounds(roadObject, rect);
                 break;
         }
@@ -914,6 +1373,7 @@ public partial class MainPage : ContentPage
             IsFloatingActionOpened = true;
         }
     }
+
     private async void PlusButtonSheet_Clicked(System.Object sender, System.EventArgs e) =>
         await AnimateFloatingAction();
 
@@ -940,13 +1400,41 @@ public partial class MainPage : ContentPage
         await Task.WhenAll(t1, t2);
     }
 
+    public async Task<ImageSource> TakeScreenshotAsync()
+    {
+        if (Screenshot.Default.IsCaptureSupported)
+        {
+            IScreenshotResult screen = await Screenshot.Default.CaptureAsync();
+
+            Stream stream = await screen.OpenReadAsync();
+
+            //MemoryStream memoryStream = new MemoryStream();
+            //stream.CopyTo(memoryStream);
+            //await System.IO.File.WriteAllBytesAsync("G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\test.png", memoryStream.ToArray());
+            return ImageSource.FromStream(() => stream);
+        }
+
+        return null;
+    }
+
+    private async void ButtonScreenshot_Clicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(MainPage));
+        IScreenshotResult screen = await absoluteLayout.CaptureAsync();
+        Stream stream = await screen.OpenReadAsync();
+        MemoryStream memoryStream = new MemoryStream();
+        stream.CopyTo(memoryStream);
+        await File.WriteAllBytesAsync("G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\DebugImage2.png", memoryStream.ToArray());
+    }
+
     private void ContentPage_Appearing(object sender, EventArgs e)
     {
 
     }
 
     private Polygon polygonPan;
-    public void PlusImagePuttonPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
+    private Point imageButtonOrigin = new Point();
+    public async void PlusImagePuttonPanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
     {
         Image imageButton = (Image)sender;
         if (!IsPanWorking)
@@ -969,6 +1457,8 @@ public partial class MainPage : ContentPage
                 polygonPan = DrawRoad(vectorStartPan, vectorEndPan, orientation, orientation);
                 absoluteLayout.Add(polygonPan);
                 absoluteLayout.SetLayoutBounds(polygonPan, new Rect(0, 0, absoluteLayout.Width, absoluteLayout.Height));
+                imageButtonOrigin.X = imageButton.X;
+                imageButtonOrigin.Y = imageButton.Y;
                 break;
             case GestureStatus.Running:
 #if ANDROID
@@ -994,39 +1484,72 @@ public partial class MainPage : ContentPage
             case GestureStatus.Completed:
                 IsPanWorking = false;
                 Rect rect = new Rect();
-                rect = new Rect(vectorEndPan.point1.X,
+                rect = new Rect(vectorEndPan.point1.X-1,
                     vectorEndPan.point1.Y, RectWidth, RectHeight);
 
-                if ((Orientation)rotation == Orientation.Left)
+                switch ((Orientation)rotation)
                 {
-                    rect = new Rect(vectorEndPan.point1.X - RectWidth,
-                        vectorEndPan.point1.Y, RectWidth, RectHeight);
-                }
-                else if ((Orientation)rotation == Orientation.Up)
-                {
-                    rect = new Rect(vectorEndPan.point1.X,
-                        vectorEndPan.point1.Y - RectHeight, RectWidth, RectHeight);
+                    case Orientation.Up:
+                        rect = new Rect(vectorEndPan.point1.X,
+                        vectorEndPan.point1.Y - RectHeight + 1, RectWidth, RectHeight);
+                        break;
+
+                    case Orientation.Right:
+                        rect = new Rect(vectorEndPan.point1.X - 1,
+                            vectorEndPan.point1.Y + 0.5, RectWidth, RectHeight);
+                        break;
+
+                    case Orientation.Down:
+                        rect = new Rect(vectorEndPan.point1.X + 0.5,
+                            vectorEndPan.point1.Y-1, RectWidth, RectHeight);
+                        break;
+
+                    case Orientation.Left:
+                        rect = new Rect(vectorEndPan.point1.X - RectWidth + 1,
+                        vectorEndPan.point1.Y + 0.5, RectWidth, RectHeight);
+                        break;
                 }
 
-                if (switchIsCrossroad.IsToggled)
+                string action = await DisplayActionSheet("Выберите новый \nобъект пристыковки",
+                    "Отмена", null, "Новый перекресток", "Новый поворот", "Ничего");
+                if (action != null)
                 {
-                    if ((Orientation)rotation == Orientation.Left || (Orientation)rotation == Orientation.Right)
+                    if (action == "Ничего")
                     {
-                        rect.Width = RectWidth / 10;
-                        if ((Orientation)rotation == Orientation.Left)
+                        double scale = 20;
+                        if ((Orientation)rotation == Orientation.Left || (Orientation)rotation == Orientation.Right)
                         {
-                            rect.X += RectWidth - (RectWidth / 10);
+                            rect.Width = RectWidth / scale;
+                            if ((Orientation)rotation == Orientation.Left)
+                            {
+                                rect.X += RectWidth - (RectWidth / scale);
+                            }
+                        }
+                        else if ((Orientation)rotation == Orientation.Up || (Orientation)rotation == Orientation.Down)
+                        {
+                            rect.Height = RectHeight / scale;
+                            if ((Orientation)rotation == Orientation.Up)
+                            {
+                                rect.Y += RectHeight - (RectHeight / scale);
+                            }
                         }
                     }
-                    else if ((Orientation)rotation == Orientation.Up || (Orientation)rotation == Orientation.Down)
+                    else if (action == "Отмена")
                     {
-                        rect.Height = RectHeight / 10;
-                        if ((Orientation)rotation == Orientation.Up)
-                        {
-                            rect.Y += RectHeight - (RectHeight / 10);
-                        }
+                        absoluteLayout.Remove(polygonPan);
+                        imageButton.TranslationX = 0;
+                        imageButton.TranslationY = 0;
+                        return;
                     }
                 }
+                else
+                {
+                    absoluteLayout.Remove(polygonPan);
+                    imageButton.TranslationX = 0;
+                    imageButton.TranslationY = 0;
+                    return;
+                }
+
                 Rectangle rectangle = GetRectangle(rect, Crossroads_Tapped);
                 absoluteLayout.Add(rectangle);
                 absoluteLayout.SetLayoutBounds(rectangle, rect);
@@ -1082,3 +1605,5 @@ public partial class MainPage : ContentPage
         }
     }
 }
+
+

@@ -31,10 +31,13 @@ namespace RoadsApp2.Utils
                 Fill = Color.FromRgb(137, 137, 137),
                 //InputTransparent = true,
                 //Background = Brush.Red,
-                HeightRequest = rect.Height,
-                WidthRequest = rect.Width,
-                Stroke = Brush.Red,
+                //HeightRequest = rect.Height,
+                //WidthRequest = rect.Width,
+                //Stroke = Color.FromRgb(137, 137, 137),
+                Stroke = Brush.Transparent,
                 StrokeThickness = 0,
+                Background = Brush.Transparent,
+                BackgroundColor = Brush.Transparent.Color,
                 ZIndex = 3
             };
             if (targetEvent != null)
@@ -272,7 +275,6 @@ namespace RoadsApp2.Utils
                     }
                 }
             }
-            Debug.WriteLine("new link");
             return new Link();
         }
 
@@ -351,6 +353,20 @@ namespace RoadsApp2.Utils
         {
             road.Points[1] = newDestination.point1;
             road.Points[2] = newDestination.point2;
+        }
+
+        public static List<Node> GetAllNodesByLink(Link link, List<Node> nodes)
+        {
+            var foundNodes = new List<Node>();
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                for (int j = 0; j < nodes[i].Roads.Count; j++)
+                {
+                    if (nodes[i].Roads[j].Equals(link))
+                        foundNodes.Add(nodes[i]);
+                }
+            }
+            return foundNodes;
         }
 
     }

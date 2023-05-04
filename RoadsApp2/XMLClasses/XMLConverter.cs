@@ -11,7 +11,7 @@ namespace RoadsApp2.XMLClasses
 {
     public class XMLConverter
     {
-        private AbsoluteLayout FormAbsoluteLayout { get; set; }
+        public AbsoluteLayout FormAbsoluteLayout { get; private set; }
 
         public XmlDocument XmlDocumentSchema { get; private set; }
 
@@ -54,8 +54,11 @@ namespace RoadsApp2.XMLClasses
         {
             XmlAttribute xmlAttribute = XmlDocumentSchema.CreateAttribute(name);
             XmlText xmlAttributeText = XmlDocumentSchema.CreateTextNode(value);
-            xmlAttribute.AppendChild(xmlAttributeText);
-            ElementAppendTo.Attributes.Append(xmlAttribute);
+            if (!string.IsNullOrEmpty(xmlAttributeText.Value))
+            {
+                xmlAttribute.AppendChild(xmlAttributeText);
+                ElementAppendTo.Attributes.Append(xmlAttribute);
+            }       
         }
 
         private XmlElement ConvertLineToXmlNode(Line line, string nodeName)
@@ -90,6 +93,7 @@ namespace RoadsApp2.XMLClasses
         public void ConvertNodesToXML()
         {
             List<Node> Nodes = MainPage.Nodes;
+
             XmlElement NodesElement = XmlDocumentSchema.CreateElement("Nodes");
             XmlRoot.AppendChild(NodesElement);
 
@@ -259,9 +263,10 @@ namespace RoadsApp2.XMLClasses
                         LinesSide1.AppendChild(Line);
 
                         solidColorBrush = (SolidColorBrush)line.Fill;
-                        AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), Line);
+                        AddNewAttribute("Fill", solidColorBrush.Color.ToArgbHex(true).ToString(), Line);
+
                         solidColorBrush = (SolidColorBrush)line.Stroke;
-                        AddNewAttribute("Stroke", solidColorBrush.Color.ToHex().ToString(), Line);
+                        AddNewAttribute("Stroke", solidColorBrush.Color.ToArgbHex(true).ToString(), Line);
                         AddNewAttribute("StrokeThickness", line.StrokeThickness.ToString(), Line);
                         AddNewAttribute("IsEnabled", line.IsEnabled.ToString(), Line);
                         AddNewAttribute("ZIndex", line.ZIndex.ToString(), Line);
@@ -564,11 +569,14 @@ namespace RoadsApp2.XMLClasses
             if (element.Attribute("StrokeDashArray") != null)
             {
                 string strokeDashArrayString = GetValueFromAttribute("StrokeDashArray", element);
-                DoubleCollection strokeDashArray = new DoubleCollection();
-                var matches = Regex.Match(strokeDashArrayString, @"(.*?) (.*?) ");
-                strokeDashArray.Add(Double.Parse(matches.Groups[1].Value));
-                strokeDashArray.Add(Double.Parse(matches.Groups[2].Value));
-                line.StrokeDashArray = strokeDashArray;
+                if (!string.IsNullOrEmpty(strokeDashArrayString))
+                {            
+                    DoubleCollection strokeDashArray = new DoubleCollection();
+                    var matches = Regex.Match(strokeDashArrayString, @"(.*?) (.*?) ");
+                    strokeDashArray.Add(Double.Parse(matches.Groups[1].Value));
+                    strokeDashArray.Add(Double.Parse(matches.Groups[2].Value));
+                    line.StrokeDashArray = strokeDashArray;
+                }
             }
             return line;
         }
@@ -702,7 +710,6 @@ namespace RoadsApp2.XMLClasses
                 foreach (XElement LinksElement in nodeElement.Elements("Links"))
                 {
                     Link link = new Link();
-                    Debug.WriteLine(LinksElement.Name);
                     #region Road
                     XElement LinkElement = LinksElement.Element("Link");
                     if (LinkElement == null)
@@ -761,7 +768,6 @@ namespace RoadsApp2.XMLClasses
                                 Y = double.Parse(GetValueFromAttribute("Y", pointElement)),
                             };
                             points.Add(point);
-                            Debug.WriteLine(point.ToString());
                         }
                         link.OriginalRoadPoints = points;
 
@@ -816,7 +822,6 @@ namespace RoadsApp2.XMLClasses
                             lineStepper.Vector = GetVectorFromElement(vectorElement);
                             lineStepper.Stepper = GetStepperFromElement(stepperElement);
                             link.LineSteppers.Add(lineStepper);
-                            Debug.WriteLine("LineStepper");
                         }
                         #endregion
 
@@ -833,8 +838,7 @@ namespace RoadsApp2.XMLClasses
                         link.RectangleCollision = rectangleCollision;
                         FormAbsoluteLayout.Add(rectangleCollision);
                         FormAbsoluteLayout.SetLayoutBounds(rectangleCollision,
-                            StringToRect(GetValueFromAttribute("rect", rectangleCollisionElement)));
-                        Debug.WriteLine(StringToRect(GetValueFromAttribute("rect", rectangleCollisionElement)));
+                            StringToRect(GetValueFromAttribute("rect", rectangleCollisionElement)));   
                         #endregion
 
 
@@ -878,7 +882,6 @@ namespace RoadsApp2.XMLClasses
 
                 FormAbsoluteLayout.Add(imageMain);
                 FormAbsoluteLayout.SetLayoutBounds(imageMain, StringToRect(GetValueFromAttribute("rect", imageElement)));
-                Debug.WriteLine(imageMain.ToString());
             }
             #endregion
 

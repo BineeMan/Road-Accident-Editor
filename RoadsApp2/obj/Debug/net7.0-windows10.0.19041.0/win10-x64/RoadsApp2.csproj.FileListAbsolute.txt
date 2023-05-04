@@ -509,3 +509,8 @@ G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizet
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign7.scale-100.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign8.scale-100.png
 G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\sign9.scale-100.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\light.scale-100.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\trafficlightsgreen.scale-100.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\trafficlightsred.scale-100.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\trafficlightsyellow.scale-100.png
+G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\resizetizer\r\trafficlightyellow.scale-100.png

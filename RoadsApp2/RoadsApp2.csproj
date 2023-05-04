@@ -64,7 +64,6 @@
 	  <None Remove="Resources\Images\car.png" />
 	  <None Remove="Resources\Images\car1.png" />
 	  <None Remove="Resources\Images\car3.png" />
-	  <None Remove="Resources\Images\car4.png" />
 	  <None Remove="Resources\Images\caricon.png" />
 	  <None Remove="Resources\Images\crossicon.png" />
 	  <None Remove="Resources\Images\crossicon2.png" />

@@ -16,6 +16,7 @@ obj\Debug\net7.0-android\resizetizer\r\drawable\desticon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\home.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\infoicon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\informationicon.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\light.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\logo.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\logowindows.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\motorcycle.png
@@ -33,6 +34,9 @@ obj\Debug\net7.0-android\resizetizer\r\drawable\sign7.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\sign8.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\sign9.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\signicon.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\trafficlightsgreen.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\trafficlightsred.png
+obj\Debug\net7.0-android\resizetizer\r\drawable\trafficlightsyellow.png
 obj\Debug\net7.0-android\resizetizer\r\drawable\trajectoryicon.png
 obj\Debug\net7.0-android\resizetizer\r\drawable-hdpi\dotnet_bot.png
 obj\Debug\net7.0-android\resizetizer\r\drawable-hdpi\splash2.png

@@ -25,13 +25,11 @@
                    TextColor="White"/>
             </Frame>
 
+            <Border BackgroundColor="#606060"
+                    StrokeShape="RoundRectangle 30,30,30,30"
+                    StrokeThickness="0" >
 
-
-            <Frame BackgroundColor="#606060"
-                   BorderColor="Transparent"
-                   CornerRadius="25">
-
-                <VerticalStackLayout>
+                <VerticalStackLayout Margin="10">
                     <VerticalStackLayout>
                         <Label Text="Название"
                            FontAttributes="Bold"
@@ -40,10 +38,10 @@
                            HorizontalOptions="Start"
                            FontFamily="Rubik"
                            TextColor="White"/>
-                        <Frame BorderColor="Transparent"
-                               BackgroundColor="#E1E1E1"
-                               CornerRadius="30"
-                               Padding="10, 0">
+                        <Border BackgroundColor="#E1E1E1"
+                                Padding="10, 0"
+                                StrokeShape="RoundRectangle 30,30,30,30"
+                                StrokeThickness="0">
                             <Entry FontFamily="Rubik"
                                     FontAttributes="Bold"
                                     CharacterSpacing="1"
@@ -53,7 +51,7 @@
                                     x:Name="NameEntry"
                                     Text="{Binding Name}"
                                     Focused="EntryOrEditor_Focused"/>
-                        </Frame>
+                        </Border>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Margin="0, 10">
@@ -64,9 +62,10 @@
                             HorizontalOptions="Start"
                             FontFamily="Rubik"
                             TextColor="White"/>
-                        <Frame BorderColor="Transparent"
+                        <Border 
                                 BackgroundColor="#E1E1E1"
-                                CornerRadius="30"
+                                StrokeShape="RoundRectangle 30,30,30,30"
+                                StrokeThickness="0"
                                 Padding="10, 0">
                             <HorizontalStackLayout>
                                 <DatePicker FontFamily="Rubik"
@@ -81,7 +80,7 @@
                                     Margin="5, 0"/>
 
                             </HorizontalStackLayout>
-                        </Frame>
+                        </Border>
                     </VerticalStackLayout >
 
                     <VerticalStackLayout Margin="0, 0, 0, 10">
@@ -92,10 +91,10 @@
                                    HorizontalOptions="Start"
                                    FontFamily="Rubik"
                                    TextColor="White"/>
-                        <Frame BorderColor="Transparent"
-                                   BackgroundColor="#E1E1E1"
-                                   CornerRadius="30"
-                                   Padding="10, 0">
+                        <Border StrokeShape="RoundRectangle 30,30,30,30"
+                                StrokeThickness="0"
+                                BackgroundColor="#E1E1E1"
+                                Padding="10, 0">
                             <Entry FontFamily="Rubik"
                                        FontAttributes="Bold"
                                        CharacterSpacing="1"
@@ -105,11 +104,13 @@
                                        x:Name="AddressEntry"
                                        Text="{Binding Address}"
                                        Focused="EntryOrEditor_Focused"/>
-                        </Frame>
+                        </Border>
                     </VerticalStackLayout>
 
 
-                    <VerticalStackLayout >
+                    <VerticalStackLayout>
+
+
                         <Frame BackgroundColor="#D5D4D0"
                                Margin="70, 0, 110, -25"  
                                HorizontalOptions="Center"
@@ -124,10 +125,11 @@
                                    TextColor="#000000"/>
 
                         </Frame>
-                        <Frame BackgroundColor="#D5D4D0"   
-                               Padding="20, 20"
-                               CornerRadius="30"
-                               BorderColor="Transparent">
+
+                        <Border BackgroundColor="#D5D4D0"   
+                                Padding="20, 20"
+                                StrokeShape="RoundRectangle 30,30,30,30"
+                                StrokeThickness="0" >
                             <VerticalStackLayout>
                                 <HorizontalStackLayout>
                                     <Button Text="Новый участник"
@@ -138,7 +140,7 @@
                                 </HorizontalStackLayout>
 
                                 <ScrollView>
-                                    <TableView HeightRequest="150" 
+                                    <TableView HeightRequest="200" 
                                                x:Name="TableViewParticipant" >
                                         <TableRoot>
                                             <TableSection TextColor="White" 
@@ -150,7 +152,7 @@
                                 </ScrollView>
 
                             </VerticalStackLayout>
-                        </Frame>
+                        </Border>
 
                         <VerticalStackLayout Margin="0, 0, 0, 10">
                             <Label Text="Описание"
@@ -160,9 +162,9 @@
                                    HorizontalOptions="Start"
                                    FontFamily="Rubik"
                                    TextColor="White"/>
-                            <Frame BorderColor="Transparent"
-                                   BackgroundColor="#E1E1E1"
-                                   CornerRadius="30"
+                            <Border BackgroundColor="#E1E1E1"
+                                   StrokeShape="RoundRectangle 30,30,30,30"
+                                   StrokeThickness="0"
                                    Padding="10, 0">
                                 <Editor FontFamily="Rubik"
                                         FontAttributes="Bold"
@@ -174,7 +176,7 @@
                                         Text="{Binding Description}"
                                         x:Name="DescriptionEditor"
                                         Focused="EntryOrEditor_Focused"/>
-                            </Frame>
+                            </Border>
                         </VerticalStackLayout>
                     </VerticalStackLayout>
 
@@ -187,7 +189,7 @@
                             />
                 </VerticalStackLayout>
 
-            </Frame>
+            </Border>
 
 
         </VerticalStackLayout>

@@ -38,16 +38,7 @@
             <HorizontalStackLayout Grid.Column="0"
                                    Grid.Row="0"
                                    Grid.ColumnSpan="3">
-                <HorizontalStackLayout Spacing="1">
-                    <Image Source="crossroadsicon.png"
-                       WidthRequest="50"
-                       HeightRequest="50" />
-                    <Switch x:Name="switchIsCrossroad"
-                       IsToggled="True" 
-                       Margin="0, 0, 0 ,0" />
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout>
+                <HorizontalStackLayout Margin="30, 0">
                     <Image Source="trajectoryicon.png"
                        WidthRequest="40"
                        HeightRequest="40" />
@@ -56,8 +47,7 @@
                         Toggled="SwitchIsTrajectoryMode_Toggled"
                         Margin="0, 0, 0 ,0" />
                 </HorizontalStackLayout>
-                
-                <HorizontalStackLayout Margin="40, 0">
+                <HorizontalStackLayout Margin="40, 0" >
 
                     <ImageButton x:Name="crossButton"
                              Source="crossicon2.png"
@@ -122,8 +112,6 @@
         </ImageButton>
         </VerticalStackLayout>
 
-
-
         <controls:BottomSheet x:Name="SignMenuBottomSheet"
                               HeaderText="Дорожные знаки"
                               Grid.Column="0"
@@ -137,6 +125,36 @@
                             HeightRequest="120"
                             Margin="0, -20, 0, 0" >
                     <HorizontalStackLayout HorizontalOptions="Center">
+                        <Image Source="trafficlightsgreen.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="trafficlightsyellow.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Image Source="trafficlightsred.png"
+                                   WidthRequest="150"
+                                   HeightRequest="80" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Image Source="light.png"
+                                   WidthRequest="50"
+                                   HeightRequest="50" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
                         <Image Source="sign1.png"
                                    WidthRequest="150"
                                    HeightRequest="80" >
@@ -220,35 +238,37 @@
                     <HorizontalStackLayout HorizontalOptions="Center">
                         <Image Source="car3.png"
                                    WidthRequest="150"
-                                   HeightRequest="80" >
+                                   HeightRequest="80" 
+                                   Margin="10, 0">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
                             </Image.GestureRecognizers>
                         </Image>
                         <Image Source="car.png"
                                    WidthRequest="150"
-                                   HeightRequest="80" >
+                                   HeightRequest="80" 
+                                    Margin="10, 0">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
                             </Image.GestureRecognizers>
                         </Image>
                         <Image Source="car4.png"
                                    WidthRequest="150"
-                                   HeightRequest="80" >
+                                   HeightRequest="80" Margin="10, 0" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
                             </Image.GestureRecognizers>
                         </Image>
                         <Image Source="bycicle.png"
                                    WidthRequest="150"
-                                   HeightRequest="80" >
+                                   HeightRequest="80" Margin="10, 0" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
                             </Image.GestureRecognizers>
                         </Image>
                         <Image Source="motorcycle.png"
                                    WidthRequest="150"
-                                   HeightRequest="80" >
+                                   HeightRequest="80" Margin="10, 0" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="RoadObjectFromMenu_Tapped"    />
                             </Image.GestureRecognizers>
@@ -257,6 +277,6 @@
                 </ScrollView>
             </controls:BottomSheet.BottomSheetContent>
         </controls:BottomSheet>
-
+               
     </Grid>
 </ContentPage>

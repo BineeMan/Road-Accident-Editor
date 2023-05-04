@@ -3,15 +3,8 @@
   <Class Name="RoadsApp2.HomePage">
     <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAEAEACAAAgAAAAAACAgAEAAAQBgoAAAAAAAo=</HashCode>
       <FileName>HomePage.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="RoadsApp2.MainPage">
-    <Position X="1" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAihhUBCtkAEUAgAgJKABiAAQARBACIDCAzkEAAwACA=</HashCode>
-      <FileName>MainPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RoadsApp2.MauiProgram">
@@ -24,7 +17,7 @@
   <Class Name="RoadsApp2.XMLClasses.XMLConverter">
     <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAoAAAIASAAAkAAACAQQgAAgAAQACABUAAAAEAAAAAA=</HashCode>
+      <HashCode>AAoAAAIASAAAkAAACAQQgAAiAAQACABEAAAAEAAAAAA=</HashCode>
       <FileName>XMLClasses\XMLConverter.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -85,7 +78,7 @@
   <Class Name="RoadsApp2.Utils.UserInterfaceUtils">
     <Position X="9.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>gwQQAAAEKgIAAAAAAAQARQAkAARAAAAAAEAEABAAAAA=</HashCode>
+      <HashCode>gwQQAAAELgIAAAAAAAQARQAkAARAAAAAAEAEABAAAAA=</HashCode>
       <FileName>Utils\UserInterfaceUtils.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -99,7 +92,7 @@
   <Class Name="RoadsApp2.AccidentRegistrationPage">
     <Position X="11.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAACAAQAAAAAQA=</HashCode>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAQAACAAAAIgAACCAAAAAAAAg=</HashCode>
       <FileName>DatabasePages\AccidentRegistrationPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -120,14 +113,14 @@
   <Class Name="RoadsApp2.Database.RoadAccidentItem">
     <Position X="2.75" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAQAABAAAAQCAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAAAAIAAAQQABAAAAQCAAAAAAAAAAA=</HashCode>
       <FileName>Database\RoadAccidentItem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="RoadsApp2.Database.RoadAccidentDatabase">
     <Position X="6.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAEACAAAAAAAAAAAAAAAAAAAAAAACAIAAAAA=</HashCode>
+      <HashCode>AAUAAAQAgEACAAAAAAAAAAACAAAAAAAAAAACAIgAAAA=</HashCode>
       <FileName>Database\RoadAccidentDatabase.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -143,6 +136,20 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoadsApp2.MainPage">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="RoadsApp2.MainPage.BottomSheetType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainPage.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BCiphUBCtkAEUEgAgJKABwAAQgRBAiILCAzkGEAQBCg=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
