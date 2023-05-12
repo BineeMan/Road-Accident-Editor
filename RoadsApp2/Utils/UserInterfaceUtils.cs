@@ -355,7 +355,7 @@ namespace RoadsApp2.Utils
             road.Points[2] = newDestination.point2;
         }
 
-        public static List<Node> GetAllNodesByLink(Link link, List<Node> nodes)
+        public static List<Node> GetNodesByLink(Link link, List<Node> nodes)
         {
             var foundNodes = new List<Node>();
             for (int i = 0; i < nodes.Count; i++)
@@ -367,6 +367,38 @@ namespace RoadsApp2.Utils
                 }
             }
             return foundNodes;
+        }
+
+        public static PointCollection GetPointsFromRect(Rect rect)
+        {
+            var points = new PointCollection
+            {
+                new Point(rect.Left, rect.Top),
+                new Point(rect.Right, rect.Top),
+                new Point(rect.Right, rect.Bottom),
+                new Point(rect.Left, rect.Bottom),
+            };
+            return points;
+        }
+
+        public static void AddToRect(Rect rect, double oldValue, double newValue)
+        {
+            if (oldValue == rect.Left)
+                rect.Left = newValue;
+            else if (oldValue == rect.Right)
+                rect.Right = newValue + rect.X;
+            else if (oldValue == rect.Bottom) 
+                rect.Bottom = newValue + rect.Y;
+            else if (oldValue == rect.Top)
+                rect.Top = newValue;
+        }
+
+        public static void SetNewPoint(Rect rect, Point oldPoint, Point newPoint)
+        {
+            PointCollection points = GetPointsFromRect(rect);
+            if (points[0].Equals(oldPoint))
+                rect.Left = newPoint.X;
+            
         }
 
     }

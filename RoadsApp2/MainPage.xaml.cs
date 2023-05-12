@@ -7,6 +7,7 @@ using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Platform;
+
 using RoadsApp2.Database;
 using RoadsApp2.DataClasses;
 using RoadsApp2.XMLClasses;
@@ -106,29 +107,36 @@ public partial class MainPage : ContentPage
 #if WINDOWS
         GlobalScale = 1.5d;
 #endif
-        RectWidth = 75 * GlobalScale;
-        RectHeight = 75 * GlobalScale;
+        RectWidth = 74 * GlobalScale;
+        RectHeight = 74 * GlobalScale;
         crossButton.IsEnabled = false;
         CurrentCollision = new Rectangle();
         RoadObjects = new List<Image>();
         Trajectories = new List<Line>();
+
     }
 
-    ///<summary>
-    ///This function adds new flags around a crossroads with except orientation which will be avoided
-    ///</summary>
+    private readonly double PlusButtonSize = 45;
     private void AddFlagsAroundRectangle(Rectangle rectangle,
         Orientation orientationExcept = Orientation.Undefined, bool isVisible = true)
     {
+        Rectangle originalRectangle = new()
+        {
+            Fill = Brush.Transparent,
+            StrokeThickness = 0,
+            IsEnabled = false
+        };
         Node node = new Node()
         {
             Rectangle = rectangle,
+            OriginalRectangle = originalRectangle,
             PlusButtons = new List<Image>(),
             isActive = true,
             Roads = new List<Link>()
         };
         Orientation rotation = Orientation.Up;
         Rect rect = absoluteLayout.GetLayoutBounds(rectangle);
+        absoluteLayout.SetLayoutBounds(originalRectangle, rect);
         if (rect.Width == rect.Height)
         {
             foreach (Point point in pointOrientations)
@@ -142,8 +150,8 @@ public partial class MainPage : ContentPage
                 Image imageButton = new Image
                 {
                     Source = ButtonType.RoadPlusBlackButton,
-                    WidthRequest = 45,
-                    HeightRequest = 45,
+                    WidthRequest = PlusButtonSize,
+                    HeightRequest = PlusButtonSize,
                     Rotation = (double)rotation,
                     ZIndex = 99,
                     AnchorY = 1,
@@ -180,7 +188,7 @@ public partial class MainPage : ContentPage
                 }
 
                 rect = absoluteLayout.GetLayoutBounds(rectangle);
-                if ((point == pointOrientations[0] || point == pointOrientations[2]) && rect.Width < rect.Height )
+                if ((point == pointOrientations[0] || point == pointOrientations[2]) && rect.Width < rect.Height)
                 {
                     rotation += 90;
                     continue;
@@ -194,8 +202,8 @@ public partial class MainPage : ContentPage
                 Image imageButton = new Image
                 {
                     Source = ButtonType.RoadPlusBlackButton,
-                    WidthRequest = 45,
-                    HeightRequest = 45,
+                    WidthRequest = PlusButtonSize,
+                    HeightRequest = PlusButtonSize,
                     Rotation = (double)rotation,
                     ZIndex = 99,
                     AnchorY = 1,
@@ -220,8 +228,8 @@ public partial class MainPage : ContentPage
                 rotation += 90;
 
                 node.PlusButtons.Add(imageButton);
-                
-            }   
+
+            }
             if (isVisible)
             {
                 PreviousNode = node;
@@ -230,6 +238,38 @@ public partial class MainPage : ContentPage
         Nodes.Add(node);
     }
 
+    private void RefreshFlagsPosition(Node node)
+    {
+        Rect rect = absoluteLayout.GetLayoutBounds(node.Rectangle);
+
+        Dictionary<Orientation, Point> pairs = new()
+        {
+            { Orientation.Up,  pointOrientations[0] },
+            { Orientation.Right, pointOrientations[1] },
+            { Orientation.Down,  pointOrientations[2] },
+            { Orientation.Left, pointOrientations[3] },
+        };
+
+        foreach (var pair in pairs)
+        {
+            var selectedPlusButton =
+                node.PlusButtons.Where(plusButton => plusButton.Rotation.Equals((double)pair.Key)).SingleOrDefault();
+            if (selectedPlusButton != null)
+            {
+                
+                double x = rect.X - PlusButtonSize / 2 + rect.Width * pair.Value.X;
+                double y = rect.Y - PlusButtonSize + rect.Height * pair.Value.Y;
+
+                absoluteLayout.SetLayoutBounds(selectedPlusButton,
+                    new Rect(x, y, selectedPlusButton.Width, selectedPlusButton.Height));
+            }
+            
+        }       
+    }
+
+    ///<summary>
+    ///This function adds new flags around a crossroads with except orientation which will be avoided
+    ///</summary>
     private void AddFlagAroundRoad(ref Link link)
     {
         PointCollection points = link.Road.Points;
@@ -323,6 +363,8 @@ public partial class MainPage : ContentPage
             Vector = new Vector() { point1 = vectorStart.point2, point2 = vectorDestination.point2 }
         });
     }
+
+
     ///<summary>
     ///This event is only used to toggle flags around a crossroad. Doesn't trigger drawing.
     ///</summary>
@@ -338,7 +380,8 @@ public partial class MainPage : ContentPage
         Node node = GetNodeFromRectangle(rectangle, Nodes);
         if (CurrentRectangle.Equals(rectangle))
         {
-            SetImageButtonsVisibility(node.PlusButtons, false);
+            //SetImageButtonsVisibility(node.PlusButtons, false);
+            ToggleImageButtons(node.PlusButtons);
             PreviousNode = new Node() { PlusButtons = new List<Image>() };
         }
         else
@@ -346,10 +389,11 @@ public partial class MainPage : ContentPage
             SetImageButtonsVisibility(PreviousNode.PlusButtons, false);
             SetImageButtonsVisibility(node.PlusButtons, true);
             PreviousNode = node;
+
         }
         ToggleSteppersVisibility(Links, false);
-
         CurrentRectangle = rectangle;
+
     }
 
     ///<summary>
@@ -1002,7 +1046,6 @@ public partial class MainPage : ContentPage
         }
     }
 
-
     private async void ModifyRoad(Link link, LineStepper lineStepper, bool isRemoveMode)
     {
         PointCollection points = link.Road.Points;
@@ -1040,6 +1083,62 @@ public partial class MainPage : ContentPage
                 vectorStart.point1.Y - stepY);
             Point newPointDestination = new Point(vectorDestination.point1.X - stepX,
                 vectorDestination.point1.Y - stepY);
+
+            var vectorPointsPairs = new Dictionary<Vector, Point>()
+            {
+                { vectorStart, newPointStart},
+                { vectorDestination, newPointDestination},
+            };
+           
+            List<Node> foundNodes = GetNodesByLink(link, Nodes);
+
+            //Для расширения прилегающих перекрестков
+            for (int i = 0; i < foundNodes.Count; i++) 
+                //Идем по каждому найденому перекрестку
+            {
+                foreach (Point point in GetPointsFromRect(absoluteLayout.GetLayoutBounds(foundNodes[i].Rectangle)))
+                //представляем Rectangle перекрестка как массив точек и проходимся по нему
+                {
+                    foreach (var vectorPoint in vectorPointsPairs)
+                    {
+                        double vectorA = vectorPoint.Key.point1.X - point.X;
+                        double vectorB = vectorPoint.Key.point1.Y - point.Y;
+                        double vectorLength = Math.Sqrt(Math.Pow(vectorA, 2) + Math.Pow(vectorB, 2));
+                        //вычисляем длину между точкой Rectangle и точки дороги
+
+                        if (vectorLength <= 5d)
+                        //если они рядом, устанавливаем новые значения точки Rectangle
+                        {
+                            Rect rect = absoluteLayout.GetLayoutBounds(foundNodes[i].Rectangle);
+
+                            if (stepY != 0)
+                                //проверяем, изменилась ли точка 
+                            {
+                                if (isRemoveMode)
+                                    rect.Height -= Math.Abs(rect.Y - vectorPoint.Value.Y);
+                                else
+                                    rect.Height += Math.Abs(rect.Y - vectorPoint.Value.Y);    
+                                
+                                rect.Y = vectorPoint.Value.Y;
+                            }
+                            else if (stepX != 0)
+                            {
+                                if (isRemoveMode)
+                                    rect.Width -= Math.Abs(rect.X - vectorPoint.Value.X);
+                                else
+                                    rect.Width += Math.Abs(rect.X - vectorPoint.Value.X);
+
+                                rect.X = vectorPoint.Value.X;
+                            }
+
+                            absoluteLayout.SetLayoutBounds(foundNodes[i].Rectangle, rect);
+                            
+                        }
+                    }
+                }
+                RefreshFlagsPosition(foundNodes[i]);
+            }
+
             link.Road.Points[0] = newPointStart;
             link.Road.Points[4] = newPointStart;
             link.Road.Points[1] = newPointDestination;
@@ -1079,6 +1178,8 @@ public partial class MainPage : ContentPage
             };
             lineStepper.Vector = vector1;
             link.LineSteppers[0] = lineStepper;
+
+           
         }
         else
         {
@@ -1095,6 +1196,54 @@ public partial class MainPage : ContentPage
 
             Point newPointDestination = new Point(vectorDestination.point2.X + stepX,
                 vectorDestination.point2.Y + stepY);
+
+
+            var vectorPointsPairs = new Dictionary<Vector, Point>()
+            {
+                { vectorStart, newPointStart},
+                { vectorDestination, newPointDestination},
+            };
+            List<Node> foundNodes = GetNodesByLink(link, Nodes);
+            for (int i = 0; i < foundNodes.Count; i++)
+            //Идем по каждому найденому перекрестку
+            {
+                foreach (Point point in GetPointsFromRect(absoluteLayout.GetLayoutBounds(foundNodes[i].Rectangle)))
+                //представляем Rectangle перекрестка как массив точек и проходимся по нему
+                {
+                    foreach (var vectorPoint in vectorPointsPairs)
+                    {
+                        double vectorA = vectorPoint.Key.point1.X - point.X;
+                        double vectorB = vectorPoint.Key.point1.Y - point.Y;
+                        double vectorLength = Math.Sqrt(Math.Pow(vectorA, 2) + Math.Pow(vectorB, 2));
+                        //вычисляем длину между точкой Rectangle и точки дороги
+
+                        if (vectorLength <= 5d)
+                        //если они рядом, устанавливаем новые значения точки Rectangle
+                        {
+                            Rect rect = absoluteLayout.GetLayoutBounds(foundNodes[i].Rectangle);
+
+                            if (stepY != 0)
+                            {
+                                if (isRemoveMode)
+                                    rect.Height -= RectHeight;
+                                else
+                                    rect.Height += RectHeight;
+                            }
+                            else if (stepX != 0)
+                            {
+                                if (isRemoveMode)
+                                    rect.Width -= RectWidth;
+
+                                else
+                                    rect.Width += RectWidth;
+                            }
+                            absoluteLayout.SetLayoutBounds(foundNodes[i].Rectangle, rect); 
+                        }
+                    }
+                    
+                }
+                RefreshFlagsPosition(foundNodes[i]);
+            }
 
             link.Road.Points[3] = newPointStart;
             link.Road.Points[2] = newPointDestination;
@@ -1449,9 +1598,19 @@ public partial class MainPage : ContentPage
             case GestureStatus.Started:
                 IsPanWorking = true;
                 Node node = GetNodeFromImageButton(imageButton, Nodes);
-                Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
+                //Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
                 Orientation orientation = (Orientation)rotation;
-                vectorStartPan = GetVectorForOrientation(orientation, rectCrossroad);
+                Rect rectCrossroadOriginal = absoluteLayout.GetLayoutBounds(node.OriginalRectangle);
+                Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
+                if (rectCrossroadOriginal.X != rectCrossroad.X)
+                {
+                    rectCrossroadOriginal.X = rectCrossroadOriginal.X;
+                }
+                if (rectCrossroadOriginal.Y != rectCrossroad.Y)
+                {
+                    rectCrossroadOriginal.Y = rectCrossroadOriginal.Y;
+                }
+                vectorStartPan = GetVectorForOrientation(orientation, rectCrossroadOriginal);
                 vectorEndPan = vectorStartPan;
                 vectorTemp = vectorStartPan;
                 polygonPan = DrawRoad(vectorStartPan, vectorEndPan, orientation, orientation);

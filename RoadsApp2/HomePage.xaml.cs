@@ -177,7 +177,6 @@ public partial class HomePage : ContentPage
         }
     }
 
-
     private XmlDocument GetReportHtmlFile(RoadAccidentItem roadAccidentItem, List<ParticipantItem> participantItems, string imageFileName)
     {
         XmlDocument XmlDocumentSchema = new XmlDocument();
