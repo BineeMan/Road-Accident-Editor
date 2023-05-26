@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "c+tJOQQwFZzbngoegdEtEOam19cmJi912YsD+NVMwQI2qsaRS1Z5ZNK9XhEz1zzNfnIjrT0DlTjjvLWChijGlg==",
+  "dgSpecHash": "jkFThOpRnViRj3/NJGtoqlhZ4zcMPHyEJe8jqxVWoqVFcSg8ICq1UgcQkE5jrnUvfUBS1xJb+oyWbmWge/lowA==",
   "success": true,
   "projectFilePath": "G:\\C#\\RoadsApp2\\RoadsApp2\\RoadsApp2.csproj",
   "expectedPackageFiles": [
@@ -177,6 +177,7 @@
     "C:\\Users\\herob\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.7.20.1\\xamarin.kotlin.stdlib.jdk8.1.7.20.1.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.4.1\\xamarin.kotlinx.coroutines.android.1.6.4.1.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.4.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.4.1.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\7.0.4\\microsoft.netcore.app.crossgen2.win-x64.7.0.4.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.28\\microsoft.windows.sdk.net.ref.10.0.19041.28.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",

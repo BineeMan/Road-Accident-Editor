@@ -8,12 +8,9 @@ using System.Xml;
 using System.Xml.Linq;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Controls.Shapes;
-<<<<<<< Updated upstream
 using Microsoft.Maui.Graphics;
 using Microsoft.Maui.Platform;
-=======
 
->>>>>>> Stashed changes
 using RoadsApp2.Database;
 using RoadsApp2.DataClasses;
 using RoadsApp2.XMLClasses;
@@ -238,13 +235,12 @@ public partial class MainPage : ContentPage
                 node.PlusButtons.Add(imageButton);
                 rotation += 90;
 
-<<<<<<< Updated upstream
                 node.PlusButtons.Add(imageButton);
                 
             }   
-=======
-            }
->>>>>>> Stashed changes
+
+            
+
             if (isVisible)
             {
                 PreviousNode = node;
@@ -253,13 +249,10 @@ public partial class MainPage : ContentPage
         Nodes.Add(node);
     }
 
-<<<<<<< Updated upstream
-=======
-
     ///<summary>
     ///This function adds new flags around a crossroads with except orientation which will be avoided
     ///</summary>
->>>>>>> Stashed changes
+
     private void AddFlagAroundRoad(ref Link link)
     {
         PointCollection points = link.Road.Points;
@@ -1043,8 +1036,6 @@ public partial class MainPage : ContentPage
         }
     }
 
-<<<<<<< Updated upstream
-=======
     public Vector GetVector(Node node, Point point, Link roadExcept)
     //метод для поиска , какие еще точки совпали с точками других прил.дорог
     {
@@ -1093,7 +1084,7 @@ public partial class MainPage : ContentPage
             { Orientation.Down,  pointOrientations[2] },
             { Orientation.Left, pointOrientations[3] },
         };
-
+        double PlusButtonSize = 1;
         foreach (var pair in pairs)
         {
             var selectedPlusButton =
@@ -1109,7 +1100,7 @@ public partial class MainPage : ContentPage
 
         }
     }
->>>>>>> Stashed changes
+
 
     private async void ModifyRoad(Link link, LineStepper lineStepper, bool isRemoveMode)
     {
@@ -1146,8 +1137,6 @@ public partial class MainPage : ContentPage
                 vectorStart.point1.Y - stepY);
             Point newPointDestination = new Point(vectorDestination.point1.X - stepX,
                 vectorDestination.point1.Y - stepY);
-<<<<<<< Updated upstream
-=======
 
             var vectorPointsPairs = new Dictionary<Vector, Point>()
             {
@@ -1236,7 +1225,6 @@ public partial class MainPage : ContentPage
 
             }
 
->>>>>>> Stashed changes
             link.Road.Points[0] = newPointStart;
             link.Road.Points[1] = newPointDestination;
 
@@ -1292,8 +1280,6 @@ public partial class MainPage : ContentPage
             Point newPointDestination = new Point(vectorDestination.point2.X + stepX,
                 vectorDestination.point2.Y + stepY);
 
-<<<<<<< Updated upstream
-=======
             var vectorPointsPairs = new Dictionary<Vector, Point>()
             {
                 { vectorStart, newPointStart},
@@ -1347,7 +1333,6 @@ public partial class MainPage : ContentPage
                 Nodes[index] = node;
             }
 
->>>>>>> Stashed changes
             link.Road.Points[3] = newPointStart;
             link.Road.Points[2] = newPointDestination;
             absoluteLayout.Remove(link.Road);
@@ -1731,16 +1716,16 @@ public partial class MainPage : ContentPage
 
                 IsPanWorking = true;
                 Node node = GetNodeFromImageButton(imageButton, Nodes);
-<<<<<<< Updated upstream
-                Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
-                Orientation orientation = (Orientation)rotation;
-                vectorStartPan = GetVectorForOrientation(orientation, rectCrossroad);
-=======
-                //Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
-                Orientation orientation = (Orientation)rotation;
 
-                Rect rectCrossroadOriginal = absoluteLayout.GetLayoutBounds(node.OriginalRectangle);
+                //Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
+               // Orientation orientation = (Orientation)rotation;
+                Orientation orientation = (Orientation)rotation;
                 Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
+                Rect rectCrossroadOriginal = absoluteLayout.GetLayoutBounds(node.OriginalRectangle);
+                vectorStartPan = GetVectorForOrientation(orientation, rectCrossroad);
+
+                //Rect rectCrossroad = absoluteLayout.GetLayoutBounds(node.Rectangle);
+
 
                 switch (orientation)
                 {
@@ -1772,7 +1757,6 @@ public partial class MainPage : ContentPage
                 }
                            
                 vectorStartPan = GetVectorForOrientation(orientation, rectCrossroadOriginal);
->>>>>>> Stashed changes
                 vectorEndPan = vectorStartPan;
                 vectorTemp = vectorStartPan;
                 polygonPan = DrawRoad(vectorStartPan, vectorEndPan, orientation, orientation);
@@ -1959,6 +1943,6 @@ public partial class MainPage : ContentPage
         }
 
     }
-}
 
+}
 

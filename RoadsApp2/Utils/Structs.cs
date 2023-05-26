@@ -9,6 +9,8 @@ namespace RoadsApp2.Utils
         public struct Node
         {
             public Rectangle Rectangle { get; set; }
+
+            public Rectangle OriginalRectangle { get; set; }
             public List<Image> PlusButtons { get; set; }
             public List<Link> Roads { get; set; }
 

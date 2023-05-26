@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap rescap">
-  <Identity Name="9246b96d-4b3b-486e-a7f8-1a994f24e3b9" Publisher="CN=User Name" Version="1.0.0.1" />
+  <Identity Name="9246b96d-4b3b-486e-a7f8-1a994f24e3b9" Publisher="CN=herob" Version="1.0.0.1" />
   <mp:PhoneIdentity PhoneProductId="792D0F86-06AF-4F6B-95E1-CAEFD577D06E" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Конструктор ДТП</DisplayName>

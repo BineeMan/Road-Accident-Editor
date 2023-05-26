@@ -70,8 +70,6 @@ namespace RoadsApp2.Utils
             };
         }
 
-<<<<<<< Updated upstream
-=======
         public static double GetLength(Point point1, Point point2)
         {
             double vectorA = point1.X - point2.X;
@@ -108,8 +106,5 @@ namespace RoadsApp2.Utils
                 _ => new Point { X = 0.5, Y = 0.5 },
             };
         }
-
-        
->>>>>>> Stashed changes
     }
 }

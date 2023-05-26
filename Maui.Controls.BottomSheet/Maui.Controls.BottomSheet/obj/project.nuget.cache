@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "qhosmgooHVSbrTZVkg+92VtSKoJm9W2VUr0nvY/FRxF1UWzmmCZ48OAPG9s3hCKVo5hi7gNtHt/RJ4dPS/fG9Q==",
+  "dgSpecHash": "RbjHzzynq8cmpKK4TeSmK6XhzV88c2kU4C9aY6hBOWrnusuvKXKlSjh0y5amavvpZCW8aa7vEeEdvb1LB+qEpg==",
   "success": true,
   "projectFilePath": "G:\\C#\\RoadsApp2\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet\\Maui.Controls.BottomSheet.csproj",
   "expectedPackageFiles": [
@@ -99,6 +99,21 @@
     "C:\\Users\\herob\\.nuget\\packages\\xamarin.kotlin.stdlib.jdk8\\1.7.20.1\\xamarin.kotlin.stdlib.jdk8.1.7.20.1.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\xamarin.kotlinx.coroutines.android\\1.6.4.1\\xamarin.kotlinx.coroutines.android.1.6.4.1.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\xamarin.kotlinx.coroutines.core.jvm\\1.6.4.1\\xamarin.kotlinx.coroutines.core.jvm.1.6.4.1.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.4\\microsoft.netcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.win-x64\\7.0.4\\microsoft.netcore.app.runtime.mono.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.win-x64\\7.0.4\\microsoft.netcore.app.runtime.mono.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.win-x64\\7.0.4\\microsoft.netcore.app.runtime.mono.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\7.0.4\\microsoft.netcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\7.0.4\\microsoft.windowsdesktop.app.runtime.win-x64.7.0.4.nupkg.sha512",
+    "C:\\Users\\herob\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\7.0.4\\microsoft.aspnetcore.app.runtime.win-x64.7.0.4.nupkg.sha512",
     "C:\\Users\\herob\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.19041.28\\microsoft.windows.sdk.net.ref.10.0.19041.28.nupkg.sha512"
   ],
   "logs": []
