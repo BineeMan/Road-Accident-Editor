@@ -52,6 +52,8 @@ namespace RoadsApp2.XMLClasses
 
         private void AddNewAttribute(string name, string value, XmlElement ElementAppendTo)
         {
+            if (name == "null" || value == "null" || ElementAppendTo == null)
+                return;
             XmlAttribute xmlAttribute = XmlDocumentSchema.CreateAttribute(name);
             XmlText xmlAttributeText = XmlDocumentSchema.CreateTextNode(value);
             if (!string.IsNullOrEmpty(xmlAttributeText.Value))
@@ -90,45 +92,38 @@ namespace RoadsApp2.XMLClasses
             FormAbsoluteLayout.Clear();
         }
 
-        public void ConvertNodesToXML()
+        private XmlElement ConvertRectangleToXmlNode(Rectangle rectangle, string nodeName)
         {
-            List<Node> Nodes = MainPage.Nodes;
+            XmlElement rectangleElement = XmlDocumentSchema.CreateElement(nodeName);
+            //AppendChild(rectangle);
 
-            XmlElement NodesElement = XmlDocumentSchema.CreateElement("Nodes");
-            XmlRoot.AppendChild(NodesElement);
+            SolidColorBrush solidColorBrush = (SolidColorBrush)rectangle.Fill;
+            AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), rectangleElement);        
+            //AddNewAttribute("StrokeThickness", rectangle.StrokeThickness.ToString(), rectangleElement);    
+            AddNewAttribute("IsEnabled", rectangle.IsEnabled.ToString(), rectangleElement);
+            Rect rect1 = FormAbsoluteLayout.GetLayoutBounds((IView)rectangle);
+            AddNewAttribute("rect", rect1.ToString(), rectangleElement);
 
-            #region Nodes
-            foreach (Node node in Nodes)
+            if (nodeName == "Rectangle")
             {
-                XmlElement Node = XmlDocumentSchema.CreateElement("Node");
-                NodesElement.AppendChild(Node);
 
-                #region Rectangle
-                XmlElement Rectangle = XmlDocumentSchema.CreateElement("Rectangle");
-                Node.AppendChild(Rectangle);
+                AddNewAttribute("StrokeThickness", rectangle.StrokeThickness.ToString(), rectangleElement);
+                AddNewAttribute("BackgroundColor", rectangle.BackgroundColor.ToString(), rectangleElement);
+                //AddNewAttribute("WidthRequest", rectangle.WidthRequest.ToString(), rectangleElement);
+                //AddNewAttribute("HeightRequest", rectangle.HeightRequest.ToString(), rectangleElement);
+                AddNewAttribute("Background", rectangle.Background.ToString(), rectangleElement);
+                solidColorBrush = (SolidColorBrush)rectangle.Stroke;
+                if (solidColorBrush != null)
+                {
+                    AddNewAttribute("Stroke", solidColorBrush.Color.ToHex().ToString(), rectangleElement);
+                }
+            }
 
-                SolidColorBrush solidColorBrush = (SolidColorBrush)node.Rectangle.Fill;
-                AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), Rectangle);
-
-                AddNewAttribute("HeightRequest", node.Rectangle.HeightRequest.ToString(), Rectangle);
-
-                AddNewAttribute("WidthRequest", node.Rectangle.WidthRequest.ToString(), Rectangle);
-
-                AddNewAttribute("HeightRequest", node.Rectangle.HeightRequest.ToString(), Rectangle);
-
-                solidColorBrush = (SolidColorBrush)node.Rectangle.Stroke;
-                AddNewAttribute("Stroke", solidColorBrush.Color.ToHex().ToString(), Rectangle);
-
-                AddNewAttribute("StrokeThickness", node.Rectangle.StrokeThickness.ToString(), Rectangle);
-
-                AddNewAttribute("ZIndex", node.Rectangle.ZIndex.ToString(), Rectangle);
-
-                Rect rect1 = FormAbsoluteLayout.GetLayoutBounds((IView)node.Rectangle);
-                AddNewAttribute("rect", rect1.ToString(), Rectangle);
-
+            AddNewAttribute("ZIndex", rectangle.ZIndex.ToString(), rectangleElement);
+            if (rectangle.GestureRecognizers != null)
+            {
                 XmlElement GestureRecognizers = XmlDocumentSchema.CreateElement("GestureRecognizers");
-
-                foreach (GestureRecognizer gestureRecognizer in node.Rectangle.GestureRecognizers)
+                foreach (GestureRecognizer gestureRecognizer in rectangle.GestureRecognizers)
                 {
                     XmlElement GestureRecognizerName = XmlDocumentSchema.CreateElement(gestureRecognizer.ToString());
                     if (gestureRecognizer.ToString().Equals("Microsoft.Maui.Controls.TapGestureRecognizer"))
@@ -145,8 +140,39 @@ namespace RoadsApp2.XMLClasses
                     }
                     GestureRecognizers.AppendChild(GestureRecognizerName);
                 }
-                Rectangle.AppendChild(GestureRecognizers);
-                Node.AppendChild(Rectangle);
+                rectangleElement.AppendChild(GestureRecognizers);      
+            }    
+  
+            return rectangleElement;
+        }
+
+        public void ConvertNodesToXML()
+        {
+            List<Node> Nodes = MainPage.Nodes;
+
+            XmlElement NodesElement = XmlDocumentSchema.CreateElement("Nodes");
+            XmlRoot.AppendChild(NodesElement);
+
+            #region Nodes
+            foreach (Node node in Nodes)
+            {
+                XmlElement Node = XmlDocumentSchema.CreateElement("Node");
+                NodesElement.AppendChild(Node);
+
+                #region Rectangles         
+                Node.AppendChild(ConvertRectangleToXmlNode(node.Rectangle, "Rectangle"));
+                Node.AppendChild(ConvertRectangleToXmlNode(node.OriginalRectangle, "OriginalRectangle"));
+
+                #endregion
+
+                #region ExtendedTimes
+                XmlElement Side1ExtendedTimesElement = XmlDocumentSchema.CreateElement("Side1ExtendedTimes");  
+                AddNewAttribute("Value", node.Side1ExtendedTimes.ToString(), Side1ExtendedTimesElement);
+                Node.AppendChild(Side1ExtendedTimesElement);
+
+                XmlElement Side2ExtendedTimesElement = XmlDocumentSchema.CreateElement("Side2ExtendedTimes");
+                AddNewAttribute("Value", node.Side1ExtendedTimes.ToString(), Side2ExtendedTimesElement);
+                Node.AppendChild(Side2ExtendedTimesElement);
                 #endregion
 
                 #region PlusButtons
@@ -213,7 +239,7 @@ namespace RoadsApp2.XMLClasses
                     XmlElement Road = XmlDocumentSchema.CreateElement("Road");
                     Link.AppendChild(Road);
 
-                    solidColorBrush = (SolidColorBrush)link.Road.Fill;
+                    SolidColorBrush solidColorBrush = (SolidColorBrush)link.Road.Fill;
                     AddNewAttribute("Fill", solidColorBrush.Color.ToHex().ToString(), Road);
 
                     solidColorBrush = (SolidColorBrush)link.Road.Stroke;
@@ -437,7 +463,7 @@ namespace RoadsApp2.XMLClasses
 
                     AddNewAttribute("ZIndex", link.RectangleCollision.ZIndex.ToString(), RectangleCollision);
 
-                    GestureRecognizers = XmlDocumentSchema.CreateElement("GestureRecognizers");
+                    XmlElement GestureRecognizers = XmlDocumentSchema.CreateElement("GestureRecognizers");
 
                     foreach (GestureRecognizer gestureRecognizer in node.Rectangle.GestureRecognizers)
                     {
@@ -651,27 +677,57 @@ namespace RoadsApp2.XMLClasses
             foreach (XElement nodeElement in Nodes.Elements("Node"))
             {
                 Node node = new Node();
-                #region Rectangle
+                #region Rectangles
                 XElement rectangleElement = nodeElement.Element("Rectangle");
                 Rectangle rectangle = new Rectangle() 
                 {
                     Fill = Color.FromArgb(GetValueFromAttribute("Fill", rectangleElement)),
-                    WidthRequest = Double.Parse(GetValueFromAttribute("WidthRequest", rectangleElement)),
-                    HeightRequest = Double.Parse(GetValueFromAttribute("HeightRequest", rectangleElement)),
+                    //WidthRequest = Double.Parse(GetValueFromAttribute("WidthRequest", rectangleElement)),
+                    //HeightRequest = Double.Parse(GetValueFromAttribute("HeightRequest", rectangleElement)),
                     Stroke = Color.FromArgb(GetValueFromAttribute("Stroke", rectangleElement)),
                     StrokeThickness = Double.Parse(GetValueFromAttribute("StrokeThickness", rectangleElement)),
+                    Background = Color.FromArgb(GetValueFromAttribute("Background", rectangleElement)),
+                    BackgroundColor = Color.FromArgb(GetValueFromAttribute("BackgroundColor", rectangleElement)),
                     ZIndex = int.Parse(GetValueFromAttribute("ZIndex", rectangleElement)),
                 };
-
                 Rect rect = StringToRect(GetValueFromAttribute("rect", rectangleElement));
                 FormAbsoluteLayout.Add(rectangle);
                 FormAbsoluteLayout.SetLayoutBounds(rectangle, rect);
+                node.Rectangle = rectangle;
+
+
+                XElement originalRectangleElement = nodeElement.Element("OriginalRectangle");
+                Rectangle originalRectangle = new Rectangle()
+                {
+                    Fill = Color.FromArgb(GetValueFromAttribute("Fill", originalRectangleElement)),
+                    //WidthRequest = Double.Parse(GetValueFromAttribute("WidthRequest", originalRectangleElement)),
+                    //HeightRequest = Double.Parse(GetValueFromAttribute("HeightRequest", originalRectangleElement)),
+                    //Stroke = Color.FromArgb(GetValueFromAttribute("Stroke", originalRectangleElement)),
+                    //StrokeThickness = Double.Parse(GetValueFromAttribute("StrokeThickness", originalRectangleElement)),
+                    
+                    ZIndex = int.Parse(GetValueFromAttribute("ZIndex", originalRectangleElement)),
+                };
+                rect = StringToRect(GetValueFromAttribute("rect", originalRectangleElement));
+                FormAbsoluteLayout.Add(originalRectangle);
+                FormAbsoluteLayout.SetLayoutBounds(originalRectangle, rect);
+                node.OriginalRectangle = originalRectangle;
 
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
                 tapGestureRecognizer.Tapped += MainPage.Crossroads_Tapped;
                 rectangle.GestureRecognizers.Add(tapGestureRecognizer);
                     
                 node.Rectangle = rectangle;
+                #endregion
+
+                #region SideExtendedTimes
+                XElement Side1ExtendedTimes = nodeElement.Element("Side1ExtendedTimes");
+                GetValueFromAttribute("Value", Side1ExtendedTimes);
+                node.Side1ExtendedTimes = int.Parse(GetValueFromAttribute("Value", Side1ExtendedTimes));
+
+                XElement Side2ExtendedTimes = nodeElement.Element("Side2ExtendedTimes");
+                GetValueFromAttribute("Value", Side2ExtendedTimes);
+                node.Side2ExtendedTimes = int.Parse(GetValueFromAttribute("Value", Side2ExtendedTimes));
+
                 #endregion
 
                 #region PlusButtons

@@ -22,7 +22,10 @@ public partial class AccidentRegistrationPage : ContentPage
         TableViewParticipant.Margin = new Thickness(0, -50);
 #endif
         AccidentTimePicker.Format = "HH:mm";
+
     }
+
+
 
     ParticipantItem participant;
     public ParticipantItem Participant
@@ -125,11 +128,6 @@ public partial class AccidentRegistrationPage : ContentPage
                 MemoryStream memoryStream = new MemoryStream();
                 stream.CopyTo(memoryStream);
 
-#if WINDOWS
-#if DEBUG
-            await File.WriteAllBytesAsync("G:\\C#\\RoadsApp2\\RoadsApp2\\Saved\\DebugImage.png", memoryStream.ToArray());
-#endif
-#endif
                 var result = memoryStream.ToArray();
                 string imageBase64 = Convert.ToBase64String(result);
                 roadAccidentItem.SchemaImage = imageBase64;
@@ -149,14 +147,15 @@ public partial class AccidentRegistrationPage : ContentPage
                 HomePage.CurrentRoadAccidentItem = roadAccidentItem;
                 await Task.Delay(500);
                 await Navigation.PopAsync();
-                await Navigation.PopAsync();
-                await DisplayAlert("Уведомление", "Данные успешно сохранены в БД", "Ок");
-            }
+            await Task.Delay(100);
+            await Navigation.PopAsync();
+            await DisplayAlert("Уведомление", "Данные успешно сохранены в БД", "Ок");
+        }
             catch
             {
-                await DisplayAlert("Ошибка", "Возникла непридвиденная ошибка\nпри загрузке файла", "Ок");
-            }
+            await DisplayAlert("Ошибка", "Возникла непридвиденная ошибка\nпри загрузке файла", "Ок");
         }
+    }
         else
         {
             await DisplayAlert("Ошибка входных данных", "Проверьте значения полей", "Ок");
@@ -191,5 +190,14 @@ public partial class AccidentRegistrationPage : ContentPage
     {
         DatePicker.Date = DateTime.Now;
         AccidentTimePicker.Time = DateTime.Now.TimeOfDay;
+        bool isDebug = false;
+        if (isDebug)
+        {
+            NameEntry.Text = "Debug";
+            AddressEntry.Text = "Debug";
+            AddParticipantToView(new ParticipantItem() { FirstName = "Debug", SecondName = "Debug", LastName = "Debug", CarName = "Debug", CarNumber = "Debug" });
+            DescriptionEditor.Text = "Debug";
+            AccidentRegistrationViewModel.participantsCount = 1;
+        }
     }
 }

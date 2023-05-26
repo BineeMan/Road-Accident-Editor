@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maui.Controls.Shapes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -69,5 +70,46 @@ namespace RoadsApp2.Utils
             };
         }
 
+<<<<<<< Updated upstream
+=======
+        public static double GetLength(Point point1, Point point2)
+        {
+            double vectorA = point1.X - point2.X;
+            double vectorB = point1.Y - point2.Y;
+            return Math.Sqrt(Math.Pow(vectorA, 2) + Math.Pow(vectorB, 2));
+        }
+
+        public static Point GetSecondPoint(Point firstPoint, Polygon polygonRoad)
+        {
+            if (polygonRoad.Points.Count > 5)
+                return Point.Zero;
+
+            if (firstPoint == polygonRoad.Points[0])
+                return polygonRoad.Points[3];
+            else if (firstPoint == polygonRoad.Points[3])
+                return polygonRoad.Points[0];
+            else if (firstPoint == polygonRoad.Points[1])
+                return polygonRoad.Points[2];
+            else if (firstPoint == polygonRoad.Points[2])
+                return polygonRoad.Points[1];
+
+            return Point.Zero;
+        }
+
+        public static Point GetRatioForOrientation(Orientation orientation)
+        {
+            return orientation switch
+            {
+                Orientation.Up => new Point { X = 0.5, Y = 0 },
+                Orientation.Down => new Point { X = 0.5, Y = 1 },
+                Orientation.Left => new Point { X = 0, Y = 0.5 },
+                Orientation.Right => new Point { X = 1, Y = 0.5 },
+                Orientation.Undefined => new Point { X = 0.5, Y = 0.5 },
+                _ => new Point { X = 0.5, Y = 0.5 },
+            };
+        }
+
+        
+>>>>>>> Stashed changes
     }
 }

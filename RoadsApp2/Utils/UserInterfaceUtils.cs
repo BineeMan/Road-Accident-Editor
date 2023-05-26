@@ -19,14 +19,17 @@ namespace RoadsApp2.Utils
         {
             foreach (Image imageButton in imgButtons)
             {
-                imageButton.IsVisible = !imageButton.IsVisible;
+                if (imageButton.IsEnabled)
+                    imageButton.IsVisible = !imageButton.IsVisible;
             }
         }
 
-        public static Rectangle GetRectangle(Rect rect, EventHandler<TappedEventArgs> targetEvent = null)
+        public static Rectangle GetRectangle(Rect rect,
+            EventHandler<TappedEventArgs> tappedEvent = null,
+            EventHandler<PanUpdatedEventArgs> panEvent = null )
         {
 
-            Rectangle rectangle = new Rectangle()
+            Rectangle rectangle = new()
             {
                 Fill = Color.FromRgb(137, 137, 137),
                 //InputTransparent = true,
@@ -40,11 +43,17 @@ namespace RoadsApp2.Utils
                 BackgroundColor = Brush.Transparent.Color,
                 ZIndex = 3
             };
-            if (targetEvent != null)
+            if (tappedEvent != null)
             {
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer();
-                tapGestureRecognizer.Tapped += targetEvent;
+                tapGestureRecognizer.Tapped += tappedEvent;
                 rectangle.GestureRecognizers.Add(tapGestureRecognizer);
+            }
+            if (panEvent != null)
+            {
+                PanGestureRecognizer panGestureRecognizer = new PanGestureRecognizer();
+                panGestureRecognizer.PanUpdated += panEvent;
+                rectangle.GestureRecognizers.Add(panGestureRecognizer);
             }
             return rectangle;
         }
@@ -110,7 +119,8 @@ namespace RoadsApp2.Utils
         {
             foreach (Image imageButton in imageButtons)
             {
-                imageButton.IsVisible = isVisible;
+                if (imageButton.IsEnabled)
+                    imageButton.IsVisible = isVisible;
             }
         }
 
@@ -155,7 +165,7 @@ namespace RoadsApp2.Utils
                 new Point(vectorDestination.point1.X, vectorDestination.point1.Y),
                 new Point(vectorDestination.point2.X, vectorDestination.point2.Y),
                 new Point(vectorStart.point2.X, vectorStart.point2.Y),
-                new Point(vectorStart.point1.X, vectorStart.point1.Y)
+                //new Point(vectorStart.point1.X, vectorStart.point1.Y)
             };
 
             Polygon polygon = new Polygon()
@@ -337,7 +347,8 @@ namespace RoadsApp2.Utils
                 Stroke = lineColor,
                 StrokeThickness = 3,
                 IsEnabled = false,
-                ZIndex = 2,
+                ZIndex = 10,
+
                 StrokeDashArray = { 2, 2 },
                 StrokeDashOffset = 10,
                 X1 = vector.point1.X,
