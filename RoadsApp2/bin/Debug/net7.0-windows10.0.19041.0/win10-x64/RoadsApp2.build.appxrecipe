@@ -9,7 +9,7 @@
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>9246b96d-4b3b-486e-a7f8-1a994f24e3b9</PackageIdentityName>
-    <PackageIdentityPublisher>CN=User Name</PackageIdentityPublisher>
+    <PackageIdentityPublisher>CN=herob</PackageIdentityPublisher>
     <IntermediateOutputPath>G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>

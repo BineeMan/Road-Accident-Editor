@@ -13,7 +13,7 @@ namespace RoadsApp2.Utils
     {
         public static Vector GetVectorForOrientation(Orientation orientation, Rect rect, bool isInverted = false)
         {
-            if (isInverted) 
+            if (isInverted)
             {
                 orientation = GetReversedOrientation(orientation);
             }
@@ -23,23 +23,23 @@ namespace RoadsApp2.Utils
             switch (orientation)
             {
                 case Orientation.Up:
-                    startPoint1.X = rect.X-1;
+                    startPoint1.X = rect.X - 1;
                     startPoint1.Y = rect.Y;
                     startPoint2.X = rect.X + rect.Width;
                     startPoint2.Y = rect.Y;
                     break;
 
                 case Orientation.Down:
-                    startPoint1.X = rect.X-1;
+                    startPoint1.X = rect.X - 1;
                     startPoint1.Y = rect.Y + rect.Height - 1;
                     startPoint2.X = rect.X + rect.Width;
                     startPoint2.Y = rect.Y + rect.Height - 1;
                     break;
 
                 case Orientation.Right:
-                    startPoint1.X = rect.X + rect.Width-1;
+                    startPoint1.X = rect.X + rect.Width - 1;
                     startPoint1.Y = rect.Y - 1;
-                    startPoint2.X = rect.X + rect.Width-1;
+                    startPoint2.X = rect.X + rect.Width - 1;
                     startPoint2.Y = rect.Y + rect.Height;
                     break;
 

@@ -1,10 +1,13 @@
-
+using Microsoft.Maui.Controls;
 using RoadsApp2.Database;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Xml;
 using static RoadsApp2.Utils.Structs;
 using CommunityToolkit.Maui.Alerts;
+using System.Threading;
 using CommunityToolkit.Maui.Core;
+using System.Xml.Linq;
 
 
 namespace RoadsApp2;
@@ -132,7 +135,6 @@ public partial class HomePage : ContentPage
                     try
                     {
                         LoadXmlToEditor(xml);
-
                     }
                     catch (Exception ex)
                     {

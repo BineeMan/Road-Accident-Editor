@@ -14,13 +14,13 @@ namespace RoadsApp2.Utils
             public List<Image> PlusButtons { get; set; }
             public List<Link> Roads { get; set; }
 
-            public int Side1ExtendedTimes; //Up
+            public int Side1ExtendedTimes { get; set; } //Up
 
-            public int Side2ExtendedTimes; //Down
+            public int Side2ExtendedTimes { get; set; } //Down
 
-            public int Side3ExtendedTimes; //Right
+            public int Side3ExtendedTimes { get; set; } //Right
 
-            public int Side4ExtendedTimes; //Left
+            public int Side4ExtendedTimes { get; set; } //Left
             public bool isActive { get; set; }
         }
 

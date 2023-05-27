@@ -9,7 +9,7 @@
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>x64</PackageArchitecture>
     <PackageIdentityName>9246b96d-4b3b-486e-a7f8-1a994f24e3b9</PackageIdentityName>
-    <PackageIdentityPublisher>CN=User Name</PackageIdentityPublisher>
+    <PackageIdentityPublisher>CN=herob</PackageIdentityPublisher>
     <IntermediateOutputPath>G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -19,44 +19,32 @@
     <WindowsSdkPath>
     </WindowsSdkPath>
     <LayoutDir>G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppX</LayoutDir>
-    <RegisteredManifestChecksum>EACF3C5AA1480CB12F295F24B9046E646A36319025388CA27D83C8418688DF78</RegisteredManifestChecksum>
-    <RegisteredPackageMoniker>9246b96d-4b3b-486e-a7f8-1a994f24e3b9_1.0.0.1_x64__9zz4h110yvjzm</RegisteredPackageMoniker>
-    <RegisteredUserModeAppID>9246b96d-4b3b-486e-a7f8-1a994f24e3b9_9zz4h110yvjzm!App</RegisteredUserModeAppID>
+    <RegisteredManifestChecksum>9690627C775489A73E6364E5D37B5B81D6C23795E110B1A71FB2297BC43CCB37</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>9246b96d-4b3b-486e-a7f8-1a994f24e3b9_1.0.0.1_x64__8hj14y3t9kd7g</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>9246b96d-4b3b-486e-a7f8-1a994f24e3b9_8hj14y3t9kd7g!App</RegisteredUserModeAppID>
     <RegisteredPackageID>9246b96d-4b3b-486e-a7f8-1a994f24e3b9</RegisteredPackageID>
-    <RegisteredPackagePublisher>CN=User Name</RegisteredPackagePublisher>
+    <RegisteredPackagePublisher>CN=herob</RegisteredPackagePublisher>
     <RegisteredVersion>1.0.0.1</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
     <AppXManifest Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-<<<<<<< Updated upstream
-      <Modified>2023-05-10T11:17:37.068</Modified>
-=======
-      <Modified>2023-05-26T11:19:57.076</Modified>
->>>>>>> Stashed changes
+      <Modified>2023-05-27T08:35:47.734</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-<<<<<<< Updated upstream
-      <Modified>2023-05-10T11:16:06.628</Modified>
-=======
-      <Modified>2023-05-26T11:06:16.356</Modified>
->>>>>>> Stashed changes
+      <Modified>2023-05-27T08:35:47.363</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\RoadsApp2.runtimeconfig.json">
       <PackagePath>RoadsApp2.runtimeconfig.json</PackagePath>
-      <Modified>2023-04-04T07:06:30.934</Modified>
+      <Modified>2023-05-27T08:35:47.275</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\RoadsApp2.dll">
       <PackagePath>RoadsApp2.dll</PackagePath>
-<<<<<<< Updated upstream
-      <Modified>2023-05-10T11:17:35.677</Modified>
-=======
-      <Modified>2023-05-26T11:19:55.978</Modified>
->>>>>>> Stashed changes
+      <Modified>2023-05-27T08:35:46.317</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\Maui.Controls.BottomSheet\Maui.Controls.BottomSheet\bin\Debug\net7.0-windows10.0.19041.0\Maui.Controls.BottomSheet.dll">
       <PackagePath>Maui.Controls.BottomSheet.dll</PackagePath>
@@ -64,11 +52,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>RoadsApp2.exe</PackagePath>
-<<<<<<< Updated upstream
-      <Modified>2023-05-10T11:17:35.696</Modified>
-=======
-      <Modified>2023-05-26T11:19:55.983</Modified>
->>>>>>> Stashed changes
+      <Modified>2023-05-27T08:35:46.331</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\herob\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.4\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -980,11 +964,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="G:\C#\RoadsApp2\RoadsApp2\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\RoadsApp2.deps.json">
       <PackagePath>RoadsApp2.deps.json</PackagePath>
-<<<<<<< Updated upstream
-      <Modified>2023-05-10T11:17:36.872</Modified>
-=======
-      <Modified>2023-05-26T11:19:56.930</Modified>
->>>>>>> Stashed changes
+      <Modified>2023-05-27T08:35:47.541</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.59\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

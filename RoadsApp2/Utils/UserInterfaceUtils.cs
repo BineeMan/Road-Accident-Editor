@@ -26,7 +26,7 @@ namespace RoadsApp2.Utils
 
         public static Rectangle GetRectangle(Rect rect,
             EventHandler<TappedEventArgs> tappedEvent = null,
-            EventHandler<PanUpdatedEventArgs> panEvent = null )
+            EventHandler<PanUpdatedEventArgs> panEvent = null)
         {
 
             Rectangle rectangle = new()
@@ -340,7 +340,8 @@ namespace RoadsApp2.Utils
 
         public static Line DrawLine(Vector vector)
         {
-            Brush lineColor = Brush.White;
+            //Brush lineColor = Brush.White;
+            Brush lineColor = Brush.Red;
             Line line = new Line()
             {
                 Fill = lineColor,
@@ -366,7 +367,7 @@ namespace RoadsApp2.Utils
             road.Points[2] = newDestination.point2;
         }
 
-        public static List<Node> GetAllNodesByLink(Link link, List<Node> nodes)
+        public static List<Node> GetNodesByLink(Link link, List<Node> nodes)
         {
             var foundNodes = new List<Node>();
             for (int i = 0; i < nodes.Count; i++)
@@ -378,6 +379,18 @@ namespace RoadsApp2.Utils
                 }
             }
             return foundNodes;
+        }
+
+        public static PointCollection GetPointsFromRect(Rect rect)
+        {
+            PointCollection points = new()
+            {
+                new Point(rect.X, rect.Y),
+                new Point(rect.Right, rect.Top),
+                new Point(rect.Right, rect.Bottom),
+                new Point(rect.Left,rect.Bottom)
+            };
+            return points;
         }
 
     }

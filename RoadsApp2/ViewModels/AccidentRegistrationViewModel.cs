@@ -16,19 +16,10 @@ namespace RoadsApp2.ViewModels
     [QueryProperty(nameof(Participant), "Participant")]
     public partial class AccidentRegistrationViewModel : ObservableObject
     {
-
         private RoadAccidentDatabase RoadAccidentDatabase = new();
         public AccidentRegistrationViewModel()
         {
             participants = new ObservableCollection<ParticipantItem>();
-            bool isDebug = false;
-            if (isDebug)
-            {
-                name = "Debug";
-                address = "Debug";
-                description = "Debug";
-                participants.Add(new ParticipantItem() { FirstName = "Debug", SecondName = "Debug", LastName = "Debug", CarName = "Debug", CarNumber = "Debug" });
-            }
 
         }
 
@@ -66,6 +57,11 @@ namespace RoadsApp2.ViewModels
         async Task OpenParticipantPage()
         {
             await Shell.Current.GoToAsync(nameof(NewParticipantPage));
+        }
+
+        private bool ArePropertiesValid()
+        {
+            return !string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(address) && !string.IsNullOrEmpty(Description) && participants.Count > 0;
         }
 
         [RelayCommand]
